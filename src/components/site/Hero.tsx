@@ -1,5 +1,8 @@
 import { TriangleBg } from "./TriangleBg";
 
+const BOXER_SRC =
+  "https://images.pexels.com/photos/6998855/pexels-photo-6998855.jpeg?auto=compress&cs=tinysrgb&w=800";
+
 export function Hero() {
   return (
     <section
@@ -7,18 +10,25 @@ export function Hero() {
       className="relative h-svh min-h-svh w-full overflow-hidden bg-white pt-28 md:pt-32"
     >
       <img
-        src="https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=800"
+        src={BOXER_SRC}
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="boxer-left fc-gray-strong pointer-events-none absolute bottom-0 left-[-5%] z-0 hidden h-[85%] opacity-[0.08] object-cover object-[center_top] md:block"
+        className="fc-gray-strong pointer-events-none absolute bottom-0 left-1/2 z-0 h-[90%] max-w-none -translate-x-1/2 opacity-[0.15] object-cover object-[center_top]"
       />
       <img
-        src="https://images.pexels.com/photos/6998855/pexels-photo-6998855.jpeg?auto=compress&cs=tinysrgb&w=800"
+        src={BOXER_SRC}
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="boxer-right fc-gray-strong pointer-events-none absolute bottom-0 right-[-5%] z-0 hidden h-[85%] opacity-[0.08] object-cover object-[center_top] md:block scale-x-[-1]"
+        className="fc-gray-strong boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[90%] max-w-none -translate-x-1/2 opacity-0 object-cover object-[center_top] md:block"
+      />
+      <img
+        src={BOXER_SRC}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="fc-gray-strong boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[90%] max-w-none -translate-x-1/2 opacity-0 object-cover object-[center_top] md:block"
       />
 
       <TriangleBg

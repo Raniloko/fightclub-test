@@ -139,28 +139,24 @@
   filter: grayscale(100%) contrast(110%);
 }
 
-@keyframes boxerLeft {
-  0%   { transform: translateX(0) scaleX(1); opacity: 0.08; }
-  45%  { transform: translateX(0) scaleX(1); opacity: 0.08; }
-  50%  { transform: translateX(-120%) scaleX(1); opacity: 0; }
-  51%  { transform: translateX(-120%) scaleX(1); opacity: 0; }
-  55%  { transform: translateX(0) scaleX(1); opacity: 0.08; }
-  100% { transform: translateX(0) scaleX(1); opacity: 0.08; }
+@keyframes slideLeft {
+  0%   { transform: translateX(-50%); opacity: 0; }
+  10%  { transform: translateX(-50%); opacity: 0.07; }
+  45%  { transform: translateX(-180%); opacity: 0; }
+  100% { transform: translateX(-180%); opacity: 0; }
 }
 
-@keyframes boxerRight {
-  0%   { transform: translateX(0) scaleX(-1); opacity: 0.08; }
-  45%  { transform: translateX(0) scaleX(-1); opacity: 0.08; }
-  50%  { transform: translateX(120%) scaleX(-1); opacity: 0; }
-  51%  { transform: translateX(120%) scaleX(-1); opacity: 0; }
-  55%  { transform: translateX(0) scaleX(-1); opacity: 0.08; }
-  100% { transform: translateX(0) scaleX(-1); opacity: 0.08; }
+@keyframes slideRight {
+  0%   { transform: translateX(-50%); opacity: 0; }
+  10%  { transform: translateX(-50%); opacity: 0.07; }
+  45%  { transform: translateX(80%); opacity: 0; }
+  100% { transform: translateX(80%); opacity: 0; }
 }
 
-.boxer-left {
-  animation: boxerLeft 6s ease-in-out infinite;
+.boxer-ghost-left {
+  animation: slideLeft 4s ease-in-out infinite;
 }
 
-.boxer-right {
-  animation: boxerRight 6s ease-in-out infinite;
+.boxer-ghost-right {
+  animation: slideRight 4s ease-in-out infinite;
 }
