@@ -63,9 +63,11 @@ export function Nav() {
           </nav>
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((s) => !s)}
             className="relative h-7 w-7 lg:hidden"
-            aria-label="Menü öffnen"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             <span
               className={`absolute left-0 block h-[2px] w-7 bg-[#0a0a0a] transition-all duration-300 ease-out ${
