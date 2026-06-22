@@ -105,14 +105,15 @@ export function Schedule() {
               <div className="space-y-3 md:hidden">
                 {classes.map((c, i) => (
                   <div key={i} className="border border-[#e0e0e0] bg-white p-5">
-                    <div className="flex items-baseline justify-between">
-                      <div className="font-display text-2xl">{c.time}</div>
-                      <div className="text-[10px] uppercase tracking-[0.2em] text-[#777]">
-                        {c.level}
-                      </div>
-                    </div>
+                    <div className="font-display text-2xl">{c.time}</div>
                     <div className="mt-2 text-[15px] font-semibold">{c.disc}</div>
-                    <div className="mt-1 text-[12px] text-[#555]">{c.trainer}</div>
+                    <div className="mt-1 flex items-center gap-2">
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#777]">
+                        {c.level}
+                      </span>
+                      <span className="text-[10px] text-[#bbb]">·</span>
+                      <span className="text-[12px] text-[#555]">{c.trainer}</span>
+                    </div>
                   </div>
                 ))}
               </div>
