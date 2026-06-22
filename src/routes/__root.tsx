@@ -80,6 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Fight Club Hanau" },
       { name: "description", content: "Kampfsport-Akademie in Hanau seit 2014." },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: "Fight Club Hanau" },
+      { name: "twitter:title", content: "Fight Club Hanau" },
+      { property: "og:description", content: "Kampfsport-Akademie in Hanau seit 2014." },
+      { name: "twitter:description", content: "Kampfsport-Akademie in Hanau seit 2014." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2fe773a6-2578-4c71-8b21-0eb50a876dd2/id-preview-04bd2fe3--9470e119-182f-4bbc-a792-8cf813c99ac1.lovable.app-1782130672124.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2fe773a6-2578-4c71-8b21-0eb50a876dd2/id-preview-04bd2fe3--9470e119-182f-4bbc-a792-8cf813c99ac1.lovable.app-1782130672124.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
