@@ -4,8 +4,23 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] w-full overflow-hidden bg-white pt-28 md:pt-32"
+      className="relative h-svh min-h-svh w-full overflow-hidden bg-white pt-28 md:pt-32"
     >
+      <img
+        src="https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=800"
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="boxer-left fc-gray-strong pointer-events-none absolute bottom-0 left-[-5%] z-0 hidden h-[85%] opacity-[0.08] object-cover object-[center_top] md:block"
+      />
+      <img
+        src="https://images.pexels.com/photos/6998855/pexels-photo-6998855.jpeg?auto=compress&cs=tinysrgb&w=800"
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="boxer-right fc-gray-strong pointer-events-none absolute bottom-0 right-[-5%] z-0 hidden h-[85%] opacity-[0.08] object-cover object-[center_top] md:block scale-x-[-1]"
+      />
+
       <TriangleBg
         className="pointer-events-none absolute right-[-10%] top-1/2 h-[90%] w-[80%] -translate-y-1/2"
         stroke="#EBEBEB"
@@ -54,15 +69,6 @@ export function Hero() {
               Stundenplan ansehen
             </a>
           </div>
-        </div>
-
-        <div className="relative hidden md:col-span-2 md:block">
-          <img
-            src="https://images.pexels.com/photos/6998855/pexels-photo-6998855.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Fighter"
-            loading="eager"
-            className="fc-gray-strong fc-hero-mask absolute right-0 bottom-0 h-[90%] w-full object-cover object-top"
-          />
         </div>
       </div>
     </section>
