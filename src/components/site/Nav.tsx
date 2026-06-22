@@ -21,14 +21,13 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Mount/unmount drawer with delay so exit animation can play
   useEffect(() => {
     if (open) {
       setMounted(true);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
-      const t = setTimeout(() => setMounted(false), 450);
+      const t = setTimeout(() => setMounted(false), 350);
       return () => clearTimeout(t);
     }
   }, [open]);
@@ -64,7 +63,7 @@ export function Nav() {
           </nav>
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={() => set the user setOpen(true)}
             className="relative h-7 w-7 lg:hidden"
             aria-label="Menü öffnen"
           >
@@ -79,28 +78,22 @@ export function Nav() {
               }`}
             />
             <span
-              className={`absolute left-0 block h-[2px] w-7 bg-[#0a0a0a] transition-all duration-300 ease-out ${
-                open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"
+              className={`absolute left-0 block h-[2px] w-7 bg-white/40 transition-opacity duration-300 ${
+                open ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             />
-          </button>
-        </div>
-      </header>
+          </div>
 
-      {mounted && (
-        <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true">
-          {/* Backdrop */}
+          {/* Drawer – slides from top to bottom */}
           <div
-            onClick={() => setOpen(false)}
-            className={`absolute inset-0 bg-black/40 transition-opacity duration-400 ease-out ${
-              open ? "opacity-100" : "opacity-0"
-            }`}
-          />
-          {/* Drawer */}
-          <div
-            className={`absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              open ? "translate-x-0" : "translate-x-full"
-            }`}
+            className="absolute inset-0 z-10 flex h-screen w-full flex-col bg-white shadow-2xl"
+            style={{
+              transition: open
+                ? "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+                : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              transform: open ? "translateY(0)" : "translateY(-100%)",
+              opacity: open ? 1 : 0,
+            }}
           >
             <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
               <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
@@ -109,7 +102,7 @@ export function Nav() {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Schließen"
-                className="hover:rotate-90"
+                className="hover:rotate-90 transition-transform duration-300"
               >
                 <svg width="28" height="28" viewBox="0 0 28 28">
                   <path d="M5 5l18 18M23 5L5 23" stroke="#0a0a0a" strokeWidth="2" />
@@ -126,7 +119,7 @@ export function Nav() {
                     transitionDelay: open ? `${120 + i * 60}ms` : "0ms",
                   }}
                   className={`font-display text-5xl uppercase tracking-wide text-[#0a0a0a] transition-all duration-500 ease-out hover:translate-x-2 hover:opacity-70 ${
-                    open ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                    open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
                   }`}
                 >
                   {l.label}
@@ -137,7 +130,7 @@ export function Nav() {
                 onClick={() => setOpen(false)}
                 style={{ transitionDelay: open ? `${120 + LINKS.length * 60}ms` : "0ms" }}
                 className={`mt-6 inline-block bg-[#0a0a0a] px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 ease-out hover:bg-[#222] ${
-                  open ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                  open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
                 }`}
               >
                 Probetraining
