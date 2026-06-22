@@ -90,6 +90,7 @@ export function Nav() {
 
       {mounted && (
         <div
+          id="mobile-menu"
           className="fixed top-0 left-0 z-50 h-[100vh] w-full bg-white shadow-2xl lg:hidden"
           style={{
             transition: open
@@ -100,6 +101,7 @@ export function Nav() {
           }}
           role="dialog"
           aria-modal="true"
+          aria-label="Hauptnavigation"
         >
           <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
             <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
