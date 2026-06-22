@@ -11,7 +11,7 @@ import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
-import { BoxerScroll } from "@/components/site/BoxerScroll";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,7 +39,6 @@ function Index() {
       <Hero />
       <Stats />
       <Disciplines />
-      <BoxerScroll />
       <About />
       <Trainers />
       <Schedule />
