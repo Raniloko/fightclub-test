@@ -41,7 +41,7 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
           <a href="#top" aria-label="Fight Club Hanau" className="hover:opacity-70">
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-12 w-auto" />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -70,19 +70,19 @@ export function Nav() {
             aria-controls="mobile-menu"
           >
             <span
-              className={`absolute left-0 block h-[2px] w-7 bg-[#0a0a0a] transition-all duration-300 ease-out ${
-                open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"
-              }`}
+              className={`absolute left-0 block h-[2px] w-7 transition-all duration-300 ease-out ${
+                scrolled ? "bg-[#0a0a0a]" : "bg-white"
+              } ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"}`}
             />
             <span
-              className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 bg-[#0a0a0a] transition-opacity duration-200 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
+              className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 transition-opacity duration-200 ${
+                scrolled ? "bg-[#0a0a0a]" : "bg-white"
+              } ${open ? "opacity-0" : "opacity-100"}`}
             />
             <span
-              className={`absolute left-0 block h-[2px] w-7 bg-[#0a0a0a] transition-all duration-300 ease-out ${
-                open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"
-              }`}
+              className={`absolute left-0 block h-[2px] w-7 transition-all duration-300 ease-out ${
+                scrolled ? "bg-[#0a0a0a]" : "bg-white"
+              } ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"}`}
             />
           </button>
         </div>
@@ -105,7 +105,7 @@ export function Nav() {
         >
           <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
             <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
-              <Logo className="h-10 w-auto" />
+              <Logo className="h-12 w-auto" />
             </a>
             <button
               onClick={() => setOpen(false)}
