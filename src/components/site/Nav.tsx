@@ -21,14 +21,13 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Mount/unmount drawer with delay so exit animation can play
   useEffect(() => {
     if (open) {
       setMounted(true);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
-      const t = setTimeout(() => setMounted(false), 450);
+      const t = setTimeout(() => setMounted(false), 350);
       return () => clearTimeout(t);
     }
   }, [open]);
@@ -88,62 +87,60 @@ export function Nav() {
       </header>
 
       {mounted && (
-        <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true">
-          {/* Backdrop */}
-          <div
-            onClick={() => setOpen(false)}
-            className={`absolute inset-0 bg-black/40 transition-opacity duration-400 ease-out ${
-              open ? "opacity-100" : "opacity-0"
-            }`}
-          />
-          {/* Drawer */}
-          <div
-            className={`absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              open ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
-              <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
-                <Logo className="h-10 w-auto" />
-              </a>
-              <button
-                onClick={() => setOpen(false)}
-                aria-label="Schließen"
-                className="hover:rotate-90"
-              >
-                <svg width="28" height="28" viewBox="0 0 28 28">
-                  <path d="M5 5l18 18M23 5L5 23" stroke="#0a0a0a" strokeWidth="2" />
-                </svg>
-              </button>
-            </div>
-            <nav className="flex flex-1 flex-col justify-center gap-6 px-8">
-              {LINKS.map((l, i) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  style={{
-                    transitionDelay: open ? `${120 + i * 60}ms` : "0ms",
-                  }}
-                  className={`font-display text-5xl uppercase tracking-wide text-[#0a0a0a] transition-all duration-500 ease-out hover:translate-x-2 hover:opacity-70 ${
-                    open ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
-                  }`}
-                >
-                  {l.label}
-                </a>
-              ))}
+        <div
+          className="fixed top-0 left-0 z-50 h-[100vh] w-full bg-white shadow-2xl lg:hidden"
+          style={{
+            transition: open
+              ? "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+              : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform: open ? "translateY(0)" : "translateY(-100%)",
+            opacity: open ? 1 : 0,
+          }}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
+            <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
+              <Logo className="h-10 w-auto" />
+            </a>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Schließen"
+              className="transition-transform duration-300 hover:rotate-90"
+            >
+              <svg width="28" height="28" viewBox="0 0 28 28">
+                <path d="M5 5l18 18M23 5L5 23" stroke="#0a0a0a" strokeWidth="2" />
+              </svg>
+            </button>
+          </div>
+
+          <nav className="flex flex-col justify-center gap-6 px-8 pt-12">
+            {LINKS.map((l, i) => (
               <a
-                href="#kontakt"
+                key={l.href}
+                href={l.href}
                 onClick={() => setOpen(false)}
-                style={{ transitionDelay: open ? `${120 + LINKS.length * 60}ms` : "0ms" }}
-                className={`mt-6 inline-block bg-[#0a0a0a] px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 ease-out hover:bg-[#222] ${
-                  open ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                style={{
+                  transitionDelay: open ? `${120 + i * 60}ms` : "0ms",
+                }}
+                className={`font-display text-5xl uppercase tracking-wide text-[#0a0a0a] transition-all duration-500 ease-out hover:translate-x-2 hover:opacity-70 ${
+                  open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
                 }`}
               >
-                Probetraining
+                {l.label}
               </a>
-            </nav>
-          </div>
+            ))}
+            <a
+              href="#kontakt"
+              onClick={() => setOpen(false)}
+              style={{ transitionDelay: open ? `${120 + LINKS.length * 60}ms` : "0ms" }}
+              className={`mt-6 inline-block bg-[#0a0a0a] px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 ease-out hover:bg-[#222] ${
+                open ? "translate-y-0 opacity-100" : "-translate-y-6 opacity-0"
+              }`}
+            >
+              Probetraining
+            </a>
+          </nav>
         </div>
       )}
     </>
