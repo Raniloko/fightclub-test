@@ -63,9 +63,11 @@ export function Nav() {
           </nav>
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((s) => !s)}
             className="relative h-7 w-7 lg:hidden"
-            aria-label="Menü öffnen"
+            aria-label={open ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             <span
               className={`absolute left-0 block h-[2px] w-7 bg-[#0a0a0a] transition-all duration-300 ease-out ${
@@ -88,6 +90,7 @@ export function Nav() {
 
       {mounted && (
         <div
+          id="mobile-menu"
           className="fixed top-0 left-0 z-50 h-[100vh] w-full bg-white shadow-2xl lg:hidden"
           style={{
             transition: open
@@ -98,6 +101,7 @@ export function Nav() {
           }}
           role="dialog"
           aria-modal="true"
+          aria-label="Hauptnavigation"
         >
           <div className="flex items-center justify-between border-b border-[#e0e0e0] px-5 py-4">
             <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
