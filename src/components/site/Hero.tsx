@@ -26,7 +26,7 @@ export function Hero() {
             <span className="relative inline-block">
               Ein Lebens
               <span className="relative inline-block">
-                styl
+                stil
                 <span
                   aria-hidden
                   className="absolute left-0 right-0 bottom-[0.08em] h-[6px] bg-[#0a0a0a] md:h-[8px]"
