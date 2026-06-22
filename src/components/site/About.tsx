@@ -7,7 +7,7 @@ export function About() {
         <div className="relative min-h-[320px] md:min-h-[640px]">
           <img
             src="https://images.pexels.com/photos/6296001/pexels-photo-6296001.jpeg?auto=compress&cs=tinysrgb&w=1200"
-            alt="Training bei Fight Club Berlin"
+            alt="Training bei Fight Club Hanau"
             loading="lazy"
             className="fc-gray absolute inset-0 h-full w-full object-cover"
           />
@@ -22,7 +22,7 @@ export function About() {
             </div>
             <h2 className="mt-4 font-display text-5xl md:text-7xl">Mehr als ein Gym.</h2>
             <p className="mt-8 max-w-md text-[15px] text-[#333] md:text-[17px]">
-              Fight Club ist 2014 in Berlin entstanden — aus der Überzeugung, dass echter
+              Fight Club ist 2014 in Hanau entstanden — aus der Überzeugung, dass echter
               Kampfsport mehr ist als Fitness. Wir sind eine Gemeinschaft aus Menschen, die sich
               auf der Matte begegnen. Ehrlich. Hart. Respektvoll.
             </p>
