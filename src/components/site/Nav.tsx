@@ -49,14 +49,20 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#0a0a0a] hover:opacity-60"
+                className={`text-[13px] font-medium uppercase tracking-[0.15em] transition-opacity duration-300 hover:opacity-60 ${
+                  scrolled ? "text-[#0a0a0a]" : "text-white"
+                }`}
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#kontakt"
-              className="bg-[#0a0a0a] px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-white hover:bg-[#222] hover:-translate-y-0.5"
+              className={`px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 ${
+                scrolled
+                  ? "bg-[#0a0a0a] text-white hover:bg-[#222]"
+                  : "bg-white text-[#0a0a0a] hover:bg-[#e5e5e5]"
+              }`}
             >
               Probetraining
             </a>
