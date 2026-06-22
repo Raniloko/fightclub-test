@@ -32,7 +32,7 @@ export function Trainers() {
               Unser Team
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl md:text-7xl">Die Trainer</h2>
+          <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Die Trainer</span></h2>
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-3">

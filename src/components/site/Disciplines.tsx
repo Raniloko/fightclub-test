@@ -39,7 +39,7 @@ export function Disciplines() {
               Was wir trainieren
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl md:text-7xl">Unsere Disziplinen</h2>
+          <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Unsere Disziplinen</span></h2>
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">

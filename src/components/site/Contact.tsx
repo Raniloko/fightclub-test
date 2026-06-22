@@ -23,7 +23,7 @@ export function Contact() {
               Sag Hallo
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl md:text-7xl">Kontakt</h2>
+          <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Kontakt</span></h2>
 
           <div className="mt-10 space-y-8 text-[15px]">
             <div>

@@ -10,6 +10,7 @@ import { Schedule } from "@/components/site/Schedule";
 import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,6 +51,7 @@ function Index() {
       <Contact />
       <Footer />
       <Toaster position="bottom-right" />
+      <HeadlineUnderlineObserver />
     </main>
   );
 }

@@ -13,9 +13,11 @@ export function CtaProbetraining() {
           className="font-display leading-[0.9]"
           style={{ fontSize: "clamp(48px, 9vw, 96px)" }}
         >
-          Komm. Einfach.
-          <br />
-          Trainieren.
+          <span className="fc-headline-underline">
+            Komm. Einfach.
+            <br />
+            Trainieren.
+          </span>
         </h2>
         <p className="mx-auto mt-8 max-w-xl text-[15px] text-white/70 md:text-[17px]">
           Dein erstes Training ist kostenlos und unverbindlich. Keine Anmeldung nötig.
