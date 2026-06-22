@@ -31,11 +31,11 @@ export function Contact() {
                 Adresse
               </div>
               <p className="mt-2 leading-relaxed">
-                Fight Club Berlin
+                Fight Club Hanau
                 <br />
                 [Strasse Hausnummer]
                 <br />
-                [PLZ] Berlin
+                [PLZ] Hanau
               </p>
             </div>
             <div className="grid grid-cols-2 gap-6">

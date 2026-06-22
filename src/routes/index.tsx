@@ -14,16 +14,16 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fight Club Berlin — Muay Thai · MMA · Boxen · Kickboxen · BJJ" },
+      { title: "Fight Club Hanau — Muay Thai · MMA · Boxen · Kickboxen · BJJ" },
       {
         name: "description",
         content:
-          "Fight Club Berlin — Kampfsport-Akademie seit 2014. Muay Thai, MMA, Boxen, Kickboxen und BJJ in Berlin. Erstes Training kostenlos.",
+          "Fight Club Hanau — Kampfsport-Akademie seit 2014. Muay Thai, MMA, Boxen, Kickboxen und BJJ in Hanau. Erstes Training kostenlos.",
       },
-      { property: "og:title", content: "Fight Club Berlin" },
+      { property: "og:title", content: "Fight Club Hanau" },
       {
         property: "og:description",
-        content: "Kein Sport. Ein Lebensstil. Kampfsport-Akademie in Berlin seit 2014.",
+        content: "Kein Sport. Ein Lebensstil. Kampfsport-Akademie in Hanau seit 2014.",
       },
     ],
   }),

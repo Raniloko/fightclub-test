@@ -1,14 +1,11 @@
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/logo-hanau.png.asset.json";
 
-export function Logo({ className = "", color = "#0a0a0a" }: { className?: string; color?: string }) {
-  const isWhite = color.toLowerCase() === "#ffffff" || color.toLowerCase() === "white";
+export function Logo({ className = "" }: { className?: string }) {
   return (
     <img
       src={logoAsset.url}
-      alt=""
+      alt="Fight Club MMA Akademie Hanau"
       className={className}
-      aria-hidden="true"
-      style={isWhite ? { filter: "brightness(0) invert(1)" } : undefined}
     />
   );
 }

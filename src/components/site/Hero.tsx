@@ -17,7 +17,7 @@ export function Hero() {
           <div className="flex items-center gap-3">
             <span className="block h-px w-8 bg-[#0a0a0a]" />
             <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#555]">
-              Berlin · Seit 2014
+              Hanau · Seit 2014
             </span>
           </div>
 
@@ -37,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-8 max-w-xl text-[15px] text-[#555] md:text-[17px]">
-            Muay Thai · MMA · Boxen · Kickboxen · BJJ — Berlin
+            Muay Thai · MMA · Boxen · Kickboxen · BJJ — Hanau
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
