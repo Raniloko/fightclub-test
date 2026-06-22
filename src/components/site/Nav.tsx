@@ -35,8 +35,8 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
-          scrolled ? "bg-white border-b border-[#e0e0e0]" : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-sm transition-[background-color,border-color] duration-500 ease-out ${
+          scrolled ? "bg-white/95 border-[#e0e0e0]" : "bg-white/0 border-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
@@ -49,14 +49,20 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#0a0a0a] hover:opacity-60"
+                className={`text-[13px] font-medium uppercase tracking-[0.15em] transition-opacity duration-300 hover:opacity-60 ${
+                  scrolled ? "text-[#0a0a0a]" : "text-white"
+                }`}
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#kontakt"
-              className="bg-[#0a0a0a] px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-white hover:bg-[#222] hover:-translate-y-0.5"
+              className={`px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 ${
+                scrolled
+                  ? "bg-[#0a0a0a] text-white hover:bg-[#222]"
+                  : "bg-white text-[#0a0a0a] hover:bg-[#e5e5e5]"
+              }`}
             >
               Probetraining
             </a>
