@@ -139,24 +139,27 @@
   filter: grayscale(100%) contrast(110%);
 }
 
-@keyframes slideLeft {
-  0%   { transform: translateX(-50%); opacity: 0; }
-  10%  { transform: translateX(-50%); opacity: 0.07; }
-  45%  { transform: translateX(-180%); opacity: 0; }
-  100% { transform: translateX(-180%); opacity: 0; }
+@keyframes ghostLeft {
+  0%   { transform: translateX(-50%); opacity: 0.08; }
+  60%  { transform: translateX(-200%); opacity: 0; }
+  61%  { transform: translateX(-50%); opacity: 0; }
+  75%  { transform: translateX(-50%); opacity: 0.08; }
+  100% { transform: translateX(-50%); opacity: 0.08; }
 }
 
-@keyframes slideRight {
-  0%   { transform: translateX(-50%); opacity: 0; }
-  10%  { transform: translateX(-50%); opacity: 0.07; }
-  45%  { transform: translateX(80%); opacity: 0; }
-  100% { transform: translateX(80%); opacity: 0; }
+@keyframes ghostRight {
+  0%   { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
+  60%  { transform: translateX(100%) scaleX(-1); opacity: 0; }
+  61%  { transform: translateX(-50%) scaleX(-1); opacity: 0; }
+  75%  { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
+  100% { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
 }
 
 .boxer-ghost-left {
-  animation: slideLeft 4s ease-in-out infinite;
+  animation: ghostLeft 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .boxer-ghost-right {
-  animation: slideRight 4s ease-in-out infinite;
+  animation: ghostRight 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: center;
 }

@@ -1,7 +1,7 @@
 import { TriangleBg } from "./TriangleBg";
 
 const BOXER_SRC =
-  "https://images.pexels.com/photos/6998855/pexels-photo-6998855.jpeg?auto=compress&cs=tinysrgb&w=800";
+  "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=800&q=80";
 
 export function Hero() {
   return (
@@ -14,21 +14,21 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="fc-gray-strong pointer-events-none absolute bottom-0 left-1/2 z-0 h-[90%] max-w-none -translate-x-1/2 opacity-[0.15] object-cover object-[center_top]"
+        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[92%] max-w-none -translate-x-1/2 opacity-[0.12] object-cover object-[top_center] grayscale contrast-[115%]"
       />
       <img
         src={BOXER_SRC}
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="fc-gray-strong boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[90%] max-w-none -translate-x-1/2 opacity-0 object-cover object-[center_top] md:block"
+        className="boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[92%] max-w-none opacity-[0.08] object-cover object-[top_center] grayscale contrast-[115%] md:block"
       />
       <img
         src={BOXER_SRC}
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="fc-gray-strong boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[90%] max-w-none -translate-x-1/2 opacity-0 object-cover object-[center_top] md:block"
+        className="boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[92%] max-w-none opacity-[0.08] object-cover object-[top_center] grayscale contrast-[115%] md:block"
       />
 
       <TriangleBg
@@ -37,7 +37,7 @@ export function Hero() {
         opacity={0.9}
       />
 
-      <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 md:grid-cols-5 md:px-10">
+      <div className="relative z-[1] mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 md:grid-cols-5 md:px-10">
         <div className="relative z-10 flex flex-col justify-center md:col-span-3 md:min-h-[80svh] fc-stagger">
           <div className="flex items-center gap-3">
             <span className="block h-px w-8 bg-[#0a0a0a]" />
