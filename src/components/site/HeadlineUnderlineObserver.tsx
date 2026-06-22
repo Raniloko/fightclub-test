@@ -14,7 +14,7 @@ export function HeadlineUnderlineObserver() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.8 }
     );
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();

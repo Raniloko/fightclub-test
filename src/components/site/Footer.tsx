@@ -36,7 +36,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/15">
+      <div>
         <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/50 md:flex-row md:px-10">
           <span>Fight Club Hanau</span>
           <div className="flex gap-6">

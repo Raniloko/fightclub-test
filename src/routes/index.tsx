@@ -36,18 +36,12 @@ function Index() {
     <main className="bg-white text-[#0a0a0a]">
       <Nav />
       <Hero />
-      <div className="fc-gradient-strip" />
       <Stats />
       <Disciplines />
-      <div className="fc-gradient-strip" />
       <About />
-      <div className="fc-gradient-strip" />
       <Trainers />
-      <div className="fc-gradient-strip" />
       <Schedule />
-      <div className="fc-gradient-strip" />
       <CtaProbetraining />
-      <div className="fc-gradient-strip" />
       <Contact />
       <Footer />
       <Toaster position="bottom-right" />
