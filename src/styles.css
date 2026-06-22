@@ -203,4 +203,35 @@
   );
 }
 
+@keyframes underlineReveal {
+  0%   { transform: scaleX(0); opacity: 0; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+.fc-headline-underline {
+  position: relative;
+  display: inline-block;
+}
+.fc-headline-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  border-radius: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    #003A5C 0%,
+    #0077B6 30%,
+    #00B4DC 60%,
+    #00D4FF 100%
+  );
+}
+.fc-headline-underline.is-visible::after {
+  animation: underlineReveal 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
