@@ -29,9 +29,10 @@ export function Footer() {
             Folge uns
           </div>
           <ul className="mt-4 space-y-2 text-[15px]">
-            <li><a href="#" className="hover:opacity-60">Instagram</a></li>
-            <li><a href="#" className="hover:opacity-60">Facebook</a></li>
+            <li><a href="#" className="transition-colors hover:text-[#00B4DC]">Instagram</a></li>
+            <li><a href="#" className="transition-colors hover:text-[#00B4DC]">Facebook</a></li>
           </ul>
+
         </div>
       </div>
 

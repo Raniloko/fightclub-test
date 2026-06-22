@@ -67,10 +67,11 @@ export function Schedule() {
             >
               {d}
               {day === d && (
-                <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#0a0a0a]" />
+                <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />
               )}
             </button>
           ))}
+
         </div>
 
         <div className="mt-10">

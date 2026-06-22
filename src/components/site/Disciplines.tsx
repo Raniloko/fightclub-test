@@ -45,7 +45,7 @@ export function Disciplines() {
         <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
           {CARDS.map((c) => (
             <Reveal key={c.name}>
-              <article id="training" className="group bg-white">
+              <article id="training" className="group bg-white border-l-2 border-transparent hover:border-[#00B4DC] transition-colors">
                 <div className="overflow-hidden">
                   <img
                     src={c.img}
@@ -59,13 +59,14 @@ export function Disciplines() {
                   <p className="mt-3 max-w-md text-sm text-white/75 md:text-[15px]">{c.text}</p>
                   <a
                     href="#kontakt"
-                    className="mt-5 inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-white hover:opacity-70"
+                    className="mt-5 inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#00B4DC] hover:text-[#00D4FF]"
                   >
                     › Mehr erfahren
                   </a>
                 </div>
               </article>
             </Reveal>
+
           ))}
         </div>
       </div>

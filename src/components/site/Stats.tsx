@@ -10,12 +10,13 @@ export function Stats() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-3 divide-x divide-white/30 px-5 py-12 md:px-10 md:py-16">
         {STATS.map((s) => (
           <div key={s.l} className="flex flex-col items-center justify-center px-2 text-center">
-            <div className="font-display text-5xl leading-none md:text-7xl">{s.n}</div>
-            <div className="mt-3 text-[10px] font-medium uppercase tracking-[0.25em] text-white/70 md:text-xs">
+            <div className="font-display text-5xl leading-none text-[#00B4DC] md:text-7xl">{s.n}</div>
+            <div className="mt-3 text-[10px] font-medium uppercase tracking-[0.25em] text-white/80 md:text-xs">
               {s.l}
             </div>
           </div>
         ))}
+
       </div>
     </section>
   );
