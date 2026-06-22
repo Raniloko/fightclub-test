@@ -1,82 +1,98 @@
-import { TriangleBg } from "./TriangleBg";
-
-const BOXER_SRC =
+const BOXER_BG =
+  "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
+const BOXER_GHOST =
   "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=800&q=80";
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative h-svh min-h-svh w-full overflow-hidden bg-white pt-28 md:pt-32"
+      className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
     >
+      {/* Main full-bleed boxer background */}
       <img
-        src={BOXER_SRC}
+        src={BOXER_BG}
         alt=""
         aria-hidden="true"
         loading="eager"
-        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[92%] max-w-none -translate-x-1/2 opacity-[0.12] object-cover object-[top_center] grayscale contrast-[115%]"
-      />
-      <img
-        src={BOXER_SRC}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        className="boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[92%] max-w-none opacity-[0.08] object-cover object-[top_center] grayscale contrast-[115%] md:block"
-      />
-      <img
-        src={BOXER_SRC}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        className="boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-0 hidden h-[92%] max-w-none opacity-[0.08] object-cover object-[top_center] grayscale contrast-[115%] md:block"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_top]"
+        style={{ filter: "grayscale(60%) contrast(110%)" }}
       />
 
-      <TriangleBg
-        className="pointer-events-none absolute right-[-10%] top-1/2 h-[90%] w-[80%] -translate-y-1/2"
-        stroke="#EBEBEB"
-        opacity={0.9}
+      {/* Cyan → black gradient overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
+        }}
       />
 
-      <div className="relative z-[1] mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 md:grid-cols-5 md:px-10">
-        <div className="relative z-10 flex flex-col justify-center md:col-span-3 md:min-h-[80svh] fc-stagger">
+      {/* Animated ghost boxers */}
+      <img
+        src={BOXER_GHOST}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-[1] hidden h-[88%] max-w-none object-cover object-[center_top] md:block"
+      />
+      <img
+        src={BOXER_GHOST}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-[1] hidden h-[88%] max-w-none object-cover object-[center_top] md:block"
+      />
+
+      {/* Content */}
+      <div className="relative z-[2] flex h-full w-full items-end">
+        <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
           <div className="flex items-center gap-3">
-            <span className="block h-px w-8 bg-[#0a0a0a]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#555]">
+            <span className="block h-[2px] w-[60px] bg-[#00B4DC]" />
+            <span
+              className="text-[12px] uppercase tracking-[0.2em] text-[#00B4DC]"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}
+            >
               Hanau · Seit 2014
             </span>
           </div>
 
-          <h1 className="mt-6 font-display text-[18vw] leading-[0.9] md:text-[8.5vw]">
+          <h1
+            className="mt-6 font-display uppercase text-white"
+            style={{
+              fontSize: "clamp(52px, 10vw, 120px)",
+              lineHeight: 0.9,
+              fontWeight: 800,
+              textShadow: "0 2px 40px rgba(0,0,0,0.5)",
+            }}
+          >
             <span className="block">Kein Sport.</span>
-            <span className="relative inline-block">
-              Ein Lebens
-              <span className="relative inline-block">
-                stil
-                <span
-                  aria-hidden
-                  className="absolute left-0 right-0 bottom-[0.08em] h-[6px] bg-[#0a0a0a] md:h-[8px]"
-                />
-              </span>
-              .
-            </span>
+            <span className="block">Ein Lebensstil.</span>
           </h1>
 
-          <p className="mt-8 max-w-xl text-[15px] text-[#555] md:text-[17px]">
-            Muay Thai · MMA · Boxen · Kickboxen · BJJ — Hanau
+          <p className="mt-6 max-w-xl text-[16px] text-white/70">
+            Muay Thai · MMA · Boxen · Kickboxen · BJJ
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#kontakt"
-              className="inline-flex items-center justify-center bg-[#0a0a0a] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-[#222]"
+              className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
               Jetzt einsteigen
             </a>
             <a
               href="#stundenplan"
-              className="inline-flex items-center justify-center border border-[#0a0a0a] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] transition-colors hover:bg-[#0a0a0a] hover:text-white"
+              className="fc-btn-ghost inline-flex items-center justify-center border-2 px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white"
+              style={{
+                borderColor: "rgba(255,255,255,0.5)",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 800,
+              }}
             >
-              Stundenplan ansehen
+              Stundenplan
             </a>
           </div>
         </div>

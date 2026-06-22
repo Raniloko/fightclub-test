@@ -139,27 +139,47 @@
   filter: grayscale(100%) contrast(110%);
 }
 
-@keyframes ghostLeft {
-  0%   { transform: translateX(-50%); opacity: 0.08; }
-  60%  { transform: translateX(-200%); opacity: 0; }
-  61%  { transform: translateX(-50%); opacity: 0; }
-  75%  { transform: translateX(-50%); opacity: 0.08; }
-  100% { transform: translateX(-50%); opacity: 0.08; }
+@keyframes ghostSlideLeft {
+  0%   { transform: translateX(-50%) translateX(0); opacity: 0.06; }
+  50%  { transform: translateX(-50%) translateX(-150%); opacity: 0; }
+  51%  { transform: translateX(-50%) translateX(0); opacity: 0; }
+  65%  { transform: translateX(-50%) translateX(0); opacity: 0.06; }
+  100% { transform: translateX(-50%) translateX(0); opacity: 0.06; }
 }
 
-@keyframes ghostRight {
-  0%   { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
-  60%  { transform: translateX(100%) scaleX(-1); opacity: 0; }
-  61%  { transform: translateX(-50%) scaleX(-1); opacity: 0; }
-  75%  { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
-  100% { transform: translateX(-50%) scaleX(-1); opacity: 0.08; }
+@keyframes ghostSlideRight {
+  0%   { transform: translateX(-50%) scaleX(-1) translateX(0); opacity: 0.06; }
+  50%  { transform: translateX(-50%) scaleX(-1) translateX(-150%); opacity: 0; }
+  51%  { transform: translateX(-50%) scaleX(-1) translateX(0); opacity: 0; }
+  65%  { transform: translateX(-50%) scaleX(-1) translateX(0); opacity: 0.06; }
+  100% { transform: translateX(-50%) scaleX(-1) translateX(0); opacity: 0.06; }
 }
 
 .boxer-ghost-left {
-  animation: ghostLeft 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: grayscale(100%);
+  animation: ghostSlideLeft 6s ease-in-out infinite;
 }
 
 .boxer-ghost-right {
-  animation: ghostRight 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: grayscale(100%);
+  animation: ghostSlideRight 6s ease-in-out infinite;
   transform-origin: center;
 }
+
+.fc-btn-cyan {
+  background-color: #00B4DC;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.fc-btn-cyan:hover {
+  background-color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0,180,220,0.4);
+}
+
+.fc-btn-ghost {
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.fc-btn-ghost:hover {
+  border-color: #00B4DC !important;
+  color: #00B4DC;
+}
+

@@ -22,10 +22,11 @@ export function CtaProbetraining() {
         </p>
         <a
           href="#kontakt"
-          className="mt-10 inline-block bg-white px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-[#0a0a0a] transition-colors hover:bg-[#e0e0e0]"
+          className="fc-btn-cyan mt-10 inline-block px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-black"
         >
           Probetraining anfragen
         </a>
+
       </div>
     </section>
   );
