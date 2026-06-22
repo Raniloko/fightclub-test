@@ -30,7 +30,7 @@ const CARDS = [
 
 export function Disciplines() {
   return (
-    <section id="disziplinen" className="bg-white py-12 md:py-20">
+    <section id="disziplinen" className="bg-white pt-12 md:pt-20 pb-0">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <Reveal>
           <div className="flex items-center gap-3">
