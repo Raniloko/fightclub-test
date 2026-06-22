@@ -53,7 +53,7 @@ export function Schedule() {
               Wann trainierst du
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl md:text-7xl">Stundenplan</h2>
+          <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Stundenplan</span></h2>
         </Reveal>
 
         <div className="mt-10 flex gap-2 overflow-x-auto border-b border-[#e0e0e0] md:gap-8">
