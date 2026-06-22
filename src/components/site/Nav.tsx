@@ -32,9 +32,8 @@ export function Nav() {
         }`}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
-          <a href="#top" className="flex items-center gap-3" aria-label="Fight Club Berlin">
-            <Logo className="h-7 w-7" />
-            <span className="font-display text-2xl tracking-wide">FIGHT CLUB</span>
+          <a href="#top" aria-label="Fight Club Hanau">
+            <Logo className="h-10 w-auto" />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -70,9 +69,8 @@ export function Nav() {
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-white">
           <div className="flex items-center justify-between px-5 py-4 border-b border-[#e0e0e0]">
-            <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-              <Logo className="h-7 w-7" />
-              <span className="font-display text-2xl">FIGHT CLUB</span>
+            <a href="#top" onClick={() => setOpen(false)}>
+              <Logo className="h-10 w-auto" />
             </a>
             <button onClick={() => setOpen(false)} aria-label="Schließen">
               <svg width="28" height="28" viewBox="0 0 28 28">

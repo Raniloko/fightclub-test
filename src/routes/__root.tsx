@@ -77,8 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fight Club Berlin" },
-      { name: "description", content: "Kampfsport-Akademie in Berlin seit 2014." },
+      { title: "Fight Club Hanau" },
+      { name: "description", content: "Kampfsport-Akademie in Hanau seit 2014." },
       { property: "og:type", content: "website" },
     ],
     links: [
