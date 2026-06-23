@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Logo } from "./Logo";
+import { FightClubLogo } from "./FightClubLogo";
 
 const LINKS = [
   { href: "#training", label: "Training" },
@@ -41,7 +41,7 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
           <a href="#top" aria-label="Fight Club Hanau" className="hover:opacity-70">
-            <Logo className="h-12 w-auto" />
+            <FightClubLogo variant="full" color={scrolled ? "#0A0A0A" : "#FFFFFF"} size={140} />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
