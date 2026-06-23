@@ -1,7 +1,5 @@
 const BOXER_BG =
   "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
-const BOXER_GHOST =
-  "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=800&q=80";
 
 export function Hero() {
   return (
@@ -27,22 +25,6 @@ export function Hero() {
           background:
             "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
         }}
-      />
-
-      {/* Animated ghost boxers */}
-      <img
-        src={BOXER_GHOST}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        className="boxer-ghost-left pointer-events-none absolute bottom-0 left-1/2 z-[1] hidden h-[88%] max-w-none object-cover object-[center_top] md:block"
-      />
-      <img
-        src={BOXER_GHOST}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        className="boxer-ghost-right pointer-events-none absolute bottom-0 left-1/2 z-[1] hidden h-[88%] max-w-none object-cover object-[center_top] md:block"
       />
 
       {/* Content */}
