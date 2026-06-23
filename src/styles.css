@@ -268,3 +268,82 @@
 }
 .fcm-social:hover { color: #00B4DC; }
 
+
+/* === Intro sequence === */
+.fc-intro-root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+.fc-intro-half {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: #0A0A0A;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.fc-intro-half-left { left: 0; }
+.fc-intro-half-right { left: 50%; }
+.fc-intro-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fc-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+}
+.fc-intro-logo {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.6s cubic-bezier(0.2, 0, 0.1, 1), transform 0.6s cubic-bezier(0.2, 0, 0.1, 1);
+}
+.fc-intro-title {
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 48px;
+  line-height: 1;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s ease-out;
+}
+.fc-intro-underline {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #0077B6 0%, #00B4DC 60%, #00D4FF 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.25, 0, 0.1, 1);
+}
+.fc-intro-subtitle {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.fc-intro-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  animation: fc-intro-flash 0.2s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes fc-intro-flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0; }
+}
