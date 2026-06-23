@@ -2,19 +2,24 @@ import { Reveal } from "./Reveal";
 
 const CARDS = [
   {
-    name: "Muay Thai",
-    img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
-  },
-  {
     name: "MMA",
     img: "https://images.pexels.com/photos/6296060/pexels-photo-6296060.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Mixed Martial Arts auf Wettkampfniveau. Standup, Clinch und Boden — vollständig integriert.",
   },
   {
+    name: "Wing Tsun",
+    img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Effektive Selbstverteidigung aus der Nahdistanz. Wing Tsun trainiert Reflexe, Mitte und entspannte Kraft.",
+  },
+  {
     name: "Boxen",
     img: "https://images.pexels.com/photos/4761671/pexels-photo-4761671.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Klassisches Boxen für Einsteiger und Fortgeschrittene. Fußarbeit, Timing, Schlagkraft.",
+  },
+  {
+    name: "Muay Thai",
+    img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
   },
   {
     name: "Kickboxen",
