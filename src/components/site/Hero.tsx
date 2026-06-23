@@ -1,9 +1,5 @@
-import { SmokeEffect } from "./SmokeEffect";
-
 const BOXER_BG =
   "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
-
-
 
 export function Hero() {
   return (
@@ -31,11 +27,7 @@ export function Hero() {
         }}
       />
 
-      {/* Atmospheric smoke */}
-      <SmokeEffect />
-
       {/* Content */}
-
       <div className="relative z-[2] flex h-full w-full items-end">
         <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
           <div className="flex items-center gap-3">
