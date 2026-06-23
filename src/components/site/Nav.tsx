@@ -104,10 +104,7 @@ export function Nav() {
           aria-label="Hauptnavigation"
         >
           {/* Top bar */}
-          <div className="relative flex items-center justify-center px-5 py-4">
-            <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
-              <Logo className="h-12 w-auto fcm-logo" />
-            </a>
+          <div className="relative flex items-center justify-end px-5 py-4">
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
