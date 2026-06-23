@@ -1,4 +1,4 @@
-import { HeroFog } from "./HeroFog";
+import { SmokeEffect } from "./SmokeEffect";
 
 const BOXER_BG =
   "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
