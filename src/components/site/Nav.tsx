@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FightClubLogo } from "./FightClubLogo";
+import { HanauLogo } from "./HanauLogo";
 
 const LINKS = [
   { href: "#training", label: "Training" },
