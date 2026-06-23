@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FightClubLogo } from "./FightClubLogo";
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
@@ -68,9 +69,7 @@ function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }
           transform: `scale(${phase >= 1 ? 1 : 0.6})`,
         }}
       >
-        <svg viewBox="0 0 64 64" width="64" height="64" fill="none">
-          <polygon points="32,6 60,58 4,58" stroke="#fff" strokeWidth="3" />
-        </svg>
+        <FightClubLogo variant="mark" color="#FFFFFF" size={80} />
       </div>
 
       {/* FIGHT CLUB */}
