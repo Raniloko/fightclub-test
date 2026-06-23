@@ -11,6 +11,7 @@ import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
+import { IntroSequence } from "@/components/site/IntroSequence";
 
 
 export const Route = createFileRoute("/")({
@@ -35,6 +36,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="bg-white text-[#0a0a0a]">
+      <IntroSequence />
       <Nav />
       <Hero />
       <Stats />
