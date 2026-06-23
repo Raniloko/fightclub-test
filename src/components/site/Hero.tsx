@@ -31,8 +31,8 @@ export function Hero() {
         }}
       />
 
-      {/* Atmospheric fog */}
-      <HeroFog />
+      {/* Atmospheric smoke */}
+      <SmokeEffect />
 
       {/* Content */}
 
