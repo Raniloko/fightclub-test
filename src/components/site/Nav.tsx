@@ -104,14 +104,14 @@ export function Nav() {
           aria-label="Hauptnavigation"
         >
           {/* Top bar */}
-          <div className="flex items-center justify-between px-5 py-4">
+          <div className="relative flex items-center justify-center px-5 py-4">
             <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
               <Logo className="h-12 w-auto fcm-logo" />
             </a>
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
-              className="text-white transition-transform duration-300 hover:rotate-90"
+              className="absolute right-5 top-1/2 -translate-y-1/2 text-white transition-transform duration-300 hover:rotate-90"
             >
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path d="M6 6l20 20M26 6L6 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -127,20 +127,9 @@ export function Nav() {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className="fcm-link"
-                style={{ transitionDelay: open ? `${150 + i * 70}ms` : "0ms" }}
+                style={{ transitionDelay: open ? `${200 + i * 60}ms` : "0ms" }}
               >
-                <span className="fcm-num">{String(i + 1).padStart(2, "0")}</span>
-                <svg
-                  className="fcm-tri"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path d="M3 2 L17 10 L3 18 Z" fill="#00B4DC" />
-                </svg>
-                <span className="fcm-label">{l.label}</span>
+                {l.label}
               </a>
             ))}
           </nav>
