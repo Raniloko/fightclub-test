@@ -106,7 +106,7 @@ export function Nav() {
           {/* Top bar */}
           <div className="flex items-center justify-between px-5 py-4">
             <a href="#top" onClick={() => setOpen(false)} className="hover:opacity-70">
-              <Logo className="h-12 w-auto brightness-0 invert" />
+              <Logo className="h-12 w-auto fcm-logo" />
             </a>
             <button
               onClick={() => setOpen(false)}
