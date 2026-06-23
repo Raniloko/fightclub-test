@@ -201,13 +201,13 @@
   display: flex;
   flex-direction: column;
   opacity: 0;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .fcm-overlay[data-open="true"] {
   opacity: 1;
-  transform: translateX(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fcm-logo {
@@ -217,43 +217,27 @@
 .fcm-link {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 18px 0;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff;
   text-decoration: none;
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(40px, 9vw, 60px);
+  line-height: 1;
   opacity: 0;
-  transform: translateX(30px);
-  transition: color 0.25s ease, opacity 0.1s ease, transform 0.1s ease;
+  transform: translateX(40px);
+  transition: color 0.2s ease, opacity 0.1s ease, transform 0.1s ease;
 }
 .fcm-overlay[data-open="true"] .fcm-link {
   opacity: 1;
   transform: translateX(0);
-  transition: color 0.25s ease, opacity 0.35s ease, transform 0.35s ease;
+  transition: color 0.2s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 .fcm-link:hover { color: #00B4DC; }
-.fcm-link:hover .fcm-tri { opacity: 1; transform: translateX(0); }
-
-.fcm-num {
-  font-family: "Inter", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.3);
-  letter-spacing: 0.1em;
-}
-.fcm-tri {
-  flex: none;
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.fcm-label {
-  font-family: "Barlow Condensed", system-ui, sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: clamp(42px, 10vw, 64px);
-  line-height: 1;
-}
 
 .fcm-bottom {
   margin-top: auto;
