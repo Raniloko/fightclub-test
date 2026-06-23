@@ -191,5 +191,94 @@
   animation: underlineReveal 1.2s cubic-bezier(0.25, 0, 0.1, 1) 0.2s forwards;
 }
 
+/* === Mobile fullscreen menu === */
+.fcm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fcm-overlay[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.fcm-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease, opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fcm-overlay[data-open="true"] .fcm-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fcm-link:hover { color: #00B4DC; }
+.fcm-link:hover .fcm-tri { opacity: 1; transform: translateX(0); }
+
+.fcm-num {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+}
+.fcm-tri {
+  flex: none;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.fcm-label {
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(42px, 10vw, 64px);
+  line-height: 1;
+}
+
+.fcm-bottom {
+  margin-top: auto;
+  padding: 0;
+}
+.fcm-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #00B4DC;
+  color: #000000;
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 18px;
+  border-radius: 0;
+  transition: background 0.2s ease;
+}
+.fcm-cta:hover { background: #00D4FF; }
+
+.fcm-foot {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.15em;
+}
+.fcm-social {
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+.fcm-social:hover { color: #00B4DC; }
 
