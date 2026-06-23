@@ -1,34 +1,89 @@
+import { useEffect, useRef, useState } from "react";
+
 const BOXER_BG =
   "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
 
 export function Hero() {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const smokeRef = useRef<HTMLDivElement>(null);
+  const gradRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const check = () => setEnabled(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) {
+      [imgRef, smokeRef, gradRef, textRef].forEach((r) => {
+        if (r.current) r.current.style.transform = "";
+      });
+      return;
+    }
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        if (imgRef.current) imgRef.current.style.transform = `translate3d(0, ${y * 0.4}px, 0)`;
+        if (smokeRef.current) smokeRef.current.style.transform = `translate3d(0, ${y * 0.6}px, 0)`;
+        if (gradRef.current) gradRef.current.style.transform = `translate3d(0, ${y * 0.7}px, 0)`;
+        if (textRef.current) textRef.current.style.transform = `translate3d(0, ${y * -0.15}px, 0)`;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [enabled]);
+
   return (
     <section
       id="top"
       className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
     >
-      {/* Main full-bleed boxer background */}
       <img
+        ref={imgRef}
         src={BOXER_BG}
         alt=""
         aria-hidden="true"
         loading="eager"
         className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_top]"
-        style={{ filter: "grayscale(60%) contrast(110%)" }}
+        style={{ filter: "grayscale(60%) contrast(110%)", willChange: "transform" }}
       />
 
-      {/* Cyan → black gradient overlay */}
+      {/* Smoke/fog layer */}
       <div
+        ref={smokeRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
+            "radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.04) 0%, transparent 55%)",
+          willChange: "transform",
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-[2] flex h-full w-full items-end">
+      <div
+        ref={gradRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[2]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
+          willChange: "transform",
+        }}
+      />
+
+      <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
         <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
           <div className="flex items-center gap-3">
             <span className="block h-[2px] w-[60px] bg-[#00B4DC]" />
