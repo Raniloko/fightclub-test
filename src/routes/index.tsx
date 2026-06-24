@@ -17,11 +17,11 @@ import { IntroSequence } from "@/components/site/IntroSequence";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fight Club Hanau — Muay Thai · MMA · Boxen · Kickboxen · BJJ" },
+      { title: "Fight Club Hanau — MMA · K1 · Boxen · Thaiboxen · Self-Defense" },
       {
         name: "description",
         content:
-          "Fight Club Hanau — Kampfsport-Akademie seit 2014. Muay Thai, MMA, Boxen, Kickboxen und BJJ in Hanau. Erstes Training kostenlos.",
+          "Neu in Hanau: Fight Club MMA Akademie. MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight und Kindertraining. Erstes Training kostenlos.",
       },
       { property: "og:title", content: "Fight Club Hanau" },
       {
