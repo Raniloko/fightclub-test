@@ -86,13 +86,7 @@ export function Hero() {
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
         <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
           <div className="flex items-center gap-3">
-            <span className="block h-[2px] w-[60px] bg-[#00B4DC]" />
-            <span
-              className="text-[12px] uppercase tracking-[0.2em] text-[#00B4DC]"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}
-            >
-              Hanau · Seit 2014
-            </span>
+            <span className="fc-badge-new">Neu in Hanau!!!</span>
           </div>
 
           <h1
@@ -108,9 +102,12 @@ export function Hero() {
             <span className="block">Ein Lebensstil.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-[16px] text-white/70">
-            Muay Thai · MMA · Boxen · Kickboxen · BJJ
-          </p>
+          <div className="mt-6 flex max-w-2xl flex-wrap gap-2">
+            {["MMA", "K1", "Boxen", "Thaiboxen", "Self-Defense", "Wing-Fight", "Kindertraining"].map((d) => (
+              <span key={d} className="fc-tag">{d}</span>
+            ))}
+          </div>
+
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
