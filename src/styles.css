@@ -36,6 +36,8 @@
   --color-mist: #f5f5f5;
   --color-rule: #e0e0e0;
   --color-quiet: #555555;
+  --color-signal: #E11D2A;
+  --color-signal-bright: #FF2435;
   --font-display: "Barlow Condensed", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
