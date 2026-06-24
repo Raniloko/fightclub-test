@@ -349,3 +349,62 @@
   50% { opacity: 0.15; }
   100% { opacity: 0; }
 }
+
+/* === Signal accents (Neu in Hanau + Disziplinen) === */
+@keyframes fc-signal-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 42, 0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(225, 29, 42, 0); }
+}
+.fc-badge-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #E11D2A;
+  color: #ffffff;
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 0;
+  animation: fc-signal-pulse 2.2s ease-out infinite;
+}
+.fc-badge-new::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.fc-tag {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #E11D2A;
+  border: 2px solid #E11D2A;
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.fc-tag:hover {
+  background: #E11D2A;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.fc-tag-solid {
+  background: #E11D2A;
+  color: #ffffff;
+  border-color: #E11D2A;
+}
+.fc-tag-solid:hover {
+  background: #FF2435;
+  border-color: #FF2435;
+}
