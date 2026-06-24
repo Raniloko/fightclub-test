@@ -114,11 +114,13 @@ export function Contact() {
                 <option value="" disabled>
                   Bitte wählen
                 </option>
-                <option>Muay Thai</option>
                 <option>MMA</option>
+                <option>K1</option>
                 <option>Boxen</option>
-                <option>Kickboxen</option>
-                <option>BJJ</option>
+                <option>Thaiboxen</option>
+                <option>Self-Defense</option>
+                <option>Wing-Fight</option>
+                <option>Kindertraining</option>
                 <option>Ich bin noch unentschlossen</option>
               </select>
             </Field>
