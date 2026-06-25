@@ -39,10 +39,16 @@ export function Nav() {
           scrolled ? "bg-white/95 border-[#e0e0e0]" : "bg-white/0 border-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
-          <a href="#top" aria-label="Fight Club Hanau" className="hover:opacity-70">
-            <Logo variant={scrolled ? "dark" : "light"} height={44} />
+        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 md:px-10">
+          <a
+            href="#top"
+            aria-label="Fight Club Hanau"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-70"
+          >
+            <Logo variant={scrolled ? "dark" : "light"} height={64} />
           </a>
+
+          <div className="hidden lg:block" aria-hidden="true" />
 
           <nav className="hidden items-center gap-8 lg:flex">
             {LINKS.map((l) => (
@@ -67,6 +73,7 @@ export function Nav() {
               Probetraining
             </a>
           </nav>
+          <div className="lg:hidden" aria-hidden="true" />
 
           <button
             onClick={() => setOpen((s) => !s)}
