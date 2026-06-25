@@ -69,7 +69,7 @@ function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }
           transform: `scale(${phase >= 1 ? 1 : 0.6})`,
         }}
       >
-        <Logo variant="light" height={80} />
+        <Logo variant="dark" height={120} />
       </div>
 
       {/* FIGHT CLUB */}

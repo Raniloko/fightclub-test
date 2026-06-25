@@ -45,7 +45,7 @@ export function Nav() {
             aria-label="Fight Club Hanau"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-70"
           >
-            <Logo variant={scrolled ? "dark" : "light"} className="h-[72px] md:h-16" />
+            <Logo variant={scrolled ? "light" : "dark"} className="h-[72px] md:h-16" />
           </a>
 
           <div className="hidden lg:block" aria-hidden="true" />
@@ -112,7 +112,7 @@ export function Nav() {
         >
           {/* Top bar */}
           <div className="relative flex items-center justify-between px-5 py-4">
-            <Logo variant="light" className="h-10" />
+            <Logo variant="dark" height={44} />
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
