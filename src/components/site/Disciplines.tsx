@@ -1,44 +1,252 @@
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
+import { Play, X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
 
-const CARDS = [
+type Discipline = {
+  name: string;
+  img: string;
+  text: string;
+  what: string;
+  learn: string[];
+  values: { icon: React.ComponentType<{ size?: number }>; label: string }[];
+  who: string;
+  videoSrc?: string;
+};
+
+const CARDS: Discipline[] = [
   {
     name: "MMA",
     img: "https://images.pexels.com/photos/6296060/pexels-photo-6296060.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Mixed Martial Arts auf Wettkampfniveau. Standup, Clinch und Boden — vollständig integriert.",
+    what: "Mixed Martial Arts kombiniert alle Kampfkünste — Standup, Clinch und Boden. Die vollständigste Kampfsportart der Welt.",
+    learn: ["Schlagen und Treten", "Ringen und Werfen", "Bodenkampf und Submissions", "Wettkampfvorbereitung"],
+    values: [
+      { icon: Shield, label: "Disziplin" },
+      { icon: Flame, label: "Mut" },
+      { icon: Award, label: "Ausdauer" },
+    ],
+    who: "Fortgeschrittene und Wettkämpfer",
   },
   {
     name: "K1",
     img: "https://images.pexels.com/photos/6998858/pexels-photo-6998858.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Explosivität und Präzision. K1 verbindet Boxen, Kicks und Knietechniken zu einem kompletten Standup-System.",
+    what: "K1 ist explosiver Standup-Kampfsport — Fäuste, Kicks und Knie. Schnell, kraftvoll, präzise.",
+    learn: ["Schlagtechnik", "Beintechniken", "Clinch-Arbeit", "Kondition und Timing"],
+    values: [
+      { icon: Flame, label: "Kraft" },
+      { icon: Zap, label: "Schnelligkeit" },
+      { icon: Target, label: "Fokus" },
+    ],
+    who: "Alle Level willkommen",
   },
   {
     name: "Boxen",
     img: "https://images.pexels.com/photos/4761671/pexels-photo-4761671.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Klassisches Boxen für Einsteiger und Fortgeschrittene. Fußarbeit, Timing, Schlagkraft.",
+    what: "Das Fundament aller Kampfsportarten. Fußarbeit, Timing und Schlagkraft auf höchstem Niveau.",
+    learn: ["Grundtechniken und Kombis", "Defensive", "Fußarbeit und Bewegung", "Sparring und Wettkampf"],
+    values: [
+      { icon: Brain, label: "Geduld" },
+      { icon: Target, label: "Präzision" },
+      { icon: Heart, label: "Respekt" },
+    ],
+    who: "Einsteiger bis Wettkämpfer",
   },
   {
     name: "Thaiboxen",
     img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
+    what: "Die Kunst der acht Gliedmaßen. Fäuste, Ellbogen, Knie und Kicks — vollständig integriert.",
+    learn: ["Muay Thai Techniken", "Clinch und Sweeps", "Ellbogen- und Knietechniken", "Kondition und Charakter"],
+    values: [
+      { icon: Shield, label: "Disziplin" },
+      { icon: Flame, label: "Härte" },
+      { icon: Heart, label: "Respekt" },
+    ],
+    who: "Alle Level",
   },
   {
     name: "Self-Defense",
     img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Realistische Selbstverteidigung für Alltag und Ernstfall. Klare Prinzipien, kein Showtraining.",
+    what: "Realistische Selbstverteidigung für den Alltag. Keine Show — nur was wirklich funktioniert.",
+    learn: ["Situationsbewusstsein", "Distanzmanagement", "Effektive Abwehrtechniken", "Ruhig bleiben unter Druck"],
+    values: [
+      { icon: Award, label: "Selbstvertrauen" },
+      { icon: Shield, label: "Sicherheit" },
+      { icon: Brain, label: "Klarheit" },
+    ],
+    who: "Absolute Einsteiger, Frauen und Männer",
   },
   {
     name: "Wing-Fight",
     img: "https://images.pexels.com/photos/7045400/pexels-photo-7045400.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte und entspannte Kraft.",
+    what: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte, entspannte Kraft.",
+    learn: ["Zentrumlinie-Prinzip", "Chi Sao (Fühlübungen)", "Schnelle Reaktionen", "Effizienz über Kraft"],
+    values: [
+      { icon: Zap, label: "Sensibilität" },
+      { icon: Target, label: "Effizienz" },
+      { icon: Brain, label: "Kontrolle" },
+    ],
+    who: "Alle Altersgruppen",
   },
   {
     name: "Kindertraining",
     img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Kampfsport für Kinder — spielerisch, respektvoll, mit klaren Werten. Disziplin, Selbstvertrauen und Spaß.",
+    what: "Kampfsport für Kinder — spielerisch, respektvoll, mit echten Werten.",
+    learn: ["Grundlegende Kampfsporttechniken", "Respekt und Disziplin", "Selbstvertrauen aufbauen", "Konzentration und Koordination"],
+    values: [
+      { icon: Heart, label: "Respekt" },
+      { icon: Smile, label: "Spaß" },
+      { icon: Users, label: "Selbstbewusstsein" },
+    ],
+    who: "Kinder ab 5 Jahren",
   },
 ];
 
+function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; onToggle: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (open) {
+      videoRef.current?.play().catch(() => {});
+      if (panelRef.current) setHeight(panelRef.current.scrollHeight);
+    } else {
+      videoRef.current?.pause();
+      setHeight(0);
+    }
+  }, [open]);
+
+  return (
+    <article
+      className={`group bg-white border-l-2 transition-colors ${open ? "border-[#00B4DC]" : "border-transparent hover:border-[#E11D2A]"}`}
+    >
+      <button type="button" onClick={onToggle} className="block w-full text-left" aria-expanded={open}>
+        <div className="overflow-hidden">
+          <img
+            src={c.img}
+            alt={c.name}
+            loading="lazy"
+            className="fc-gray h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-[280px]"
+          />
+        </div>
+        <div className="bg-[#0a0a0a] p-6 text-white md:p-8">
+          <div className="flex items-center justify-between gap-3">
+            <span className="fc-tag fc-tag-solid">{c.name}</span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#E11D2A]">
+              {open ? "× Schließen" : "› Mehr erfahren"}
+            </span>
+          </div>
+          <p className="mt-4 max-w-md text-sm text-white/75 md:text-[15px]">{c.text}</p>
+        </div>
+      </button>
+
+      <div
+        style={{ height, transition: "height 0.45s cubic-bezier(0.4,0,0.2,1)", overflow: "hidden" }}
+        aria-hidden={!open}
+      >
+        <div ref={panelRef} className="bg-[#0a0a0a] text-white border-t border-white/10">
+          <div className="relative p-6 md:p-8">
+            <button
+              type="button"
+              onClick={onToggle}
+              aria-label="Schließen"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-white/5 hover:bg-[#00B4DC] hover:text-black transition-colors"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Video placeholder */}
+            <div className="relative w-full overflow-hidden bg-[#111111]" style={{ aspectRatio: "16/9" }}>
+              <video
+                ref={videoRef}
+                src={c.videoSrc || ""}
+                poster=""
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
+                  <Play size={26} className="text-white translate-x-[2px]" fill="white" />
+                </div>
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white/60">
+                  20 Sek. Einblick — {c.name}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              <div>
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#00B4DC]">
+                  Was ist {c.name}?
+                </h3>
+                <p className="mt-3 text-sm text-white/80 md:text-[15px]">{c.what}</p>
+              </div>
+              <div>
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#00B4DC]">
+                  Was lernst du?
+                </h3>
+                <ul className="mt-3 space-y-2 text-sm text-white/85 md:text-[15px]">
+                  {c.learn.map((l) => (
+                    <li key={l} className="flex gap-2">
+                      <span className="text-[#E11D2A]">›</span>
+                      <span>{l}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-display text-xl uppercase tracking-wide text-[#00B4DC]">
+                Was vermitteln wir?
+              </h3>
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {c.values.map((v) => {
+                  const Icon = v.icon;
+                  return (
+                    <div
+                      key={v.label}
+                      className="flex flex-col items-center gap-2 bg-white/5 p-4 text-center"
+                    >
+                      <Icon size={22} />
+                      <span className="text-xs uppercase tracking-[0.15em] text-white/85 md:text-sm">
+                        {v.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <h3 className="font-display text-xl uppercase tracking-wide text-[#00B4DC]">Für wen?</h3>
+              <p className="mt-2 text-sm text-white/80 md:text-[15px]">{c.who}</p>
+            </div>
+
+            <a
+              href="#kontakt"
+              className="mt-8 inline-block bg-[#E11D2A] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#FF2435] transition-colors"
+            >
+              Probetraining anfragen
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export function Disciplines() {
+  const [openName, setOpenName] = useState<string | null>(null);
+
   return (
     <section id="disziplinen" className="bg-white pt-12 md:pt-20 pb-0">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
@@ -49,40 +257,23 @@ export function Disciplines() {
               Was wir trainieren
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Unsere Disziplinen</span></h2>
+          <h2 className="mt-4 font-display text-5xl md:text-7xl">
+            <span className="fc-headline-underline">Unsere Disziplinen</span>
+          </h2>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+        <div id="training" className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
           {CARDS.map((c) => (
             <Reveal key={c.name}>
-              <article id="training" className="group bg-white border-l-2 border-transparent hover:border-[#E11D2A] transition-colors">
-                <div className="overflow-hidden">
-                  <img
-                    src={c.img}
-                    alt={c.name}
-                    loading="lazy"
-                    className="fc-gray h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-[280px]"
-                  />
-                </div>
-                <div className="bg-[#0a0a0a] p-6 text-white md:p-8">
-                  <div className="flex items-center gap-3">
-                    <span className="fc-tag fc-tag-solid">{c.name}</span>
-                  </div>
-                  <p className="mt-4 max-w-md text-sm text-white/75 md:text-[15px]">{c.text}</p>
-                  <a
-                    href="#kontakt"
-                    className="mt-5 inline-block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#E11D2A] hover:text-[#FF2435]"
-                  >
-                    › Mehr erfahren
-                  </a>
-                </div>
-              </article>
+              <DisciplineCard
+                c={c}
+                open={openName === c.name}
+                onToggle={() => setOpenName(openName === c.name ? null : c.name)}
+              />
             </Reveal>
-
           ))}
         </div>
       </div>
     </section>
   );
 }
-
