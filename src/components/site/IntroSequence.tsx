@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FightClubLogo } from "./FightClubLogo";
+import { Logo } from "./Logo";
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
@@ -69,7 +69,7 @@ function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }
           transform: `scale(${phase >= 1 ? 1 : 0.6})`,
         }}
       >
-        <FightClubLogo variant="mark" color="#FFFFFF" size={80} />
+        <Logo variant="light" height={80} />
       </div>
 
       {/* FIGHT CLUB */}

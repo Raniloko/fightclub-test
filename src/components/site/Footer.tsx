@@ -1,11 +1,11 @@
-import { FightClubLogo } from "./FightClubLogo";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="bg-[#0a0a0a] text-white">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 py-16 md:grid-cols-3 md:px-10">
         <div>
-          <FightClubLogo variant="mark" color="#FFFFFF" size={48} />
+          <Logo variant="light" height={36} />
           <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-white/50">
             © 2026 Fight Club Hanau
           </p>

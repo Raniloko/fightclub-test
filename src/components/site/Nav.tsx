@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HanauLogo } from "./HanauLogo";
+import { Logo } from "./Logo";
 
 const LINKS = [
   { href: "#training", label: "Training" },
@@ -41,7 +41,7 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10">
           <a href="#top" aria-label="Fight Club Hanau" className="hover:opacity-70">
-            <HanauLogo color={scrolled ? "black" : "white"} height={60} />
+            <Logo variant={scrolled ? "dark" : "light"} height={44} />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -104,11 +104,12 @@ export function Nav() {
           aria-label="Hauptnavigation"
         >
           {/* Top bar */}
-          <div className="relative flex items-center justify-end px-5 py-4">
+          <div className="relative flex items-center justify-between px-5 py-4">
+            <Logo variant="light" height={40} />
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
-              className="absolute right-5 top-1/2 -translate-y-1/2 text-white transition-transform duration-300 hover:rotate-90"
+              className="text-white transition-transform duration-300 hover:rotate-90"
             >
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path d="M6 6l20 20M26 6L6 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
