@@ -112,7 +112,7 @@ export function Nav() {
         >
           {/* Top bar */}
           <div className="relative flex items-center justify-between px-5 py-4">
-            <Logo variant="light" height={40} />
+            <Logo variant="light" className="h-10" />
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
