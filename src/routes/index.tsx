@@ -21,12 +21,30 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Neu in Hanau: Fight Club MMA Akademie. MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight und Kindertraining. Erstes Training kostenlos.",
+          "Neu in Hanau: Fight Club MMA Akademie, Geleitstraße 66, 63456 Hanau. MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight und Kindertraining. Erstes Training kostenlos.",
       },
-      { property: "og:title", content: "Fight Club Hanau" },
+      { property: "og:title", content: "Fight Club MMA Akademie Hanau" },
       {
         property: "og:description",
-        content: "Kein Sport. Ein Lebensstil. Kampfsport-Akademie in Hanau seit 2014.",
+        content: "Kein Sport. Ein Lebensstil. Kampfsport-Akademie in Hanau, Geleitstraße 66.",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Fight Club MMA Akademie Hanau",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Geleitstraße 66",
+            postalCode: "63456",
+            addressLocality: "Hanau",
+            addressCountry: "DE",
+          },
+          areaServed: "Hanau",
+        }),
       },
     ],
   }),

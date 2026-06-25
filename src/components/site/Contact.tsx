@@ -31,27 +31,35 @@ export function Contact() {
                 Adresse
               </div>
               <p className="mt-2 leading-relaxed">
-                Fight Club Hanau
+                Fight Club MMA Akademie Hanau
                 <br />
-                [Strasse Hausnummer]
+                Geleitstraße 66
                 <br />
-                [PLZ] Hanau
+                63456 Hanau
               </p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Geleitstra%C3%9Fe+66%2C+63456+Hanau"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-[12px] font-semibold uppercase tracking-[0.2em] underline underline-offset-4 hover:opacity-60"
+              >
+                Route planen →
+              </a>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-                  Telefon
-                </div>
-                <p className="mt-2">[Telefonnummer]</p>
-              </div>
-              <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-                  Email
-                </div>
-                <p className="mt-2">[Email]</p>
-              </div>
+
+            <div className="overflow-hidden border border-[#e0e0e0]">
+              <iframe
+                title="Fight Club MMA Akademie Hanau – Standort"
+                src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
+                width="100%"
+                height="300"
+                style={{ border: 0, filter: "grayscale(100%) contrast(1.05)" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
+
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
                 Öffnungszeiten
