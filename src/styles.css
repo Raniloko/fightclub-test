@@ -36,8 +36,8 @@
   --color-mist: #f5f5f5;
   --color-rule: #e0e0e0;
   --color-quiet: #555555;
-  --color-signal: #E11D2A;
-  --color-signal-bright: #FF2435;
+  --color-signal: #C9A84C;
+  --color-signal-bright: #E8C96A;
   --font-display: "Barlow Condensed", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -142,12 +142,12 @@
 }
 
 .fc-btn-cyan {
-  background-color: #00B4DC;
+  background-color: #C9A84C;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 .fc-btn-cyan:hover {
-  background-color: #00D4FF;
-  box-shadow: 0 0 20px rgba(0,180,220,0.4);
+  background-color: #E8C96A;
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
 }
 
 
@@ -155,8 +155,8 @@
   transition: border-color 0.25s ease, color 0.25s ease;
 }
 .fc-btn-ghost:hover {
-  border-color: #00B4DC !important;
-  color: #00B4DC;
+  border-color: #C9A84C !important;
+  color: #C9A84C;
 }
 
 
@@ -183,10 +183,10 @@
   opacity: 0;
   background: linear-gradient(
     90deg,
-    #003A5C 0%,
-    #0077B6 30%,
-    #00B4DC 60%,
-    #00D4FF 100%
+    #8B6914 0%,
+    #8B6914 30%,
+    #C9A84C 60%,
+    #E8C96A 100%
   );
 }
 .fc-headline-underline.is-visible::after {
@@ -351,7 +351,7 @@
 .fc-intro-underline {
   height: 4px;
   width: 100%;
-  background: linear-gradient(90deg, #0077B6 0%, #00B4DC 60%, #00D4FF 100%);
+  background: linear-gradient(90deg, #8B6914 0%, #C9A84C 60%, #E8C96A 100%);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.6s cubic-bezier(0.25, 0, 0.1, 1);
@@ -381,15 +381,15 @@
 
 /* === Signal accents (Neu in Hanau + Disziplinen) === */
 @keyframes fc-signal-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(225, 29, 42, 0.55); }
-  50%      { box-shadow: 0 0 0 10px rgba(225, 29, 42, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(201,168,76,0); }
 }
 .fc-badge-new {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #E11D2A;
-  color: #ffffff;
+  background: #C9A84C;
+  color: #000000;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -403,17 +403,17 @@
   content: "";
   width: 8px;
   height: 8px;
-  background: #ffffff;
+  background: #000000;
   border-radius: 999px;
-  box-shadow: 0 0 8px #ffffff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
 
 .fc-tag {
   display: inline-flex;
   align-items: center;
   background: transparent;
-  color: #E11D2A;
-  border: 2px solid #E11D2A;
+  color: #C9A84C;
+  border: 1px solid #C9A84C;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -424,16 +424,17 @@
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 .fc-tag:hover {
-  background: #E11D2A;
-  color: #ffffff;
+  background: #C9A84C;
+  color: #000000;
   transform: translateY(-2px);
 }
 .fc-tag-solid {
-  background: #E11D2A;
-  color: #ffffff;
-  border-color: #E11D2A;
+  background: #C9A84C;
+  color: #000000;
+  border-color: #C9A84C;
 }
 .fc-tag-solid:hover {
-  background: #FF2435;
-  border-color: #FF2435;
+  background: #E8C96A;
+  border-color: #E8C96A;
+  color: #000000;
 }
