@@ -413,7 +413,7 @@
   align-items: center;
   background: transparent;
   color: #C9A84C;
-  border: 2px solid #C9A84C;
+  border: 1px solid #C9A84C;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -425,15 +425,16 @@
 }
 .fc-tag:hover {
   background: #C9A84C;
-  color: #ffffff;
+  color: #000000;
   transform: translateY(-2px);
 }
 .fc-tag-solid {
   background: #C9A84C;
-  color: #ffffff;
+  color: #000000;
   border-color: #C9A84C;
 }
 .fc-tag-solid:hover {
   background: #E8C96A;
   border-color: #E8C96A;
+  color: #000000;
 }
