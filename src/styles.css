@@ -389,7 +389,7 @@
   align-items: center;
   gap: 8px;
   background: #C9A84C;
-  color: #ffffff;
+  color: #000000;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -403,9 +403,9 @@
   content: "";
   width: 8px;
   height: 8px;
-  background: #ffffff;
+  background: #000000;
   border-radius: 999px;
-  box-shadow: 0 0 8px #ffffff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
 
 .fc-tag {
