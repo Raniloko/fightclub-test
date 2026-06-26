@@ -193,7 +193,35 @@
   animation: underlineReveal 1.2s cubic-bezier(0.25, 0, 0.1, 1) 0.2s forwards;
 }
 
+/* === Fixed dark glass navbar === */
+.fc-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.fc-nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+.fc-nav-link:hover {
+  color: #C9A84C;
+}
+
+.fc-nav-cta {
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+  background: transparent;
+}
+.fc-nav-cta:hover {
+  background: #C9A84C;
+  color: #000000;
+}
+
 /* === Mobile fullscreen menu === */
+
 .fcm-overlay {
   position: fixed;
   inset: 0;
@@ -235,7 +263,7 @@
   transform: translateX(0);
   transition: color 0.2s ease, opacity 0.35s ease, transform 0.35s ease;
 }
-.fcm-link:hover { color: #00B4DC; }
+.fcm-link:hover { color: #C9A84C; }
 
 .fcm-bottom {
   margin-top: auto;
@@ -245,17 +273,18 @@
   display: block;
   width: 100%;
   text-align: center;
-  background: #00B4DC;
-  color: #000000;
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+  background: transparent;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   font-size: 18px;
   padding: 18px;
   border-radius: 0;
-  transition: background 0.2s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
-.fcm-cta:hover { background: #00D4FF; }
+.fcm-cta:hover { background: #C9A84C; color: #000000; }
 
 .fcm-foot {
   font-family: "Inter", system-ui, sans-serif;
@@ -268,7 +297,7 @@
   color: #ffffff;
   transition: color 0.2s ease;
 }
-.fcm-social:hover { color: #00B4DC; }
+.fcm-social:hover { color: #C9A84C; }
 
 
 /* === Intro sequence === */

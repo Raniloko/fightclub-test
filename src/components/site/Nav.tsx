@@ -10,16 +10,8 @@ const LINKS = [
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (open) {
@@ -34,46 +26,33 @@ export function Nav() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-sm transition-[background-color,border-color] duration-500 ease-out ${
-          scrolled ? "bg-white/95 border-[#e0e0e0]" : "bg-white/0 border-transparent"
-        }`}
-      >
-        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 md:px-10">
+      <header className="fc-nav">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 md:px-10 lg:pl-[32px]">
           <a
             href="#top"
             aria-label="Fight Club Hanau"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-70"
+            className="hover:opacity-80"
           >
             <Logo size={52} />
           </a>
-
-          <div className="hidden lg:block" aria-hidden="true" />
 
           <nav className="hidden items-center gap-8 lg:flex">
             {LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={`text-[13px] font-medium uppercase tracking-[0.15em] transition-opacity duration-300 hover:opacity-60 ${
-                  scrolled ? "text-[#0a0a0a]" : "text-white"
-                }`}
+                className="fc-nav-link text-[13px] font-medium uppercase tracking-[0.15em] transition-colors duration-300"
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#kontakt"
-              className={`px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-0.5 ${
-                scrolled
-                  ? "bg-[#0a0a0a] text-white hover:bg-[#222]"
-                  : "bg-white text-[#0a0a0a] hover:bg-[#e5e5e5]"
-              }`}
+              className="fc-nav-cta px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300"
             >
               Probetraining
             </a>
           </nav>
-          <div className="lg:hidden" aria-hidden="true" />
 
           <button
             onClick={() => setOpen((s) => !s)}
@@ -83,19 +62,19 @@ export function Nav() {
             aria-controls="mobile-menu"
           >
             <span
-              className={`absolute left-0 block h-[2px] w-7 transition-all duration-300 ease-out ${
-                scrolled ? "bg-[#0a0a0a]" : "bg-white"
-              } ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"}`}
+              className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${
+                open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"
+              }`}
             />
             <span
-              className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 transition-opacity duration-200 ${
-                scrolled ? "bg-[#0a0a0a]" : "bg-white"
-              } ${open ? "opacity-0" : "opacity-100"}`}
+              className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 bg-white transition-opacity duration-200 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
             />
             <span
-              className={`absolute left-0 block h-[2px] w-7 transition-all duration-300 ease-out ${
-                scrolled ? "bg-[#0a0a0a]" : "bg-white"
-              } ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"}`}
+              className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${
+                open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"
+              }`}
             />
           </button>
         </div>
@@ -111,8 +90,7 @@ export function Nav() {
           aria-label="Hauptnavigation"
         >
           {/* Top bar */}
-          <div className="relative flex items-center justify-between px-5 py-4">
-            <Logo size={44} />
+          <div className="relative flex items-center justify-end px-5 py-4">
             <button
               onClick={() => setOpen(false)}
               aria-label="Schließen"
