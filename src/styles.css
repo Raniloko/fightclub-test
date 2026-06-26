@@ -193,7 +193,35 @@
   animation: underlineReveal 1.2s cubic-bezier(0.25, 0, 0.1, 1) 0.2s forwards;
 }
 
+/* === Fixed dark glass navbar === */
+.fc-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.fc-nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+.fc-nav-link:hover {
+  color: #C9A84C;
+}
+
+.fc-nav-cta {
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+  background: transparent;
+}
+.fc-nav-cta:hover {
+  background: #C9A84C;
+  color: #000000;
+}
+
 /* === Mobile fullscreen menu === */
+
 .fcm-overlay {
   position: fixed;
   inset: 0;
