@@ -1,19 +1,13 @@
-interface LogoProps {
-  size?: number;
-  className?: string;
-}
-
-export function Logo({ size = 140, className = "" }: LogoProps) {
+export function Logo() {
   return (
     <img
       src="/logo.png"
       alt="Fight Club Kampfsport Akademie"
       style={{
-        height: `${size}px`,
+        height: "52px",
         width: "auto",
         objectFit: "contain",
       }}
-      className={className}
     />
   );
 }
