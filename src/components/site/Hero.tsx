@@ -78,7 +78,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(135deg, rgba(201,168,76,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
+            "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
           willChange: "transform",
         }}
       />

@@ -142,12 +142,12 @@
 }
 
 .fc-btn-cyan {
-  background-color: #C9A84C;
+  background-color: #00B4DC;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 .fc-btn-cyan:hover {
-  background-color: #E8C96A;
-  box-shadow: 0 0 20px rgba(201,168,76,0.4);
+  background-color: #00D4FC;
+  box-shadow: 0 0 20px rgba(0,180,220,0.4);
 }
 
 
@@ -155,8 +155,8 @@
   transition: border-color 0.25s ease, color 0.25s ease;
 }
 .fc-btn-ghost:hover {
-  border-color: #C9A84C !important;
-  color: #C9A84C;
+  border-color: #00B4DC !important;
+  color: #00B4DC;
 }
 
 
@@ -183,10 +183,10 @@
   opacity: 0;
   background: linear-gradient(
     90deg,
-    #8B6914 0%,
-    #8B6914 30%,
-    #C9A84C 60%,
-    #E8C96A 100%
+    #007A94 0%,
+    #007A94 30%,
+    #00B4DC 60%,
+    #00D4FC 100%
   );
 }
 .fc-headline-underline.is-visible::after {
@@ -207,16 +207,16 @@
   color: rgba(255, 255, 255, 0.85);
 }
 .fc-nav-link:hover {
-  color: #C9A84C;
+  color: #00B4DC;
 }
 
 .fc-nav-cta {
-  border: 1px solid #C9A84C;
-  color: #C9A84C;
+  border: 1px solid #00B4DC;
+  color: #00B4DC;
   background: transparent;
 }
 .fc-nav-cta:hover {
-  background: #C9A84C;
+  background: #00B4DC;
   color: #000000;
 }
 
@@ -263,7 +263,7 @@
   transform: translateX(0);
   transition: color 0.2s ease, opacity 0.35s ease, transform 0.35s ease;
 }
-.fcm-link:hover { color: #C9A84C; }
+.fcm-link:hover { color: #00B4DC; }
 
 .fcm-bottom {
   margin-top: auto;
@@ -273,8 +273,8 @@
   display: block;
   width: 100%;
   text-align: center;
-  border: 1px solid #C9A84C;
-  color: #C9A84C;
+  border: 1px solid #00B4DC;
+  color: #00B4DC;
   background: transparent;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
@@ -284,7 +284,7 @@
   border-radius: 0;
   transition: background 0.25s ease, color 0.25s ease;
 }
-.fcm-cta:hover { background: #C9A84C; color: #000000; }
+.fcm-cta:hover { background: #00B4DC; color: #000000; }
 
 .fcm-foot {
   font-family: "Inter", system-ui, sans-serif;
@@ -297,7 +297,7 @@
   color: #ffffff;
   transition: color 0.2s ease;
 }
-.fcm-social:hover { color: #C9A84C; }
+.fcm-social:hover { color: #00B4DC; }
 
 
 /* === Intro sequence === */
@@ -351,7 +351,7 @@
 .fc-intro-underline {
   height: 4px;
   width: 100%;
-  background: linear-gradient(90deg, #8B6914 0%, #C9A84C 60%, #E8C96A 100%);
+  background: linear-gradient(90deg, #007A94 0%, #00B4DC 60%, #00D4FC 100%);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.6s cubic-bezier(0.25, 0, 0.1, 1);
