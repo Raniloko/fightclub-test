@@ -70,7 +70,7 @@ export function Schedule() {
             >
               {d}
               {day === d && (
-                <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#C9A84C]" />
+                <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />
               )}
             </button>
           ))}
