@@ -33,7 +33,7 @@ export function Nav() {
             aria-label="Fight Club Hanau"
             className="hover:opacity-80"
           >
-            <Logo size={52} />
+            <Logo size={72} />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
