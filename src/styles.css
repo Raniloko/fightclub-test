@@ -313,12 +313,13 @@
   top: 0;
   height: 100%;
   width: 50%;
-  background: #0A0A0A;
   overflow: hidden;
   transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
 }
-.fc-intro-half-left { left: 0; }
-.fc-intro-half-right { left: 50%; }
+.fc-intro-half-left { left: 0; background: #0A0A0A; }
+.fc-intro-half-right { left: 50%; background: #FFFFFF; }
+.fc-intro-half-right .fc-intro-title { color: #0A0A0A; }
+.fc-intro-half-right .fc-intro-subtitle { color: rgba(0,0,0,0.5); }
 .fc-intro-inner {
   position: absolute;
   inset: 0;
