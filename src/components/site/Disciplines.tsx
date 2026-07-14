@@ -26,6 +26,7 @@ const CARDS: Discipline[] = [
       { icon: Award, label: "Ausdauer" },
     ],
     who: "Fortgeschrittene und Wettkämpfer",
+    videoSrc: "https://videos.pexels.com/video-files/6296580/6296580-uhd_2560_1080_25fps.mp4",
   },
   {
     name: "K1",
@@ -39,6 +40,7 @@ const CARDS: Discipline[] = [
       { icon: Target, label: "Fokus" },
     ],
     who: "Alle Level willkommen",
+    videoSrc: "https://videos.pexels.com/video-files/6684960/6684960-hd_1920_1080_30fps.mp4",
   },
   {
     name: "Boxen",
@@ -52,6 +54,7 @@ const CARDS: Discipline[] = [
       { icon: Heart, label: "Respekt" },
     ],
     who: "Einsteiger bis Wettkämpfer",
+    videoSrc: "https://videos.pexels.com/video-files/4804855/4804855-hd_1920_1080_25fps.mp4",
   },
   {
     name: "Thaiboxen",
@@ -65,6 +68,7 @@ const CARDS: Discipline[] = [
       { icon: Heart, label: "Respekt" },
     ],
     who: "Alle Level",
+    videoSrc: "https://videos.pexels.com/video-files/15527457/15527457-hd_1920_1080_24fps.mp4",
   },
   {
     name: "Self-Defense",
@@ -78,6 +82,7 @@ const CARDS: Discipline[] = [
       { icon: Brain, label: "Klarheit" },
     ],
     who: "Absolute Einsteiger, Frauen und Männer",
+    videoSrc: "https://videos.pexels.com/video-files/7988988/7988988-uhd_4096_2160_25fps.mp4",
   },
   {
     name: "Wing-Fight",
@@ -91,6 +96,7 @@ const CARDS: Discipline[] = [
       { icon: Brain, label: "Kontrolle" },
     ],
     who: "Alle Altersgruppen",
+    videoSrc: "https://videos.pexels.com/video-files/7045242/7045242-hd_1080_1920_30fps.mp4",
   },
   {
     name: "Kindertraining",
@@ -104,6 +110,7 @@ const CARDS: Discipline[] = [
       { icon: Users, label: "Selbstbewusstsein" },
     ],
     who: "Kinder ab 5 Jahren",
+    videoSrc: "https://videos.pexels.com/video-files/7045247/7045247-hd_1080_1920_30fps.mp4",
   },
 ];
 
