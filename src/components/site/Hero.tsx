@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-const BOXER_BG =
-  "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
 
 export function Hero() {
   const imgRef = useRef<HTMLImageElement>(null);
