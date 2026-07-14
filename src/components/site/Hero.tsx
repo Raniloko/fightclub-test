@@ -50,12 +50,12 @@ export function Hero() {
     >
       <img
         ref={imgRef}
-        src={BOXER_BG}
+        src="/kids-hero.jpg"
         alt=""
         aria-hidden="true"
         loading="eager"
         className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_top]"
-        style={{ filter: "grayscale(60%) contrast(110%)", willChange: "transform" }}
+        style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
 
       {/* Smoke/fog layer */}
