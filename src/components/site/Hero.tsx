@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-const BOXER_BG =
-  "https://images.unsplash.com/photo-1681203888755-bd61fe3558eb?w=1200&q=80";
 
 export function Hero() {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -52,12 +50,12 @@ export function Hero() {
     >
       <img
         ref={imgRef}
-        src={BOXER_BG}
+        src="/kids-hero.jpg"
         alt=""
         aria-hidden="true"
         loading="eager"
         className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[center_top]"
-        style={{ filter: "grayscale(60%) contrast(110%)", willChange: "transform" }}
+        style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
 
       {/* Smoke/fog layer */}
@@ -78,7 +76,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(135deg, rgba(0,180,220,0.35) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.90) 100%)",
+            "linear-gradient(180deg, rgba(20, 20, 20, 0.85) 0%, rgba(60, 60, 60, 0.60) 30%, rgba(120, 120, 120, 0.40) 60%, rgba(200, 200, 200, 0.20) 85%, rgba(255, 255, 255, 0.05) 100%)",
           willChange: "transform",
         }}
       />
