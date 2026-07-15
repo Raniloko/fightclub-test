@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
-import { Play, X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
+import { X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
 
 type Discipline = {
   name: string;
