@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
-import { Play, X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
+import { X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
 
 type Discipline = {
   name: string;
@@ -54,7 +54,7 @@ const CARDS: Discipline[] = [
       { icon: Target, label: "Fokus" },
     ],
     who: "Alle Level willkommen",
-    videoSrc: "https://videos.pexels.com/video-files/6684960/6684960-hd_1920_1080_30fps.mp4",
+    videoSrc: "https://videos.pexels.com/video-files/4804855/4804855-hd_1920_1080_25fps.mp4",
   },
   {
     name: "Boxen",
@@ -68,7 +68,7 @@ const CARDS: Discipline[] = [
       { icon: Heart, label: "Respekt" },
     ],
     who: "Einsteiger bis Wettkämpfer",
-    videoSrc: "https://videos.pexels.com/video-files/4804855/4804855-hd_1920_1080_25fps.mp4",
+    videoSrc: "https://videos.pexels.com/video-files/6684960/6684960-hd_1920_1080_30fps.mp4",
   },
   {
     name: "Thaiboxen",
@@ -179,14 +179,6 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
                 playsInline
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
-                  <Play size={26} className="text-white translate-x-[2px]" fill="white" />
-                </div>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white/60">
-                  20 Sek. Einblick — {c.name}
-                </p>
-              </div>
             </div>
 
             <div className="mt-8 grid gap-8 md:grid-cols-2">
