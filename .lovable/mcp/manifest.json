@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "fightclub-hanau-mcp",
+      "version": "0.1.0",
+      "title": "Fight Club MMA Akademie Hanau"
+    },
+    "tools": [
+      {
+        "name": "list_disciplines",
+        "title": "Disziplinen auflisten",
+        "description": "Listet alle Kampfsport-Disziplinen der Fight Club MMA Akademie Hanau (Kindertraining, MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight) mit Beschreibung, Lerninhalten und Zielgruppe.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_schedule",
+        "title": "Trainingsplan abrufen",
+        "description": "Liefert den Trainingsplan der Fight Club MMA Akademie Hanau. Ohne Argument wird die ganze Woche zurückgegeben, mit `day` nur der ausgewählte Wochentag (MON–SUN).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "day": {
+              "description": "Optionaler Wochentag (MON, TUE, WED, THU, FRI, SAT, SUN).",
+              "type": "string",
+              "enum": [
+                "MON",
+                "TUE",
+                "WED",
+                "THU",
+                "FRI",
+                "SAT",
+                "SUN"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact",
+        "title": "Kontakt & Öffnungszeiten",
+        "description": "Liefert Adresse, Öffnungszeiten und Google-Maps-Link der Fight Club MMA Akademie Hanau.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
