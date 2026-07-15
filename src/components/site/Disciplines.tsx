@@ -98,20 +98,6 @@ const CARDS: Discipline[] = [
     who: "Alle Altersgruppen",
     videoSrc: "https://videos.pexels.com/video-files/7045242/7045242-hd_1080_1920_30fps.mp4",
   },
-  {
-    name: "Kindertraining",
-    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    text: "Kampfsport für Kinder — spielerisch, respektvoll, mit klaren Werten. Disziplin, Selbstvertrauen und Spaß.",
-    what: "Kampfsport für Kinder — spielerisch, respektvoll, mit echten Werten.",
-    learn: ["Grundlegende Kampfsporttechniken", "Respekt und Disziplin", "Selbstvertrauen aufbauen", "Konzentration und Koordination"],
-    values: [
-      { icon: Heart, label: "Respekt" },
-      { icon: Smile, label: "Spaß" },
-      { icon: Users, label: "Selbstbewusstsein" },
-    ],
-    who: "Kinder ab 5 Jahren",
-    videoSrc: "https://videos.pexels.com/video-files/7045247/7045247-hd_1080_1920_30fps.mp4",
-  },
 ];
 
 function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; onToggle: () => void }) {
