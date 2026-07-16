@@ -17,18 +17,23 @@ import { IntroSequence } from "@/components/site/IntroSequence";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fight Club Hanau — MMA · K1 · Boxen · Thaiboxen · Self-Defense" },
+      { title: "Fight Club Hanau — MMA & Kampfsport-Akademie" },
       {
         name: "description",
         content:
-          "Neu in Hanau: Fight Club MMA Akademie, Geleitstraße 66, 63456 Hanau. MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight und Kindertraining. Erstes Training kostenlos.",
+          "MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in Hanau. Geleitstraße 66. Erstes Probetraining kostenlos.",
       },
       { property: "og:title", content: "Fight Club MMA Akademie Hanau" },
       {
         property: "og:description",
-        content: "Kein Sport. Ein Lebensstil. Kampfsport-Akademie in Hanau, Geleitstraße 66.",
+        content:
+          "MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in Hanau. Geleitstraße 66. Erstes Probetraining kostenlos.",
       },
+      { property: "og:url", content: "https://www.fightclub-hanau.de/" },
+      { property: "og:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
+      { name: "twitter:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
     ],
+    links: [{ rel: "canonical", href: "https://www.fightclub-hanau.de/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -36,6 +41,8 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Fight Club MMA Akademie Hanau",
+          url: "https://www.fightclub-hanau.de",
+          image: "https://www.fightclub-hanau.de/kids-hero.jpg",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Geleitstraße 66",
@@ -44,6 +51,20 @@ export const Route = createFileRoute("/")({
             addressCountry: "DE",
           },
           areaServed: "Hanau",
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "07:00",
+              closes: "22:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: "Saturday",
+              opens: "09:00",
+              closes: "15:00",
+            },
+          ],
         }),
       },
     ],

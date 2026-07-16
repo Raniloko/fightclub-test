@@ -55,6 +55,9 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         loading="eager"
+        fetchPriority="high"
+        width={1920}
+        height={1080}
         className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover object-[center_top] md:block"
         style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
@@ -63,6 +66,9 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         loading="eager"
+        fetchPriority="high"
+        width={800}
+        height={1200}
         className="pointer-events-none absolute inset-0 z-0 block h-full w-full object-cover object-center md:hidden"
         style={{ filter: "contrast(110%) brightness(0.9)" }}
       />
@@ -105,8 +111,9 @@ export function Hero() {
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="block">Kein Sport.</span>
-            <span className="block">Ein Lebensstil.</span>
+            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. </span>
+            <span aria-hidden="true" className="block">Kein Sport.</span>
+            <span aria-hidden="true" className="block">Ein Lebensstil.</span>
           </h1>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2">

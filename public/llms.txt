@@ -1,0 +1,14 @@
+# Fight Club Hanau
+
+> Kampfsport-Akademie in Hanau. MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in der Geleitstraße 66, 63456 Hanau.
+
+Fight Club MMA Akademie Hanau bietet Erwachsenen und Kindern professionelles Training in verschiedenen Kampfsportdisziplinen. Neben regulären Trainingszeiten von Montag bis Samstag gibt es Einsteigerkurse, Probetrainings und Kindertraining.
+
+## Pages
+
+- [Startseite](/): Übersicht, Disziplinen, Trainer, Stundenplan und Kontakt.
+
+## Optional
+
+- [Stundenplan](/#stundenplan): Aktuelle Trainingszeiten der Woche.
+- [Kontakt](/#kontakt): Adresse, Öffnungszeiten und Kontaktformular.
