@@ -1,16 +1,40 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { Reveal } from "./Reveal";
+import { sendContactMessage } from "@/lib/contact.functions";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const send = useServerFn(sendContactMessage);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
-    (e.target as HTMLFormElement).reset();
-    setTimeout(() => setSent(false), 2500);
+    if (loading) return;
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      discipline: String(fd.get("discipline") ?? ""),
+      message: String(fd.get("message") ?? ""),
+      website: String(fd.get("website") ?? ""),
+    };
+    setLoading(true);
+    try {
+      await send({ data: payload });
+      setSent(true);
+      toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
+      form.reset();
+      setTimeout(() => setSent(false), 2500);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Senden fehlgeschlagen.";
+      toast.error(msg);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -105,16 +129,23 @@ export function Contact() {
         </Reveal>
 
         <Reveal>
-          <form onSubmit={onSubmit} className="space-y-5">
+          <form onSubmit={onSubmit} className="space-y-5" noValidate>
+            {/* Honeypot — hidden from users, bots fill it and get filtered out */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+              <label>
+                Website
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
             <Field label="Name *">
-              <input required name="name" className="fc-input" />
+              <input required name="name" maxLength={100} autoComplete="name" className="fc-input" />
             </Field>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <Field label="E-Mail *">
-                <input required type="email" name="email" className="fc-input" />
+                <input required type="email" name="email" maxLength={200} autoComplete="email" className="fc-input" />
               </Field>
               <Field label="Telefon">
-                <input name="phone" className="fc-input" />
+                <input name="phone" maxLength={40} inputMode="tel" autoComplete="tel" pattern="[+0-9 ()\/.\-]*" className="fc-input" />
               </Field>
             </div>
             <Field label="Welche Disziplin interessiert dich?">
@@ -133,14 +164,14 @@ export function Contact() {
               </select>
             </Field>
             <Field label="Nachricht">
-              <textarea name="message" rows={5} className="fc-input resize-none" />
+              <textarea name="message" rows={5} maxLength={2000} className="fc-input resize-none" />
             </Field>
             <button
               type="submit"
-              disabled={sent}
+              disabled={loading || sent}
               className="w-full bg-[#0a0a0a] px-8 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222] disabled:opacity-60"
             >
-              {sent ? "Gesendet" : "Nachricht senden"}
+              {loading ? "Wird gesendet…" : sent ? "Gesendet" : "Nachricht senden"}
             </button>
           </form>
         </Reveal>
