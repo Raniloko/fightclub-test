@@ -2,19 +2,19 @@ import { Reveal } from "./Reveal";
 
 const TRAINERS = [
   {
-    name: "[Trainer Name]",
+    name: "Head Coach",
     disc: "Muay Thai / MMA",
     quote: "Auf der Matte gibt es keine Ausreden.",
     img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    name: "[Trainer Name]",
+    name: "Coach",
     disc: "Boxen / Kickboxen",
     quote: "Technik schlägt Kraft. Immer.",
     img: "https://images.pexels.com/photos/6296003/pexels-photo-6296003.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    name: "[Trainer Name]",
+    name: "Coach",
     disc: "BJJ / Grappling",
     quote: "Der Boden ist nur der Anfang.",
     img: "https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=800",
