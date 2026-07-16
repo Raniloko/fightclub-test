@@ -77,15 +77,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fight Club Hanau" },
-      { name: "description", content: "Kampfsport-Akademie in Hanau seit 2014." },
+      { title: "Fight Club Hanau — Kampfsport-Akademie" },
+      {
+        name: "description",
+        content:
+          "Fight Club Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining. Kampfsport-Akademie in der Geleitstraße 66 in 63456 Hanau.",
+      },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "Fight Club Hanau" },
-      { name: "twitter:title", content: "Fight Club Hanau" },
-      { property: "og:description", content: "Kampfsport-Akademie in Hanau seit 2014." },
-      { name: "twitter:description", content: "Kampfsport-Akademie in Hanau seit 2014." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2fe773a6-2578-4c71-8b21-0eb50a876dd2/id-preview-04bd2fe3--9470e119-182f-4bbc-a792-8cf813c99ac1.lovable.app-1782130672124.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2fe773a6-2578-4c71-8b21-0eb50a876dd2/id-preview-04bd2fe3--9470e119-182f-4bbc-a792-8cf813c99ac1.lovable.app-1782130672124.png" },
+      { property: "og:site_name", content: "Fight Club Hanau" },
+      { property: "og:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
+      { name: "twitter:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
+      {
+        property: "og:description",
+        content:
+          "Fight Club Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining. Kampfsport-Akademie in der Geleitstraße 66 in 63456 Hanau.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Fight Club Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining. Kampfsport-Akademie in der Geleitstraße 66 in 63456 Hanau.",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "google-site-verification", content: "B6kswCfvMpUIGWTyDzThv80L5Y8eI9ivi6V9CCs_05Y" },
     ],
@@ -98,9 +109,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800;900&family=Inter:wght@400;500;600&display=swap",
       },
-
-
-
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Fight Club Hanau",
+          url: "https://www.fightclub-hanau.de",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Fight Club MMA Akademie Hanau",
+          url: "https://www.fightclub-hanau.de",
+          logo: "https://www.fightclub-hanau.de/favicon.svg",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
