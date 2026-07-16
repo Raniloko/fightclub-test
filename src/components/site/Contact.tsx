@@ -1,16 +1,40 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { Reveal } from "./Reveal";
+import { sendContactMessage } from "@/lib/contact.functions";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const send = useServerFn(sendContactMessage);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
-    (e.target as HTMLFormElement).reset();
-    setTimeout(() => setSent(false), 2500);
+    if (loading) return;
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      discipline: String(fd.get("discipline") ?? ""),
+      message: String(fd.get("message") ?? ""),
+      website: String(fd.get("website") ?? ""),
+    };
+    setLoading(true);
+    try {
+      await send({ data: payload });
+      setSent(true);
+      toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
+      form.reset();
+      setTimeout(() => setSent(false), 2500);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Senden fehlgeschlagen.";
+      toast.error(msg);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
