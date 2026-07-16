@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 
 
 export function Hero() {
