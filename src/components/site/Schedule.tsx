@@ -41,6 +41,15 @@ const SCHEDULE: Record<string, Cls[]> = {
 
 
 const DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"] as const;
+const DAY_LABELS: Record<(typeof DAYS)[number], string> = {
+  MON: "Mo",
+  TUE: "Di",
+  WED: "Mi",
+  THU: "Do",
+  FRI: "Fr",
+  SAT: "Sa",
+  SUN: "So",
+};
 
 export function Schedule() {
   const [day, setDay] = useState<(typeof DAYS)[number]>("MON");
@@ -68,7 +77,7 @@ export function Schedule() {
                 day === d ? "text-[#0a0a0a]" : "text-[#999] hover:text-[#0a0a0a]"
               }`}
             >
-              {d}
+              {DAY_LABELS[d]}
               {day === d && (
                 <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />
               )}
