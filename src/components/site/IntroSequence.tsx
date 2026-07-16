@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 
+let introStarted = false;
+
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState(0);
@@ -8,10 +10,15 @@ export function IntroSequence() {
   const [flash, setFlash] = useState(false);
   const [gone, setGone] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const didRunRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("introSeen")) return;
+    if (introStarted) return;
+    if (didRunRef.current) return;
+    didRunRef.current = true;
+    introStarted = true;
     setMounted(true);
 
     // Try to play intro music (place file at public/intro-music.mp3)
@@ -59,12 +66,8 @@ export function IntroSequence() {
     }, 6800));
 
     return () => {
-      timers.forEach(clearTimeout);
-      const a = audioRef.current;
-      if (a) {
-        a.pause();
-        a.src = "";
-      }
+      // Keep timers running across StrictMode remounts so the intro completes.
+      // Only stop audio if the component fully unmounts after the intro is gone.
     };
   }, []);
 
