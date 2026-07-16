@@ -66,12 +66,8 @@ export function IntroSequence() {
     }, 6800));
 
     return () => {
-      timers.forEach(clearTimeout);
-      const a = audioRef.current;
-      if (a) {
-        a.pause();
-        a.src = "";
-      }
+      // Keep timers running across StrictMode remounts so the intro completes.
+      // Only stop audio if the component fully unmounts after the intro is gone.
     };
   }, []);
 
