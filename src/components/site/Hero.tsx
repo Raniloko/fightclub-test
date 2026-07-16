@@ -105,8 +105,9 @@ export function Hero() {
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="block">Kein Sport.</span>
-            <span className="block">Ein Lebensstil.</span>
+            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. </span>
+            <span aria-hidden="true" className="block">Kein Sport.</span>
+            <span aria-hidden="true" className="block">Ein Lebensstil.</span>
           </h1>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2">
