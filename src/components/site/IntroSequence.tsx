@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 
+let introStarted = false;
+
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState(0);
@@ -8,10 +10,15 @@ export function IntroSequence() {
   const [flash, setFlash] = useState(false);
   const [gone, setGone] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const didRunRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("introSeen")) return;
+    if (introStarted) return;
+    if (didRunRef.current) return;
+    didRunRef.current = true;
+    introStarted = true;
     setMounted(true);
 
     // Try to play intro music (place file at public/intro-music.mp3)
