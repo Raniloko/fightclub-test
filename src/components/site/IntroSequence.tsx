@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 let introStarted = false;
 
 export function IntroSequence() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
   const [phase, setPhase] = useState(0);
   const [split, setSplit] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -14,12 +14,15 @@ export function IntroSequence() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("introSeen")) return;
+    if (sessionStorage.getItem("introSeen")) {
+      setGone(true);
+      setMounted(false);
+      return;
+    }
     if (introStarted) return;
     if (didRunRef.current) return;
     didRunRef.current = true;
     introStarted = true;
-    setMounted(true);
 
     // Try to play intro music (place file at public/intro-music.mp3)
     const audio = new Audio("/intro-music.mp3");
