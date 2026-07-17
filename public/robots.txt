@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /unlock
+Disallow: /mcp
+Disallow: /.mcp/
+Disallow: /.well-known/
+Disallow: /.lovable/
 
 Sitemap: https://www.fightclub-hanau.de/sitemap.xml
