@@ -99,7 +99,7 @@ export function OpenDaySection() {
   return (
     <section
       id="tag-der-offenen-tuer"
-      className="relative overflow-hidden bg-[#0a0a0a] py-12 md:py-20"
+      className="relative scroll-mt-36 overflow-hidden bg-[#0a0a0a] py-12 md:py-20"
     >
       <div className="mx-auto max-w-[900px] px-4 md:px-8">
         <button
