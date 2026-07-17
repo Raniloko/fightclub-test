@@ -22,7 +22,7 @@ export function About() {
             </div>
             <h2 className="mt-4 font-display text-5xl md:text-7xl"><span className="fc-headline-underline">Mehr als ein Gym.</span></h2>
             <p className="mt-8 max-w-md text-[15px] text-[#333] md:text-[17px]">
-              Fight Club ist 2014 in Hanau entstanden — aus der Überzeugung, dass echter
+              Fight Club ist 2025 in Hanau entstanden — aus der Überzeugung, dass echter
               Kampfsport mehr ist als Fitness. Wir sind eine Gemeinschaft aus Menschen, die sich
               auf der Matte begegnen. Ehrlich. Hart. Respektvoll.
             </p>
