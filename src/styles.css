@@ -234,7 +234,7 @@ html.fc-has-openday-bar .fc-nav {
 .fcm-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 60;
   width: 100vw;
   background: #0A0A0A;
   display: flex;
