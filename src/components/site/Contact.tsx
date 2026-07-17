@@ -4,6 +4,42 @@ import { useServerFn } from "@tanstack/react-start";
 import { Reveal } from "./Reveal";
 import { sendContactMessage } from "@/lib/contact.functions";
 
+function MapEmbed() {
+  const [loaded, setLoaded] = useState(false);
+  if (!loaded) {
+    return (
+      <div className="overflow-hidden border border-[#e0e0e0] bg-[#f5f5f5] p-6 text-center">
+        <p className="text-[13px] leading-relaxed text-[#333]">
+          Beim Laden der Karte werden Daten an Google (Google Ireland Ltd., ggf. Google LLC/USA)
+          übertragen. Details siehe{" "}
+          <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
+        </p>
+        <button
+          type="button"
+          onClick={() => setLoaded(true)}
+          className="mt-4 bg-[#0a0a0a] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#222]"
+        >
+          Karte laden
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className="overflow-hidden border border-[#e0e0e0]">
+      <iframe
+        title="Fight Club MMA Akademie Hanau – Standort"
+        src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
+        width="100%"
+        height="300"
+        style={{ border: 0, filter: "grayscale(100%) contrast(1.05)" }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </div>
+  );
+}
+
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
