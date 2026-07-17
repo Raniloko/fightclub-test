@@ -90,6 +90,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: async ({ location }) => {
+    if (isGateAllowed(location.pathname)) return;
+    const { unlocked } = await getGateStatus();
+    if (!unlocked) {
+      throw redirect({ to: "/unlock", search: { r: location.pathname } });
+    }
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
