@@ -12,6 +12,7 @@ import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
 import { IntroSequence } from "@/components/site/IntroSequence";
+import { OpenDayBar, OpenDaySection } from "@/components/site/OpenDay";
 
 
 export const Route = createFileRoute("/")({
@@ -76,8 +77,10 @@ function Index() {
   return (
     <main className="bg-white text-[#0a0a0a]">
       <IntroSequence />
+      <OpenDayBar />
       <Nav />
       <Hero />
+      <OpenDaySection />
       <Stats />
       <Disciplines />
       <About />

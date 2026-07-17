@@ -201,6 +201,15 @@
   background: rgba(0, 0, 0, 0.55);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
+  transition: top 0.2s ease;
+}
+html.fc-has-openday-bar .fc-nav {
+  top: 34px;
+}
+@media (min-width: 640px) {
+  html.fc-has-openday-bar .fc-nav {
+    top: 38px;
+  }
 }
 
 .fc-nav-link {
