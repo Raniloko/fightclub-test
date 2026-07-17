@@ -199,9 +199,23 @@ export function Contact() {
             <Field label="Nachricht">
               <textarea name="message" rows={5} maxLength={2000} className="fc-input resize-none" />
             </Field>
+            <label className="flex items-start gap-3 text-[13px] leading-relaxed text-[#333]">
+              <input
+                type="checkbox"
+                required
+                checked={privacyOk}
+                onChange={(e) => setPrivacyOk(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-[#0a0a0a]"
+              />
+              <span>
+                Ich habe die <a href="/datenschutz" target="_blank" rel="noopener" className="underline">Datenschutzerklärung</a>{" "}
+                gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Die Einwilligung
+                kann ich jederzeit für die Zukunft per E-Mail an info@fightclub-hanau.de widerrufen. *
+              </span>
+            </label>
             <button
               type="submit"
-              disabled={loading || sent}
+              disabled={loading || sent || !privacyOk}
               className="w-full bg-[#0a0a0a] px-8 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222] disabled:opacity-60"
             >
               {loading ? "Wird gesendet…" : sent ? "Gesendet" : "Nachricht senden"}
