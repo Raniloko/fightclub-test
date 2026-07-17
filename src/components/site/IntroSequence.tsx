@@ -4,9 +4,6 @@ import { Logo } from "./Logo";
 let introStarted = false;
 
 export function IntroSequence() {
-  // Start hidden so a reload never flashes the curtain before the effect
-  // checks sessionStorage. The intro only appears after we confirm it hasn't
-  // been seen yet in this session.
   const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState(0);
   const [split, setSplit] = useState(false);
@@ -17,36 +14,40 @@ export function IntroSequence() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("introSeen")) return; // stay hidden
-    if (introStarted) return;
-    if (didRunRef.current) return;
+    const root = document.documentElement;
+
+    if (sessionStorage.getItem("introSeen")) {
+      // No intro this session — reveal the site immediately.
+      root.classList.remove("fc-intro-pending");
+      return;
+    }
+    if (introStarted || didRunRef.current) return;
     didRunRef.current = true;
     introStarted = true;
+
+    // Hand off from the pre-hydration cover to the animated curtain in the
+    // same paint frame so there's no gap.
+    root.classList.add("fc-intro-active");
     setMounted(true);
 
-    // Try to play intro music (place file at public/intro-music.mp3)
     const audio = new Audio("/intro-music.mp3");
     audio.volume = 0;
     audioRef.current = audio;
     audio.play().then(() => {
-      // fade in
       let v = 0;
       const fadeIn = setInterval(() => {
         v = Math.min(0.7, v + 0.05);
         audio.volume = v;
         if (v >= 0.7) clearInterval(fadeIn);
       }, 60);
-    }).catch(() => {
-      // autoplay blocked or no file — silent intro
-    });
+    }).catch(() => {});
 
     const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setPhase(1), 200));   // logo
-    timers.push(setTimeout(() => setPhase(2), 1600));  // FIGHT CLUB text
-    timers.push(setTimeout(() => setPhase(3), 2800));  // small text
-    timers.push(setTimeout(() => setPhase(4), 3300));  // underline
-    timers.push(setTimeout(() => {                     // hold on screen
-      // start fading music
+    timers.push(setTimeout(() => setPhase(1), 200));
+    timers.push(setTimeout(() => setPhase(2), 1600));
+    timers.push(setTimeout(() => setPhase(3), 2800));
+    timers.push(setTimeout(() => setPhase(4), 3300));
+    timers.push(setTimeout(() => {
       const a = audioRef.current;
       if (a && !a.paused) {
         const fadeOut = setInterval(() => {
@@ -58,7 +59,7 @@ export function IntroSequence() {
         }, 80);
       }
     }, 4800));
-    timers.push(setTimeout(() => {                     // split + flash
+    timers.push(setTimeout(() => {
       setSplit(true);
       setFlash(true);
       setTimeout(() => setFlash(false), 200);
@@ -66,15 +67,15 @@ export function IntroSequence() {
     timers.push(setTimeout(() => {
       sessionStorage.setItem("introSeen", "true");
       setGone(true);
+      root.classList.remove("fc-intro-pending");
+      root.classList.remove("fc-intro-active");
     }, 6800));
 
-    return () => {
-      // Keep timers running across StrictMode remounts so the intro completes.
-      // Only stop audio if the component fully unmounts after the intro is gone.
-    };
+    return () => {};
   }, []);
 
   if (!mounted || gone) return null;
+
 
   return (
     <div className="fc-intro-root" aria-hidden="true">
