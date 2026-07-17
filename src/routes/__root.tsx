@@ -131,12 +131,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "preload", as: "image", href: "/logo.png", fetchPriority: "high" } as any,
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800;900&family=Inter:wght@400;500;600&display=swap",
       },
     ],
     scripts: [
+      {
+        // Blocking pre-hydration script: paints the intro curtain immediately so
+        // the site never flashes before React mounts the animated IntroSequence.
+        children:
+          "(function(){try{if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();",
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -157,6 +164,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         }),
       },
     ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
