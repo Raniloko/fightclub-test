@@ -301,13 +301,35 @@
 
 
 /* === Intro sequence === */
+/* Pre-hydration cover — painted before React runs so the site never flashes
+   in before the curtain. Matches the curtain's split (black left / white right). */
+html.fc-intro-pending { background: #0A0A0A; }
+html.fc-intro-pending body { visibility: hidden; }
+html.fc-intro-pending::before,
+html.fc-intro-pending::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 2147483646;
+  pointer-events: none;
+}
+html.fc-intro-pending::before { left: 0; background: #0A0A0A; }
+html.fc-intro-pending::after  { left: 50%; background: #FFFFFF; }
+/* Once the intro component mounts it owns the curtain — hide the pre-cover */
+html.fc-intro-active::before,
+html.fc-intro-active::after { display: none; }
+html.fc-intro-active body { visibility: visible; }
+
 .fc-intro-root {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 2147483647;
   pointer-events: none;
   overflow: hidden;
 }
+
 .fc-intro-half {
   position: absolute;
   top: 0;
