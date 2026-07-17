@@ -50,8 +50,50 @@ export function OpenDayBar() {
   );
 }
 
+function Lightbox({ onClose }: { onClose: () => void }) {
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Flyer Vollansicht"
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 sm:p-6"
+    >
+      <button
+        type="button"
+        aria-label="Schließen"
+        onClick={onClose}
+        className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-2xl leading-none text-white backdrop-blur transition-colors hover:bg-white/20 sm:right-6 sm:top-6"
+      >
+        ×
+      </button>
+      <img
+        src={flyerAsset.url}
+        alt="Tag der offenen Tür Flyer — Vollansicht"
+        onClick={(e) => e.stopPropagation()}
+        className="max-h-full max-w-full object-contain shadow-2xl"
+        style={{ maxHeight: "calc(100vh - 24px)", maxWidth: "calc(100vw - 24px)" }}
+      />
+    </div>
+  );
+}
+
 export function OpenDaySection() {
   const { diff } = useCountdown();
+  const [open, setOpen] = useState(false);
   if (diff <= 0) return null;
 
   return (
@@ -60,19 +102,22 @@ export function OpenDaySection() {
       className="relative overflow-hidden bg-[#0a0a0a] py-12 md:py-20"
     >
       <div className="mx-auto max-w-[900px] px-4 md:px-8">
-        <a
-          href={flyerAsset.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block overflow-hidden rounded-lg shadow-2xl ring-1 ring-white/10 transition-transform hover:scale-[1.01]"
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Flyer in Vollansicht öffnen"
+          className="group block w-full overflow-hidden rounded-lg shadow-2xl ring-1 ring-white/10 transition-transform hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c8102e]"
         >
           <img
             src={flyerAsset.url}
             alt="Große Neueröffnung — Tag der offenen Tür am Samstag, 15. August 2026, 10–15 Uhr im Fight Club Hanau"
-            className="block h-auto w-full"
+            className="block h-auto w-full object-contain"
             loading="lazy"
           />
-        </a>
+        </button>
+        <p className="mt-3 text-center text-[11px] uppercase tracking-[0.25em] text-white/50">
+          Zum Vergrößern antippen
+        </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
             href="#kontakt"
@@ -90,6 +135,7 @@ export function OpenDaySection() {
           </a>
         </div>
       </div>
+      {open ? <Lightbox onClose={() => setOpen(false)} /> : null}
     </section>
   );
 }
