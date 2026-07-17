@@ -41,7 +41,7 @@ export function Footer() {
           <span>Fight Club Hanau</span>
           <div className="flex flex-wrap gap-6">
             <a href="/impressum" className="hover:text-white">Impressum</a>
-            <a href="/datenschutz" className="hover:text-white">Datenschutz</a>
+            <a href="/datenschutz" className="hover:text-white">Datenschutzerklärung</a>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("fc:open-cookie-settings"))}
