@@ -39,9 +39,16 @@ export function Footer() {
       <div>
         <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/80 md:flex-row md:px-10">
           <span>Fight Club Hanau</span>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6">
             <a href="#" className="hover:text-white">Impressum</a>
             <a href="#" className="hover:text-white">Datenschutz</a>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("fc:open-cookie-settings"))}
+              className="uppercase tracking-[0.2em] hover:text-white"
+            >
+              Cookie-Einstellungen
+            </button>
           </div>
         </div>
       </div>
