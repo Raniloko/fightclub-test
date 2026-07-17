@@ -18,8 +18,8 @@ import { Route as AdminPasswortFestlegenRouteImport } from './routes/admin.passw
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as ApiPublicBootstrapAdminRouteImport } from './routes/api/public/bootstrap-admin'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 
 const UnlockRoute = UnlockRouteImport.update({
   id: '/unlock',
@@ -68,17 +68,17 @@ const Char91DotmcpChar93ListToolsRoute =
     path: '/.mcp/list-tools',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiPublicBootstrapAdminRoute = ApiPublicBootstrapAdminRouteImport.update({
-  id: '/api/public/bootstrap-admin',
-  path: '/api/public/bootstrap-admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -90,8 +90,8 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/admin/': typeof AdminIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -103,8 +103,8 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/admin': typeof AdminIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -117,8 +117,8 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/admin/': typeof AdminIndexRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -132,8 +132,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/admin/'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
-    | '/api/public/bootstrap-admin'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -145,8 +145,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/admin'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
-    | '/api/public/bootstrap-admin'
   id:
     | '__root__'
     | '/'
@@ -158,8 +158,8 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/admin/'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
-    | '/api/public/bootstrap-admin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -172,8 +172,8 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPasswortFestlegenRoute: typeof AdminPasswortFestlegenRoute
   AdminIndexRoute: typeof AdminIndexRoute
+  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
-  ApiPublicBootstrapAdminRoute: typeof ApiPublicBootstrapAdminRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -241,18 +241,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/bootstrap-admin': {
-      id: '/api/public/bootstrap-admin'
-      path: '/api/public/bootstrap-admin'
-      fullPath: '/api/public/bootstrap-admin'
-      preLoaderRoute: typeof ApiPublicBootstrapAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
       path: '/.mcp/invoke-tool/$tool'
       fullPath: '/.mcp/invoke-tool/$tool'
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -269,8 +269,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminPasswortFestlegenRoute: AdminPasswortFestlegenRoute,
   AdminIndexRoute: AdminIndexRoute,
+  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
-  ApiPublicBootstrapAdminRoute: ApiPublicBootstrapAdminRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -60,6 +60,12 @@ function LoginPage() {
         return;
       }
 
+      const params = new URLSearchParams(window.location.search);
+      const next = params.get("next");
+      if (next && next.startsWith("/")) {
+        window.location.href = next;
+        return;
+      }
       navigate({ to: "/admin" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unbekannter Fehler");

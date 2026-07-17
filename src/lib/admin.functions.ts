@@ -66,11 +66,13 @@ export const getMyRoles = createServerFn({ method: "GET" })
 export const listTeam = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data: isAdmin } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
-    if (!isAdmin) throw new Error("Nur Admins können Team-Mitglieder verwalten.");
+    const { data: adminRow } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!adminRow) throw new Error("Nur Admins können Team-Mitglieder verwalten.");
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: users, error } = await supabaseAdmin.auth.admin.listUsers({ perPage: 200 });
@@ -102,11 +104,13 @@ export const inviteTeamMember = createServerFn({ method: "POST" })
     z.object({ email: emailSchema, role: z.enum(["admin", "staff"]) }).parse(d),
   )
   .handler(async ({ data, context }) => {
-    const { data: isAdmin } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
-    if (!isAdmin) throw new Error("Nur Admins können einladen.");
+    const { data: adminRow } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!adminRow) throw new Error("Nur Admins können einladen.");
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const origin =
@@ -132,11 +136,13 @@ export const removeTeamMember = createServerFn({ method: "POST" })
     if (data.user_id === context.userId) {
       throw new Error("Du kannst dich nicht selbst entfernen.");
     }
-    const { data: isAdmin } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
-    if (!isAdmin) throw new Error("Nur Admins können Mitglieder entfernen.");
+    const { data: adminRow } = await context.supabase
+      .from("user_roles")
+      .select("id")
+      .eq("user_id", context.userId)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!adminRow) throw new Error("Nur Admins können Mitglieder entfernen.");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.auth.admin.deleteUser(data.user_id);
     if (error) throw new Error(error.message);
