@@ -1,73 +1,15 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Reveal } from "./Reveal";
+import { listSchedule, type ScheduleClass, type WeekDay } from "@/lib/schedule.functions";
 
-type Cls = {
-  start: string; // "HH:MM"
-  end: string;   // "HH:MM"
-  disc: string;
-  age: string;
-};
+const DAYS: WeekDay[] = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
-const SCHEDULE: Record<string, Cls[]> = {
-  MON: [
-    { start: "16:00", end: "16:40", disc: "Mini-Thaiboxen", age: "3–6 Jahre" },
-    { start: "16:50", end: "17:50", disc: "Kids-Thaiboxen", age: "7–10 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Teens-Thaiboxen", age: "11–15 Jahre" },
-    { start: "19:00", end: "20:30", disc: "K1 / Kickboxen", age: "ab 16 Jahre" },
-    { start: "19:00", end: "20:30", disc: "Thaiboxen", age: "ab 16 Jahre" },
-  ],
-  TUE: [
-    { start: "16:00", end: "16:40", disc: "Mini-Wing-Fight", age: "3–6 Jahre" },
-    { start: "16:50", end: "17:50", disc: "Kids-Wing-Fight", age: "7–10 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Teens-Wing-Fight", age: "11–15 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Boxen-Teens", age: "11–15 Jahre" },
-    { start: "19:00", end: "20:30", disc: "Self-Defense / Wing-Fight", age: "ab 16 Jahre" },
-    { start: "19:30", end: "21:00", disc: "MMA-Grappling", age: "ab 16 Jahre" },
-    { start: "19:45", end: "21:15", disc: "Boxen", age: "ab 16 Jahre" },
-  ],
-  WED: [
-    { start: "16:00", end: "16:40", disc: "Mini-Kickboxen", age: "3–6 Jahre" },
-    { start: "16:50", end: "17:50", disc: "Kids-Kickboxen", age: "7–10 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Teens-Kickboxen", age: "11–15 Jahre" },
-    { start: "19:00", end: "20:30", disc: "K1 / Kickboxen", age: "ab 16 Jahre" },
-    { start: "19:00", end: "20:30", disc: "Fighter-Fitness", age: "ab 16 Jahre" },
-  ],
-  THU: [
-    { start: "16:00", end: "16:40", disc: "Mini-Wing-Fight", age: "3–6 Jahre" },
-    { start: "16:50", end: "17:50", disc: "Kids-Wing-Fight", age: "7–10 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Teens-Wing-Fight", age: "11–15 Jahre" },
-    { start: "19:00", end: "20:30", disc: "Self-Defense / Wing-Fight", age: "ab 16 Jahre" },
-    { start: "19:00", end: "20:30", disc: "Thaiboxen", age: "ab 16 Jahre" },
-    { start: "19:30", end: "21:00", disc: "MMA-Grappling", age: "ab 16 Jahre" },
-  ],
-  FRI: [
-    { start: "16:00", end: "16:40", disc: "Mini-Kickboxen", age: "3–6 Jahre" },
-    { start: "16:50", end: "17:50", disc: "Kids-Kickboxen", age: "7–10 Jahre" },
-    { start: "18:00", end: "19:00", disc: "Teens-Kickboxen", age: "11–15 Jahre" },
-    { start: "19:00", end: "20:30", disc: "K1 / Kickboxen", age: "ab 16 Jahre" },
-    { start: "19:45", end: "21:15", disc: "Boxen (Wettkampf)", age: "ab 16 Jahre" },
-  ],
-  SAT: [
-    { start: "11:00", end: "12:30", disc: "Kick-Boxen Frauen", age: "ab 14 Jahre" },
-    { start: "11:00", end: "13:00", disc: "Boxen", age: "ab 16 Jahre" },
-    { start: "13:00", end: "22:00", disc: "Personal Training (Termin*)", age: "ab 16 Jahre" },
-  ],
-  SUN: [
-    { start: "11:00", end: "12:30", disc: "Personal Training (Termin*)", age: "ab 14 Jahre" },
-    { start: "11:00", end: "13:00", disc: "Personal Training (Termin*)", age: "ab 16 Jahre" },
-    { start: "13:00", end: "22:00", disc: "Personal Training (Termin*)", age: "" },
-  ],
-};
-
-const DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"] as const;
-type Day = (typeof DAYS)[number];
-
-const DAY_LABELS: Record<Day, string> = {
+const DAY_LABELS: Record<WeekDay, string> = {
   MON: "Mo", TUE: "Di", WED: "Mi", THU: "Do", FRI: "Fr", SAT: "Sa", SUN: "So",
 };
 
-// JS getDay(): 0=Sun..6=Sat  ->  our keys
-const JS_DAY_TO_KEY: Day[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const JS_DAY_TO_KEY: WeekDay[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 function toMinutes(hhmm: string) {
   const [h, m] = hhmm.split(":").map(Number);
@@ -75,15 +17,20 @@ function toMinutes(hhmm: string) {
 }
 
 export function Schedule() {
-  const [today, setToday] = useState<Day | null>(null);
+  const [today, setToday] = useState<WeekDay | null>(null);
   const [nowMin, setNowMin] = useState<number>(0);
-  const [day, setDay] = useState<Day>("MON");
+  const [day, setDay] = useState<WeekDay>("MON");
+
+  const { data: allClasses = [] } = useQuery<ScheduleClass[]>({
+    queryKey: ["public-schedule"],
+    queryFn: () => listSchedule(),
+    refetchInterval: 60_000,
+  });
 
   useEffect(() => {
     const update = () => {
       const d = new Date();
-      const key = JS_DAY_TO_KEY[d.getDay()];
-      setToday(key);
+      setToday(JS_DAY_TO_KEY[d.getDay()]);
       setNowMin(d.getHours() * 60 + d.getMinutes());
     };
     update();
@@ -92,11 +39,13 @@ export function Schedule() {
     return () => clearInterval(id);
   }, []);
 
-  const classes = SCHEDULE[day];
+  const classes = allClasses
+    .filter((c) => c.day === day)
+    .sort((a, b) => a.sort_index - b.sort_index || a.start_time.localeCompare(b.start_time));
   const isToday = today === day;
 
-  const isLive = (c: Cls) =>
-    isToday && nowMin >= toMinutes(c.start) && nowMin < toMinutes(c.end);
+  const isLive = (c: ScheduleClass) =>
+    isToday && !c.cancelled_today && nowMin >= toMinutes(c.start_time) && nowMin < toMinutes(c.end_time);
 
   return (
     <section id="stundenplan" className="bg-[#f5f5f5] py-12 md:py-20">
@@ -128,15 +77,10 @@ export function Schedule() {
                 <span className="inline-flex items-center gap-2">
                   {DAY_LABELS[d]}
                   {isCurrent && (
-                    <span
-                      className="inline-block h-1.5 w-1.5 rounded-full bg-[#00B4DC]"
-                      title="Heute"
-                    />
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#00B4DC]" title="Heute" />
                   )}
                 </span>
-                {active && (
-                  <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />
-                )}
+                {active && <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />}
               </button>
             );
           })}
@@ -144,9 +88,7 @@ export function Schedule() {
 
         <div className="mt-10">
           {classes.length === 0 ? (
-            <p className="py-12 text-center text-[15px] text-[#555]">
-              Heute kein Training. Ruhetag.
-            </p>
+            <p className="py-12 text-center text-[15px] text-[#555]">Heute kein Training. Ruhetag.</p>
           ) : (
             <>
               {/* Desktop */}
@@ -156,31 +98,36 @@ export function Schedule() {
                   <div className="col-span-6">Disziplin</div>
                   <div className="col-span-3">Alter</div>
                 </div>
-                {classes.map((c, i) => {
+                {classes.map((c) => {
                   const live = isLive(c);
+                  const cancelled = isToday && c.cancelled_today;
                   return (
                     <div
-                      key={i}
+                      key={c.id}
                       className={`relative grid grid-cols-12 items-center border-b border-[#e0e0e0] py-5 transition-colors ${
-                        live
-                          ? "bg-[#00B4DC]/10 pl-3"
-                          : "hover:bg-white"
+                        live ? "bg-[#00B4DC]/10 pl-3" : cancelled ? "bg-red-100/50" : "hover:bg-white"
                       }`}
                     >
-                      {live && (
-                        <span className="absolute inset-y-2 left-0 w-[3px] bg-[#00B4DC]" />
-                      )}
-                      <div className="col-span-3 font-display text-2xl">
-                        {c.start}<span className="text-[#999]">–</span>{c.end}
+                      {live && <span className="absolute inset-y-2 left-0 w-[3px] bg-[#00B4DC]" />}
+                      <div className={`col-span-3 font-display text-2xl ${cancelled ? "line-through text-[#999]" : ""}`}>
+                        {c.start_time}<span className="text-[#999]">–</span>{c.end_time}
                       </div>
                       <div className="col-span-6 text-[15px] font-medium">
-                        <span className="inline-flex items-center gap-3">
-                          {c.disc}
+                        <span className="inline-flex items-center gap-3 flex-wrap">
+                          <span className={cancelled ? "line-through text-[#999]" : ""}>{c.discipline}</span>
                           {live && (
                             <span className="inline-flex items-center gap-1.5 border border-[#00B4DC] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00B4DC]">
                               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00B4DC]" />
                               Läuft jetzt
                             </span>
+                          )}
+                          {cancelled && (
+                            <span className="border border-red-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-600">
+                              Fällt heute aus
+                            </span>
+                          )}
+                          {c.note && !cancelled && (
+                            <span className="text-xs text-[#555]">{c.note}</span>
                           )}
                         </span>
                       </div>
@@ -194,23 +141,20 @@ export function Schedule() {
 
               {/* Mobile */}
               <div className="space-y-3 md:hidden">
-                {classes.map((c, i) => {
+                {classes.map((c) => {
                   const live = isLive(c);
+                  const cancelled = isToday && c.cancelled_today;
                   return (
                     <div
-                      key={i}
+                      key={c.id}
                       className={`relative border p-5 ${
-                        live
-                          ? "border-[#00B4DC] bg-[#00B4DC]/10"
-                          : "border-[#e0e0e0] bg-white"
+                        live ? "border-[#00B4DC] bg-[#00B4DC]/10" : cancelled ? "border-red-300 bg-red-100/50" : "border-[#e0e0e0] bg-white"
                       }`}
                     >
-                      {live && (
-                        <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#00B4DC]" />
-                      )}
-                      <div className="flex items-center justify-between">
-                        <div className="font-display text-2xl">
-                          {c.start}<span className="text-[#999]">–</span>{c.end}
+                      {live && <span className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#00B4DC]" />}
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <div className={`font-display text-2xl ${cancelled ? "line-through text-[#999]" : ""}`}>
+                          {c.start_time}<span className="text-[#999]">–</span>{c.end_time}
                         </div>
                         {live && (
                           <span className="inline-flex items-center gap-1.5 border border-[#00B4DC] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#00B4DC]">
@@ -218,12 +162,20 @@ export function Schedule() {
                             Läuft
                           </span>
                         )}
+                        {cancelled && (
+                          <span className="border border-red-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-600">
+                            Fällt aus
+                          </span>
+                        )}
                       </div>
-                      <div className="mt-2 text-[15px] font-semibold">{c.disc}</div>
+                      <div className={`mt-2 text-[15px] font-semibold ${cancelled ? "line-through text-[#999]" : ""}`}>
+                        {c.discipline}
+                      </div>
                       {c.age && (
-                        <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-[#777]">
-                          {c.age}
-                        </div>
+                        <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-[#777]">{c.age}</div>
+                      )}
+                      {c.note && !cancelled && (
+                        <div className="mt-2 text-xs text-[#555]">{c.note}</div>
                       )}
                     </div>
                   );

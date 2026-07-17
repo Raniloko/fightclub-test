@@ -1,29 +1,43 @@
-## Plan: Premium Fight Club SVG Logo Component
+# Admin-Bereich für Stundenplan-Verwaltung
 
-### 1. Create `src/components/site/FightClubLogo.tsx`
-Standalone SVG React component per spec:
-- Props: `variant: 'full' | 'mark' | 'wordmark'`, `color`, `size`
-- viewBox `0 0 400 310` (full), adjusted square viewBox for `mark` variant so it has equal padding on all sides (e.g. `0 0 400 180` cropped to the symbol, rendered as square)
-- Symbol: two mirrored angular paths + top connector bar, all in `currentColor`-style fill via the `color` prop
-- Wordmark: "FIGHT CLUB" (Barlow Condensed 900, 72px), thin separator line, "MMA AKADEMIE HANAU" (600, 18px, letter-spacing 4)
-- Ensure Barlow Condensed is loaded (already used elsewhere in the project — verify in `__root.tsx`; if missing, add the Google Fonts `<link>` there)
+## Ziel
+Geschützter Admin-Bereich, in dem Chef und Mitarbeiter den Stundenplan live anpassen können (Entfall, Verschiebung, neue Klasse). Die Änderungen erscheinen sofort auf der öffentlichen Seite unter „Stundenplan".
 
-### 2. Replace existing logo usages
-- `src/components/site/Nav.tsx`: replace current logo with `<FightClubLogo variant="full" color="#0A0A0A" size={140} />` (and the white version where the nav sits over dark)
-- Mobile menu: spec confirms logo was removed earlier — leave removed (do NOT re-add) unless you want it back. **Question below.**
-- `src/components/site/Footer.tsx`: `<FightClubLogo variant="mark" color="#FFFFFF" size={48} />`
-- `src/components/site/IntroSequence.tsx`: swap the triangle mark for `<FightClubLogo variant="mark" ... />` then reveal `variant="full"`
+## Was neu entsteht
+- **Login-Seite** `/admin/login` mit Fight Club Branding (dunkles Theme, Cyan-Akzent, `fc-headline-underline`), „Angemeldet bleiben"-Checkbox.
+- **Passwort-Setup-Seite** `/admin/passwort-festlegen` – Ziel des Einladungs-/Reset-Links aus der Mail.
+- **Admin-Dashboard** `/admin` (geschützt): Wochentag wählen, Klassen bearbeiten/löschen/hinzufügen, Notiz „Heute entfällt" pro Klasse.
+- **Öffentliche `Schedule.tsx`** liest ab jetzt aus der Datenbank statt aus einem statischen Objekt und zeigt Entfall-Hinweise.
 
-### 3. Favicon
-- Write `public/favicon.svg` with the mark-only SVG (static, hand-written to match the component output)
-- Update `<link rel="icon">` in `src/routes/__root.tsx` to point to `/favicon.svg`
+## Sicherheit (deine Priorität)
+- **Lovable Cloud Auth** (verschlüsselte Sessions, HTTPS erzwingt die Plattform automatisch, Passwörter als bcrypt-Hash).
+- **Row-Level Security** auf allen Tabellen; Schreibrechte nur mit Rolle `admin`.
+- **Rollen in separater `user_roles`-Tabelle** (kein Feld im Profil) – schützt vor Privilege Escalation.
+- **Brute-Force-Schutz**: Server-seitiges Rate-Limit (5 Fehlversuche / 15 Min. pro E-Mail + IP) via eigener Tabelle `auth_attempts` und Server Function; danach 15 Min. Sperre.
+- **SQL-Injection**: Alle DB-Zugriffe laufen über den Supabase-Client mit parametrisierten Queries – keine String-Konkatenation.
+- **HIBP-Passwort-Check** aktivieren (blockiert geleakte Passwörter).
+- **Zod-Validierung** für alle Eingaben (Client + Server).
 
-### 4. Preview route
-- Create `src/routes/logo-preview.tsx` showing all 3 variants on dark and light backgrounds, plus size tests at 32/64/120/200px. Not linked in nav.
+## Einladung per Mail
+- Erste Einladung an **info@fightclub-hanau.de** wird per Migration + Auth-Admin-API angelegt; Supabase versendet automatisch die Mail „Passwort festlegen" mit Link auf `/admin/passwort-festlegen`.
+- Fight Club Team ist Default – es gibt nur ein Team/Studio, jede Person mit Rolle `admin` oder `staff` sieht denselben Stundenplan.
+- Rollenwahl `admin` / `staff` im Dashboard verfügbar (nur `admin` darf Rollen vergeben).
 
-### 5. Verification
-- `bun run build`
-- Visual check at `/` and `/logo-preview` via Playwright screenshots (desktop + mobile widths) to confirm centering, separator alignment, and that "MMA AKADEMIE HANAU" visually matches "FIGHT CLUB" width
+## Datenbank (technisch)
+```text
+app_role enum: 'admin' | 'staff'
+user_roles(user_id, role)                — RLS, has_role()-Funktion
+schedule_classes(id, day, start, end,
+                 discipline, age, note,
+                 cancelled_today boolean,
+                 updated_at, updated_by) — public SELECT, admin/staff WRITE
+auth_attempts(email, ip, attempted_at)   — Rate-Limit-Speicher
+```
+Migration seedet die aktuellen Klassen aus `Schedule.tsx`, damit nichts verloren geht.
 
-### Open question
-Earlier you asked me to **remove** the logo from the mobile fullscreen menu. The new spec lists a mobile-menu logo usage. Should I re-add the white logo to the mobile menu, or keep it removed?
+## Ablauf für dich
+1. Ich baue alles, aktiviere Lovable Cloud und HIBP.
+2. Du bekommst eine Mail an info@fightclub-hanau.de → Passwort festlegen.
+3. Login unter `/admin` → Stundenplan pflegen, weitere Mitarbeiter einladen.
+
+Soll ich so umsetzen?
