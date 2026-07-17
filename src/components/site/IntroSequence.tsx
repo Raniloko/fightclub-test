@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 
 let introStarted = false;
@@ -12,23 +12,32 @@ export function IntroSequence() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const didRunRef = useRef(false);
 
-  useEffect(() => {
+  // Decide whether to run BEFORE first paint so we never render an empty
+  // component (which would let the pre-cover be swapped for nothing).
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return;
     const root = document.documentElement;
 
     if (sessionStorage.getItem("introSeen")) {
-      // No intro this session — reveal the site immediately.
       root.classList.remove("fc-intro-pending");
       return;
     }
     if (introStarted || didRunRef.current) return;
     didRunRef.current = true;
     introStarted = true;
-
-    // Hand off from the pre-hydration cover to the animated curtain in the
-    // same paint frame so there's no gap.
-    root.classList.add("fc-intro-active");
     setMounted(true);
+  }, []);
+
+  // Only swap the pre-cover class AFTER the curtain component has painted,
+  // so there is no frame where neither is visible.
+  useLayoutEffect(() => {
+    if (!mounted) return;
+    const root = document.documentElement;
+    root.classList.add("fc-intro-active");
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted) return;
 
     const audio = new Audio("/intro-music.mp3");
     audio.volume = 0;
@@ -39,43 +48,45 @@ export function IntroSequence() {
         v = Math.min(0.7, v + 0.05);
         audio.volume = v;
         if (v >= 0.7) clearInterval(fadeIn);
-      }, 60);
+      }, 50);
     }).catch(() => {});
 
     const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setPhase(1), 200));
-    timers.push(setTimeout(() => setPhase(2), 1600));
-    timers.push(setTimeout(() => setPhase(3), 2800));
-    timers.push(setTimeout(() => setPhase(4), 3300));
+    timers.push(setTimeout(() => setPhase(1), 100));
+    timers.push(setTimeout(() => setPhase(2), 900));
+    timers.push(setTimeout(() => setPhase(3), 1700));
+    timers.push(setTimeout(() => setPhase(4), 2050));
     timers.push(setTimeout(() => {
       const a = audioRef.current;
       if (a && !a.paused) {
         const fadeOut = setInterval(() => {
-          a.volume = Math.max(0, a.volume - 0.05);
+          a.volume = Math.max(0, a.volume - 0.08);
           if (a.volume <= 0.01) {
             a.pause();
             clearInterval(fadeOut);
           }
-        }, 80);
+        }, 60);
       }
-    }, 4800));
+    }, 3000));
     timers.push(setTimeout(() => {
       setSplit(true);
       setFlash(true);
       setTimeout(() => setFlash(false), 200);
-    }, 6200));
+    }, 3600));
     timers.push(setTimeout(() => {
       sessionStorage.setItem("introSeen", "true");
-      setGone(true);
+      const root = document.documentElement;
       root.classList.remove("fc-intro-pending");
       root.classList.remove("fc-intro-active");
-    }, 6800));
+      setGone(true);
+    }, 4100));
 
-    return () => {};
-  }, []);
+    return () => {
+      timers.forEach((t) => clearTimeout(t));
+    };
+  }, [mounted]);
 
   if (!mounted || gone) return null;
-
 
   return (
     <div className="fc-intro-root" aria-hidden="true">
@@ -111,7 +122,7 @@ function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }
           transform: `scale(${phase >= 1 ? 1 : 0.6})`,
         }}
       >
-        <Logo size={260} />
+        <Logo size={380} />
       </div>
 
       <div
