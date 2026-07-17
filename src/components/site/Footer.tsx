@@ -6,13 +6,13 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 py-16 md:grid-cols-3 md:px-10">
         <div>
           <Logo size={52} />
-          <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-white/50">
+          <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-white/80">
             © 2026 Fight Club Hanau
           </p>
         </div>
 
         <div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/80">
             Navigation
           </div>
           <ul className="mt-4 space-y-2 text-[15px]">
@@ -25,7 +25,7 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/80">
             Folge uns
           </div>
           <ul className="mt-4 space-y-2 text-[15px]">
@@ -37,7 +37,7 @@ export function Footer() {
       </div>
 
       <div>
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/50 md:flex-row md:px-10">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/80 md:flex-row md:px-10">
           <span>Fight Club Hanau</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white">Impressum</a>
