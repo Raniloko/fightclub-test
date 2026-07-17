@@ -43,11 +43,16 @@ function MapEmbed() {
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [privacyOk, setPrivacyOk] = useState(false);
   const send = useServerFn(sendContactMessage);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (loading) return;
+    if (!privacyOk) {
+      toast.error("Bitte bestätige die Datenschutzhinweise.");
+      return;
+    }
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = {
@@ -64,6 +69,7 @@ export function Contact() {
       setSent(true);
       toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
       form.reset();
+      setPrivacyOk(false);
       setTimeout(() => setSent(false), 2500);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Senden fehlgeschlagen.";
@@ -72,6 +78,7 @@ export function Contact() {
       setLoading(false);
     }
   }
+
 
   return (
     <section id="kontakt" className="bg-white py-12 md:py-20">
@@ -107,18 +114,8 @@ export function Contact() {
               </a>
             </div>
 
-            <div className="overflow-hidden border border-[#e0e0e0]">
-              <iframe
-                title="Fight Club MMA Akademie Hanau – Standort"
-                src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
-                width="100%"
-                height="300"
-                style={{ border: 0, filter: "grayscale(100%) contrast(1.05)" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <MapEmbed />
+
 
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
