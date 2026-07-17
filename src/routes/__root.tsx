@@ -139,13 +139,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        // Blocking pre-hydration script: paints the intro curtain immediately so
-        // the site never flashes before React mounts the animated IntroSequence.
-        children:
-          "(function(){try{if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();",
-      },
-      {
         type: "application/ld+json",
+
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
