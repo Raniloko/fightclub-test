@@ -14,16 +14,112 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      auth_attempts: {
+        Row: {
+          attempted_at: string
+          email: string
+          id: number
+          ip: string | null
+          success: boolean
+        }
+        Insert: {
+          attempted_at?: string
+          email: string
+          id?: number
+          ip?: string | null
+          success?: boolean
+        }
+        Update: {
+          attempted_at?: string
+          email?: string
+          id?: number
+          ip?: string | null
+          success?: boolean
+        }
+        Relationships: []
+      }
+      schedule_classes: {
+        Row: {
+          age: string
+          cancelled_today: boolean
+          created_at: string
+          day: Database["public"]["Enums"]["weekday"]
+          discipline: string
+          end_time: string
+          id: string
+          note: string | null
+          sort_index: number
+          start_time: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          age?: string
+          cancelled_today?: boolean
+          created_at?: string
+          day: Database["public"]["Enums"]["weekday"]
+          discipline: string
+          end_time: string
+          id?: string
+          note?: string | null
+          sort_index?: number
+          start_time: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          age?: string
+          cancelled_today?: boolean
+          created_at?: string
+          day?: Database["public"]["Enums"]["weekday"]
+          discipline?: string
+          end_time?: string
+          id?: string
+          note?: string | null
+          sort_index?: number
+          start_time?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff"
+      weekday: "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +246,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff"],
+      weekday: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+    },
   },
 } as const
