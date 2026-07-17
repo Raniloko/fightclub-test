@@ -6,11 +6,28 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  redirect,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { getGateStatus } from "../lib/gate.functions";
+
+const GATE_ALLOW_PREFIXES = [
+  "/unlock",
+  "/api/",
+  "/admin",
+  "/.mcp",
+  "/.well-known",
+  "/sitemap.xml",
+  "/robots.txt",
+  "/favicon",
+];
+
+function isGateAllowed(pathname: string): boolean {
+  return GATE_ALLOW_PREFIXES.some((p) => pathname === p || pathname.startsWith(p));
+}
 
 function NotFoundComponent() {
   return (
@@ -73,6 +90,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: async ({ location }) => {
+    if (isGateAllowed(location.pathname)) return;
+    const { unlocked } = await getGateStatus();
+    if (!unlocked) {
+      throw redirect({ to: "/unlock", search: { r: location.pathname } });
+    }
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },

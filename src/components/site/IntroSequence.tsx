@@ -4,7 +4,10 @@ import { Logo } from "./Logo";
 let introStarted = false;
 
 export function IntroSequence() {
-  const [mounted, setMounted] = useState(true);
+  // Start hidden so a reload never flashes the curtain before the effect
+  // checks sessionStorage. The intro only appears after we confirm it hasn't
+  // been seen yet in this session.
+  const [mounted, setMounted] = useState(false);
   const [phase, setPhase] = useState(0);
   const [split, setSplit] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -14,15 +17,12 @@ export function IntroSequence() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("introSeen")) {
-      setGone(true);
-      setMounted(false);
-      return;
-    }
+    if (sessionStorage.getItem("introSeen")) return; // stay hidden
     if (introStarted) return;
     if (didRunRef.current) return;
     didRunRef.current = true;
     introStarted = true;
+    setMounted(true);
 
     // Try to play intro music (place file at public/intro-music.mp3)
     const audio = new Audio("/intro-music.mp3");
