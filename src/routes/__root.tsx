@@ -19,6 +19,8 @@ const GATE_ALLOW_PREFIXES = [
   "/api/",
   "/admin",
   "/.mcp",
+  "/.lovable",
+  "/mcp",
   "/.well-known",
   "/sitemap.xml",
   "/robots.txt",
