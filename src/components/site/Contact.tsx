@@ -4,14 +4,55 @@ import { useServerFn } from "@tanstack/react-start";
 import { Reveal } from "./Reveal";
 import { sendContactMessage } from "@/lib/contact.functions";
 
+function MapEmbed() {
+  const [loaded, setLoaded] = useState(false);
+  if (!loaded) {
+    return (
+      <div className="overflow-hidden border border-[#e0e0e0] bg-[#f5f5f5] p-6 text-center">
+        <p className="text-[13px] leading-relaxed text-[#333]">
+          Beim Laden der Karte werden Daten an Google (Google Ireland Ltd., ggf. Google LLC/USA)
+          übertragen. Details siehe{" "}
+          <a href="/datenschutz" className="underline">Datenschutzerklärung</a>.
+        </p>
+        <button
+          type="button"
+          onClick={() => setLoaded(true)}
+          className="mt-4 bg-[#0a0a0a] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#222]"
+        >
+          Karte laden
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div className="overflow-hidden border border-[#e0e0e0]">
+      <iframe
+        title="Fight Club MMA Akademie Hanau – Standort"
+        src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
+        width="100%"
+        height="300"
+        style={{ border: 0, filter: "grayscale(100%) contrast(1.05)" }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </div>
+  );
+}
+
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [privacyOk, setPrivacyOk] = useState(false);
   const send = useServerFn(sendContactMessage);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (loading) return;
+    if (!privacyOk) {
+      toast.error("Bitte bestätige die Datenschutzhinweise.");
+      return;
+    }
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = {
@@ -28,6 +69,7 @@ export function Contact() {
       setSent(true);
       toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
       form.reset();
+      setPrivacyOk(false);
       setTimeout(() => setSent(false), 2500);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Senden fehlgeschlagen.";
@@ -36,6 +78,7 @@ export function Contact() {
       setLoading(false);
     }
   }
+
 
   return (
     <section id="kontakt" className="bg-white py-12 md:py-20">
@@ -71,18 +114,8 @@ export function Contact() {
               </a>
             </div>
 
-            <div className="overflow-hidden border border-[#e0e0e0]">
-              <iframe
-                title="Fight Club MMA Akademie Hanau – Standort"
-                src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
-                width="100%"
-                height="300"
-                style={{ border: 0, filter: "grayscale(100%) contrast(1.05)" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <MapEmbed />
+
 
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
@@ -166,9 +199,23 @@ export function Contact() {
             <Field label="Nachricht">
               <textarea name="message" rows={5} maxLength={2000} className="fc-input resize-none" />
             </Field>
+            <label className="flex items-start gap-3 text-[13px] leading-relaxed text-[#333]">
+              <input
+                type="checkbox"
+                required
+                checked={privacyOk}
+                onChange={(e) => setPrivacyOk(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-[#0a0a0a]"
+              />
+              <span>
+                Ich habe die <a href="/datenschutz" target="_blank" rel="noopener" className="underline">Datenschutzerklärung</a>{" "}
+                gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Die Einwilligung
+                kann ich jederzeit für die Zukunft per E-Mail an info@fightclub-hanau.de widerrufen. *
+              </span>
+            </label>
             <button
               type="submit"
-              disabled={loading || sent}
+              disabled={loading || sent || !privacyOk}
               className="w-full bg-[#0a0a0a] px-8 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222] disabled:opacity-60"
             >
               {loading ? "Wird gesendet…" : sent ? "Gesendet" : "Nachricht senden"}
