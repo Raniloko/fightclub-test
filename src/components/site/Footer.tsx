@@ -40,8 +40,8 @@ export function Footer() {
         <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/80 md:flex-row md:px-10">
           <span>Fight Club Hanau</span>
           <div className="flex flex-wrap gap-6">
-            <a href="#" className="hover:text-white">Impressum</a>
-            <a href="#" className="hover:text-white">Datenschutz</a>
+            <a href="/impressum" className="hover:text-white">Impressum</a>
+            <a href="/datenschutz" className="hover:text-white">Datenschutz</a>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("fc:open-cookie-settings"))}
