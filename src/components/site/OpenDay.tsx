@@ -16,11 +16,22 @@ function useCountdown() {
 
 export function OpenDayBar() {
   const { diff, days } = useCountdown();
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (diff <= 0) {
+      document.documentElement.classList.remove("fc-has-openday-bar");
+      return;
+    }
+    document.documentElement.classList.add("fc-has-openday-bar");
+    return () => document.documentElement.classList.remove("fc-has-openday-bar");
+  }, [diff]);
+
   if (diff <= 0) return null;
   return (
     <a
       href="#tag-der-offenen-tuer"
-      className="fc-openday-bar relative z-40 block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
+      className="fc-openday-bar fixed inset-x-0 top-0 z-[55] block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold uppercase tracking-[0.18em] sm:gap-4 sm:text-[12px]">
         <span className="hidden sm:inline">🥊</span>
