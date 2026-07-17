@@ -158,6 +158,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           logo: "https://www.fightclub-hanau.de/favicon.svg",
         }),
       },
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-42WPB0Q120",
+        async: true,
+      },
+      {
+        children:
+          "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-42WPB0Q120');",
+      },
     ],
 
   }),
