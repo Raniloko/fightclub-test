@@ -6,30 +6,12 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  redirect,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { getGateStatus } from "../lib/gate.functions";
 
-const GATE_ALLOW_PREFIXES = [
-  "/unlock",
-  "/api/",
-  "/admin",
-  "/.mcp",
-  "/.lovable",
-  "/mcp",
-  "/.well-known",
-  "/sitemap.xml",
-  "/robots.txt",
-  "/favicon",
-];
-
-function isGateAllowed(pathname: string): boolean {
-  return GATE_ALLOW_PREFIXES.some((p) => pathname === p || pathname.startsWith(p));
-}
 
 function NotFoundComponent() {
   return (
