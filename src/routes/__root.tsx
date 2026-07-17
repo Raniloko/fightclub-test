@@ -169,7 +169,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   const introBootstrap =
-    "(function(){try{if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
+    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
+
   return (
     <html lang="en">
       <head>
