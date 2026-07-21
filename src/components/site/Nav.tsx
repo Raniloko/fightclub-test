@@ -4,7 +4,6 @@ import { Logo } from "./Logo";
 const LINKS = [
   { href: "#training", label: "Training" },
   { href: "#disziplinen", label: "Disziplinen" },
-  { href: "#trainer", label: "Trainer" },
   { href: "#stundenplan", label: "Stundenplan" },
   { href: "#kontakt", label: "Kontakt" },
 ];

@@ -5,7 +5,7 @@ import { Hero } from "@/components/site/Hero";
 import { Stats } from "@/components/site/Stats";
 import { Disciplines } from "@/components/site/Disciplines";
 import { About } from "@/components/site/About";
-import { Trainers } from "@/components/site/Trainers";
+
 import { Schedule } from "@/components/site/Schedule";
 import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Contact } from "@/components/site/Contact";
@@ -84,7 +84,6 @@ function Index() {
       <Stats />
       <Disciplines />
       <About />
-      <Trainers />
       <Schedule />
       <CtaProbetraining />
       <Contact />
