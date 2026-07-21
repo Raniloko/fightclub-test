@@ -109,9 +109,8 @@ function ImpressumPage() {
           </p>
         </section>
 
-        <p className="mt-10 text-[12px] text-[#777]">
-          Hinweis: Mit „[…]" gekennzeichnete Felder müssen vor Livegang durch die Inhaber:in ergänzt werden.
-        </p>
+
+
       </div>
     </main>
   );
