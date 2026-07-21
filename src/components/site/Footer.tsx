@@ -18,7 +18,6 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-[15px]">
             <li><a href="#training" className="hover:opacity-60">Training</a></li>
             <li><a href="#disziplinen" className="hover:opacity-60">Disziplinen</a></li>
-            <li><a href="#trainer" className="hover:opacity-60">Trainer</a></li>
             <li><a href="#stundenplan" className="hover:opacity-60">Stundenplan</a></li>
             <li><a href="#kontakt" className="hover:opacity-60">Kontakt</a></li>
           </ul>

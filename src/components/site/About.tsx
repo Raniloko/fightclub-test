@@ -31,10 +31,10 @@ export function About() {
               fängst du von vorne an. Gemeinsam.
             </p>
             <a
-              href="#trainer"
+              href="#kontakt"
               className="mt-8 inline-block border-b border-[#0a0a0a] pb-1 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] hover:opacity-60"
             >
-              › Lerne uns kennen
+              › Kontakt aufnehmen
             </a>
           </div>
         </Reveal>
