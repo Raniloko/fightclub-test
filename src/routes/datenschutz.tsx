@@ -105,7 +105,38 @@ function DatenschutzPage() {
           auf ein lokales Hosting um.
         </p>
 
-        <H2>9. Kontaktformular / Kontakt per E-Mail</H2>
+        <H2>9. Social-Media-Profile</H2>
+        <p>
+          Auf unserer Website verlinken wir mit reinen Text- und Icon-Links auf unsere Profile bei TikTok, Instagram und Facebook.
+          Es handelt sich nicht um eingebettete Plugins oder Widgets der Plattformen. Beim bloßen Besuch unserer Website werden daher
+          keine personenbezogenen Daten an Meta Platforms Ireland Ltd. (Instagram/Facebook), TikTok Technology Ltd. oder andere Dritte
+          übermittelt. Erst wenn Sie einen Link aktiv anklicken, verlassen Sie unsere Website und rufen das jeweilige Profil auf. Ab diesem
+          Zeitpunkt gelten die Datenschutzbestimmungen des jeweiligen Betreibers.
+        </p>
+        <p>
+          Rechtsgrundlage für die Bereitstellung der Links: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Information über unsere
+          öffentlichen Profile und einer einfachen Kontaktmöglichkeit). Hinweise zur Datenverarbeitung bei den Plattformen finden Sie hier:
+        </p>
+        <ul className="mt-3 list-disc space-y-2 pl-6">
+          <li>
+            TikTok:{" "}
+            <a href="https://www.tiktok.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline">
+              tiktok.com/legal/privacy-policy
+            </a>
+          </li>
+          <li>
+            Instagram / Facebook:{" "}
+            <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener noreferrer" className="underline">
+              privacycenter.instagram.com/policy
+            </a>{" "}
+            bzw.{" "}
+            <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="underline">
+              facebook.com/privacy/policy
+            </a>
+          </li>
+        </ul>
+
+        <H2>10. Kontaktformular / Kontakt per E-Mail</H2>
         <p>
           Wenn Sie uns über das Kontaktformular oder per E-Mail (info@fightclub-hanau.de) kontaktieren, verarbeiten wir Ihre Angaben
           (Name, E-Mail, ggf. Telefonnummer, gewähltes Interesse, Nachricht) zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage:
@@ -117,7 +148,7 @@ function DatenschutzPage() {
           bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
 
-        <H2>10. Empfänger / Auftragsverarbeiter</H2>
+        <H2>11. Empfänger / Auftragsverarbeiter</H2>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Cloudflare, Inc. (USA) — Hosting/CDN</li>
           <li>Google Ireland Limited (Irland) / Google LLC (USA) — Analytics, Maps, Fonts (nur wo einwilligungspflichtig, mit Consent)</li>
@@ -125,7 +156,7 @@ function DatenschutzPage() {
           <li>Supabase, Inc. (USA) / EU-Region — Auth & Datenbank für den Admin-Bereich</li>
         </ul>
 
-        <H2>11. Ihre Rechte</H2>
+        <H2>12. Ihre Rechte</H2>
         <p>Sie haben nach der DSGVO folgende Rechte:</p>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20)</li>
@@ -135,13 +166,13 @@ function DatenschutzPage() {
         </ul>
         <p className="mt-3">Zur Ausübung genügt eine formlose Nachricht an <a className="underline" href="mailto:info@fightclub-hanau.de">info@fightclub-hanau.de</a>.</p>
 
-        <H2>12. Datensicherheit</H2>
+        <H2>13. Datensicherheit</H2>
         <p>
           Die Übertragung erfolgt SSL/TLS-verschlüsselt (HTTPS). Wir setzen zusätzlich Sicherheits-Header (u. a. HSTS, X-Content-Type-Options,
           Referrer-Policy, Permissions-Policy, X-Frame-Options) ein, um Ihre Daten während der Übertragung zu schützen.
         </p>
 
-        <H2>13. Änderungen dieser Datenschutzerklärung</H2>
+        <H2>14. Änderungen dieser Datenschutzerklärung</H2>
         <p>
           Wir passen diese Datenschutzerklärung an, wenn sich die Rechtslage oder unsere Dienste ändern. Die jeweils aktuelle Fassung ist
           unter <Link to="/datenschutz" className="underline">/datenschutz</Link> abrufbar.
