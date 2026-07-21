@@ -31,7 +31,7 @@ function ImpressumPage() {
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Vertreten durch</h2>
-          <p>[Vor- und Nachname der/des Inhaber:in einsetzen]</p>
+          <p>Herr Andreas Porth</p>
         </section>
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
@@ -45,8 +45,9 @@ function ImpressumPage() {
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Steuernummer</h2>
-          <p>[Steuernummer einsetzen]</p>
+          <p>04436200484</p>
         </section>
+
 
         <section className="mt-8 space-y-3 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">EU-Streitschlichtung</h2>
