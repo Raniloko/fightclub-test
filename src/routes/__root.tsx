@@ -107,7 +107,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon.ico" },
       { rel: "preload", as: "image", href: "/logo.png", fetchPriority: "high" } as any,
       {
         rel: "stylesheet",
@@ -132,7 +133,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           name: "Fight Club MMA Akademie Hanau",
           url: "https://www.fightclub-hanau.de",
-          logo: "https://www.fightclub-hanau.de/favicon.svg",
+          logo: "https://www.fightclub-hanau.de/favicon.ico",
         }),
       },
       {
