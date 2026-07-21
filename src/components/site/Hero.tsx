@@ -1,54 +1,56 @@
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 
-const EVENT_DATE = new Date("2026-08-15T00:00:00+02:00").getTime();
-
-function useDaysUntilEvent() {
-  const [days, setDays] = useState(() =>
-    Math.max(0, Math.ceil((EVENT_DATE - Date.now()) / 86_400_000))
-  );
-  useEffect(() => {
-    const id = window.setInterval(
-      () => setDays(Math.max(0, Math.ceil((EVENT_DATE - Date.now()) / 86_400_000))),
-      60_000
-    );
-    return () => window.clearInterval(id);
-  }, []);
-  return days;
-}
-
-const DISCIPLINES = ["MMA", "K1", "BOXEN", "THAIBOXEN", "SELF-DEFENSE", "WING-FIGHT"];
-const TICKER = [
-  { n: "300+", l: "Mitglieder" },
-  { n: "8", l: "Trainer" },
-  { n: "40+", l: "Einheiten / Woche" },
-  { n: "2025", l: "Gegründet" },
-];
 
 export function Hero() {
-  const days = useDaysUntilEvent();
-  const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
-  const imgY = useTransform(scrollY, [0, 800], [0, 240]);
-  const smokeY = useTransform(scrollY, [0, 800], [0, 360]);
-  const textY = useTransform(scrollY, [0, 800], [0, -80]);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const smokeRef = useRef<HTMLDivElement>(null);
+  const gradRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const [enabled, setEnabled] = useState(false);
 
-  const fadeUp = (delay = 0) =>
-    reduce
-      ? { initial: false, animate: {} }
-      : {
-          initial: { opacity: 0, y: 24 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
-        };
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const check = () => setEnabled(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) {
+      [imgRef, smokeRef, gradRef, textRef].forEach((r) => {
+        if (r.current) r.current.style.transform = "";
+      });
+      return;
+    }
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY;
+        if (imgRef.current) imgRef.current.style.transform = `translate3d(0, ${y * 0.4}px, 0)`;
+        if (smokeRef.current) smokeRef.current.style.transform = `translate3d(0, ${y * 0.6}px, 0)`;
+        if (gradRef.current) gradRef.current.style.transform = `translate3d(0, ${y * 0.7}px, 0)`;
+        if (textRef.current) textRef.current.style.transform = `translate3d(0, ${y * -0.15}px, 0)`;
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [enabled]);
 
   return (
     <section
       id="top"
       className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
     >
-      <motion.img
+      <img
+        ref={imgRef}
         src="/kids-hero.jpg"
         alt=""
         aria-hidden="true"
@@ -56,10 +58,10 @@ export function Hero() {
         fetchPriority="high"
         width={1920}
         height={1080}
-        style={{ y: reduce ? 0 : imgY, filter: "grayscale(40%) contrast(115%) brightness(0.75)" }}
-        className="pointer-events-none absolute inset-0 z-0 hidden h-[115%] w-full object-cover object-[center_top] md:block"
+        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover object-[center_top] md:block"
+        style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
-      <motion.img
+      <img
         src={heroMobileAsset.url}
         alt=""
         aria-hidden="true"
@@ -67,148 +69,82 @@ export function Hero() {
         fetchPriority="high"
         width={800}
         height={1200}
-        style={{ y: reduce ? 0 : imgY, filter: "contrast(110%) brightness(0.8)" }}
-        className="pointer-events-none absolute inset-0 z-0 block h-[115%] w-full object-cover object-center md:hidden"
+        className="pointer-events-none absolute inset-0 z-0 block h-full w-full object-cover object-center md:hidden"
+        style={{ filter: "contrast(110%) brightness(0.9)" }}
       />
 
-      {/* Dark overlay */}
+      {/* Smoke/fog layer */}
       <div
+        ref={smokeRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.75) 80%, rgba(0,0,0,0.92) 100%)",
+            "radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.06) 0%, transparent 50%), radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.04) 0%, transparent 55%)",
+          willChange: "transform",
         }}
       />
 
-      {/* Smoke */}
-      <motion.div
+      <div
+        ref={gradRef}
         aria-hidden="true"
-        style={{ y: reduce ? 0 : smokeY }}
         className="pointer-events-none absolute inset-0 z-[2]"
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 25% 70%, rgba(255,255,255,0.07) 0%, transparent 55%), radial-gradient(ellipse at 75% 25%, rgba(255,255,255,0.05) 0%, transparent 60%)",
-          }}
-        />
-      </motion.div>
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(20, 20, 20, 0.85) 0%, rgba(60, 60, 60, 0.60) 30%, rgba(120, 120, 120, 0.40) 60%, rgba(200, 200, 200, 0.20) 85%, rgba(255, 255, 255, 0.05) 100%)",
+          willChange: "transform",
+        }}
+      />
 
-      {/* Content */}
-      <motion.div
-        style={{ y: reduce ? 0 : textY }}
-        className="relative z-[3] flex h-full w-full flex-col"
-      >
-        <div className="flex flex-1 items-center">
-          <div className="w-full px-6 pt-24 md:px-12 md:pt-28">
-            <motion.a
-              {...fadeUp(0.05)}
-              href="#tag-der-offenen-tuer"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#c8102e] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_10px_30px_-10px_rgba(200,16,46,0.7)] transition-colors hover:bg-[#a80d26] sm:text-[12px]"
-            >
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-white" />
-              <span>
-                Tag der offenen Tür · Sa. 15. August 2026 ·{" "}
-                <span className="font-bold">
-                  {days === 0 ? "Heute" : `Noch ${days} ${days === 1 ? "Tag" : "Tage"}`}
-                </span>
-              </span>
-            </motion.a>
-
-            <motion.h1
-              {...fadeUp(0.15)}
-              className="mt-6 font-display uppercase text-white"
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "clamp(60px, 12vw, 168px)",
-                lineHeight: 0.88,
-                letterSpacing: "0.01em",
-                textShadow: "0 4px 40px rgba(0,0,0,0.6)",
-              }}
-            >
-              Fight Club<br />Hanau
-            </motion.h1>
-
-            <motion.p
-              {...fadeUp(0.3)}
-              className="mt-6 max-w-3xl text-[12px] font-medium uppercase tracking-[0.22em] text-white/80 sm:text-[14px]"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-            >
-              {DISCIPLINES.join("  ·  ")}
-            </motion.p>
-
-            <motion.div {...fadeUp(0.45)} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#kontakt"
-                className="inline-flex items-center justify-center rounded-md bg-[#c8102e] px-8 py-4 text-[13px] uppercase tracking-[0.18em] text-white shadow-[0_16px_40px_-12px_rgba(200,16,46,0.75)] transition-all hover:-translate-y-0.5 hover:bg-[#a80d26]"
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
-              >
-                Erstes Training kostenlos
-              </a>
-              <a
-                href="#stundenplan"
-                className="inline-flex items-center justify-center rounded-md border-2 px-8 py-4 text-[13px] uppercase tracking-[0.18em] text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
-                style={{
-                  borderColor: "rgba(255,255,255,0.55)",
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontWeight: 800,
-                }}
-              >
-                Stundenplan ansehen
-              </a>
-            </motion.div>
+      <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
+        <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
+          <div className="flex items-center gap-3">
+            <span className="fc-badge-new">Neu in Hanau!!!</span>
           </div>
-        </div>
 
-        {/* Stats ticker */}
-        <motion.div
-          {...fadeUp(0.6)}
-          className="relative z-[3] border-t border-white/15 bg-black/45 backdrop-blur-sm"
-        >
-          <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 py-4 text-white md:px-12">
-            {TICKER.map((s, i) => (
-              <div key={s.l} className="flex items-center gap-3">
-                <span
-                  className="text-[18px] font-bold text-[#00B4DC] md:text-[22px]"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.02em" }}
-                >
-                  {s.n}
-                </span>
-                <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/80 md:text-[11px]">
-                  {s.l}
-                </span>
-                {i < TICKER.length - 1 && (
-                  <span aria-hidden="true" className="ml-3 hidden h-4 w-px bg-white/25 md:inline-block" />
-                )}
-              </div>
+          <h1
+            className="mt-6 font-display uppercase text-white"
+            style={{
+              fontSize: "clamp(52px, 10vw, 120px)",
+              lineHeight: 0.9,
+              fontWeight: 800,
+              textShadow: "0 2px 40px rgba(0,0,0,0.5)",
+            }}
+          >
+            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. </span>
+            <span aria-hidden="true" className="block">Kein Sport.</span>
+            <span aria-hidden="true" className="block">Ein Lebensstil.</span>
+          </h1>
+
+          <div className="mt-6 flex max-w-2xl flex-wrap gap-2">
+            {["MMA", "K1", "Boxen", "Thaiboxen", "Self-Defense", "Wing-Fight", "Kindertraining"].map((d) => (
+              <span key={d} className="fc-tag">{d}</span>
             ))}
           </div>
-        </motion.div>
-      </motion.div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#disziplinen"
-        aria-label="Nach unten scrollen"
-        className="group absolute bottom-24 right-5 z-[4] hidden flex-col items-center gap-3 text-white/70 transition-colors hover:text-white md:flex"
-      >
-        <span
-          className="rotate-90 text-[10px] uppercase tracking-[0.35em]"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          Scroll
-        </span>
-        <span className="relative block h-14 w-px bg-white/40">
-          <motion.span
-            aria-hidden="true"
-            className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-white"
-            animate={reduce ? {} : { y: [0, 44, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </span>
-      </a>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#kontakt"
+              className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
+            >
+              Jetzt einsteigen
+            </a>
+            <a
+              href="#stundenplan"
+              className="fc-btn-ghost inline-flex items-center justify-center border-2 px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white"
+              style={{
+                borderColor: "rgba(255,255,255,0.5)",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 800,
+              }}
+            >
+              Stundenplan
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
