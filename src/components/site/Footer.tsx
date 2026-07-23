@@ -31,6 +31,7 @@ export function Footer() {
             <li><a href="https://www.tiktok.com/@fightclub_hanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">TikTok</a></li>
             <li><a href="https://www.instagram.com/fightclubhanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Instagram</a></li>
             <li><a href="https://www.facebook.com/share/1D1mQLdM8w/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Facebook</a></li>
+            <li><a href="https://youtube.com/@fightclubhanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">YouTube</a></li>
           </ul>
 
         </div>
