@@ -5,15 +5,12 @@ let introStarted = false;
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
-  const [phase, setPhase] = useState(0);
+  const [logoVisible, setLogoVisible] = useState(false);
   const [split, setSplit] = useState(false);
-  const [flash, setFlash] = useState(false);
   const [gone, setGone] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const didRunRef = useRef(false);
 
-  // Decide whether to run BEFORE first paint so we never render an empty
-  // component (which would let the pre-cover be swapped for nothing).
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
     const root = document.documentElement;
@@ -28,12 +25,9 @@ export function IntroSequence() {
     setMounted(true);
   }, []);
 
-  // Only swap the pre-cover class AFTER the curtain component has painted,
-  // so there is no frame where neither is visible.
   useLayoutEffect(() => {
     if (!mounted) return;
-    const root = document.documentElement;
-    root.classList.add("fc-intro-active");
+    document.documentElement.classList.add("fc-intro-active");
   }, [mounted]);
 
   useEffect(() => {
@@ -52,34 +46,33 @@ export function IntroSequence() {
     }).catch(() => {});
 
     const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setPhase(1), 100));
-    timers.push(setTimeout(() => setPhase(2), 900));
-    timers.push(setTimeout(() => setPhase(3), 1700));
-    timers.push(setTimeout(() => setPhase(4), 2050));
+    // Show logo shortly after mount
+    timers.push(setTimeout(() => setLogoVisible(true), 100));
+    // Fade logo out just before panels split
+    timers.push(setTimeout(() => setLogoVisible(false), 1500));
+    // Fade out audio
     timers.push(setTimeout(() => {
       const a = audioRef.current;
       if (a && !a.paused) {
         const fadeOut = setInterval(() => {
-          a.volume = Math.max(0, a.volume - 0.08);
+          a.volume = Math.max(0, a.volume - 0.1);
           if (a.volume <= 0.01) {
             a.pause();
             clearInterval(fadeOut);
           }
-        }, 60);
+        }, 50);
       }
-    }, 3000));
-    timers.push(setTimeout(() => {
-      setSplit(true);
-      setFlash(true);
-      setTimeout(() => setFlash(false), 200);
-    }, 3600));
+    }, 1700));
+    // Split panels
+    timers.push(setTimeout(() => setSplit(true), 1800));
+    // Cleanup after animation
     timers.push(setTimeout(() => {
       sessionStorage.setItem("introSeen", "true");
       const root = document.documentElement;
       root.classList.remove("fc-intro-pending");
       root.classList.remove("fc-intro-active");
       setGone(true);
-    }, 4100));
+    }, 2500));
 
     return () => {
       timers.forEach((t) => clearTimeout(t));
@@ -93,57 +86,16 @@ export function IntroSequence() {
       <div
         className="fc-intro-half fc-intro-half-left"
         style={split ? { transform: "translateX(-100%)" } : undefined}
-      >
-        <div className="fc-intro-inner">
-          <IntroContent phase={phase} side="left" />
-        </div>
-      </div>
+      />
       <div
         className="fc-intro-half fc-intro-half-right"
         style={split ? { transform: "translateX(100%)" } : undefined}
-      >
-        <div className="fc-intro-inner">
-          <IntroContent phase={phase} side="right" />
-        </div>
-      </div>
-      {flash && <div className="fc-intro-flash" />}
-    </div>
-  );
-}
-
-function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }) {
-  const offset = side === "left" ? "translateX(50%)" : "translateX(-50%)";
-  return (
-    <div className="fc-intro-content" style={{ transform: offset }}>
-      <div
-        className="fc-intro-logo"
-        style={{
-          opacity: phase >= 1 ? 1 : 0,
-          transform: `scale(${phase >= 1 ? 1 : 0.6})`,
-        }}
-      >
-        <Logo size={560} />
-      </div>
-
-      <div
-        className="fc-intro-title"
-        style={{
-          clipPath: phase >= 2 ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
-        }}
-      >
-        FIGHT CLUB
-      </div>
-
-      <div
-        className="fc-intro-underline"
-        style={{ transform: `scaleX(${phase >= 4 ? 1 : 0})` }}
       />
-
       <div
-        className="fc-intro-subtitle"
-        style={{ opacity: phase >= 3 ? 1 : 0 }}
+        className="fc-intro-logo-center"
+        style={{ opacity: logoVisible ? 1 : 0 }}
       >
-        MMA AKADEMIE HANAU
+        <Logo className="fc-intro-logo-img" />
       </div>
     </div>
   );
