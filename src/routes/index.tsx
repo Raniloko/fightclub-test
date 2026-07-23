@@ -89,6 +89,7 @@ function Index() {
       <Schedule />
       <CtaProbetraining />
       <Faq />
+      <Schulordnung />
       <Contact />
       <Footer />
       <Toaster position="bottom-right" />
