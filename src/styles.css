@@ -310,8 +310,6 @@ html.fc-has-openday-bar .fc-nav {
 
 
 /* === Intro sequence === */
-/* Pre-hydration cover — painted before React runs so the site never flashes
-   in before the curtain. Matches the curtain's split (black left / white right). */
 html.fc-intro-pending { background: #0A0A0A; }
 html.fc-intro-pending body { visibility: hidden; }
 html.fc-intro-pending::before,
@@ -320,13 +318,13 @@ html.fc-intro-pending::after {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 50%;
+  width: 50vw;
   z-index: 2147483646;
   pointer-events: none;
+  background: #0A0A0A;
 }
-html.fc-intro-pending::before { left: 0; background: #0A0A0A; }
-html.fc-intro-pending::after  { left: 50%; background: #FFFFFF; }
-/* Once the intro component mounts it owns the curtain — hide the pre-cover */
+html.fc-intro-pending::before { left: 0; }
+html.fc-intro-pending::after  { left: 50vw; }
 html.fc-intro-active::before,
 html.fc-intro-active::after { display: none; }
 html.fc-intro-active body { visibility: visible; }
@@ -334,81 +332,42 @@ html.fc-intro-active body { visibility: visible; }
 .fc-intro-root {
   position: fixed;
   inset: 0;
-  z-index: 2147483647;
+  z-index: 100;
   pointer-events: none;
   overflow: hidden;
 }
 
 .fc-intro-half {
-  position: absolute;
+  position: fixed;
   top: 0;
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
-  transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+  height: 100vh;
+  width: 50vw;
+  background: #0A0A0A;
+  z-index: 100;
+  transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
-.fc-intro-half-left { left: 0; background: #0A0A0A; }
-.fc-intro-half-right { left: 50%; background: #FFFFFF; }
-.fc-intro-half-right .fc-intro-title { color: #0A0A0A; }
-.fc-intro-half-right .fc-intro-subtitle { color: rgba(0,0,0,0.5); }
-.fc-intro-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.fc-intro-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0px;
-  width: max-content;
-}
-.fc-intro-logo {
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.6s cubic-bezier(0.2, 0, 0.1, 1), transform 0.6s cubic-bezier(0.2, 0, 0.1, 1);
-}
-.fc-intro-title {
-  font-family: "Barlow Condensed", system-ui, sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 48px;
-  line-height: 1;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.5s ease-out;
-}
-.fc-intro-underline {
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #007A94 0%, #00B4DC 60%, #00D4FC 100%);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.6s cubic-bezier(0.25, 0, 0.1, 1);
-}
-.fc-intro-subtitle {
-  font-family: "Inter", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.5);
+.fc-intro-half-left { left: 0; }
+.fc-intro-half-right { left: 50vw; }
+
+.fc-intro-logo-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-.fc-intro-flash {
-  position: absolute;
-  inset: 0;
-  background: #fff;
-  opacity: 0;
-  animation: fc-intro-flash 0.2s ease-out forwards;
   pointer-events: none;
 }
-@keyframes fc-intro-flash {
-  0% { opacity: 0; }
-  50% { opacity: 0.15; }
-  100% { opacity: 0; }
+.fc-intro-logo-img {
+  height: 120px !important;
+  width: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  .fc-intro-logo-img {
+    height: 160px !important;
+  }
 }
 
 /* === Signal accents (Neu in Hanau + Disziplinen) === */
