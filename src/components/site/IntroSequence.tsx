@@ -83,14 +83,8 @@ export function IntroSequence() {
 
   return (
     <div className="fc-intro-root" aria-hidden="true">
-      <div
-        className="fc-intro-half fc-intro-half-left"
-        style={split ? { transform: "translateX(-100%)" } : undefined}
-      />
-      <div
-        className="fc-intro-half fc-intro-half-right"
-        style={split ? { transform: "translateX(100%)" } : undefined}
-      />
+      <div className={`fc-intro-half fc-intro-half-left${split ? " is-open" : ""}`} />
+      <div className={`fc-intro-half fc-intro-half-right${split ? " is-open" : ""}`} />
       <div
         className="fc-intro-logo-center"
         style={{ opacity: logoVisible ? 1 : 0 }}
