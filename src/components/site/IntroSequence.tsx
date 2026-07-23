@@ -90,6 +90,12 @@ export function IntroSequence() {
         style={{ opacity: logoVisible ? 1 : 0 }}
       >
         <Logo className="fc-intro-logo-img" />
+        <div className="fc-intro-text">
+          <span>Fight</span>
+          <span>Club</span>
+          <span>Kampfsport</span>
+          <span>Akademie</span>
+        </div>
       </div>
     </div>
   );
