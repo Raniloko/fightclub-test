@@ -9,6 +9,7 @@ import { About } from "@/components/site/About";
 import { Schedule } from "@/components/site/Schedule";
 import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Faq } from "@/components/site/Faq";
+import { Schulordnung } from "@/components/site/Schulordnung";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
@@ -88,6 +89,7 @@ function Index() {
       <Schedule />
       <CtaProbetraining />
       <Faq />
+      <Schulordnung />
       <Contact />
       <Footer />
       <Toaster position="bottom-right" />
