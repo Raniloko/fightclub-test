@@ -62,9 +62,21 @@ function LoginPage() {
 
       const params = new URLSearchParams(window.location.search);
       const next = params.get("next");
-      if (next && next.startsWith("/")) {
-        window.location.href = next;
-        return;
+      const isSafeNext =
+        !!next &&
+        next.startsWith("/") &&
+        !next.startsWith("//") &&
+        !next.startsWith("/\\");
+      if (isSafeNext) {
+        try {
+          const resolved = new URL(next, window.location.origin);
+          if (resolved.origin === window.location.origin) {
+            window.location.href = resolved.pathname + resolved.search + resolved.hash;
+            return;
+          }
+        } catch {
+          // fall through to default redirect
+        }
       }
       navigate({ to: "/admin" });
     } catch (err) {
