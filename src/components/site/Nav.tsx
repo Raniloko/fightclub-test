@@ -5,6 +5,7 @@ const LINKS = [
   { href: "#training", label: "Training" },
   { href: "#disziplinen", label: "Disziplinen" },
   { href: "#stundenplan", label: "Stundenplan" },
+  { href: "#schulordnung", label: "Schulordnung" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
