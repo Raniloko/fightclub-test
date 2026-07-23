@@ -362,7 +362,7 @@ html.fc-intro-active body { visibility: visible; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 0px;
   width: max-content;
 }
 .fc-intro-logo {

@@ -122,7 +122,7 @@ function IntroContent({ phase, side }: { phase: number; side: "left" | "right" }
           transform: `scale(${phase >= 1 ? 1 : 0.6})`,
         }}
       >
-        <Logo size={380} />
+        <Logo size={560} />
       </div>
 
       <div
