@@ -78,10 +78,6 @@ function LoginPage() {
           // fall through to default redirect
         }
       }
-      {
-        window.location.href = "/admin";
-        return;
-      }
       navigate({ to: "/admin" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unbekannter Fehler");
