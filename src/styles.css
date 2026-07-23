@@ -346,7 +346,7 @@ html.fc-intro-active body { visibility: visible; }
   position: fixed;
   top: 0;
   height: 100vh;
-  width: 55vw;
+  width: 50vw;
   z-index: 100;
   will-change: transform;
   transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
@@ -354,18 +354,18 @@ html.fc-intro-active body { visibility: visible; }
 .fc-intro-half-left {
   left: 0;
   background: #2e2e2e;
-  transform: translate(0, 0);
+  transform: translateX(0);
 }
 .fc-intro-half-right {
-  left: 45vw;
+  left: 50vw;
   background: #3d3d3d;
-  transform: translate(0, 0);
+  transform: translateX(0);
 }
 .fc-intro-half-left.is-open {
-  transform: translate(-115vw, -18vh);
+  transform: translateX(-101%);
 }
 .fc-intro-half-right.is-open {
-  transform: translate(115vw, 18vh);
+  transform: translateX(101%);
 }
 
 .fc-intro-logo-center {
@@ -375,8 +375,12 @@ html.fc-intro-active body { visibility: visible; }
   transform: translate(-50%, -50%);
   z-index: 101;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
 .fc-intro-logo-img {
   height: 120px !important;
@@ -387,6 +391,34 @@ html.fc-intro-active body { visibility: visible; }
   .fc-intro-logo-img {
     height: 160px !important;
   }
+}
+
+.fc-intro-text {
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 0.18em;
+  font-size: clamp(18px, 3.2vw, 30px);
+  line-height: 1;
+  display: flex;
+  gap: 0.35em;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 92vw;
+}
+.fc-intro-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fc-intro-word 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.fc-intro-text span:nth-child(1) { animation-delay: 0.35s; }
+.fc-intro-text span:nth-child(2) { animation-delay: 0.5s; color: #C9A84C; }
+.fc-intro-text span:nth-child(3) { animation-delay: 0.65s; }
+.fc-intro-text span:nth-child(4) { animation-delay: 0.8s; }
+@keyframes fc-intro-word {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === Signal accents (Neu in Hanau + Disziplinen) === */
