@@ -310,7 +310,7 @@ html.fc-has-openday-bar .fc-nav {
 
 
 /* === Intro sequence === */
-html.fc-intro-pending { background: #0A0A0A; }
+html.fc-intro-pending { background: #2e2e2e; }
 html.fc-intro-pending body { visibility: hidden; }
 html.fc-intro-pending::before,
 html.fc-intro-pending::after {
