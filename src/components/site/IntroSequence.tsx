@@ -94,11 +94,3 @@ export function IntroSequence() {
     </div>
   );
 }
-        className="fc-intro-logo-center"
-        style={{ opacity: logoVisible ? 1 : 0 }}
-      >
-        <Logo className="fc-intro-logo-img" />
-      </div>
-    </div>
-  );
-}
