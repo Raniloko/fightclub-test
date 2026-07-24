@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
+
 
 
 export function Hero() {
@@ -124,15 +126,15 @@ export function Hero() {
 
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#kontakt"
+            <Link
+              to="/kontakt"
               className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
               Jetzt einsteigen
-            </a>
-            <a
-              href="#stundenplan"
+            </Link>
+            <Link
+              to="/stundenplan"
               className="fc-btn-ghost inline-flex items-center justify-center border-2 px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white"
               style={{
                 borderColor: "rgba(255,255,255,0.5)",
@@ -141,8 +143,9 @@ export function Hero() {
               }}
             >
               Stundenplan
-            </a>
+            </Link>
           </div>
+
         </div>
       </div>
     </section>
