@@ -1,4 +1,6 @@
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
+
 
 export function About() {
   return (
@@ -30,12 +32,13 @@ export function About() {
               Ob du zum ersten Mal trainierst oder schon auf Wettkampfniveau kämpfst — bei uns
               fängst du von vorne an. Gemeinsam.
             </p>
-            <a
-              href="#kontakt"
+            <Link
+              to="/kontakt"
               className="mt-8 inline-block border-b border-[#0a0a0a] pb-1 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] hover:opacity-60"
             >
               › Kontakt aufnehmen
-            </a>
+            </Link>
+
           </div>
         </Reveal>
       </div>

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { TriangleBg } from "./TriangleBg";
 
 export function CtaProbetraining() {
@@ -9,10 +10,7 @@ export function CtaProbetraining() {
         opacity={0.05}
       />
       <div className="relative mx-auto max-w-[1200px] px-5 text-center md:px-10">
-        <h2
-          className="font-display leading-[0.9]"
-          style={{ fontSize: "clamp(48px, 9vw, 96px)" }}
-        >
+        <h2 className="font-display leading-[0.9]" style={{ fontSize: "clamp(48px, 9vw, 96px)" }}>
           <span className="fc-headline-underline">
             Komm. Einfach.
             <br />
@@ -22,13 +20,12 @@ export function CtaProbetraining() {
         <p className="mx-auto mt-8 max-w-xl text-[15px] text-white/70 md:text-[17px]">
           Dein erstes Training ist kostenlos und unverbindlich. Keine Anmeldung nötig.
         </p>
-        <a
-          href="#kontakt"
+        <Link
+          to="/kontakt"
           className="fc-btn-cyan mt-10 inline-block px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-black"
         >
           Probetraining anfragen
-        </a>
-
+        </Link>
       </div>
     </section>
   );
