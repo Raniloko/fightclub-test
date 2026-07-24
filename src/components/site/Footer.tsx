@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -16,10 +17,11 @@ export function Footer() {
             Navigation
           </div>
           <ul className="mt-4 space-y-2 text-[15px]">
-            <li><a href="#training" className="hover:opacity-60">Training</a></li>
-            <li><a href="#disziplinen" className="hover:opacity-60">Disziplinen</a></li>
-            <li><a href="#stundenplan" className="hover:opacity-60">Stundenplan</a></li>
-            <li><a href="#kontakt" className="hover:opacity-60">Kontakt</a></li>
+            <li><Link to="/" className="hover:opacity-60">Start</Link></li>
+            <li><Link to="/disziplinen" className="hover:opacity-60">Disziplinen</Link></li>
+            <li><Link to="/stundenplan" className="hover:opacity-60">Stundenplan</Link></li>
+            <li><Link to="/ueber-uns" className="hover:opacity-60">Über uns</Link></li>
+            <li><Link to="/kontakt" className="hover:opacity-60">Kontakt</Link></li>
           </ul>
         </div>
 
@@ -33,7 +35,6 @@ export function Footer() {
             <li><a href="https://www.facebook.com/share/1D1mQLdM8w/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Facebook</a></li>
             <li><a href="https://youtube.com/@fightclubhanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">YouTube</a></li>
           </ul>
-
         </div>
       </div>
 
@@ -41,8 +42,9 @@ export function Footer() {
         <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-3 px-5 py-6 text-[11px] uppercase tracking-[0.2em] text-white/80 md:flex-row md:px-10">
           <span>Fight Club Hanau</span>
           <div className="flex flex-wrap gap-6">
-            <a href="/impressum" className="hover:text-white">Impressum</a>
-            <a href="/datenschutz" className="hover:text-white">Datenschutzerklärung</a>
+            <Link to="/schulordnung" className="hover:text-white">Schulordnung</Link>
+            <Link to="/impressum" className="hover:text-white">Impressum</Link>
+            <Link to="/datenschutz" className="hover:text-white">Datenschutzerklärung</Link>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("fc:open-cookie-settings"))}
