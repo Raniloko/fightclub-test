@@ -54,7 +54,7 @@ export function Hero() {
     >
       <img
         ref={imgRef}
-        src="/kids-hero.jpg"
+        src={heroMainAsset.url}
         alt=""
         aria-hidden="true"
         loading="eager"
