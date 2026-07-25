@@ -3,11 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 const LINKS = [
-  { to: "/", label: "Start" },
-  { to: "/disziplinen", label: "Disziplinen" },
-  { to: "/stundenplan", label: "Stundenplan" },
-  { to: "/ueber-uns", label: "Über uns" },
-  { to: "/kontakt", label: "Kontakt" },
+  { to: "/", hash: undefined, label: "Start" },
+  { to: "/", hash: "disziplinen", label: "Disziplinen" },
+  { to: "/", hash: "stundenplan", label: "Stundenplan" },
+  { to: "/", hash: "about", label: "Über uns" },
+  { to: "/", hash: "kontakt", label: "Kontakt" },
 ] as const;
 
 export function Nav() {

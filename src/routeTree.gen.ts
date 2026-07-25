@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchulordnungRouteImport } from './routes/schulordnung'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -47,6 +48,11 @@ const McpRoute = McpRouteImport.update({
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatenschutzRoute = DatenschutzRouteImport.update({
@@ -101,6 +107,7 @@ const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/datenschutz'
+    | '/faq'
     | '/impressum'
     | '/mcp'
     | '/schulordnung'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/datenschutz'
+    | '/faq'
     | '/impressum'
     | '/mcp'
     | '/schulordnung'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/datenschutz'
+    | '/faq'
     | '/impressum'
     | '/mcp'
     | '/schulordnung'
@@ -201,6 +213,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DatenschutzRoute: typeof DatenschutzRoute
+  FaqRoute: typeof FaqRoute
   ImpressumRoute: typeof ImpressumRoute
   McpRoute: typeof McpRoute
   SchulordnungRoute: typeof SchulordnungRoute
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/datenschutz': {
@@ -321,6 +341,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DatenschutzRoute: DatenschutzRoute,
+  FaqRoute: FaqRoute,
   ImpressumRoute: ImpressumRoute,
   McpRoute: McpRoute,
   SchulordnungRoute: SchulordnungRoute,

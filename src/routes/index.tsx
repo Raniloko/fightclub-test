@@ -3,8 +3,10 @@ import { Toaster } from "sonner";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { Stats } from "@/components/site/Stats";
-import { DisciplinesPreview } from "@/components/site/DisciplinesPreview";
-import { AboutShort } from "@/components/site/AboutShort";
+import { Disciplines } from "@/components/site/Disciplines";
+import { Schedule } from "@/components/site/Schedule";
+import { About } from "@/components/site/About";
+import { Contact } from "@/components/site/Contact";
 import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
@@ -59,9 +61,11 @@ function Index() {
       <Nav />
       <Hero />
       <OpenDaySection />
-      <DisciplinesPreview />
+      <Disciplines />
+      <Schedule />
       <Stats />
-      <AboutShort />
+      <About />
+      <Contact />
       <CtaProbetraining />
       <Footer />
       <Toaster position="bottom-right" />
