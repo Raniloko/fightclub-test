@@ -65,7 +65,7 @@ export function Hero() {
         style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
       <img
-        src={heroMobileAsset.url}
+        src={heroMainAsset.url}
         alt=""
         aria-hidden="true"
         loading="eager"
