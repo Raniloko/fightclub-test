@@ -121,13 +121,14 @@
 
 .fc-stagger > * {
   opacity: 0;
-  animation: fc-rise 0.7s ease forwards;
+  transform: translateY(28px);
+  animation: fc-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.fc-stagger > *:nth-child(1) { animation-delay: 0.05s; }
-.fc-stagger > *:nth-child(2) { animation-delay: 0.45s; }
-.fc-stagger > *:nth-child(3) { animation-delay: 0.85s; }
-.fc-stagger > *:nth-child(4) { animation-delay: 1.15s; }
-.fc-stagger > *:nth-child(5) { animation-delay: 1.4s; }
+.fc-stagger > *:nth-child(1) { animation-delay: 2.6s; }
+.fc-stagger > *:nth-child(2) { animation-delay: 2.9s; }
+.fc-stagger > *:nth-child(3) { animation-delay: 3.2s; }
+.fc-stagger > *:nth-child(4) { animation-delay: 3.5s; }
+.fc-stagger > *:nth-child(5) { animation-delay: 3.8s; }
 
 .fc-hero-mask {
   -webkit-mask-image: linear-gradient(to top, transparent 0%, #fff 30%);
