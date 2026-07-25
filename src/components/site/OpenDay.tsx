@@ -120,7 +120,7 @@ export function OpenDaySection() {
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
-            href="/kontakt"
+            href="#kontakt"
             className="inline-flex items-center justify-center rounded-md bg-[#c8102e] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#a80d26]"
           >
             Vorbeikommen

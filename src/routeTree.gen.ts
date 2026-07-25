@@ -10,14 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnlockRouteImport } from './routes/unlock'
-import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
-import { Route as StundenplanRouteImport } from './routes/stundenplan'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchulordnungRouteImport } from './routes/schulordnung'
 import { Route as McpRouteImport } from './routes/mcp'
-import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as ImpressumRouteImport } from './routes/impressum'
-import { Route as DisziplinenRouteImport } from './routes/disziplinen'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -31,16 +28,6 @@ import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.
 const UnlockRoute = UnlockRouteImport.update({
   id: '/unlock',
   path: '/unlock',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UeberUnsRoute = UeberUnsRouteImport.update({
-  id: '/ueber-uns',
-  path: '/ueber-uns',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StundenplanRoute = StundenplanRouteImport.update({
-  id: '/stundenplan',
-  path: '/stundenplan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -58,19 +45,14 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
-const KontaktRoute = KontaktRouteImport.update({
-  id: '/kontakt',
-  path: '/kontakt',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DisziplinenRoute = DisziplinenRouteImport.update({
-  id: '/disziplinen',
-  path: '/disziplinen',
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatenschutzRoute = DatenschutzRouteImport.update({
@@ -125,14 +107,11 @@ const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
-  '/disziplinen': typeof DisziplinenRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
-  '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stundenplan': typeof StundenplanRoute
-  '/ueber-uns': typeof UeberUnsRoute
   '/unlock': typeof UnlockRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -145,14 +124,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
-  '/disziplinen': typeof DisziplinenRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
-  '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stundenplan': typeof StundenplanRoute
-  '/ueber-uns': typeof UeberUnsRoute
   '/unlock': typeof UnlockRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -166,14 +142,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/datenschutz': typeof DatenschutzRoute
-  '/disziplinen': typeof DisziplinenRoute
+  '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
-  '/kontakt': typeof KontaktRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/stundenplan': typeof StundenplanRoute
-  '/ueber-uns': typeof UeberUnsRoute
   '/unlock': typeof UnlockRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -188,14 +161,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/datenschutz'
-    | '/disziplinen'
+    | '/faq'
     | '/impressum'
-    | '/kontakt'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
-    | '/stundenplan'
-    | '/ueber-uns'
     | '/unlock'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -208,14 +178,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/datenschutz'
-    | '/disziplinen'
+    | '/faq'
     | '/impressum'
-    | '/kontakt'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
-    | '/stundenplan'
-    | '/ueber-uns'
     | '/unlock'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -228,14 +195,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/datenschutz'
-    | '/disziplinen'
+    | '/faq'
     | '/impressum'
-    | '/kontakt'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
-    | '/stundenplan'
-    | '/ueber-uns'
     | '/unlock'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -249,14 +213,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DatenschutzRoute: typeof DatenschutzRoute
-  DisziplinenRoute: typeof DisziplinenRoute
+  FaqRoute: typeof FaqRoute
   ImpressumRoute: typeof ImpressumRoute
-  KontaktRoute: typeof KontaktRoute
   McpRoute: typeof McpRoute
   SchulordnungRoute: typeof SchulordnungRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StundenplanRoute: typeof StundenplanRoute
-  UeberUnsRoute: typeof UeberUnsRoute
   UnlockRoute: typeof UnlockRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -274,20 +235,6 @@ declare module '@tanstack/react-router' {
       path: '/unlock'
       fullPath: '/unlock'
       preLoaderRoute: typeof UnlockRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ueber-uns': {
-      id: '/ueber-uns'
-      path: '/ueber-uns'
-      fullPath: '/ueber-uns'
-      preLoaderRoute: typeof UeberUnsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stundenplan': {
-      id: '/stundenplan'
-      path: '/stundenplan'
-      fullPath: '/stundenplan'
-      preLoaderRoute: typeof StundenplanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -311,13 +258,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/kontakt': {
-      id: '/kontakt'
-      path: '/kontakt'
-      fullPath: '/kontakt'
-      preLoaderRoute: typeof KontaktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/impressum': {
       id: '/impressum'
       path: '/impressum'
@@ -325,11 +265,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/disziplinen': {
-      id: '/disziplinen'
-      path: '/disziplinen'
-      fullPath: '/disziplinen'
-      preLoaderRoute: typeof DisziplinenRouteImport
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/datenschutz': {
@@ -401,14 +341,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DatenschutzRoute: DatenschutzRoute,
-  DisziplinenRoute: DisziplinenRoute,
+  FaqRoute: FaqRoute,
   ImpressumRoute: ImpressumRoute,
-  KontaktRoute: KontaktRoute,
   McpRoute: McpRoute,
   SchulordnungRoute: SchulordnungRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StundenplanRoute: StundenplanRoute,
-  UeberUnsRoute: UeberUnsRoute,
   UnlockRoute: UnlockRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:

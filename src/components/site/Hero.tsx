@@ -128,14 +128,16 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              to="/kontakt"
+              to="/"
+              hash="kontakt"
               className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
               Jetzt einsteigen
             </Link>
             <Link
-              to="/stundenplan"
+              to="/"
+              hash="stundenplan"
               className="fc-btn-ghost inline-flex items-center justify-center border-2 px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white"
               style={{
                 borderColor: "rgba(255,255,255,0.5)",
