@@ -18,10 +18,11 @@ export function Footer() {
           </div>
           <ul className="mt-4 space-y-2 text-[15px]">
             <li><Link to="/" className="hover:opacity-60">Start</Link></li>
-            <li><Link to="/disziplinen" className="hover:opacity-60">Disziplinen</Link></li>
-            <li><Link to="/stundenplan" className="hover:opacity-60">Stundenplan</Link></li>
-            <li><Link to="/ueber-uns" className="hover:opacity-60">Über uns</Link></li>
-            <li><Link to="/kontakt" className="hover:opacity-60">Kontakt</Link></li>
+            <li><Link to="/" hash="disziplinen" className="hover:opacity-60">Disziplinen</Link></li>
+            <li><Link to="/" hash="stundenplan" className="hover:opacity-60">Stundenplan</Link></li>
+            <li><Link to="/" hash="about" className="hover:opacity-60">Über uns</Link></li>
+            <li><Link to="/" hash="kontakt" className="hover:opacity-60">Kontakt</Link></li>
+            <li><Link to="/faq" className="hover:opacity-60">FAQ</Link></li>
           </ul>
         </div>
 
@@ -43,6 +44,7 @@ export function Footer() {
           <span>Fight Club Hanau</span>
           <div className="flex flex-wrap gap-6">
             <Link to="/schulordnung" className="hover:text-white">Schulordnung</Link>
+            <Link to="/faq" className="hover:text-white">FAQ</Link>
             <Link to="/impressum" className="hover:text-white">Impressum</Link>
             <Link to="/datenschutz" className="hover:text-white">Datenschutzerklärung</Link>
             <button

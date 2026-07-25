@@ -36,9 +36,10 @@ export function Nav() {
           <nav className="hidden items-center gap-8 lg:flex">
             {LINKS.map((l) => (
               <Link
-                key={l.to}
+                key={l.label}
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
+                hash={l.hash}
+                activeOptions={{ exact: l.to === "/" && !l.hash }}
                 className="fc-nav-link text-[13px] font-medium uppercase tracking-[0.15em] transition-colors duration-300"
                 activeProps={{ className: "text-[#00B4DC]" }}
               >
@@ -46,7 +47,8 @@ export function Nav() {
               </Link>
             ))}
             <Link
-              to="/kontakt"
+              to="/"
+              hash="kontakt"
               className="fc-nav-cta px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300"
             >
               Probetraining
@@ -91,8 +93,9 @@ export function Nav() {
           <nav className="flex flex-col px-6 pt-6">
             {LINKS.map((l, i) => (
               <Link
-                key={l.to}
+                key={l.label}
                 to={l.to}
+                hash={l.hash}
                 onClick={() => setOpen(false)}
                 className="fcm-link"
                 style={{ transitionDelay: open ? `${200 + i * 60}ms` : "0ms" }}
@@ -103,7 +106,7 @@ export function Nav() {
           </nav>
 
           <div className="fcm-bottom">
-            <Link to="/kontakt" onClick={() => setOpen(false)} className="fcm-cta">
+            <Link to="/" hash="kontakt" onClick={() => setOpen(false)} className="fcm-cta">
               Probetraining anfragen
             </Link>
             <div className="flex items-center justify-between px-8 pb-8 pt-6">

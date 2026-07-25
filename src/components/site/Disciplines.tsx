@@ -231,7 +231,7 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
             </div>
 
             <a
-              href="/kontakt"
+              href="#kontakt"
               className="mt-8 inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
             >
               Probetraining anfragen

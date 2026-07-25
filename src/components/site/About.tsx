@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function About() {
   return (
-    <section className="bg-[#f5f5f5]">
+    <section id="about" className="bg-[#f5f5f5]">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-2">
         <div className="relative min-h-[320px] md:min-h-[640px]">
           <img
@@ -33,7 +33,8 @@ export function About() {
               fängst du von vorne an. Gemeinsam.
             </p>
             <Link
-              to="/kontakt"
+              to="/"
+              hash="kontakt"
               className="mt-8 inline-block border-b border-[#0a0a0a] pb-1 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#0a0a0a] hover:opacity-60"
             >
               › Kontakt aufnehmen
