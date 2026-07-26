@@ -7,6 +7,8 @@ const LINKS = [
   { to: "/", hash: "disziplinen", label: "Disziplinen" },
   { to: "/", hash: "stundenplan", label: "Stundenplan" },
   { to: "/", hash: "about", label: "Über uns" },
+  { to: "/faq", hash: undefined, label: "FAQ" },
+  { to: "/schulordnung", hash: undefined, label: "Schulordnung" },
   { to: "/", hash: "kontakt", label: "Kontakt" },
 ] as const;
 

@@ -63,11 +63,19 @@ export function CookieBanner() {
 
   useEffect(() => {
     const existing = readConsent();
-    if (!existing) {
-      setOpen(true);
-    } else {
+    if (existing) {
       updateGtagConsent(existing.analytics);
+    } else {
+      const introSeen =
+        typeof window !== "undefined" &&
+        window.sessionStorage.getItem("introSeen");
+      const delay = introSeen ? 800 : 4200;
+      const t = setTimeout(() => setOpen(true), delay);
+      return () => clearTimeout(t);
     }
+  }, []);
+
+  useEffect(() => {
     const reopen = () => {
       const c = readConsent();
       setAnalytics(c?.analytics ?? false);
