@@ -37,7 +37,7 @@ export function OpenDaySection() {
           </span>
           <span className="block h-px w-8 bg-[#C9A84C]" />
         </div>
-        <h2 className="mt-5 font-display text-4xl uppercase text-white md:text-6xl">
+        <h2 className="mt-5 font-display text-4xl text-white md:text-6xl">
           Große Neueröffnung folgt
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-[15px] text-white/70 md:text-[17px]">
