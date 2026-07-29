@@ -21,6 +21,7 @@ export function Footer() {
             <li><Link to="/" hash="disziplinen" className="hover:opacity-60">Disziplinen</Link></li>
             <li><Link to="/" hash="stundenplan" className="hover:opacity-60">Stundenplan</Link></li>
             <li><Link to="/" hash="about" className="hover:opacity-60">Über uns</Link></li>
+            <li><Link to="/kindertraining" className="hover:opacity-60">Kindertraining</Link></li>
             <li><Link to="/" hash="kontakt" className="hover:opacity-60">Kontakt</Link></li>
             <li><Link to="/faq" className="hover:opacity-60">FAQ</Link></li>
           </ul>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
 
@@ -230,12 +231,22 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
               <p className="mt-2 text-sm text-white/80 md:text-[15px]">{c.who}</p>
             </div>
 
-            <a
-              href="#kontakt"
-              className="mt-8 inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
-            >
-              Probetraining anfragen
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
+              <a
+                href="#kontakt"
+                className="inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
+              >
+                Probetraining anfragen
+              </a>
+              {c.name === "Kindertraining" && (
+                <Link
+                  to="/kindertraining"
+                  className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#00B4DC] hover:text-white transition-colors"
+                >
+                  › Mehr zum Kindertraining
+                </Link>
+              )}
+            </div>
 
           </div>
         </div>
