@@ -13,6 +13,7 @@ import { Route as UnlockRouteImport } from './routes/unlock'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchulordnungRouteImport } from './routes/schulordnung'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as KindertrainingRouteImport } from './routes/kindertraining'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
@@ -43,6 +44,11 @@ const SchulordnungRoute = SchulordnungRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KindertrainingRoute = KindertrainingRouteImport.update({
+  id: '/kindertraining',
+  path: '/kindertraining',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumRoute = ImpressumRouteImport.update({
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/datenschutz': typeof DatenschutzRoute
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
+  '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/datenschutz': typeof DatenschutzRoute
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
+  '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -144,6 +152,7 @@ export interface FileRoutesById {
   '/datenschutz': typeof DatenschutzRoute
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
+  '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -163,6 +172,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/faq'
     | '/impressum'
+    | '/kindertraining'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/faq'
     | '/impressum'
+    | '/kindertraining'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -197,6 +208,7 @@ export interface FileRouteTypes {
     | '/datenschutz'
     | '/faq'
     | '/impressum'
+    | '/kindertraining'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -215,6 +227,7 @@ export interface RootRouteChildren {
   DatenschutzRoute: typeof DatenschutzRoute
   FaqRoute: typeof FaqRoute
   ImpressumRoute: typeof ImpressumRoute
+  KindertrainingRoute: typeof KindertrainingRoute
   McpRoute: typeof McpRoute
   SchulordnungRoute: typeof SchulordnungRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -256,6 +269,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kindertraining': {
+      id: '/kindertraining'
+      path: '/kindertraining'
+      fullPath: '/kindertraining'
+      preLoaderRoute: typeof KindertrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum': {
@@ -343,6 +363,7 @@ const rootRouteChildren: RootRouteChildren = {
   DatenschutzRoute: DatenschutzRoute,
   FaqRoute: FaqRoute,
   ImpressumRoute: ImpressumRoute,
+  KindertrainingRoute: KindertrainingRoute,
   McpRoute: McpRoute,
   SchulordnungRoute: SchulordnungRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
