@@ -61,7 +61,7 @@ export function Hero() {
         fetchPriority="high"
         width={1920}
         height={1080}
-        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover object-[center_top] md:block"
+        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full object-cover object-[center_30%] md:block"
         style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
       <img
@@ -72,7 +72,7 @@ export function Hero() {
         fetchPriority="high"
         width={800}
         height={1200}
-        className="pointer-events-none absolute inset-0 z-0 block h-full w-full object-cover object-center md:hidden"
+        className="pointer-events-none absolute inset-0 z-0 block h-full w-full object-cover object-[center_40%] md:hidden"
         style={{ filter: "contrast(110%) brightness(0.9)" }}
       />
 
