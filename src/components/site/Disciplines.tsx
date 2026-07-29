@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 import { X, Shield, Flame, Brain, Zap, Target, Users, Heart, Award, Smile } from "lucide-react";
 
