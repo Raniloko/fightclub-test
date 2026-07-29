@@ -149,7 +149,7 @@ export function Kindertraining() {
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src="https://images.pexels.com/photos/7045247/pexels-photo-7045247.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  src="https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="Kinder beim Techniktraining"
                   loading="lazy"
                   className="h-full w-full object-cover"
