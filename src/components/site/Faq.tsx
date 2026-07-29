@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 type QA = { q: string; a: string };
 
-const FAQS: QA[] = [
+export const FAQS: QA[] = [
   {
     q: "Kann ich ohne Vorerfahrung mit dem Training in Hanau starten?",
     a: "Ja, du brauchst keine Vorerfahrung. Wir holen dich auf deinem Level ab und führen dich Schritt für Schritt ins Training ein — egal ob MMA, Boxen, K1 oder Thaiboxen.",
@@ -82,9 +82,9 @@ export function Faq() {
             </span>
             <span className="block h-px w-8 bg-[#C9A84C]" />
           </div>
-          <h2 className="mt-4 text-center font-display text-5xl md:text-6xl">
+          <h1 className="mt-4 text-center font-display text-5xl md:text-6xl">
             Häufig gestellte<br />Fragen
-          </h2>
+          </h1>
           <div className="mx-auto mt-4 h-[3px] w-14 bg-[#C9A84C]" />
         </Reveal>
 

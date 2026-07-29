@@ -60,9 +60,9 @@ export function Schulordnung() {
             </span>
             <span className="block h-px w-8 bg-[#C9A84C]" />
           </div>
-          <h2 className="mt-4 text-center font-display text-5xl md:text-6xl text-[#C9A84C]">
+          <h1 className="mt-4 text-center font-display text-5xl md:text-6xl text-[#C9A84C]">
             Schulordnung
-          </h2>
+          </h1>
           <div className="mx-auto mt-4 h-[3px] w-14 bg-[#C9A84C]" />
           <p className="mx-auto mt-6 max-w-2xl text-center text-[14px] leading-relaxed text-white/70 md:text-[15px]">
             Mit Betreten der Trainingsfläche erkennen alle Mitglieder diese Schulordnung an und verpflichten sich, diese einzuhalten.
