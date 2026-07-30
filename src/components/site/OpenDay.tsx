@@ -61,6 +61,17 @@ export function OpenDaySection() {
             Route planen
           </a>
         </div>
+
+        <div className="mt-12 flex justify-center">
+          <img
+            src={opendayFlyerNewAsset.url}
+            alt="Flyer für die große Neueröffnung und den Tag der offenen Tür im Fight Club Hanau"
+            loading="lazy"
+            className="w-full max-w-[650px] rounded-md shadow-lg"
+            width={650}
+            height={auto}
+          />
+        </div>
       </div>
     </section>
   );
