@@ -15,7 +15,7 @@ export function OpenDayBar() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold tracking-[0.18em] sm:gap-4 sm:text-[12px]">
         <span className="hidden sm:inline">🥊</span>
-        <span>Große Neueröffnung · Termin folgt</span>
+        <span className="normal-case">Große Neueröffnung · Termin folgt</span>
         <span className="hidden text-[10px] tracking-[0.2em] underline underline-offset-4 md:inline">
           Mehr erfahren →
         </span>
@@ -38,7 +38,7 @@ export function OpenDaySection() {
           </span>
           <span className="block h-px w-8 bg-[#C9A84C]" />
         </div>
-        <h2 className="mt-5 font-display text-4xl text-white md:text-6xl">
+        <h2 className="mt-5 font-display text-4xl text-white normal-case md:text-6xl">
           Große Neueröffnung folgt
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-[15px] text-white/70 md:text-[17px]">
