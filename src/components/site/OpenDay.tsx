@@ -69,7 +69,7 @@ export function OpenDaySection() {
             loading="lazy"
             className="w-full max-w-[650px] rounded-md shadow-lg"
             width={650}
-            height={auto}
+            height={918}
           />
         </div>
       </div>
