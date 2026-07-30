@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import opendayFlyerNewAsset from "@/assets/openday-flyer-new.png.asset.json";
 
 export function OpenDayBar() {
   useEffect(() => {
