@@ -480,3 +480,13 @@ html.fc-intro-active body { visibility: visible; }
   border-color: #E8C96A;
   color: #000000;
 }
+
+/* Hero second line — fades in after the matrix headline resolves */
+.fc-second-line {
+  opacity: 0;
+  animation: fc-second-line-in 0.8s ease-out 5.6s forwards;
+}
+@keyframes fc-second-line-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
