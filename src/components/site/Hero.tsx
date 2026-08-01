@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { MatrixHeadline } from "./MatrixHeadline";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import heroMainAsset from "@/assets/hero-main-v2.png.asset.json";
 
@@ -115,10 +116,24 @@ export function Hero() {
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
             }}
           >
-            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. </span>
-            <span aria-hidden="true" className="block">Kein Sport.</span>
-            <span aria-hidden="true" className="block">Ein Lebensstil.</span>
+            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. Werde zur besseren Version von dir selbst.</span>
+            <MatrixHeadline
+              className="block"
+              text="WERDE ZUR BESSEREN VERSION VON DIR SELBST."
+              startDelay={2.6}
+            />
           </h1>
+
+          <p
+            className="mt-4 font-display uppercase fc-second-line"
+            style={{
+              color: "rgba(255,255,255,0.7)",
+              fontSize: "clamp(18px, 3vw, 32px)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Werde ein Teil der Fight Club Familie.
+          </p>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2">
             {["MMA", "K1", "Boxen", "Thaiboxen", "Self-Defense", "Wing-Fight", "Kindertraining"].map((d) => (

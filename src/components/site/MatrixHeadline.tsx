@@ -21,7 +21,7 @@ export function MatrixHeadline({
   );
   const [started, setStarted] = useState(false);
   const [delays] = useState<number[]>(() =>
-    chars.map((_, i) => i * 0.05 + Math.random() * 0.3),
+    chars.map((_, i) => Math.min(i * 0.05, 1.4) + Math.random() * 0.3),
   );
 
   useEffect(() => {
