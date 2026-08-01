@@ -34,16 +34,16 @@ export function OpenDaySection() {
         <div className="flex items-center justify-center gap-3">
           <span className="block h-px w-8 bg-[#C9A84C]" />
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
-            Bald ist es soweit
+            Tag der offenen Tür
           </span>
           <span className="block h-px w-8 bg-[#C9A84C]" />
         </div>
         <h2 className="mt-5 font-display text-4xl text-white normal-case md:text-6xl">
-          Große Neueröffnung folgt
+          Große Neueröffnung
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-[15px] text-white/70 md:text-[17px]">
-          Der Termin für unsere Neueröffnung und den Tag der offenen Tür steht noch nicht fest.
-          Sobald es losgeht, erfährst du es hier und auf unseren Social-Media-Kanälen.
+          Samstag, 29. August 2026 · 10:00 – 18:00 Uhr. Komm vorbei, lerne unsere Akademie kennen
+          und probiere die Kampfsportarten direkt vor Ort aus.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
