@@ -133,17 +133,13 @@ export function Contact() {
                 Öffnungszeiten
               </div>
               <div className="mt-2 space-y-1">
-                <div className="flex justify-between border-b border-[#e0e0e0] py-1">
-                  <span>Mo–Fr</span>
-                  <span>07:00–22:00</span>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
+                  <span>Montag – Freitag</span>
+                  <span>15:45 – 21:30 Uhr</span>
                 </div>
-                <div className="flex justify-between border-b border-[#e0e0e0] py-1">
-                  <span>Sa</span>
-                  <span>09:00–15:00</span>
-                </div>
-                <div className="flex justify-between border-b border-[#e0e0e0] py-1">
-                  <span>So</span>
-                  <span>Geschlossen</span>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
+                  <span>Samstag – Sonntag</span>
+                  <span className="text-right">nach Vereinbarung (Termin auf Anfrage)</span>
                 </div>
               </div>
             </div>
