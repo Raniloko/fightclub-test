@@ -9,9 +9,8 @@ const CONTACT = {
     country: "Deutschland",
   },
   hours: {
-    "Mo-Fr": "07:00–22:00",
-    Sa: "09:00–15:00",
-    So: "Geschlossen",
+    "Mo-Fr": "15:45–21:30",
+    "Sa-So": "nach Vereinbarung (Termin auf Anfrage)",
   },
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Geleitstra%C3%9Fe+66%2C+63456+Hanau",
