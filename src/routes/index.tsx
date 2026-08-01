@@ -43,8 +43,7 @@ export const Route = createFileRoute("/")({
           },
           areaServed: "Hanau",
           openingHoursSpecification: [
-            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:00", closes: "22:00" },
-            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "15:45", closes: "21:30" },
           ],
         }),
       },
