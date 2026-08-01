@@ -18,6 +18,28 @@ const DAY_LABELS_LONG: Record<WeekDay, string> = {
 
 const JS_DAY_TO_KEY: WeekDay[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
+/* Discipline colour coding */
+const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
+  { label: "MMA", match: ["mma"], color: "#FF4444" },
+  { label: "K1", match: ["k1", "k-1"], color: "#FF8C00" },
+  { label: "Thaiboxen", match: ["thai", "muay"], color: "#DC143C" },
+  { label: "Boxen", match: ["box"], color: "#4169E1" },
+  { label: "Self-Defense", match: ["self", "selbst"], color: "#228B22" },
+  { label: "Wing-Fight", match: ["wing"], color: "#8B008B" },
+  { label: "Kindertraining", match: ["kinder", "kids", "jugend"], color: "#FFD700" },
+  { label: "Sparring", match: ["sparring"], color: "#00B4DC" },
+];
+
+const FALLBACK_COLOR = "#9CA3AF";
+
+function disciplineColor(name: string) {
+  const n = (name || "").toLowerCase();
+  for (const d of DISCIPLINE_COLORS) {
+    if (d.match.some((m) => n.includes(m))) return d.color;
+  }
+  return FALLBACK_COLOR;
+}
+
 function toMinutes(hhmm: string) {
   const [h, m] = hhmm.split(":").map(Number);
   return h * 60 + m;
@@ -54,6 +76,15 @@ export function Schedule() {
     byDay[d].sort((a, b) => a.sort_index - b.sort_index || a.start_time.localeCompare(b.start_time));
   }
 
+  const dayColors = (d: WeekDay) => {
+    const seen: string[] = [];
+    for (const c of byDay[d]) {
+      const col = disciplineColor(c.discipline);
+      if (!seen.includes(col)) seen.push(col);
+    }
+    return seen;
+  };
+
   const isLive = (c: ScheduleClass) => {
     const isTodayClass = today === c.day;
     return isTodayClass && !c.cancelled_today && nowMin >= toMinutes(c.start_time) && nowMin < toMinutes(c.end_time);
@@ -62,23 +93,26 @@ export function Schedule() {
   const mobileClasses = byDay[day];
   const isTodayMobile = today === day;
 
+  const CARD_BG = "#1A1A1A";
+  const CARD_BORDER = "rgba(255,255,255,0.06)";
+
   return (
-    <section id="stundenplan" className="bg-white py-16 md:py-24">
+    <section id="stundenplan" className="py-16 md:py-24" style={{ backgroundColor: "#0D0D0D" }}>
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <Reveal>
           <div className="flex items-center gap-3">
-            <span className="block h-px w-8 bg-[#0a0a0a]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#555]">
+            <span className="block h-px w-8 bg-white/40" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-white/50">
               Wann trainierst du
             </span>
           </div>
           <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <h2 className="font-display text-5xl md:text-7xl">
+            <h2 className="font-display text-5xl text-white md:text-7xl">
               <span className="fc-headline-underline">Stundenplan</span>
             </h2>
             <Link
               to="/schulordnung"
-              className="group inline-flex w-fit items-center gap-3 border border-[#0a0a0a] bg-[#0a0a0a] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#C9A84C] hover:border-[#C9A84C]"
+              className="group inline-flex w-fit items-center gap-3 border border-white/20 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-colors hover:border-[#C9A84C] hover:bg-[#C9A84C]"
             >
               <BookOpen className="h-4 w-4" />
               Schulordnung ansehen
@@ -87,8 +121,27 @@ export function Schedule() {
           </div>
         </Reveal>
 
+        {/* Colour legend */}
+        <div
+          className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border p-4"
+          style={{ backgroundColor: "#111111", borderColor: CARD_BORDER }}
+        >
+          {DISCIPLINE_COLORS.map((d) => (
+            <span key={d.label} className="inline-flex items-center gap-2">
+              <span
+                className="inline-block h-3 w-3 rounded-full"
+                style={{ backgroundColor: d.color }}
+                aria-hidden="true"
+              />
+              <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">
+                {d.label}
+              </span>
+            </span>
+          ))}
+        </div>
+
         {/* Desktop: all days as columns */}
-        <div className="mt-12 hidden md:block">
+        <div className="mt-10 hidden md:block">
           <div className="grid grid-cols-7 gap-3">
             {DAYS.map((d) => {
               const isCurrent = today === d;
@@ -96,20 +149,21 @@ export function Schedule() {
               return (
                 <div
                   key={d}
-                  className={`flex flex-col border ${
-                    isCurrent ? "border-[#00B4DC] bg-[#00B4DC]/[0.04]" : "border-[#e5e5e5] bg-[#fafafa]"
-                  }`}
+                  className="flex flex-col border"
+                  style={{
+                    backgroundColor: "#111111",
+                    borderColor: isCurrent ? "rgba(0,180,220,0.5)" : CARD_BORDER,
+                  }}
                 >
                   <div
-                    className={`flex items-center justify-between border-b px-4 py-3 ${
-                      isCurrent ? "border-[#00B4DC]/40" : "border-[#e5e5e5]"
-                    }`}
+                    className="flex items-center justify-between border-b px-4 py-3"
+                    style={{ borderColor: isCurrent ? "rgba(0,180,220,0.35)" : CARD_BORDER }}
                   >
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#777]">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/45">
                         {DAY_LABELS_SHORT[d]}
                       </div>
-                      <div className="mt-0.5 font-display text-lg text-[#0a0a0a]">
+                      <div className="mt-0.5 font-display text-lg text-white">
                         {DAY_LABELS_LONG[d]}
                       </div>
                     </div>
@@ -122,7 +176,7 @@ export function Schedule() {
                   </div>
                   <div className="flex-1 p-3">
                     {list.length === 0 ? (
-                      <p className="py-6 text-center text-[12px] uppercase tracking-[0.15em] text-[#aaa]">
+                      <p className="py-6 text-center text-[12px] uppercase tracking-[0.15em] text-white/30">
                         Ruhetag
                       </p>
                     ) : (
@@ -130,38 +184,34 @@ export function Schedule() {
                         {list.map((c) => {
                           const live = isLive(c);
                           const cancelled = today === c.day && c.cancelled_today;
+                          const color = disciplineColor(c.discipline);
                           return (
                             <li
                               key={c.id}
-                              className={`relative border p-3 transition-colors ${
-                                live
-                                  ? "border-[#00B4DC] bg-white"
-                                  : cancelled
-                                  ? "border-red-200 bg-red-50/60"
-                                  : "border-[#eee] bg-white hover:border-[#0a0a0a]"
-                              }`}
+                              className="relative border p-3 pl-4 transition-colors"
+                              style={{
+                                backgroundColor: CARD_BG,
+                                borderColor: live ? "rgba(0,180,220,0.6)" : CARD_BORDER,
+                                borderLeft: `4px solid ${cancelled ? "rgba(255,255,255,0.15)" : color}`,
+                              }}
                             >
-                              {live && (
-                                <span className="absolute inset-y-2 left-0 w-[3px] bg-[#00B4DC]" />
-                              )}
                               <div
                                 className={`font-display text-base leading-tight ${
-                                  cancelled ? "text-[#999] line-through" : "text-[#0a0a0a]"
+                                  cancelled ? "text-white/35 line-through" : "text-white"
                                 }`}
                               >
                                 {c.start_time}
-                                <span className="text-[#bbb]">–</span>
+                                <span className="text-white/30">–</span>
                                 {c.end_time}
                               </div>
                               <div
-                                className={`mt-1 text-[13px] font-medium ${
-                                  cancelled ? "text-[#999] line-through" : "text-[#0a0a0a]"
-                                }`}
+                                className={`mt-1 text-[13px] font-semibold ${cancelled ? "line-through" : ""}`}
+                                style={{ color: cancelled ? "rgba(255,255,255,0.35)" : color }}
                               >
                                 {c.discipline}
                               </div>
                               {c.age && (
-                                <div className="mt-1 text-[10px] uppercase tracking-[0.15em] text-[#777]">
+                                <div className="mt-1 text-[10px] uppercase tracking-[0.15em] text-white/45">
                                   {c.age}
                                 </div>
                               )}
@@ -172,12 +222,12 @@ export function Schedule() {
                                 </div>
                               )}
                               {cancelled && (
-                                <div className="mt-2 inline-block border border-red-500 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-red-600">
+                                <div className="mt-2 inline-block border border-red-500/60 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-red-400">
                                   Fällt aus
                                 </div>
                               )}
                               {c.note && !cancelled && (
-                                <div className="mt-1.5 text-[11px] text-[#666]">{c.note}</div>
+                                <div className="mt-1.5 text-[11px] text-white/50">{c.note}</div>
                               )}
                             </li>
                           );
@@ -193,22 +243,35 @@ export function Schedule() {
 
         {/* Mobile: day switcher */}
         <div className="mt-10 md:hidden">
-          <div className="flex gap-2 overflow-x-auto border-b border-[#e5e5e5]">
+          <div className="flex gap-2 overflow-x-auto border-b" style={{ borderColor: CARD_BORDER }}>
             {DAYS.map((d) => {
               const active = day === d;
               const isCurrent = today === d;
+              const colors = dayColors(d);
               return (
                 <button
                   key={d}
                   onClick={() => setDay(d)}
-                  className={`relative shrink-0 px-3 py-3 text-[12px] font-semibold uppercase tracking-[0.2em] transition-colors ${
-                    active ? "text-[#0a0a0a]" : "text-[#999]"
+                  className={`relative shrink-0 px-3 pb-4 pt-3 text-[12px] font-semibold uppercase tracking-[0.2em] transition-colors ${
+                    active ? "text-white" : "text-white/45"
                   }`}
                 >
                   <span className="inline-flex items-center gap-2">
                     {DAY_LABELS_SHORT[d]}
                     {isCurrent && <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#00B4DC]" />}
                   </span>
+                  {active && colors.length > 0 && (
+                    <span className="mt-1.5 flex items-center justify-center gap-1">
+                      {colors.map((col) => (
+                        <span
+                          key={col}
+                          className="inline-block h-1.5 w-1.5 rounded-full"
+                          style={{ backgroundColor: col }}
+                          aria-hidden="true"
+                        />
+                      ))}
+                    </span>
+                  )}
                   {active && <span className="absolute inset-x-0 -bottom-px h-[3px] bg-[#00B4DC]" />}
                 </button>
               );
@@ -217,7 +280,7 @@ export function Schedule() {
 
           <div className="mt-6">
             {mobileClasses.length === 0 ? (
-              <p className="py-12 text-center text-[14px] text-[#777]">
+              <p className="py-12 text-center text-[14px] text-white/50">
                 Kein Training. Ruhetag.
               </p>
             ) : (
@@ -225,26 +288,25 @@ export function Schedule() {
                 {mobileClasses.map((c) => {
                   const live = isLive(c);
                   const cancelled = isTodayMobile && c.cancelled_today;
+                  const color = disciplineColor(c.discipline);
                   return (
                     <li
                       key={c.id}
-                      className={`relative border p-4 ${
-                        live
-                          ? "border-[#00B4DC] bg-[#00B4DC]/[0.06]"
-                          : cancelled
-                          ? "border-red-200 bg-red-50/60"
-                          : "border-[#e5e5e5] bg-[#fafafa]"
-                      }`}
+                      className="relative border p-4 pl-5"
+                      style={{
+                        backgroundColor: CARD_BG,
+                        borderColor: live ? "rgba(0,180,220,0.6)" : CARD_BORDER,
+                        borderLeft: `4px solid ${cancelled ? "rgba(255,255,255,0.15)" : color}`,
+                      }}
                     >
-                      {live && <span className="absolute inset-y-3 left-0 w-[3px] bg-[#00B4DC]" />}
                       <div className="flex items-start justify-between gap-3">
                         <div
                           className={`font-display text-xl ${
-                            cancelled ? "text-[#999] line-through" : "text-[#0a0a0a]"
+                            cancelled ? "text-white/35 line-through" : "text-white"
                           }`}
                         >
                           {c.start_time}
-                          <span className="text-[#bbb]">–</span>
+                          <span className="text-white/30">–</span>
                           {c.end_time}
                         </div>
                         {live && (
@@ -254,25 +316,24 @@ export function Schedule() {
                           </span>
                         )}
                         {cancelled && (
-                          <span className="border border-red-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-600">
+                          <span className="border border-red-500/60 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-400">
                             Fällt aus
                           </span>
                         )}
                       </div>
                       <div
-                        className={`mt-1.5 text-[15px] font-semibold ${
-                          cancelled ? "text-[#999] line-through" : "text-[#0a0a0a]"
-                        }`}
+                        className={`mt-1.5 text-[15px] font-semibold ${cancelled ? "line-through" : ""}`}
+                        style={{ color: cancelled ? "rgba(255,255,255,0.35)" : color }}
                       >
                         {c.discipline}
                       </div>
                       {c.age && (
-                        <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-[#777]">
+                        <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-white/45">
                           {c.age}
                         </div>
                       )}
                       {c.note && !cancelled && (
-                        <div className="mt-2 text-xs text-[#555]">{c.note}</div>
+                        <div className="mt-2 text-xs text-white/50">{c.note}</div>
                       )}
                     </li>
                   );
@@ -282,14 +343,17 @@ export function Schedule() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#e5e5e5] pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-[#777]">
+        <div
+          className="mt-10 flex flex-col gap-3 border-t pt-6 md:flex-row md:items-center md:justify-between"
+          style={{ borderColor: CARD_BORDER }}
+        >
+          <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/50">
             <Calendar className="h-3.5 w-3.5" />
             Personal Training nur nach Terminvereinbarung
           </p>
           <Link
             to="/schulordnung"
-            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#0a0a0a] underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white underline-offset-4 hover:underline"
           >
             Regeln der Akademie – Schulordnung
             <span>→</span>
