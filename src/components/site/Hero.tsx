@@ -120,7 +120,7 @@ export function Hero() {
             <MatrixHeadline
               className="block"
               text="WERDE ZUR BESSEREN VERSION VON DIR SELBST."
-              startDelay={1.2}
+              startDelay={0.6}
             />
           </h1>
 

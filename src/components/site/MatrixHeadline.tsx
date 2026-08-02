@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@%&*+=<>/";
-
-type CharState = { resolved: boolean; display: string };
-
 export function MatrixHeadline({
   text,
   startDelay = 0,
@@ -16,44 +12,27 @@ export function MatrixHeadline({
   style?: React.CSSProperties;
 }) {
   const chars = Array.from(text);
-  const [states, setStates] = useState<CharState[]>(() =>
-    chars.map((c) => ({ resolved: c === " ", display: c })),
-  );
   const [started, setStarted] = useState(false);
-  const [delays] = useState<number[]>(() =>
-    chars.map((_, i) => Math.min(i * 0.05, 1.4) + Math.random() * 0.3),
-  );
+  const [landed, setLanded] = useState<boolean[]>(() => chars.map(() => false));
+
+  const delays = chars.map((_, i) => i * 0.055);
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
-    const intervals: ReturnType<typeof setInterval>[] = [];
-
     const kick = setTimeout(() => {
       setStarted(true);
       chars.forEach((c, i) => {
         if (c === " ") return;
-        const landMs = delays[i]! * 1000 + 600;
-        const iv = setInterval(() => {
-          setStates((prev) => {
-            const next = [...prev];
-            if (next[i]!.resolved) return prev;
-            next[i] = {
-              resolved: false,
-              display: GLYPHS[Math.floor(Math.random() * GLYPHS.length)]!,
-            };
-            return next;
-          });
-        }, 10);
-        intervals.push(iv);
         timers.push(
-          setTimeout(() => {
-            clearInterval(iv);
-            setStates((prev) => {
-              const next = [...prev];
-              next[i] = { resolved: true, display: c };
-              return next;
-            });
-          }, landMs),
+          setTimeout(
+            () =>
+              setLanded((prev) => {
+                const next = [...prev];
+                next[i] = true;
+                return next;
+              }),
+            i * 55 + 620,
+          ),
         );
       });
     }, startDelay * 1000);
@@ -61,7 +40,6 @@ export function MatrixHeadline({
     return () => {
       clearTimeout(kick);
       timers.forEach(clearTimeout);
-      intervals.forEach(clearInterval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, startDelay]);
@@ -70,24 +48,27 @@ export function MatrixHeadline({
     <span className={className} style={style} aria-hidden="true">
       {chars.map((c, i) => {
         if (c === " ") return <span key={i}> </span>;
-        const s = states[i]!;
+        const d = delays[i]!;
         return (
           <span
             key={i}
             style={{
               display: "inline-block",
-              fontFamily: s.resolved
-                ? "'Barlow Condensed', sans-serif"
-                : "ui-monospace, SFMono-Regular, Menlo, monospace",
-              transform: started
-                ? "translateY(0)"
-                : "translateY(-100px)",
+              transform: started ? "translateY(0)" : "translateY(-110px)",
               opacity: started ? 1 : 0,
-              transition: `transform 0.5s cubic-bezier(0.16,1,0.3,1) ${delays[i]}s, opacity 0.3s ease ${delays[i]}s`,
+              color: "#fff",
+              textShadow: landed[i]
+                ? "0 2px 40px rgba(0,0,0,0.5)"
+                : "0 0 12px rgba(0,180,220,0.9), 0 0 26px rgba(0,180,220,0.6)",
+              transition: [
+                `transform 0.62s cubic-bezier(0.2, 0.9, 0.25, 1) ${d}s`,
+                `opacity 0.25s ease ${d}s`,
+                "text-shadow 0.45s ease",
+              ].join(", "),
               willChange: "transform",
             }}
           >
-            {s.display}
+            {c}
           </span>
         );
       })}
