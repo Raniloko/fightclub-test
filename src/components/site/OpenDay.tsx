@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import opendayFlyerNewAsset from "@/assets/openday-flyer-new.png.asset.json";
+import opendayFlyerNewAsset from "@/assets/openday-flyer-2026.jpg.asset.json";
 
 const TARGET = new Date("2026-08-29T10:00:00+02:00").getTime();
 
@@ -157,12 +157,13 @@ export function OpenDaySection() {
         <div className="mt-12 flex justify-center">
           <img
             src={opendayFlyerNewAsset.url}
-            alt="Flyer für die große Neueröffnung und den Tag der offenen Tür im Fight Club Hanau"
+            alt="Flyer für die große Neueröffnung und den Tag der offenen Tür im Fight Club Hanau am 29.08.2026"
             loading="lazy"
             className="fc-gold-glow w-full max-w-[650px] rounded-md"
-            width={650}
-            height={966}
+            width={863}
+            height={1272}
           />
+
         </div>
       </div>
     </section>
