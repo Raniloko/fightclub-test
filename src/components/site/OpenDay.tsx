@@ -1,5 +1,93 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import opendayFlyerNewAsset from "@/assets/openday-flyer-new.png.asset.json";
+
+const TARGET = new Date("2026-08-29T10:00:00+02:00").getTime();
+
+type Parts = { days: number; hours: number; minutes: number; seconds: number };
+
+function getParts(): Parts {
+  const diff = Math.max(0, TARGET - Date.now());
+  return {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff / 3600000) % 24),
+    minutes: Math.floor((diff / 60000) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
+
+function FlipCell({ value, label }: { value: number; label: string }) {
+  const padded = String(value).padStart(2, "0");
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div
+        key={padded}
+        className="fc-flip min-w-[62px] border border-[#C9A84C]/40 bg-[#141414] px-3 py-3 font-display text-3xl tabular-nums text-[#C9A84C] md:min-w-[86px] md:px-5 md:py-4 md:text-5xl"
+        style={{ transformOrigin: "center top" }}
+      >
+        {padded}
+      </div>
+      <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/60 md:text-[11px]">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function Countdown() {
+  const [parts, setParts] = useState<Parts | null>(null);
+
+  useEffect(() => {
+    setParts(getParts());
+    const id = setInterval(() => setParts(getParts()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (!parts) return null;
+
+  return (
+    <div className="mt-9 flex items-end justify-center gap-3 md:gap-5">
+      <FlipCell value={parts.days} label="Tage" />
+      <FlipCell value={parts.hours} label="Stunden" />
+      <FlipCell value={parts.minutes} label="Minuten" />
+      <FlipCell value={parts.seconds} label="Sekunden" />
+    </div>
+  );
+}
+
+function Sparkles({ count = 10 }: { count?: number }) {
+  const sparkles = useMemo(
+    () =>
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        delay: Math.random() * 1.8,
+        duration: 1.5 + Math.random() * 0.5,
+        size: 10 + Math.random() * 12,
+      })),
+    [count],
+  );
+
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {sparkles.map((s) => (
+        <span
+          key={s.id}
+          className="fc-sparkle"
+          style={{
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            fontSize: `${s.size}px`,
+            animationDelay: `${s.delay}s`,
+            animationDuration: `${s.duration}s`,
+          }}
+        >
+          ✦
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export function OpenDayBar() {
   useEffect(() => {
@@ -11,7 +99,7 @@ export function OpenDayBar() {
   return (
     <a
       href="#tag-der-offenen-tuer"
-      className="fc-openday-bar fixed inset-x-0 top-0 z-[55] block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
+      className="fc-openday-bar fc-gold-glow fixed inset-x-0 top-0 z-[55] block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold tracking-[0.18em] sm:gap-4 sm:text-[12px]">
         <span className="hidden sm:inline">🥊</span>
@@ -28,9 +116,10 @@ export function OpenDaySection() {
   return (
     <section
       id="tag-der-offenen-tuer"
-      className="relative scroll-mt-36 overflow-hidden bg-[#0a0a0a] py-14 md:py-24"
+      className="fc-shimmer-border relative scroll-mt-36 overflow-hidden bg-[#0a0a0a] py-14 md:py-24"
     >
-      <div className="mx-auto max-w-[900px] px-4 text-center md:px-8">
+      <Sparkles />
+      <div className="relative z-[1] mx-auto max-w-[900px] px-4 text-center md:px-8">
         <div className="flex items-center justify-center gap-3">
           <span className="block h-px w-8 bg-[#C9A84C]" />
           <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
@@ -45,7 +134,10 @@ export function OpenDaySection() {
           Samstag, 29. August 2026 · 10:00 – 18:00 Uhr. Komm vorbei, lerne unsere Akademie kennen
           und probiere die Kampfsportarten direkt vor Ort aus.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+
+        <Countdown />
+
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
             href="#kontakt"
             className="inline-flex items-center justify-center rounded-md bg-[#c8102e] px-6 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#a80d26]"
@@ -67,7 +159,7 @@ export function OpenDaySection() {
             src={opendayFlyerNewAsset.url}
             alt="Flyer für die große Neueröffnung und den Tag der offenen Tür im Fight Club Hanau"
             loading="lazy"
-            className="w-full max-w-[650px] rounded-md shadow-lg"
+            className="fc-gold-glow w-full max-w-[650px] rounded-md"
             width={650}
             height={966}
           />
