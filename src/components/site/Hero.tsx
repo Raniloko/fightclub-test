@@ -96,22 +96,22 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(20, 20, 20, 0.85) 0%, rgba(60, 60, 60, 0.60) 30%, rgba(120, 120, 120, 0.40) 60%, rgba(200, 200, 200, 0.20) 85%, rgba(255, 255, 255, 0.05) 100%)",
+            "linear-gradient(180deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.55) 35%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0.70) 100%)",
           willChange: "transform",
         }}
       />
 
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
-        <div className="w-full px-6 pb-12 md:px-12 md:pb-16 fc-stagger">
-          <div className="flex items-center gap-3">
+        <div className="w-full px-6 pb-12 md:px-12 md:pb-16">
+          <div className="flex items-center gap-3 fc-late fc-late-1">
             <span className="fc-badge-new">Neu in Hanau!!!</span>
           </div>
 
           <h1
             className="mt-6 font-display uppercase text-white"
             style={{
-              fontSize: "clamp(52px, 10vw, 120px)",
-              lineHeight: 0.9,
+              fontSize: "clamp(30px, 5.6vw, 68px)",
+              lineHeight: 0.95,
               fontWeight: 800,
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
             }}
@@ -120,12 +120,12 @@ export function Hero() {
             <MatrixHeadline
               className="block"
               text="WERDE ZUR BESSEREN VERSION VON DIR SELBST."
-              startDelay={2.6}
+              startDelay={1.2}
             />
           </h1>
 
           <p
-            className="mt-4 font-display uppercase fc-second-line"
+            className="mt-4 font-display uppercase fc-late fc-late-2"
             style={{
               color: "rgba(255,255,255,0.7)",
               fontSize: "clamp(18px, 3vw, 32px)",
@@ -135,14 +135,14 @@ export function Hero() {
             Werde ein Teil der Fight Club Familie.
           </p>
 
-          <div className="mt-6 flex max-w-2xl flex-wrap gap-2">
+          <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3">
             {["MMA", "K1", "Boxen", "Thaiboxen", "Self-Defense", "Wing-Fight", "Kindertraining"].map((d) => (
               <span key={d} className="fc-tag">{d}</span>
             ))}
           </div>
 
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row fc-late fc-late-4">
             <Link
               to="/"
               hash="kontakt"

@@ -481,14 +481,18 @@ html.fc-intro-active body { visibility: visible; }
   color: #000000;
 }
 
-/* Hero second line — fades in after the matrix headline resolves */
-.fc-second-line {
+/* Hero elements — appear only after the matrix headline has rained down */
+.fc-late {
   opacity: 0;
-  animation: fc-second-line-in 0.8s ease-out 5.6s forwards;
+  transform: translateY(16px);
+  animation: fc-late-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-@keyframes fc-second-line-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.fc-late-1 { animation-delay: 3.7s; }
+.fc-late-2 { animation-delay: 3.9s; }
+.fc-late-3 { animation-delay: 4.1s; }
+.fc-late-4 { animation-delay: 4.3s; }
+@keyframes fc-late-in {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === Neueröffnung: Glow, Shimmer-Border, Sparkles, Countdown === */
