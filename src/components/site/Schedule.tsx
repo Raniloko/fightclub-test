@@ -306,7 +306,7 @@ export function Schedule() {
                           }`}
                         >
                           {c.start_time}
-                          <span className="text-white/30">–</span>
+                          <span className="mx-1 text-white/60">–</span>
                           {c.end_time}
                         </div>
                         {live && (
