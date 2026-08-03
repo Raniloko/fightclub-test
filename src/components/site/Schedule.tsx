@@ -289,6 +289,7 @@ export function Schedule() {
                 Sonntag nur nach Terminvereinbarung
               </p>
             )}
+            {mobileClasses.length === 0 ? (
               <p className="py-12 text-center text-[14px] text-white/50">
                 Kein Training. Ruhetag.
               </p>
