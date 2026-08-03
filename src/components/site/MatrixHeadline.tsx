@@ -15,7 +15,7 @@ export function MatrixHeadline({
   const [started, setStarted] = useState(false);
   const [landed, setLanded] = useState<boolean[]>(() => chars.map(() => false));
 
-  const delays = chars.map((_, i) => i * 0.055);
+  const delays = chars.map((_, i) => i * 0.04);
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
