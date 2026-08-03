@@ -30,9 +30,9 @@ export function Nav() {
   return (
     <>
       <header className="fc-nav">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 md:px-10 lg:pl-[32px]">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-3 md:px-10 md:py-4 lg:pl-[32px]">
           <Link to="/" aria-label="Fight Club Hanau" className="hover:opacity-80">
-            <Logo size={72} />
+            <Logo size={72} className="lg:!h-[104px]" />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
