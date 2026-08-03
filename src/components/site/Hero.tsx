@@ -63,7 +63,7 @@ export function Hero() {
         width={1027}
         height={1531}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden w-full object-cover object-[center_top] md:block"
-        style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
+        style={{ filter: "grayscale(25%) contrast(110%) brightness(1.05)", willChange: "transform" }}
       />
       <img
         src={heroMainAsset.url}
