@@ -174,6 +174,11 @@ export function Schedule() {
                       </span>
                     )}
                   </div>
+                  {d === "SUN" && (
+                    <p className="border-b px-4 py-2 text-[10px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER }}>
+                      Nur nach Terminvereinbarung
+                    </p>
+                  )}
                   <div className="flex-1 p-3">
                     {list.length === 0 ? (
                       <p className="py-6 text-center text-[12px] uppercase tracking-[0.15em] text-white/30">
@@ -201,7 +206,7 @@ export function Schedule() {
                                 }`}
                               >
                                 {c.start_time}
-                                <span className="text-white/30">–</span>
+                                <span className="mx-1 text-white/60">–</span>
                                 {c.end_time}
                               </div>
                               <div
@@ -279,6 +284,11 @@ export function Schedule() {
           </div>
 
           <div className="mt-6">
+            {day === "SUN" && (
+              <p className="mb-4 border px-4 py-3 text-[12px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER, backgroundColor: "#111111" }}>
+                Sonntag nur nach Terminvereinbarung
+              </p>
+            )}
             {mobileClasses.length === 0 ? (
               <p className="py-12 text-center text-[14px] text-white/50">
                 Kein Training. Ruhetag.
@@ -306,7 +316,7 @@ export function Schedule() {
                           }`}
                         >
                           {c.start_time}
-                          <span className="text-white/30">–</span>
+                          <span className="mx-1 text-white/60">–</span>
                           {c.end_time}
                         </div>
                         {live && (
