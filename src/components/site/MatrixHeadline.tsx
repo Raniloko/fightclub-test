@@ -31,7 +31,7 @@ export function MatrixHeadline({
                 next[i] = true;
                 return next;
               }),
-            i * 55 + 620,
+            i * 40 + 620,
           ),
         );
       });
