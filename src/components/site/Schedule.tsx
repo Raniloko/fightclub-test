@@ -174,6 +174,11 @@ export function Schedule() {
                       </span>
                     )}
                   </div>
+                  {d === "SUN" && (
+                    <p className="border-b px-4 py-2 text-[10px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER }}>
+                      Nur nach Terminvereinbarung
+                    </p>
+                  )}
                   <div className="flex-1 p-3">
                     {list.length === 0 ? (
                       <p className="py-6 text-center text-[12px] uppercase tracking-[0.15em] text-white/30">
