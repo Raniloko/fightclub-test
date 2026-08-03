@@ -74,7 +74,7 @@ export function Hero() {
         width={1027}
         height={1531}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block w-full object-cover object-[center_top] md:hidden"
-        style={{ filter: "contrast(110%) brightness(0.9)" }}
+        style={{ filter: "contrast(105%) brightness(1.05)" }}
       />
 
 
