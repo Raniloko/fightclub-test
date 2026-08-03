@@ -487,10 +487,10 @@ html.fc-intro-active body { visibility: visible; }
   transform: translateY(16px);
   animation: fc-late-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.fc-late-1 { animation-delay: 3.7s; }
-.fc-late-2 { animation-delay: 3.9s; }
-.fc-late-3 { animation-delay: 4.1s; }
-.fc-late-4 { animation-delay: 4.3s; }
+.fc-late-1 { animation-delay: 5.2s; }
+.fc-late-2 { animation-delay: 5.4s; }
+.fc-late-3 { animation-delay: 5.6s; }
+.fc-late-4 { animation-delay: 5.8s; }
 @keyframes fc-late-in {
   to { opacity: 1; transform: translateY(0); }
 }
