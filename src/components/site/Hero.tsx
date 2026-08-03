@@ -62,7 +62,7 @@ export function Hero() {
         fetchPriority="high"
         width={1027}
         height={1531}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[88px] z-0 hidden w-full object-cover object-[center_top] md:block"
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden w-full object-cover object-[center_top] md:block"
         style={{ filter: "grayscale(40%) contrast(115%) brightness(0.85)", willChange: "transform" }}
       />
       <img
