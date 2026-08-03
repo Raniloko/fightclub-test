@@ -284,7 +284,11 @@ export function Schedule() {
           </div>
 
           <div className="mt-6">
-            {mobileClasses.length === 0 ? (
+            {day === "SUN" && (
+              <p className="mb-4 border px-4 py-3 text-[12px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER, backgroundColor: "#111111" }}>
+                Sonntag nur nach Terminvereinbarung
+              </p>
+            )}
               <p className="py-12 text-center text-[14px] text-white/50">
                 Kein Training. Ruhetag.
               </p>
