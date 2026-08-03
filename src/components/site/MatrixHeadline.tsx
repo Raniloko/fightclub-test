@@ -44,31 +44,45 @@ export function MatrixHeadline({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, startDelay]);
 
+  const words = text.split(" ");
+  let charIndex = 0;
+
   return (
     <span className={className} style={style} aria-hidden="true">
-      {chars.map((c, i) => {
-        if (c === " ") return <span key={i}> </span>;
-        const d = delays[i]!;
+      {words.map((word, wordIndex) => {
+        const isLastWord = wordIndex === words.length - 1;
+        const wordStart = charIndex;
+        const wordChars = Array.from(word).map((c, i) => {
+          const globalIndex = wordStart + i;
+          const d = delays[globalIndex]!;
+          return (
+            <span
+              key={i}
+              style={{
+                display: "inline-block",
+                transform: started ? "translateY(0)" : "translateY(-110px)",
+                opacity: started ? 1 : 0,
+                color: "#fff",
+                textShadow: landed[globalIndex]
+                  ? "0 2px 40px rgba(0,0,0,0.5)"
+                  : "0 0 12px rgba(0,180,220,0.9), 0 0 26px rgba(0,180,220,0.6)",
+                transition: [
+                  `transform 0.62s cubic-bezier(0.2, 0.9, 0.25, 1) ${d}s`,
+                  `opacity 0.25s ease ${d}s`,
+                  "text-shadow 0.45s ease",
+                ].join(", "),
+                willChange: "transform",
+              }}
+            >
+              {c}
+            </span>
+          );
+        });
+        charIndex += word.length + 1;
         return (
-          <span
-            key={i}
-            style={{
-              display: "inline-block",
-              transform: started ? "translateY(0)" : "translateY(-110px)",
-              opacity: started ? 1 : 0,
-              color: "#fff",
-              textShadow: landed[i]
-                ? "0 2px 40px rgba(0,0,0,0.5)"
-                : "0 0 12px rgba(0,180,220,0.9), 0 0 26px rgba(0,180,220,0.6)",
-              transition: [
-                `transform 0.62s cubic-bezier(0.2, 0.9, 0.25, 1) ${d}s`,
-                `opacity 0.25s ease ${d}s`,
-                "text-shadow 0.45s ease",
-              ].join(", "),
-              willChange: "transform",
-            }}
-          >
-            {c}
+          <span key={wordIndex} className="whitespace-nowrap">
+            {wordChars}
+            {!isLastWord && <span> </span>}
           </span>
         );
       })}
