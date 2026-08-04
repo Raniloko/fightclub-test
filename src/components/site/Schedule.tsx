@@ -24,6 +24,7 @@ const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Kick-Boxen Frauen", match: ["frauen"], color: "#FF2E9A" },
   { label: "Boxen (Wettkampf)", match: ["wettkampf"], color: "#1E3A8A" },
   { label: "Boxen-Teens", match: ["boxen-teens"], color: "#6EA8FF" },
+  { label: "Mini/Kids/Teens Kickboxen", match: ["mini-kickbox", "kids-kickbox", "teens-kickbox"], color: "#FACC15" },
   { label: "Wing Fight / Selfdefense", match: ["wing", "self"], color: "#8B5CF6" },
   { label: "MMA / Ground and Pound", match: ["mma", "ground"], color: "#FF4444" },
   { label: "Submission Grappling", match: ["grappling", "submission"], color: "#00CFC1" },
