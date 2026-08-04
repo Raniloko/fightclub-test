@@ -102,6 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "google-site-verification", content: "B6kswCfvMpUIGWTyDzThv80L5Y8eI9ivi6V9CCs_05Y" },
+      { name: "google", content: "notranslate" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -158,7 +159,7 @@ function RootShell({ children }: { children: ReactNode }) {
     "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
 
   return (
-    <html lang="en">
+    <html lang="de" translate="no" className="notranslate">
       <head>
         {/* Runs before body paint so the curtain covers the page instantly on reload */}
         <script dangerouslySetInnerHTML={{ __html: introBootstrap }} />
