@@ -32,17 +32,17 @@ export function Nav() {
       <header className="fc-nav">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-3 md:px-10 md:py-4 lg:pl-[32px]">
           <Link to="/" aria-label="Fight Club Hanau" className="hover:opacity-80">
-            <Logo size={72} className="lg:!h-[104px]" />
+            <Logo size={84} className="block lg:!h-[120px]" />
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {LINKS.map((l) => (
               <Link
                 key={l.label}
                 to={l.to}
                 hash={l.hash}
                 activeOptions={{ exact: l.to === "/" && !l.hash }}
-                className="fc-nav-link text-[13px] font-medium uppercase tracking-[0.15em] transition-colors duration-300"
+                className="fc-nav-link text-[15px] font-semibold uppercase tracking-[0.12em] transition-colors duration-300"
                 activeProps={{ className: "text-[#00B4DC]" }}
               >
                 {l.label}

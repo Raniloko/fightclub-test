@@ -212,8 +212,8 @@ export function Schedule() {
                               }}
                             >
                               <div
-                                className={`font-display text-base leading-tight ${
-                                  cancelled ? "text-white/35 line-through" : "text-white"
+                                className={`text-[14px] font-medium leading-tight tracking-[0.02em] tabular-nums ${
+                                  cancelled ? "text-white/35 line-through" : "text-white/90"
                                 }`}
                               >
                                 {c.start_time}
@@ -331,8 +331,8 @@ export function Schedule() {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div
-                          className={`font-display text-xl ${
-                            cancelled ? "text-white/35 line-through" : "text-white"
+                          className={`text-[17px] font-medium tracking-[0.02em] tabular-nums ${
+                            cancelled ? "text-white/35 line-through" : "text-white/90"
                           }`}
                         >
                           {c.start_time}
