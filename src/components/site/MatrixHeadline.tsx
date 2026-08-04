@@ -82,7 +82,7 @@ export function MatrixHeadline({
         return (
           <span key={wordIndex} className="inline-block max-w-full whitespace-nowrap">
             {wordChars}
-            {!isLastWord && <span> </span>}
+            {!isLastWord && <span>{"\u00A0"}</span>}
           </span>
         );
       })}
