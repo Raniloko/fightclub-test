@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Calendar } from "lucide-react";
+import { BookOpen, Calendar, Clock } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { listSchedule, type ScheduleClass, type WeekDay } from "@/lib/schedule.functions";
 
@@ -175,9 +175,18 @@ export function Schedule() {
                     )}
                   </div>
                   {d === "SUN" && (
-                    <p className="border-b px-4 py-2 text-[10px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER }}>
-                      Nur nach Terminvereinbarung
-                    </p>
+                    <div
+                      className="flex items-center gap-2 border-b px-4 py-3"
+                      style={{
+                        borderColor: "rgba(201,168,76,0.4)",
+                        backgroundColor: "rgba(201,168,76,0.12)",
+                      }}
+                    >
+                      <Clock className="h-3.5 w-3.5 shrink-0 text-[#C9A84C]" />
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
+                        Nur nach Terminvereinbarung
+                      </p>
+                    </div>
                   )}
                   <div className="flex-1 p-3">
                     {list.length === 0 ? (
@@ -285,9 +294,18 @@ export function Schedule() {
 
           <div className="mt-6">
             {day === "SUN" && (
-              <p className="mb-4 border px-4 py-3 text-[12px] uppercase tracking-[0.15em] text-[#C9A84C]" style={{ borderColor: CARD_BORDER, backgroundColor: "#111111" }}>
-                Sonntag nur nach Terminvereinbarung
-              </p>
+              <div
+                className="mb-5 flex items-center gap-3 border px-5 py-4"
+                style={{
+                  borderColor: "rgba(201,168,76,0.5)",
+                  backgroundColor: "rgba(201,168,76,0.12)",
+                }}
+              >
+                <Clock className="h-5 w-5 shrink-0 text-[#C9A84C]" />
+                <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
+                  Sonntag nur nach Terminvereinbarung
+                </p>
+              </div>
             )}
             {mobileClasses.length === 0 ? (
               <p className="py-12 text-center text-[14px] text-white/50">
