@@ -62,9 +62,9 @@ export function MatrixHeadline({
                 display: "inline-block",
                 transform: started ? "translateY(0)" : "translateY(-110px)",
                 opacity: started ? 1 : 0,
-                color: "#fff",
+                color: landed[globalIndex] ? "#E8C96A" : "#fff",
                 textShadow: landed[globalIndex]
-                  ? "0 2px 40px rgba(0,0,0,0.5)"
+                  ? "0 2px 30px rgba(0,0,0,0.6), 0 0 18px rgba(232,201,106,0.35)"
                   : "0 0 12px rgba(0,180,220,0.9), 0 0 26px rgba(0,180,220,0.6)",
                 transition: [
                   `transform 0.62s cubic-bezier(0.2, 0.9, 0.25, 1) ${d}s`,

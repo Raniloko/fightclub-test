@@ -541,3 +541,10 @@ html.fc-intro-active body { visibility: visible; }
   100% { transform: rotateX(0deg); opacity: 1; }
 }
 .fc-flip { animation: fc-flip 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+
+.fc-slogan-underline {
+  height: 4px;
+  width: min(320px, 70%);
+  background: linear-gradient(90deg, #E8C96A 0%, #C9A84C 60%, rgba(201, 168, 76, 0) 100%);
+  transform: skewX(-12deg);
+}
