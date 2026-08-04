@@ -80,7 +80,7 @@ export function MatrixHeadline({
         });
         charIndex += word.length + 1;
         return (
-          <span key={wordIndex} className="whitespace-nowrap">
+          <span key={wordIndex} className="inline-block max-w-full whitespace-nowrap">
             {wordChars}
             {!isLastWord && <span> </span>}
           </span>
