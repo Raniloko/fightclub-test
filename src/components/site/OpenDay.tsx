@@ -93,7 +93,7 @@ export function OpenDayBar() {
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.documentElement.classList.add("fc-has-openday-bar");
-    const el = document.querySelector(".fc-openday-bar");
+    const el = document.querySelector<HTMLElement>(".fc-openday-bar");
     const sync = () => {
       if (el) {
         document.documentElement.style.setProperty(
