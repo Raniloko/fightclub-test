@@ -108,11 +108,13 @@ export function Hero() {
           </div>
 
           <h1
-            className="mt-6 max-w-full font-display uppercase text-white [overflow-wrap:anywhere]"
+            className="mt-6 max-w-full uppercase text-white [overflow-wrap:anywhere]"
             style={{
-              fontSize: "clamp(26px, 5.6vw, 84px)",
-              lineHeight: 0.95,
-              fontWeight: 800,
+              fontFamily: '"Permanent Marker", "Barlow Condensed", system-ui, sans-serif',
+              fontSize: "clamp(24px, 5.2vw, 74px)",
+              lineHeight: 1.05,
+              fontWeight: 400,
+              letterSpacing: "0.005em",
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
             }}
           >
@@ -122,6 +124,7 @@ export function Hero() {
               text="WERDE ZUR BESSEREN VERSION VON DIR SELBST"
               startDelay={2.7}
             />
+            <span className="fc-slogan-underline fc-late fc-late-1 mt-3 block md:mx-auto" />
           </h1>
 
           <p
@@ -136,7 +139,7 @@ export function Hero() {
           </p>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
-            {["MMA", "K1", "Boxen", "Thaiboxen", "Self-Defense", "Wing-Fight", "Kindertraining"].map((d) => (
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight / Selfdefense", "Kindertraining"].map((d) => (
               <span key={d} className="fc-tag">{d}</span>
             ))}
           </div>
