@@ -29,12 +29,13 @@ export function Nav() {
   return (
     <>
       <header className="fc-nav">
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-3 md:px-10 md:py-4 lg:pl-[32px]">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-1 md:px-10 md:py-1.5 xl:pl-[32px]">
           <Link to="/" aria-label="Fight Club Hanau" className="hover:opacity-80">
-            <Logo size={84} className="block lg:!h-[120px]" />
+            <Logo size={104} className="block md:!h-[124px] xl:!h-[144px]" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-7 xl:flex">
+
             {LINKS.map((l) => (
               <Link
                 key={l.label}
