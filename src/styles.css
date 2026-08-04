@@ -205,12 +205,7 @@
   transition: top 0.2s ease;
 }
 html.fc-has-openday-bar .fc-nav {
-  top: 34px;
-}
-@media (min-width: 640px) {
-  html.fc-has-openday-bar .fc-nav {
-    top: 38px;
-  }
+  top: var(--fc-openday-h, 34px);
 }
 
 .fc-nav-link {

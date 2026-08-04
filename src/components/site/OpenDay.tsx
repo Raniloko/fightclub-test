@@ -93,7 +93,22 @@ export function OpenDayBar() {
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.documentElement.classList.add("fc-has-openday-bar");
-    return () => document.documentElement.classList.remove("fc-has-openday-bar");
+    const el = document.querySelector<HTMLElement>(".fc-openday-bar");
+    const sync = () => {
+      if (el) {
+        document.documentElement.style.setProperty(
+          "--fc-openday-h",
+          `${el.offsetHeight}px`,
+        );
+      }
+    };
+    sync();
+    window.addEventListener("resize", sync);
+    return () => {
+      document.documentElement.classList.remove("fc-has-openday-bar");
+      document.documentElement.style.removeProperty("--fc-openday-h");
+      window.removeEventListener("resize", sync);
+    };
   }, []);
 
   return (
@@ -101,9 +116,9 @@ export function OpenDayBar() {
       href="#tag-der-offenen-tuer"
       className="fc-openday-bar fc-gold-glow fixed inset-x-0 top-0 z-[55] block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold tracking-[0.18em] sm:gap-4 sm:text-[12px]">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold tracking-[0.16em] sm:gap-4 sm:text-[12px]">
         <span className="hidden sm:inline">🥊</span>
-        <span className="normal-case">Große Neueröffnung · 29. August 2026 · 10:00 – 18:00 Uhr</span>
+        <span className="normal-case whitespace-nowrap">Große Neueröffnung · 29. August 2026</span>
         <span className="hidden text-[10px] tracking-[0.2em] underline underline-offset-4 md:inline">
           Mehr erfahren →
         </span>
