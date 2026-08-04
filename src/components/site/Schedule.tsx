@@ -21,16 +21,18 @@ const JS_DAY_TO_KEY: WeekDay[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT
 /* Discipline colour coding */
 const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Personal Training", match: ["personal"], color: "#B0B0B0" },
-  { label: "Kickboxen Frauen", match: ["frauen"], color: "#FF2E9A" },
+  { label: "Kick-Boxen Frauen", match: ["frauen"], color: "#FF2E9A" },
   { label: "Boxen (Wettkampf)", match: ["wettkampf"], color: "#1E3A8A" },
-  { label: "Boxen Teens", match: ["boxen-teens"], color: "#6EA8FF" },
+  { label: "Boxen-Teens", match: ["boxen-teens"], color: "#6EA8FF" },
   { label: "Wing Fight / Selfdefense", match: ["wing", "self"], color: "#8B5CF6" },
-  { label: "Kindertraining", match: ["mini-", "kids-", "teens-", "kinder", "jugend"], color: "#FFD700" },
-  { label: "MMA / Grappling", match: ["mma", "grappling", "ground"], color: "#FF4444" },
+  { label: "Mini / Kids / Teens", match: ["mini-", "kids-", "teens-"], color: "#FFD700" },
+  { label: "MMA / Ground and Pound", match: ["mma", "ground"], color: "#FF4444" },
+  { label: "Submission Grappling", match: ["grappling", "submission"], color: "#00CFC1" },
   { label: "Thaiboxen", match: ["thai", "muay"], color: "#DC143C" },
-  { label: "K1 / Kickboxen", match: ["k1", "kickbox"], color: "#FF8C00" },
-  { label: "Boxen", match: ["box"], color: "#4169E1" },
+  { label: "K1 / Kickboxen", match: ["k1", "kickbox"], color: "#22C55E" },
+  { label: "Boxen", match: ["box"], color: "#FF6B00" },
 ];
+
 
 const FALLBACK_COLOR = "#9CA3AF";
 
