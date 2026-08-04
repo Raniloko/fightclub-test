@@ -160,8 +160,8 @@ export function OpenDaySection() {
             alt="Flyer für die große Neueröffnung und den Tag der offenen Tür im Fight Club Hanau am 29.08.2026"
             loading="lazy"
             className="fc-gold-glow w-full max-w-[650px] rounded-md"
-            width={863}
-            height={1718}
+            width={874}
+            height={1295}
           />
         </div>
       </div>
