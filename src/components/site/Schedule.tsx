@@ -18,7 +18,7 @@ const DAY_LABELS_LONG: Record<WeekDay, string> = {
 
 const JS_DAY_TO_KEY: WeekDay[] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-/* Discipline colour coding */
+/* Discipline colour coding — array order controls match priority (specific first) */
 const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Personal Training", match: ["personal"], color: "#B0B0B0" },
   { label: "Kick-Boxen Frauen", match: ["frauen"], color: "#FF2E9A" },
@@ -31,6 +31,20 @@ const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Thaiboxen", match: ["thai", "muay"], color: "#DC143C" },
   { label: "K1 / Kickboxen", match: ["k1", "kickbox"], color: "#22C55E" },
   { label: "Boxen", match: ["box"], color: "#FF6B00" },
+];
+
+/* Legend display order (user-specified) */
+const LEGEND_LABELS = [
+  "MMA / Ground and Pound",
+  "Thaiboxen",
+  "Kickboxen",
+  "K1 / Kickboxen",
+  "Submission Grappling",
+  "Wing Fight / Selfdefense",
+  "Boxen",
+  "Boxen (Wettkampf)",
+  "Kick-Boxen Frauen",
+  "Personal Training",
 ];
 
 
@@ -131,18 +145,22 @@ export function Schedule() {
           className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border p-4"
           style={{ backgroundColor: "#111111", borderColor: CARD_BORDER }}
         >
-          {DISCIPLINE_COLORS.map((d) => (
-            <span key={d.label} className="inline-flex items-center gap-2">
-              <span
-                className="inline-block h-3 w-3 rounded-full"
-                style={{ backgroundColor: d.color }}
-                aria-hidden="true"
-              />
-              <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">
-                {d.label}
+          {LEGEND_LABELS.map((label) => {
+            const d = DISCIPLINE_COLORS.find((c) => c.label === label);
+            if (!d) return null;
+            return (
+              <span key={d.label} className="inline-flex items-center gap-2">
+                <span
+                  className="inline-block h-3 w-3 rounded-full"
+                  style={{ backgroundColor: d.color }}
+                  aria-hidden="true"
+                />
+                <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">
+                  {d.label}
+                </span>
               </span>
-            </span>
-          ))}
+            );
+          })}
         </div>
 
         {/* Desktop: all days as columns */}
