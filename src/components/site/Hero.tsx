@@ -119,7 +119,7 @@ export function Hero() {
             <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. Werde zur besseren Version von dir selbst.</span>
             <MatrixHeadline
               className="block"
-              text="WERDE ZUR BESSEREN VERSION VON DIR SELBST."
+              text="WERDE ZUR BESSEREN VERSION VON DIR SELBST"
               startDelay={2.7}
             />
           </h1>
