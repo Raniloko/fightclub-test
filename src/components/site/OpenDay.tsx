@@ -161,9 +161,8 @@ export function OpenDaySection() {
             loading="lazy"
             className="fc-gold-glow w-full max-w-[650px] rounded-md"
             width={863}
-            height={1272}
+            height={1718}
           />
-
         </div>
       </div>
     </section>
