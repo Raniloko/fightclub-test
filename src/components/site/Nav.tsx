@@ -31,7 +31,7 @@ export function Nav() {
       <header className="fc-nav">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-1 md:px-10 md:py-1.5 xl:pl-[32px]">
           <Link to="/" aria-label="Fight Club Hanau" className="hover:opacity-80">
-            <Logo size={104} className="block md:!h-[124px] xl:!h-[144px]" />
+            <Logo size={128} className="block md:!h-[152px] xl:!h-[176px]" />
           </Link>
 
           <nav className="hidden items-center gap-7 xl:flex">
