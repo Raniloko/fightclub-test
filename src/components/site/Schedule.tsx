@@ -143,7 +143,7 @@ export function Schedule() {
         </div>
 
         {/* Desktop: all days as columns */}
-        <div className="mt-10 hidden md:block">
+        <div className="mt-10 hidden xl:block">
           <div className="grid grid-cols-7 gap-3">
             {DAYS.map((d) => {
               const isCurrent = today === d;
@@ -258,7 +258,7 @@ export function Schedule() {
         </div>
 
         {/* Mobile: day switcher */}
-        <div className="mt-10 md:hidden">
+        <div className="mt-10 xl:hidden">
           <div className="flex gap-2 overflow-x-auto border-b" style={{ borderColor: CARD_BORDER }}>
             {DAYS.map((d) => {
               const active = day === d;

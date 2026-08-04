@@ -59,7 +59,7 @@ export function Nav() {
 
           <button
             onClick={() => setOpen((s) => !s)}
-            className="relative h-7 w-7 lg:hidden"
+            className="relative h-7 w-7 xl:hidden"
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -74,7 +74,7 @@ export function Nav() {
       {mounted && (
         <div
           id="mobile-menu"
-          className="fcm-overlay lg:hidden"
+          className="fcm-overlay xl:hidden"
           data-open={open ? "true" : "false"}
           role="dialog"
           aria-modal="true"
