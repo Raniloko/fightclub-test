@@ -145,18 +145,22 @@ export function Schedule() {
           className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border p-4"
           style={{ backgroundColor: "#111111", borderColor: CARD_BORDER }}
         >
-          {DISCIPLINE_COLORS.map((d) => (
-            <span key={d.label} className="inline-flex items-center gap-2">
-              <span
-                className="inline-block h-3 w-3 rounded-full"
-                style={{ backgroundColor: d.color }}
-                aria-hidden="true"
-              />
-              <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">
-                {d.label}
+          {LEGEND_LABELS.map((label) => {
+            const d = DISCIPLINE_COLORS.find((c) => c.label === label);
+            if (!d) return null;
+            return (
+              <span key={d.label} className="inline-flex items-center gap-2">
+                <span
+                  className="inline-block h-3 w-3 rounded-full"
+                  style={{ backgroundColor: d.color }}
+                  aria-hidden="true"
+                />
+                <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/70">
+                  {d.label}
+                </span>
               </span>
-            </span>
-          ))}
+            );
+          })}
         </div>
 
         {/* Desktop: all days as columns */}
