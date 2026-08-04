@@ -3,14 +3,13 @@ import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 const LINKS = [
-  { to: "/", hash: undefined, label: "Start" },
   { to: "/", hash: "disziplinen", label: "Disziplinen" },
   { to: "/", hash: "stundenplan", label: "Stundenplan" },
   { to: "/", hash: "about", label: "Über uns" },
-  { to: "/faq", hash: undefined, label: "FAQ" },
   { to: "/schulordnung", hash: undefined, label: "Schulordnung" },
-  { to: "/", hash: "kontakt", label: "Kontakt" },
+  { to: "/faq", hash: undefined, label: "FAQ" },
 ] as const;
+
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -30,12 +29,13 @@ export function Nav() {
   return (
     <>
       <header className="fc-nav">
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-3 md:px-10 md:py-4 lg:pl-[32px]">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-1 md:px-10 md:py-1.5 xl:pl-[32px]">
           <Link to="/" aria-label="Fight Club Hanau" className="hover:opacity-80">
-            <Logo size={84} className="block lg:!h-[120px]" />
+            <Logo size={104} className="block md:!h-[124px] xl:!h-[144px]" />
           </Link>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-7 xl:flex">
+
             {LINKS.map((l) => (
               <Link
                 key={l.label}
@@ -59,7 +59,7 @@ export function Nav() {
 
           <button
             onClick={() => setOpen((s) => !s)}
-            className="relative h-7 w-7 lg:hidden"
+            className="relative h-7 w-7 xl:hidden"
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -74,7 +74,7 @@ export function Nav() {
       {mounted && (
         <div
           id="mobile-menu"
-          className="fcm-overlay lg:hidden"
+          className="fcm-overlay xl:hidden"
           data-open={open ? "true" : "false"}
           role="dialog"
           aria-modal="true"
