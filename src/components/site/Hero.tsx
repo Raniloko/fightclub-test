@@ -108,9 +108,9 @@ export function Hero() {
           </div>
 
           <h1
-            className="mt-6 font-display uppercase text-white"
+            className="mt-6 max-w-full font-display uppercase text-white [overflow-wrap:anywhere]"
             style={{
-              fontSize: "clamp(30px, 6.4vw, 92px)",
+              fontSize: "clamp(26px, 5.6vw, 84px)",
               lineHeight: 0.95,
               fontWeight: 800,
               textShadow: "0 2px 40px rgba(0,0,0,0.5)",
