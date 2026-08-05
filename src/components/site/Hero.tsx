@@ -54,6 +54,13 @@ export function Hero() {
       className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
     >
       <img
+        src={heroMainAsset.url}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full scale-110 object-cover object-center opacity-60 blur-2xl md:block"
+      />
+      <img
         ref={imgRef}
         src={heroMainAsset.url}
         alt=""
@@ -62,9 +69,10 @@ export function Hero() {
         fetchPriority="high"
         width={1027}
         height={1531}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden w-full object-cover object-[center_top] md:block"
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-auto max-h-[calc(100%-112px)] w-full object-contain object-bottom md:block"
         style={{ filter: "grayscale(25%) contrast(110%) brightness(1.05)", willChange: "transform" }}
       />
+
       <img
         src={heroMainAsset.url}
         alt=""
