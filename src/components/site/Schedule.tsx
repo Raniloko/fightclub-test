@@ -199,14 +199,14 @@ export function Schedule() {
                   </div>
                   {d === "SUN" && (
                     <div
-                      className="flex items-center gap-2 border-b px-4 py-3"
+                      className="flex items-start gap-2 border-b px-3 py-3"
                       style={{
                         borderColor: "rgba(201,168,76,0.4)",
                         backgroundColor: "rgba(201,168,76,0.12)",
                       }}
                     >
-                      <Clock className="h-3.5 w-3.5 shrink-0 text-[#C9A84C]" />
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
+                      <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#C9A84C]" />
+                      <p className="min-w-0 break-words text-[10px] font-semibold uppercase leading-snug tracking-[0.08em] text-[#C9A84C]">
                         Nur nach Terminvereinbarung
                       </p>
                     </div>
