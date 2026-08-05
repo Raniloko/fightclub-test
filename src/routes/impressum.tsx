@@ -4,7 +4,7 @@ export const Route = createFileRoute("/impressum")({
   head: () => ({
     meta: [
       { title: "Impressum — Fight Club Hanau" },
-      { name: "description", content: "Impressum und Anbieterkennzeichnung nach § 5 DDG (ehemals TMG) der Fight Club MMA Akademie Hanau." },
+      { name: "description", content: "Impressum und Anbieterkennzeichnung nach § 5 DDG (ehemals TMG) der Fight Club Kampfsport Akademie Hanau." },
       { name: "robots", content: "index,follow" },
     ],
     links: [{ rel: "canonical", href: "https://www.fightclub-hanau.de/impressum" }],
@@ -22,7 +22,7 @@ function ImpressumPage() {
         <section className="mt-10 space-y-2 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Angaben gemäß § 5 DDG (ehemals TMG)</h2>
           <p>
-            Fight Club MMA Akademie Hanau<br />
+            Fight Club Kampfsport Akademie Hanau<br />
             Geleitstraße 66<br />
             63456 Hanau<br />
             Deutschland
@@ -31,7 +31,7 @@ function ImpressumPage() {
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Inhaber</h2>
-          <p>Herr Andreas Porth</p>
+          <p>Andreas Porth</p>
         </section>
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
