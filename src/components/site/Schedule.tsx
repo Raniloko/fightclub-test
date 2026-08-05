@@ -206,8 +206,10 @@ export function Schedule() {
                       }}
                     >
                       <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#C9A84C]" />
-                      <p className="min-w-0 break-words text-[10px] font-semibold uppercase leading-snug tracking-[0.08em] text-[#C9A84C]">
-                        Nur nach Terminvereinbarung
+                      <p className="min-w-0 text-[10px] font-semibold uppercase leading-snug tracking-normal text-[#C9A84C]">
+                        Nur nach
+                        <br />
+                        Termin&shy;vereinbarung
                       </p>
                     </div>
                   )}
