@@ -30,7 +30,7 @@ function ImpressumPage() {
         </section>
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Vertreten durch</h2>
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Inhaber</h2>
           <p>Herr Andreas Porth</p>
         </section>
 
@@ -45,7 +45,8 @@ function ImpressumPage() {
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
           <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Steuernummer</h2>
-          <p>04436200484</p>
+          <p>Steuernummer: i.A. Finanzamt Hanau</p>
+          <p className="text-[13px] text-[#777]">(in Antragstellung beim Finanzamt Hanau)</p>
         </section>
 
 
