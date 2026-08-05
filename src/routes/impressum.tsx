@@ -30,7 +30,7 @@ function ImpressumPage() {
         </section>
 
         <section className="mt-8 space-y-2 text-[15px] leading-relaxed">
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Vertreten durch</h2>
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">Inhaber</h2>
           <p>Herr Andreas Porth</p>
         </section>
 
