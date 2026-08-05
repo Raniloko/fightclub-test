@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { MatrixHeadline } from "./MatrixHeadline";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import heroMainAsset from "@/assets/hero-main-v2.png.asset.json";
+import heroWideAsset from "@/assets/hero-desktop-wide.jpg.asset.json";
 
 
 
@@ -54,24 +55,18 @@ export function Hero() {
       className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
     >
       <img
-        src={heroMainAsset.url}
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        className="pointer-events-none absolute inset-0 z-0 hidden h-full w-full scale-110 object-cover object-center opacity-60 blur-2xl md:block"
-      />
-      <img
         ref={imgRef}
-        src={heroMainAsset.url}
+        src={heroWideAsset.url}
         alt=""
         aria-hidden="true"
         loading="eager"
         fetchPriority="high"
-        width={1027}
-        height={1531}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-auto max-h-[calc(100%-112px)] w-full object-contain object-bottom md:block"
+        width={1920}
+        height={1080}
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-center md:block"
         style={{ filter: "grayscale(25%) contrast(110%) brightness(1.05)", willChange: "transform" }}
       />
+
 
       <img
         src={heroMainAsset.url}
