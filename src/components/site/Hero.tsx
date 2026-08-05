@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { MatrixHeadline } from "./MatrixHeadline";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import heroMainAsset from "@/assets/hero-main-v2.png.asset.json";
-import heroWideAsset from "@/assets/hero-desktop-wide.jpg.asset.json";
+import heroWideAsset from "@/assets/hero-desktop-v2.jpg.asset.json";
 
 
 
