@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { MatrixHeadline } from "./MatrixHeadline";
 import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
 import heroMainAsset from "@/assets/hero-main-v2.png.asset.json";
-import heroWideAsset from "@/assets/hero-desktop-wide.jpg.asset.json";
+import heroWideAsset from "@/assets/hero-desktop-v2.jpg.asset.json";
 
 
 
@@ -61,9 +61,9 @@ export function Hero() {
         aria-hidden="true"
         loading="eager"
         fetchPriority="high"
-        width={1920}
-        height={1080}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-center md:block"
+        width={1600}
+        height={1100}
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-[center_35%] md:block"
         style={{ filter: "grayscale(25%) contrast(110%) brightness(1.05)", willChange: "transform" }}
       />
 
