@@ -1,43 +1,22 @@
-# Admin-Bereich für Stundenplan-Verwaltung
+# Neues Hero-Bild für die Desktop-Version
 
 ## Ziel
-Geschützter Admin-Bereich, in dem Chef und Mitarbeiter den Stundenplan live anpassen können (Entfall, Verschiebung, neue Klasse). Die Änderungen erscheinen sofort auf der öffentlichen Seite unter „Stundenplan".
+Auf dem Desktop soll der Hero-Bereich vollflächig gefüllt sein — ohne unscharfen Ersatz-Hintergrund an den Seiten und ohne dass Köpfe oder Beine abgeschnitten werden. Die abgebildeten Kämpfer und Kinder bleiben exakt so, wie sie jetzt sind.
 
-## Was neu entsteht
-- **Login-Seite** `/admin/login` mit Fight Club Branding (dunkles Theme, Cyan-Akzent, `fc-headline-underline`), „Angemeldet bleiben"-Checkbox.
-- **Passwort-Setup-Seite** `/admin/passwort-festlegen` – Ziel des Einladungs-/Reset-Links aus der Mail.
-- **Admin-Dashboard** `/admin` (geschützt): Wochentag wählen, Klassen bearbeiten/löschen/hinzufügen, Notiz „Heute entfällt" pro Klasse.
-- **Öffentliche `Schedule.tsx`** liest ab jetzt aus der Datenbank statt aus einem statischen Objekt und zeigt Entfall-Hinweise.
+## Vorgehen
+1. Das aktuelle Hero-Bild (Hochformat, 1027×1531) wird per Bild-Erweiterung („Outpainting") auf ein Querformat von 1920×1080 gebracht.
+   - Die bestehenden Personen werden nicht neu generiert, sondern unverändert übernommen.
+   - Nur links und rechts wird die Halle/der Hintergrund im gleichen Look (Licht, Farbstimmung, Körnung) fortgeführt.
+2. Das Ergebnis wird als neues Asset im Projekt abgelegt (`hero-desktop-wide`).
+3. Der Hero verwendet dieses Bild ausschließlich ab Desktop-Breite; die mobile Version bleibt unverändert beim bisherigen Hochformat-Bild.
+4. Der bisher nötige unscharfe Hintergrund-Layer auf dem Desktop entfällt, da das Bild die Fläche nun selbst füllt.
+5. Filter und Overlay (Grauton, Kontrast, dunkler Verlauf für die Textlesbarkeit) bleiben wie bisher.
 
-## Sicherheit (deine Priorität)
-- **Lovable Cloud Auth** (verschlüsselte Sessions, HTTPS erzwingt die Plattform automatisch, Passwörter als bcrypt-Hash).
-- **Row-Level Security** auf allen Tabellen; Schreibrechte nur mit Rolle `admin`.
-- **Rollen in separater `user_roles`-Tabelle** (kein Feld im Profil) – schützt vor Privilege Escalation.
-- **Brute-Force-Schutz**: Server-seitiges Rate-Limit (5 Fehlversuche / 15 Min. pro E-Mail + IP) via eigener Tabelle `auth_attempts` und Server Function; danach 15 Min. Sperre.
-- **SQL-Injection**: Alle DB-Zugriffe laufen über den Supabase-Client mit parametrisierten Queries – keine String-Konkatenation.
-- **HIBP-Passwort-Check** aktivieren (blockiert geleakte Passwörter).
-- **Zod-Validierung** für alle Eingaben (Client + Server).
+## Kontrolle
+Screenshot-Prüfung bei 1440px und 1920px Breite: Bild randlos, Personen komplett sichtbar, Headline gut lesbar.
 
-## Einladung per Mail
-- Erste Einladung an **info@fightclub-hanau.de** wird per Migration + Auth-Admin-API angelegt; Supabase versendet automatisch die Mail „Passwort festlegen" mit Link auf `/admin/passwort-festlegen`.
-- Fight Club Team ist Default – es gibt nur ein Team/Studio, jede Person mit Rolle `admin` oder `staff` sieht denselben Stundenplan.
-- Rollenwahl `admin` / `staff` im Dashboard verfügbar (nur `admin` darf Rollen vergeben).
-
-## Datenbank (technisch)
-```text
-app_role enum: 'admin' | 'staff'
-user_roles(user_id, role)                — RLS, has_role()-Funktion
-schedule_classes(id, day, start, end,
-                 discipline, age, note,
-                 cancelled_today boolean,
-                 updated_at, updated_by) — public SELECT, admin/staff WRITE
-auth_attempts(email, ip, attempted_at)   — Rate-Limit-Speicher
-```
-Migration seedet die aktuellen Klassen aus `Schedule.tsx`, damit nichts verloren geht.
-
-## Ablauf für dich
-1. Ich baue alles, aktiviere Lovable Cloud und HIBP.
-2. Du bekommst eine Mail an info@fightclub-hanau.de → Passwort festlegen.
-3. Login unter `/admin` → Stundenplan pflegen, weitere Mitarbeiter einladen.
-
-Soll ich so umsetzen?
+## Technische Details
+- Bild-Erweiterung über das Bild-Edit-Tool auf Basis von `src/assets/hero-main-v2.png`, Ausgabe 1920×1080.
+- Neues Pointer-File `src/assets/hero-desktop-wide.jpg.asset.json`, eingebunden in `src/components/site/Hero.tsx`.
+- Desktop-`<img>`: `object-cover object-center`, Parallax-Verhalten unverändert.
+- Falls die Erweiterung die Personen sichtbar verfälscht, wird stattdessen ein zweiter Versuch mit engerem Prompt gemacht — im Zweifel bleibt das bisherige Bild bestehen.
