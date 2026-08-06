@@ -185,7 +185,7 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
 
   return (
     <article
-      className={`group bg-white border-l-2 transition-colors ${open ? "border-[#D62828]" : "border-transparent hover:border-[#D62828]"}`}
+      className={`group bg-white border-l-2 transition-colors ${open ? "border-[#C9A84C]" : "border-transparent hover:border-[#C9A84C]"}`}
     >
       <button type="button" onClick={onToggle} className="block w-full text-left" aria-expanded={open}>
         <div className="overflow-hidden">
@@ -199,7 +199,7 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
         <div className="bg-[#0a0a0a] p-6 text-white md:p-8">
           <div className="flex items-center justify-between gap-3">
             <span className="fc-tag fc-tag-solid">{c.name}</span>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#D62828]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A84C]">
               {open ? "× Schließen" : "› Mehr erfahren"}
             </span>
           </div>
@@ -217,7 +217,7 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
               type="button"
               onClick={onToggle}
               aria-label="Schließen"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-white/5 hover:bg-[#D62828] hover:text-black transition-colors"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-white/5 hover:bg-[#C9A84C] hover:text-black transition-colors"
             >
               <X size={18} />
             </button>
@@ -246,19 +246,19 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
 
             <div className="mt-8 grid gap-8 md:grid-cols-2">
               <div>
-                <h3 className="font-display text-xl uppercase tracking-wide text-[#D62828]">
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
                   Was ist {c.name}?
                 </h3>
                 <p className="mt-3 text-sm text-white/80 md:text-[15px]">{c.what}</p>
               </div>
               <div>
-                <h3 className="font-display text-xl uppercase tracking-wide text-[#D62828]">
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
                   Was lernst du?
                 </h3>
                 <ul className="mt-3 space-y-2 text-sm text-white/85 md:text-[15px]">
                   {c.learn.map((l) => (
                     <li key={l} className="flex gap-2">
-                      <span className="text-[#D62828]">›</span>
+                      <span className="text-[#C9A84C]">›</span>
                       <span>{l}</span>
                     </li>
                   ))}
@@ -267,7 +267,7 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
             </div>
 
             <div className="mt-8">
-              <h3 className="font-display text-xl uppercase tracking-wide text-[#D62828]">
+              <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
                 Was vermitteln wir?
               </h3>
               <div className="mt-4 grid grid-cols-3 gap-3">
@@ -289,14 +289,14 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
             </div>
 
             <div className="mt-8 border-t border-white/10 pt-6">
-              <h3 className="font-display text-xl uppercase tracking-wide text-[#D62828]">Für wen?</h3>
+              <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">Für wen?</h3>
               <p className="mt-2 text-sm text-white/80 md:text-[15px]">{c.who}</p>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
               <a
                 href="#kontakt"
-                className="inline-block bg-[#D62828] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#F04A4A] transition-colors"
+                className="inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
               >
                 Probetraining anfragen
               </a>
@@ -325,8 +325,8 @@ export function Disciplines() {
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         <Reveal>
           <div className="flex items-center gap-3">
-            <span className="block h-px w-8 bg-[#D62828]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+            <span className="block h-px w-8 bg-[#C9A84C]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
               Was wir trainieren
             </span>
           </div>

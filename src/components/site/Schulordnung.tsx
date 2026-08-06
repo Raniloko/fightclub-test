@@ -54,16 +54,16 @@ export function Schulordnung() {
       <div className="mx-auto max-w-[1100px] px-5 md:px-10">
         <Reveal>
           <div className="flex items-center justify-center gap-3">
-            <span className="block h-px w-8 bg-[#D62828]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+            <span className="block h-px w-8 bg-[#C9A84C]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
               Regeln der Akademie
             </span>
-            <span className="block h-px w-8 bg-[#D62828]" />
+            <span className="block h-px w-8 bg-[#C9A84C]" />
           </div>
-          <h1 className="mt-4 text-center font-display text-5xl md:text-6xl text-[#D62828]">
+          <h1 className="mt-4 text-center font-display text-5xl md:text-6xl text-[#C9A84C]">
             Schulordnung
           </h1>
-          <div className="mx-auto mt-4 h-[3px] w-14 bg-[#D62828]" />
+          <div className="mx-auto mt-4 h-[3px] w-14 bg-[#C9A84C]" />
           <p className="mx-auto mt-6 max-w-2xl text-center text-[14px] leading-relaxed text-white/70 md:text-[15px]">
             Mit Betreten der Trainingsfläche erkennen alle Mitglieder diese Schulordnung an und verpflichten sich, diese einzuhalten.
           </p>
@@ -75,14 +75,14 @@ export function Schulordnung() {
             return (
               <li
                 key={r.title}
-                className="group flex gap-4 border border-[#D62828]/30 bg-[#111] p-5 transition-colors hover:border-[#D62828] md:p-6"
+                className="group flex gap-4 border border-[#C9A84C]/30 bg-[#111] p-5 transition-colors hover:border-[#C9A84C] md:p-6"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#D62828]/50 bg-[#0a0a0a] text-[#D62828] md:h-14 md:w-14">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#C9A84C]/50 bg-[#0a0a0a] text-[#C9A84C] md:h-14 md:w-14">
                   <Icon className="h-6 w-6 md:h-7 md:w-7" />
                 </div>
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display text-2xl text-[#D62828] md:text-3xl">
+                    <span className="font-display text-2xl text-[#C9A84C] md:text-3xl">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="font-display text-xl uppercase text-white md:text-2xl">
@@ -104,11 +104,11 @@ export function Schulordnung() {
             return (
               <div
                 key={n.title}
-                className="border border-[#D62828]/40 bg-gradient-to-b from-[#141414] to-[#0a0a0a] p-5 md:p-6"
+                className="border border-[#C9A84C]/40 bg-gradient-to-b from-[#141414] to-[#0a0a0a] p-5 md:p-6"
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="h-6 w-6 text-[#D62828]" />
-                  <h4 className="font-display text-lg uppercase text-[#D62828] md:text-xl">
+                  <Icon className="h-6 w-6 text-[#C9A84C]" />
+                  <h4 className="font-display text-lg uppercase text-[#C9A84C] md:text-xl">
                     {n.title}
                   </h4>
                 </div>
@@ -120,13 +120,13 @@ export function Schulordnung() {
           })}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-[#D62828]/30 pt-8 text-center font-display text-lg uppercase tracking-[0.2em] text-[#D62828] md:text-2xl">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-[#C9A84C]/30 pt-8 text-center font-display text-lg uppercase tracking-[0.2em] text-[#C9A84C] md:text-2xl">
           <span>Respekt</span>
-          <span className="text-[#D62828]/50">•</span>
+          <span className="text-[#C9A84C]/50">•</span>
           <span>Disziplin</span>
-          <span className="text-[#D62828]/50">•</span>
+          <span className="text-[#C9A84C]/50">•</span>
           <span>Fairness</span>
-          <span className="text-[#D62828]/50">•</span>
+          <span className="text-[#C9A84C]/50">•</span>
           <span>Teamgeist</span>
         </div>
         <p className="mt-3 text-center text-[11px] uppercase tracking-[0.3em] text-white/50">

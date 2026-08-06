@@ -21,7 +21,7 @@ function FlipCell({ value, label }: { value: number; label: string }) {
     <div className="flex flex-col items-center gap-2">
       <div
         key={padded}
-        className="fc-flip min-w-[62px] border border-[#D62828]/40 bg-[#141414] px-3 py-3 font-display text-3xl tabular-nums text-[#D62828] md:min-w-[86px] md:px-5 md:py-4 md:text-5xl"
+        className="fc-flip min-w-[62px] border border-[#C9A84C]/40 bg-[#141414] px-3 py-3 font-display text-3xl tabular-nums text-[#C9A84C] md:min-w-[86px] md:px-5 md:py-4 md:text-5xl"
         style={{ transformOrigin: "center top" }}
       >
         {padded}
@@ -136,11 +136,11 @@ export function OpenDaySection() {
       <Sparkles />
       <div className="relative z-[1] mx-auto max-w-[900px] px-4 text-center md:px-8">
         <div className="flex items-center justify-center gap-3">
-          <span className="block h-px w-8 bg-[#D62828]" />
-          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+          <span className="block h-px w-8 bg-[#C9A84C]" />
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
             Tag der offenen Tür
           </span>
-          <span className="block h-px w-8 bg-[#D62828]" />
+          <span className="block h-px w-8 bg-[#C9A84C]" />
         </div>
         <h2 className="mt-5 font-display text-4xl text-white normal-case md:text-6xl">
           Große Neueröffnung

@@ -36,8 +36,8 @@
   --color-mist: #f5f5f5;
   --color-rule: #e0e0e0;
   --color-quiet: #555555;
-  --color-signal: #D62828;
-  --color-signal-bright: #F04A4A;
+  --color-signal: #C9A84C;
+  --color-signal-bright: #E8C96A;
   --font-display: "Barlow Condensed", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -409,7 +409,7 @@ html.fc-intro-active body { visibility: visible; }
   animation: fc-intro-word 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .fc-intro-text span:nth-child(1) { animation-delay: 0.35s; }
-.fc-intro-text span:nth-child(2) { animation-delay: 0.5s; color: #D62828; }
+.fc-intro-text span:nth-child(2) { animation-delay: 0.5s; color: #C9A84C; }
 .fc-intro-text span:nth-child(3) { animation-delay: 0.65s; }
 .fc-intro-text span:nth-child(4) { animation-delay: 0.8s; }
 @keyframes fc-intro-word {
@@ -418,14 +418,14 @@ html.fc-intro-active body { visibility: visible; }
 
 /* === Signal accents (Neu in Hanau + Disziplinen) === */
 @keyframes fc-signal-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(214, 40, 40,0.55); }
-  50%      { box-shadow: 0 0 0 10px rgba(214, 40, 40,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.55); }
+  50%      { box-shadow: 0 0 0 10px rgba(201,168,76,0); }
 }
 .fc-badge-new {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #D62828;
+  background: #C9A84C;
   color: #000000;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
@@ -449,8 +449,8 @@ html.fc-intro-active body { visibility: visible; }
   display: inline-flex;
   align-items: center;
   background: transparent;
-  color: #D62828;
-  border: 1px solid #D62828;
+  color: #C9A84C;
+  border: 1px solid #C9A84C;
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 800;
   font-size: 13px;
@@ -461,18 +461,18 @@ html.fc-intro-active body { visibility: visible; }
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 .fc-tag:hover {
-  background: #D62828;
+  background: #C9A84C;
   color: #000000;
   transform: translateY(-2px);
 }
 .fc-tag-solid {
-  background: #D62828;
+  background: #C9A84C;
   color: #000000;
-  border-color: #D62828;
+  border-color: #C9A84C;
 }
 .fc-tag-solid:hover {
-  background: #F04A4A;
-  border-color: #F04A4A;
+  background: #E8C96A;
+  border-color: #E8C96A;
   color: #000000;
 }
 
@@ -492,8 +492,8 @@ html.fc-intro-active body { visibility: visible; }
 
 /* === Neueröffnung: Glow, Shimmer-Border, Sparkles, Countdown === */
 @keyframes fc-gold-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(214, 40, 40,0.2); }
-  50%      { box-shadow: 0 0 40px rgba(214, 40, 40,0.5); }
+  0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.2); }
+  50%      { box-shadow: 0 0 40px rgba(201,168,76,0.5); }
 }
 .fc-gold-glow { animation: fc-gold-pulse 2s ease-in-out infinite; }
 
@@ -507,7 +507,7 @@ html.fc-intro-active body { visibility: visible; }
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(90deg, #7A1212, #F04A4A, #7A1212);
+  background: linear-gradient(90deg, #8B6914, #E8C96A, #8B6914);
   background-size: 200% 100%;
   animation: fc-shimmer 3s linear infinite;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -525,7 +525,7 @@ html.fc-intro-active body { visibility: visible; }
 }
 .fc-sparkle {
   position: absolute;
-  color: #D62828;
+  color: #C9A84C;
   pointer-events: none;
   animation: fc-sparkle 1.8s ease-in-out infinite;
   will-change: opacity, transform;
@@ -540,6 +540,16 @@ html.fc-intro-active body { visibility: visible; }
 .fc-slogan-underline {
   height: 4px;
   width: min(320px, 70%);
-  background: linear-gradient(90deg, #F04A4A 0%, #D62828 60%, rgba(214, 40, 40, 0) 100%);
+  background: linear-gradient(90deg, #E8C96A 0%, #C9A84C 60%, rgba(201,168,76, 0) 100%);
   transform: skewX(-12deg);
+}
+
+/* Hero: Sportarten-Tags in Rot */
+.fc-tag-red {
+  color: #D62828;
+  border-color: #D62828;
+}
+.fc-tag-red:hover {
+  background: #D62828;
+  color: #000000;
 }

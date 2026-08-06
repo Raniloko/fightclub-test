@@ -9,8 +9,8 @@ export function PageHeader({ eyebrow, title }: Props) {
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
         {eyebrow && (
           <div className="flex items-center gap-3">
-            <span className="block h-px w-8 bg-[#D62828]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+            <span className="block h-px w-8 bg-[#C9A84C]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
               {eyebrow}
             </span>
           </div>
