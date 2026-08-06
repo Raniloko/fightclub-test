@@ -60,9 +60,9 @@ export function Hero() {
         aria-hidden="true"
         loading="eager"
         fetchPriority="high"
-        width={1600}
-        height={1100}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-[center_35%] md:block"
+        width={1920}
+        height={1152}
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-[center_45%] md:block"
         style={{ filter: "grayscale(10%) contrast(104%) brightness(1.32) saturate(1.05)", willChange: "transform" }}
       />
 
