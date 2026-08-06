@@ -64,7 +64,7 @@ export function Hero() {
         width={1600}
         height={1100}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[112px] z-0 hidden h-[calc(100%-112px)] w-full object-cover object-[center_35%] md:block"
-        style={{ filter: "grayscale(25%) contrast(110%) brightness(1.05)", willChange: "transform" }}
+        style={{ filter: "grayscale(10%) contrast(104%) brightness(1.32) saturate(1.05)", willChange: "transform" }}
       />
 
 
@@ -77,7 +77,7 @@ export function Hero() {
         width={1027}
         height={1531}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block w-full object-cover object-[center_top] md:hidden"
-        style={{ filter: "contrast(105%) brightness(1.05)" }}
+        style={{ filter: "contrast(102%) brightness(1.3) saturate(1.05)" }}
       />
 
 
@@ -99,7 +99,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0.20) 65%, rgba(0, 0, 0, 0.50) 100%)",
+            "linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.10) 35%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.42) 100%)",
           willChange: "transform",
         }}
       />
@@ -131,8 +131,8 @@ export function Hero() {
           </h1>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
-            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight / Selfdefense", "Kindertraining", "Submission Grappling", "Wettkampf-Boxen", "Kickboxen & Boxen für Frauen", "Personal Training"].map((d) => (
-              <span key={d} className="fc-tag fc-tag-red">{d}</span>
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
+              <span key={d} className="fc-tag">{d}</span>
             ))}
           </div>
 
