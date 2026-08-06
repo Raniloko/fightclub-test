@@ -222,17 +222,26 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
               <X size={18} />
             </button>
 
-            {/* Video placeholder */}
+            {/* Video / Bild */}
             <div className="relative w-full overflow-hidden bg-[#111111]" style={{ aspectRatio: "16/9" }}>
-              <video
-                ref={videoRef}
-                src={c.videoSrc || ""}
-                poster=""
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+              {c.videoSrc ? (
+                <video
+                  ref={videoRef}
+                  src={c.videoSrc}
+                  poster=""
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                <img
+                  src={c.img}
+                  alt={c.name}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
             </div>
 
             <div className="mt-8 grid gap-8 md:grid-cols-2">
