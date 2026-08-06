@@ -36,7 +36,7 @@ export const FAQS: QA[] = [
 
 function Item({ item, open, onToggle }: { item: QA; open: boolean; onToggle: () => void }) {
   return (
-    <div className={`border border-[#C9A84C]/40 ${open ? "bg-[#C9A84C]" : "bg-white"}`}>
+    <div className={`border border-[#D62828]/40 ${open ? "bg-[#D62828]" : "bg-white"}`}>
       <button
         type="button"
         onClick={onToggle}
@@ -46,7 +46,7 @@ function Item({ item, open, onToggle }: { item: QA; open: boolean; onToggle: () 
         <span
           aria-hidden
           className={`flex h-7 w-7 shrink-0 items-center justify-center text-2xl font-bold leading-none ${
-            open ? "text-white" : "text-[#C9A84C]"
+            open ? "text-white" : "text-[#D62828]"
           }`}
         >
           {open ? "−" : "+"}
@@ -60,7 +60,7 @@ function Item({ item, open, onToggle }: { item: QA; open: boolean; onToggle: () 
         </span>
       </button>
       {open && (
-        <div className="border-t border-[#C9A84C]/40 bg-white px-5 py-5 md:px-6 md:py-6">
+        <div className="border-t border-[#D62828]/40 bg-white px-5 py-5 md:px-6 md:py-6">
           <p className="text-[14px] leading-relaxed text-[#0a0a0a]/80 md:text-[15px]">{item.a}</p>
         </div>
       )}
@@ -76,16 +76,16 @@ export function Faq() {
       <div className="mx-auto max-w-[1000px] px-5 md:px-10">
         <Reveal>
           <div className="flex items-center justify-center gap-3">
-            <span className="block h-px w-8 bg-[#C9A84C]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
+            <span className="block h-px w-8 bg-[#D62828]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
               FAQ
             </span>
-            <span className="block h-px w-8 bg-[#C9A84C]" />
+            <span className="block h-px w-8 bg-[#D62828]" />
           </div>
           <h1 className="mt-4 text-center font-display text-5xl md:text-6xl">
             Häufig gestellte<br />Fragen
           </h1>
-          <div className="mx-auto mt-4 h-[3px] w-14 bg-[#C9A84C]" />
+          <div className="mx-auto mt-4 h-[3px] w-14 bg-[#D62828]" />
         </Reveal>
 
         <div className="mt-10 space-y-3 md:mt-14">
