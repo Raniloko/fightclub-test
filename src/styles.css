@@ -543,3 +543,13 @@ html.fc-intro-active body { visibility: visible; }
   background: linear-gradient(90deg, #E8C96A 0%, #C9A84C 60%, rgba(201,168,76, 0) 100%);
   transform: skewX(-12deg);
 }
+
+/* Hero: Sportarten-Tags in Rot */
+.fc-tag-red {
+  color: #D62828;
+  border-color: #D62828;
+}
+.fc-tag-red:hover {
+  background: #D62828;
+  color: #000000;
+}
