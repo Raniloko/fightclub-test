@@ -65,15 +65,15 @@ export function Kindertraining() {
         <div className="relative z-10 mx-auto max-w-[1200px] px-5 md:px-10">
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="block h-px w-8 bg-[#D62828]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+              <span className="block h-px w-8 bg-[#C9A84C]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
                 Für die nächste Generation
               </span>
             </div>
             <h1 className="mt-4 font-display text-5xl uppercase leading-[0.9] md:text-7xl">
               <span className="fc-headline-underline">Kampfsport für Kinder</span>
               <br />
-              <span className="text-[#D62828]">in Hanau</span>
+              <span className="text-[#C9A84C]">in Hanau</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-white/80 md:text-[19px]">
               Bei der Fight Club Kampfsport Akademie in Hanau trainieren Kinder und Jugendliche ab 5 Jahren
@@ -111,8 +111,8 @@ export function Kindertraining() {
         <div className="mx-auto max-w-[1200px] px-5 md:px-10">
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="block h-px w-8 bg-[#D62828]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+              <span className="block h-px w-8 bg-[#C9A84C]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
                 Warum Kampfsport für Kinder?
               </span>
             </div>
@@ -126,11 +126,11 @@ export function Kindertraining() {
               const Icon = b.icon;
               return (
                 <Reveal key={b.title}>
-                  <div className="h-full border-l-2 border-[#D62828] bg-[#0a0a0a] p-8 text-white">
-                    <div className="flex h-12 w-12 items-center justify-center bg-[#D62828] text-black">
+                  <div className="h-full border-l-2 border-[#C9A84C] bg-[#0a0a0a] p-8 text-white">
+                    <div className="flex h-12 w-12 items-center justify-center bg-[#C9A84C] text-black">
                       <Icon size={24} />
                     </div>
-                    <h3 className="mt-6 font-display text-xl uppercase tracking-wide text-[#D62828]">
+                    <h3 className="mt-6 font-display text-xl uppercase tracking-wide text-[#C9A84C]">
                       {b.title}
                     </h3>
                     <p className="mt-3 text-[15px] leading-relaxed text-white/75">{b.text}</p>
@@ -160,8 +160,8 @@ export function Kindertraining() {
 
             <Reveal>
               <div className="flex items-center gap-3">
-                <span className="block h-px w-8 bg-[#D62828]" />
-                <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+                <span className="block h-px w-8 bg-[#C9A84C]" />
+                <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
                   Was Kinder lernen
                 </span>
               </div>
@@ -171,7 +171,7 @@ export function Kindertraining() {
               <ul className="mt-8 space-y-4">
                 {LEARN.map((l) => (
                   <li key={l} className="flex items-start gap-3 text-[15px] leading-relaxed text-[#0a0a0a]/80">
-                    <CheckCircle size={20} className="mt-0.5 shrink-0 text-[#D62828]" />
+                    <CheckCircle size={20} className="mt-0.5 shrink-0 text-[#C9A84C]" />
                     <span>{l}</span>
                   </li>
                 ))}
@@ -186,8 +186,8 @@ export function Kindertraining() {
         <div className="mx-auto max-w-[1200px] px-5 md:px-10">
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="block h-px w-8 bg-[#D62828]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+              <span className="block h-px w-8 bg-[#C9A84C]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
                 Altersgerechte Gruppen
               </span>
             </div>
@@ -217,8 +217,8 @@ export function Kindertraining() {
         <div className="mx-auto max-w-[1200px] px-5 md:px-10">
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="block h-px w-8 bg-[#D62828]" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#D62828]">
+              <span className="block h-px w-8 bg-[#C9A84C]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#C9A84C]">
                 Sicherheit & Werte
               </span>
             </div>
@@ -242,7 +242,7 @@ export function Kindertraining() {
               const Icon = v.icon;
               return (
                 <div key={v.label} className="flex items-center gap-4 border border-white/10 p-5">
-                  <Icon size={22} className="text-[#D62828]" />
+                  <Icon size={22} className="text-[#C9A84C]" />
                   <span className="text-[14px] font-medium uppercase tracking-[0.15em]">{v.label}</span>
                 </div>
               );
@@ -252,7 +252,7 @@ export function Kindertraining() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#D62828] py-20 md:py-28">
+      <section className="bg-[#C9A84C] py-20 md:py-28">
         <div className="mx-auto max-w-[1000px] px-5 text-center md:px-10">
           <h2 className="font-display text-4xl uppercase text-black md:text-5xl">
             Kostenloses Probetraining
