@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { MatrixHeadline } from "./MatrixHeadline";
-import heroMobileAsset from "@/assets/hero-mobile.jpg.asset.json";
-import heroMainAsset from "@/assets/hero-main-v2.png.asset.json";
-import heroWideAsset from "@/assets/hero-desktop-v2.jpg.asset.json";
+import heroMainAsset from "@/assets/hero-v3-mobile.jpg.asset.json";
+import heroWideAsset from "@/assets/hero-v3-desktop.jpg.asset.json";
 
 
 
@@ -74,8 +73,8 @@ export function Hero() {
         aria-hidden="true"
         loading="eager"
         fetchPriority="high"
-        width={1027}
-        height={1531}
+        width={1209}
+        height={1471}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block w-full object-cover object-[center_top] md:hidden"
         style={{ filter: "contrast(102%) brightness(1.3) saturate(1.05)" }}
       />
@@ -132,7 +131,7 @@ export function Hero() {
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
             {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
-              <span key={d} className="fc-tag">{d}</span>
+              <span key={d} className="fc-tag fc-tag-solid">{d}</span>
             ))}
           </div>
 
