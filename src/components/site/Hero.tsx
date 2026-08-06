@@ -130,20 +130,9 @@ export function Hero() {
             <span className="fc-slogan-underline fc-late fc-late-1 mt-3 block md:mx-auto" />
           </h1>
 
-          <p
-            className="mt-4 font-display uppercase fc-late fc-late-2"
-            style={{
-              color: "rgba(255,255,255,0.8)",
-              fontSize: "clamp(18px, 3vw, 34px)",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Werde ein Teil der Fight Club Familie.
-          </p>
-
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
             {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight / Selfdefense", "Kindertraining", "Submission Grappling", "Wettkampf-Boxen", "Kickboxen & Boxen für Frauen", "Personal Training"].map((d) => (
-              <span key={d} className="fc-tag">{d}</span>
+              <span key={d} className="fc-tag fc-tag-red">{d}</span>
             ))}
           </div>
 
