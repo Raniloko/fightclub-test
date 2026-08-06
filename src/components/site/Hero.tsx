@@ -75,7 +75,7 @@ export function Hero() {
         fetchPriority="high"
         width={1209}
         height={1471}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block w-full object-cover object-[center_top] md:hidden"
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block h-[calc(100%-76px)] w-full object-cover object-[center_top] md:hidden"
         style={{ filter: "contrast(102%) brightness(1.3) saturate(1.05)" }}
       />
 
