@@ -142,7 +142,7 @@ export function Hero() {
           </p>
 
           <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
-            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight / Selfdefense", "Kindertraining"].map((d) => (
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight / Selfdefense", "Kindertraining", "Submission Grappling", "Wettkampf-Boxen", "Kickboxen & Boxen für Frauen", "Personal Training"].map((d) => (
               <span key={d} className="fc-tag">{d}</span>
             ))}
           </div>

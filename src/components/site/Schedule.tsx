@@ -131,7 +131,7 @@ export function Schedule() {
             </h2>
             <Link
               to="/schulordnung"
-              className="group inline-flex w-fit items-center gap-3 border border-white/20 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-colors hover:border-[#C9A84C] hover:bg-[#C9A84C]"
+              className="group inline-flex w-fit items-center gap-3 border border-white/20 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-colors hover:border-[#D62828] hover:bg-[#D62828]"
             >
               <BookOpen className="h-4 w-4" />
               Schulordnung ansehen
@@ -201,12 +201,12 @@ export function Schedule() {
                     <div
                       className="flex items-start gap-2 border-b px-3 py-3"
                       style={{
-                        borderColor: "rgba(201,168,76,0.4)",
-                        backgroundColor: "rgba(201,168,76,0.12)",
+                        borderColor: "rgba(214, 40, 40,0.4)",
+                        backgroundColor: "rgba(214, 40, 40,0.12)",
                       }}
                     >
-                      <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#C9A84C]" />
-                      <p className="min-w-0 text-[10px] font-semibold uppercase leading-snug tracking-normal text-[#C9A84C]">
+                      <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#D62828]" />
+                      <p className="min-w-0 text-[10px] font-semibold uppercase leading-snug tracking-normal text-[#D62828]">
                         Nur nach
                         <br />
                         Termin&shy;vereinbarung
@@ -322,12 +322,12 @@ export function Schedule() {
               <div
                 className="mb-5 flex items-center gap-3 border px-5 py-4"
                 style={{
-                  borderColor: "rgba(201,168,76,0.5)",
-                  backgroundColor: "rgba(201,168,76,0.12)",
+                  borderColor: "rgba(214, 40, 40,0.5)",
+                  backgroundColor: "rgba(214, 40, 40,0.12)",
                 }}
               >
-                <Clock className="h-5 w-5 shrink-0 text-[#C9A84C]" />
-                <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#C9A84C]">
+                <Clock className="h-5 w-5 shrink-0 text-[#D62828]" />
+                <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#D62828]">
                   Sonntag nur nach Terminvereinbarung
                 </p>
               </div>
