@@ -99,7 +99,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0.20) 65%, rgba(0, 0, 0, 0.50) 100%)",
+            "linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.10) 35%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.42) 100%)",
           willChange: "transform",
         }}
       />
