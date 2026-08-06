@@ -113,6 +113,59 @@ const CARDS: Discipline[] = [
     who: "Alle Altersgruppen",
     videoSrc: "https://videos.pexels.com/video-files/7045242/7045242-hd_1080_1920_30fps.mp4",
   },
+  {
+    name: "Submission Grappling",
+    img: "https://images.pexels.com/photos/8611964/pexels-photo-8611964.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Bodenkampf ohne Schläge. Kontrolle, Hebel und Würgetechniken — Technik schlägt Kraft.",
+    what: "Bodenkampf ohne Schläge — Positionen, Kontrolle und Submissions. Technik schlägt Kraft.",
+    learn: ["Positionskontrolle", "Hebel- und Würgetechniken", "Takedowns und Sweeps", "Rollen und Sparring"],
+    values: [
+      { icon: Brain, label: "Taktik" },
+      { icon: Target, label: "Technik" },
+      { icon: Award, label: "Ausdauer" },
+    ],
+    who: "Alle Level",
+    videoSrc: "https://videos.pexels.com/video-files/8611969/8611969-hd_1920_1080_25fps.mp4",
+  },
+  {
+    name: "Wettkampf-Boxen",
+    img: "https://images.pexels.com/photos/4761798/pexels-photo-4761798.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Gezielte Wettkampfvorbereitung im Boxen — Sparring, Taktik und Kampfhärte.",
+    what: "Leistungstraining für Athletinnen und Athleten, die in den Ring wollen.",
+    learn: ["Sparring auf Wettkampfniveau", "Kampftaktik und Ringgefühl", "Athletik und Gewichtsmanagement", "Mentale Vorbereitung"],
+    values: [
+      { icon: Flame, label: "Kampfgeist" },
+      { icon: Shield, label: "Disziplin" },
+      { icon: Target, label: "Präzision" },
+    ],
+    who: "Fortgeschrittene mit Wettkampfziel",
+  },
+  {
+    name: "Kickboxen & Boxen für Frauen",
+    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Training in geschütztem Rahmen — Fitness, Technik und Selbstvertrauen.",
+    what: "Kickboxen und Boxen speziell für Frauen — technisch sauber, fordernd und ohne Druck.",
+    learn: ["Schlag- und Tritttechniken", "Pratzentraining", "Kondition und Kraft", "Selbstbewusstsein im Alltag"],
+    values: [
+      { icon: Heart, label: "Gemeinschaft" },
+      { icon: Award, label: "Selbstvertrauen" },
+      { icon: Zap, label: "Power" },
+    ],
+    who: "Frauen, alle Level",
+  },
+  {
+    name: "Personal Training",
+    img: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    text: "Einzeltraining nach Termin — individuell auf dein Ziel abgestimmt.",
+    what: "1-zu-1 Training mit deinem Coach — maximaler Fortschritt in kurzer Zeit.",
+    learn: ["Individueller Trainingsplan", "Technikkorrektur im Detail", "Athletik und Kondition", "Zielgerichtete Wettkampfvorbereitung"],
+    values: [
+      { icon: Target, label: "Fokus" },
+      { icon: Brain, label: "Analyse" },
+      { icon: Flame, label: "Intensität" },
+    ],
+    who: "Alle Level, nach Terminvereinbarung",
+  },
 ];
 
 function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; onToggle: () => void }) {
