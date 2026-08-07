@@ -1,10 +1,17 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
+import sloganAsset from "@/assets/slogan-banner.png.asset.json";
 
 let introStarted = false;
 
+// Pre-Intro (Rolladen) dauert so lange, danach startet das bekannte Intro
+const SHUTTER_UP_AT = 2400;
+const OFFSET = 3300;
+
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
+  const [shutterUp, setShutterUp] = useState(false);
+  const [shutterGone, setShutterGone] = useState(false);
   const [logoVisible, setLogoVisible] = useState(false);
   const [split, setSplit] = useState(false);
   const [gone, setGone] = useState(false);
@@ -46,10 +53,13 @@ export function IntroSequence() {
     }).catch(() => {});
 
     const timers: ReturnType<typeof setTimeout>[] = [];
-    // Show logo shortly after mount
-    timers.push(setTimeout(() => setLogoVisible(true), 100));
+    // Rolladen mit Slogan faehrt nach oben
+    timers.push(setTimeout(() => setShutterUp(true), SHUTTER_UP_AT));
+    timers.push(setTimeout(() => setShutterGone(true), SHUTTER_UP_AT + 1200));
+    // Show logo shortly after the shutter is up
+    timers.push(setTimeout(() => setLogoVisible(true), OFFSET + 100));
     // Fade logo out just before panels split
-    timers.push(setTimeout(() => setLogoVisible(false), 1500));
+    timers.push(setTimeout(() => setLogoVisible(false), OFFSET + 1500));
     // Fade out audio
     timers.push(setTimeout(() => {
       const a = audioRef.current;
@@ -62,9 +72,9 @@ export function IntroSequence() {
           }
         }, 50);
       }
-    }, 1700));
+    }, OFFSET + 1700));
     // Split panels
-    timers.push(setTimeout(() => setSplit(true), 1800));
+    timers.push(setTimeout(() => setSplit(true), OFFSET + 1800));
     // Cleanup after animation
     timers.push(setTimeout(() => {
       sessionStorage.setItem("introSeen", "true");
@@ -72,7 +82,7 @@ export function IntroSequence() {
       root.classList.remove("fc-intro-pending");
       root.classList.remove("fc-intro-active");
       setGone(true);
-    }, 2500));
+    }, OFFSET + 2500));
 
     return () => {
       timers.forEach((t) => clearTimeout(t));
@@ -82,21 +92,35 @@ export function IntroSequence() {
   if (!mounted || gone) return null;
 
   return (
-    <div className="fc-intro-root" aria-hidden="true">
-      <div className={`fc-intro-half fc-intro-half-left${split ? " is-open" : ""}`} />
-      <div className={`fc-intro-half fc-intro-half-right${split ? " is-open" : ""}`} />
-      <div
-        className="fc-intro-logo-center"
-        style={{ opacity: logoVisible ? 1 : 0 }}
-      >
-        <Logo className="fc-intro-logo-img" />
-        <div className="fc-intro-text">
-          <span>Fight</span>
-          <span>Club</span>
-          <span>Kampfsport</span>
-          <span>Akademie</span>
+    <>
+      {!shutterGone && (
+        <div className={`fc-shutter${shutterUp ? " is-up" : ""}`} aria-hidden="true">
+          <div className="fc-shutter-slats" />
+          <div className="fc-shutter-embers" />
+          <div className="fc-shutter-inner">
+            <div className="fc-shutter-banner">
+              <img src={sloganAsset.url} alt="" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="fc-intro-root" aria-hidden="true">
+        <div className={`fc-intro-half fc-intro-half-left${split ? " is-open" : ""}`} />
+        <div className={`fc-intro-half fc-intro-half-right${split ? " is-open" : ""}`} />
+        <div
+          className="fc-intro-logo-center"
+          style={{ opacity: logoVisible ? 1 : 0 }}
+        >
+          <Logo className="fc-intro-logo-img" />
+          <div className="fc-intro-text">
+            <span>Fight</span>
+            <span>Club</span>
+            <span>Kampfsport</span>
+            <span>Akademie</span>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
