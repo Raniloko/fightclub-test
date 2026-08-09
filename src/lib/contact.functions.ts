@@ -77,7 +77,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       throw new Error("E-Mail-Dienst ist nicht konfiguriert.");
     }
 
-    const FROM = "Fight Club MMA Akademie Hanau <kontakt@fightclub-hanau.de>";
+    const FROM = "Fight Club Kampfsport Akademie Hanau <kontakt@fightclub-hanau.de>";
 
     // Shared brand styles (all inline — email clients strip <style>).
     const wrap = (inner: string, preview: string) => `<!doctype html>
@@ -93,7 +93,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         </td></tr>
         <tr><td style="padding:36px 32px 24px 32px;">${inner}</td></tr>
         <tr><td style="background:#0a0a0a;padding:24px 32px;color:#9a9a9a;font-size:11px;line-height:1.7;letter-spacing:0.05em;">
-          <div style="color:#ffffff;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;font-size:11px;margin-bottom:8px;">Fight Club MMA Akademie Hanau</div>
+          <div style="color:#ffffff;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;font-size:11px;margin-bottom:8px;">Fight Club Kampfsport Akademie Hanau</div>
           Geleitstraße 66 · 63456 Hanau<br>
           <a href="mailto:info@fightclub-hanau.de" style="color:#9a9a9a;text-decoration:underline;">info@fightclub-hanau.de</a> ·
           <a href="https://www.fightclub-hanau.de" style="color:#9a9a9a;text-decoration:underline;">fightclub-hanau.de</a>
@@ -129,7 +129,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       <div style="font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:#777;font-weight:600;">Danke für deine Nachricht</div>
       <h1 style="margin:8px 0 20px 0;font-size:28px;line-height:1.2;font-weight:800;letter-spacing:-0.01em;">Hallo ${esc(data.name)},</h1>
       <p style="margin:0 0 14px 0;font-size:15px;line-height:1.7;color:#333;">
-        vielen Dank für dein Interesse am <strong>Fight Club MMA Akademie Hanau</strong>. Wir haben deine Anfrage erhalten und melden uns so schnell wie möglich bei dir – in der Regel innerhalb von 24 Stunden.
+        vielen Dank für dein Interesse am <strong>Fight Club Kampfsport Akademie Hanau</strong>. Wir haben deine Anfrage erhalten und melden uns so schnell wie möglich bei dir – in der Regel innerhalb von 24 Stunden.
       </p>
       <p style="margin:0 0 24px 0;font-size:15px;line-height:1.7;color:#333;">
         Bis dahin kannst du dich schon einmal durch unsere Disziplinen und den Trainingsplan klicken.

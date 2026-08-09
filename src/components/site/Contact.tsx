@@ -27,7 +27,7 @@ function MapEmbed() {
   return (
     <div className="overflow-hidden border border-[#e0e0e0]">
       <iframe
-        title="Fight Club MMA Akademie Hanau – Standort"
+        title="Fight Club Kampfsport Akademie Hanau – Standort"
         src="https://www.google.com/maps?q=Geleitstra%C3%9Fe+66%2C+63456+Hanau&output=embed"
         width="100%"
         height="300"
@@ -98,7 +98,7 @@ export function Contact() {
                 Adresse
               </div>
               <p className="mt-2 leading-relaxed">
-                Fight Club MMA Akademie Hanau
+                Fight Club Kampfsport Akademie Hanau
                 <br />
                 Geleitstraße 66
                 <br />
