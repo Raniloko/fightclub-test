@@ -8,10 +8,10 @@ const projectRef = import.meta.env.VITE_SUPABASE_PROJECT_ID ?? "project-ref-unse
 
 export default defineMcp({
   name: "fightclub-hanau-mcp",
-  title: "Fight Club MMA Akademie Hanau",
+  title: "Fight Club Kampfsport Akademie Hanau",
   version: "0.1.0",
   instructions:
-    "Tools der Fight Club MMA Akademie Hanau. `list_disciplines` gibt alle Kampfsport-Angebote zurück, `get_schedule` den Trainingsplan (optional pro Wochentag), `get_contact` Adresse und Öffnungszeiten. Nur für angemeldete Nutzer.",
+    "Tools der Fight Club Kampfsport Akademie Hanau. `list_disciplines` gibt alle Kampfsport-Angebote zurück, `get_schedule` den Trainingsplan (optional pro Wochentag), `get_contact` Adresse und Öffnungszeiten. Nur für angemeldete Nutzer.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",

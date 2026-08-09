@@ -45,7 +45,7 @@ export default defineTool({
   name: "get_schedule",
   title: "Trainingsplan abrufen",
   description:
-    "Liefert den Trainingsplan der Fight Club MMA Akademie Hanau. Ohne Argument wird die ganze Woche zurückgegeben, mit `day` nur der ausgewählte Wochentag (MON–SUN).",
+    "Liefert den Trainingsplan der Fight Club Kampfsport Akademie Hanau. Ohne Argument wird die ganze Woche zurückgegeben, mit `day` nur der ausgewählte Wochentag (MON–SUN).",
   inputSchema: {
     day: DAY.optional().describe("Optionaler Wochentag (MON, TUE, WED, THU, FRI, SAT, SUN)."),
   },

@@ -1,7 +1,7 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 
 const CONTACT = {
-  name: "Fight Club MMA Akademie Hanau",
+  name: "Fight Club Kampfsport Akademie Hanau",
   address: {
     street: "Geleitstraße 66",
     city: "Hanau",
@@ -20,7 +20,7 @@ export default defineTool({
   name: "get_contact",
   title: "Kontakt & Öffnungszeiten",
   description:
-    "Liefert Adresse, Öffnungszeiten und Google-Maps-Link der Fight Club MMA Akademie Hanau.",
+    "Liefert Adresse, Öffnungszeiten und Google-Maps-Link der Fight Club Kampfsport Akademie Hanau.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({

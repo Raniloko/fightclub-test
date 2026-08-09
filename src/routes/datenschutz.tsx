@@ -4,7 +4,7 @@ export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
       { title: "Datenschutzerklärung — Fight Club Hanau" },
-      { name: "description", content: "Datenschutzerklärung der Fight Club MMA Akademie Hanau nach DSGVO und TDDDG/DDG." },
+      { name: "description", content: "Datenschutzerklärung der Fight Club Kampfsport Akademie Hanau nach DSGVO und TDDDG/DDG." },
       { name: "robots", content: "index,follow" },
     ],
     links: [{ rel: "canonical", href: "https://www.fightclub-hanau.de/datenschutz" }],
@@ -30,7 +30,7 @@ function DatenschutzPage() {
         <H2>1. Verantwortlicher</H2>
         <p>
           Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br />
-          Fight Club MMA Akademie Hanau<br />
+          Fight Club Kampfsport Akademie Hanau<br />
           Geleitstraße 66, 63456 Hanau, Deutschland<br />
           E-Mail: <a className="underline" href="mailto:info@fightclub-hanau.de">info@fightclub-hanau.de</a>
         </p>

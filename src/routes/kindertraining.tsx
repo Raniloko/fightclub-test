@@ -25,7 +25,7 @@ export const Route = createFileRoute("/kindertraining")({
           "@graph": [
             {
               "@type": "LocalBusiness",
-              name: "Fight Club MMA Akademie Hanau",
+              name: "Fight Club Kampfsport Akademie Hanau",
               url: BASE_URL,
               image: `${BASE_URL}/kids-hero.jpg`,
               address: {
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/kindertraining")({
               "@type": "Course",
               name: "Kampfsport für Kinder",
               description: "Kampfsporttraining für Kinder und Jugendliche ab 5 Jahren in Hanau.",
-              provider: { "@type": "LocalBusiness", name: "Fight Club MMA Akademie Hanau" },
+              provider: { "@type": "LocalBusiness", name: "Fight Club Kampfsport Akademie Hanau" },
               educationalLevel: "Kinder ab 5 Jahren, Jugendliche",
               teaches: ["Boxen", "Thaiboxen", "Ringen", "Selbstbehauptung", "Respekt", "Disziplin"],
             },
