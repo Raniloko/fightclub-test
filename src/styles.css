@@ -332,6 +332,7 @@ html.fc-intro-active body { visibility: visible; }
   position: fixed;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   width: 50vw;
   z-index: 100;
   will-change: transform;
@@ -411,6 +412,9 @@ html.fc-intro-active body { visibility: visible; }
 .fc-shutter {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   z-index: 2147483647;
   background:
     radial-gradient(ellipse at 50% 50%, rgba(80,20,0,0.55) 0%, rgba(10,10,10,0.98) 60%, #050505 100%),

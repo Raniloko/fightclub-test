@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Logo } from "./Logo";
 import { FireAura } from "./FireAura";
 import sloganAsset from "@/assets/slogan-banner.png.asset.json";
@@ -6,9 +7,9 @@ import sloganAsset from "@/assets/slogan-banner.png.asset.json";
 let introStarted = false;
 
 // Pre-Intro (Rolladen) dauert so lange, danach startet das bekannte Intro
-const BURN_AT = 1700;
-const SHUTTER_UP_AT = 3200;
-const OFFSET = 4100;
+const BURN_AT = 3000;
+const SHUTTER_UP_AT = 5400;
+const OFFSET = 6300;
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
@@ -95,8 +96,9 @@ export function IntroSequence() {
 
   if (!mounted || gone) return null;
 
-  return (
+  return createPortal(
     <>
+
       {!shutterGone && (
         <div className={`fc-shutter${burning ? " is-burning" : ""}${shutterUp ? " is-up" : ""}`} aria-hidden="true">
           <div className="fc-shutter-slats" />
@@ -130,6 +132,7 @@ export function IntroSequence() {
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }
