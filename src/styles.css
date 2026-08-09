@@ -470,6 +470,8 @@ html.fc-intro-active body { visibility: visible; }
   .fc-shutter-banner { width: min(80vw, 1200px); }
 }
 .fc-shutter-banner img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
@@ -487,6 +489,7 @@ html.fc-intro-active body { visibility: visible; }
   content: "";
   position: absolute;
   inset: -14% -6%;
+  z-index: 0;
   background: radial-gradient(ellipse at 50% 55%, rgba(255,140,0,0.45) 0%, rgba(255,60,0,0.22) 40%, transparent 70%);
   filter: blur(18px);
   opacity: 0;
