@@ -59,7 +59,34 @@ export function FireAura({
     const particles: Particle[] = [];
     const start = performance.now();
 
-    const spawn = (burstFactor: number) => {
+    const spawn = (burstFactor: number, now: number) => {
+      if (modeRef.current === "orbit") {
+        // Emit along a rotating ellipse that wraps around the logo
+        const rot = now * 0.0006;
+        const angle = Math.random() * Math.PI * 2 + rot;
+        const rx = w * 0.36 * (0.9 + Math.random() * 0.2);
+        const ry = h * 0.38 * (0.9 + Math.random() * 0.2);
+        const cx = w / 2;
+        const cy = h / 2;
+        const x = cx + Math.cos(angle) * rx;
+        const y = cy + Math.sin(angle) * ry;
+        const isEmber = Math.random() < 0.4;
+        const outward = 0.25 + Math.random() * 0.45;
+        particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * outward * (isEmber ? 1.2 : 0.6) - Math.sin(angle) * 0.25,
+          vy:
+            Math.sin(angle) * outward * 0.35 -
+            (isEmber ? 0.35 + Math.random() * 0.5 : 0.5 + Math.random() * 0.6) * burstFactor,
+          life: 0,
+          maxLife: isEmber ? 900 + Math.random() * 900 : 450 + Math.random() * 450,
+          size: isEmber ? 1.2 + Math.random() * 1.8 : h * 0.045 * (0.6 + Math.random() * 0.9),
+          kind: isEmber ? "ember" : "flame",
+          seed: Math.random() * 1000,
+        });
+        return;
+      }
       // Ring of emission around the slogan box (inset area), stronger at bottom/edges
       const edge = Math.random();
       let x: number;
