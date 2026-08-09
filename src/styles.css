@@ -470,12 +470,15 @@ html.fc-intro-active body { visibility: visible; }
   display: block;
   width: 100%;
   height: auto;
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 22px rgba(255,120,0,0.55)) drop-shadow(0 0 55px rgba(255,60,0,0.35));
+  animation: fc-fire-flicker 1.6s ease-in-out 1.1s infinite;
+}
+.fc-shutter-banner {
   opacity: 0;
   transform: scale(0.94);
-  filter: drop-shadow(0 0 22px rgba(255,120,0,0.55)) drop-shadow(0 0 55px rgba(255,60,0,0.35));
-  animation:
-    fc-banner-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards,
-    fc-fire-flicker 1.6s ease-in-out 1.1s infinite;
+  animation: fc-banner-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 @keyframes fc-banner-reveal {
   to { opacity: 1; transform: scale(1); }
@@ -494,6 +497,7 @@ html.fc-intro-active body { visibility: visible; }
 
 /* Burn stage: fire erupts out of the letters */
 .fc-shutter.is-burning .fc-shutter-banner img {
+  opacity: 1;
   animation:
     fc-fire-flicker 0.5s ease-in-out infinite,
     fc-burn-heat 1.4s ease-out forwards;
