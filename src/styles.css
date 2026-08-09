@@ -542,12 +542,24 @@ html.fc-intro-active body { visibility: visible; }
 }
 
 /* Orbit-Variante: Feuer laeuft rund um das Logo */
+.fc-intro-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
 .fc-fire-canvas--orbit {
   position: absolute;
-  inset: -35% -30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170%;
+  height: 190%;
+  inset: auto;
   z-index: 0;
 }
-.fc-intro-logo-center > .fc-intro-logo-img,
+.fc-intro-logo-wrap > .fc-intro-logo-img,
 .fc-intro-logo-center > .fc-intro-text {
   position: relative;
   z-index: 1;
