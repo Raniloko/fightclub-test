@@ -551,12 +551,12 @@ html.fc-intro-active body { visibility: visible; }
 }
 .fc-fire-canvas--orbit {
   position: absolute;
+  inset: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 170%;
-  height: 190%;
-  inset: auto;
+  width: 175%;
+  height: 200%;
   z-index: 0;
 }
 .fc-intro-logo-wrap > .fc-intro-logo-img,
