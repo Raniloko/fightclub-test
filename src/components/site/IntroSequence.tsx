@@ -5,12 +5,14 @@ import sloganAsset from "@/assets/slogan-banner.png.asset.json";
 let introStarted = false;
 
 // Pre-Intro (Rolladen) dauert so lange, danach startet das bekannte Intro
-const SHUTTER_UP_AT = 2400;
-const OFFSET = 3300;
+const BURN_AT = 1700;
+const SHUTTER_UP_AT = 3200;
+const OFFSET = 4100;
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
   const [shutterUp, setShutterUp] = useState(false);
+  const [burning, setBurning] = useState(false);
   const [shutterGone, setShutterGone] = useState(false);
   const [logoVisible, setLogoVisible] = useState(false);
   const [split, setSplit] = useState(false);
@@ -54,6 +56,7 @@ export function IntroSequence() {
 
     const timers: ReturnType<typeof setTimeout>[] = [];
     // Rolladen mit Slogan faehrt nach oben
+    timers.push(setTimeout(() => setBurning(true), BURN_AT));
     timers.push(setTimeout(() => setShutterUp(true), SHUTTER_UP_AT));
     timers.push(setTimeout(() => setShutterGone(true), SHUTTER_UP_AT + 1200));
     // Show logo shortly after the shutter is up
@@ -94,7 +97,7 @@ export function IntroSequence() {
   return (
     <>
       {!shutterGone && (
-        <div className={`fc-shutter${shutterUp ? " is-up" : ""}`} aria-hidden="true">
+        <div className={`fc-shutter${burning ? " is-burning" : ""}${shutterUp ? " is-up" : ""}`} aria-hidden="true">
           <div className="fc-shutter-slats" />
           <div className="fc-shutter-embers" />
           <div className="fc-shutter-inner">
