@@ -194,5 +194,11 @@ export function FireAura({
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fc-fire-canvas" aria-hidden="true" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={`fc-fire-canvas${mode === "orbit" ? " fc-fire-canvas--orbit" : ""}`}
+      aria-hidden="true"
+    />
+  );
 }
