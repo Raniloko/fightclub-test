@@ -96,8 +96,9 @@ export function IntroSequence() {
 
   if (!mounted || gone) return null;
 
-  return (
+  return createPortal(
     <>
+
       {!shutterGone && (
         <div className={`fc-shutter${burning ? " is-burning" : ""}${shutterUp ? " is-up" : ""}`} aria-hidden="true">
           <div className="fc-shutter-slats" />
