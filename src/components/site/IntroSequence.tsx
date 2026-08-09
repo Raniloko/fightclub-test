@@ -118,6 +118,7 @@ export function IntroSequence() {
           className="fc-intro-logo-center"
           style={{ opacity: logoVisible ? 1 : 0 }}
         >
+          {logoVisible && <FireAura mode="orbit" intense />}
           <Logo className="fc-intro-logo-img" />
           <div className="fc-intro-text">
             <span>Fight</span>
