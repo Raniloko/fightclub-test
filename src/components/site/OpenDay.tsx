@@ -117,11 +117,11 @@ export function OpenDayBar() {
       className="fc-openday-bar fixed inset-x-0 top-0 z-[55] flex h-[36px] w-full items-center justify-center overflow-hidden text-white"
       style={{ background: "linear-gradient(90deg, #8B0A1A, #C8102E, #8B0A1A)" }}
     >
-      <span className="hidden whitespace-nowrap px-4 text-center text-[12px] font-semibold uppercase tracking-[0.2em] md:block">
-        Große Neueröffnung · 29. August 2026 · 10–18 Uhr
+      <span className="hidden whitespace-nowrap px-4 text-center text-[12px] font-semibold normal-case tracking-[0.2em] md:block">
+        GROẞE NEUERÖFFNUNG · 29. AUGUST 2026 · 10–18 UHR
       </span>
-      <span className="whitespace-nowrap px-4 text-center text-[12px] font-semibold uppercase tracking-[0.2em] md:hidden">
-        Große Neueröffnung · 29. August
+      <span className="whitespace-nowrap px-4 text-center text-[12px] font-semibold normal-case tracking-[0.2em] md:hidden">
+        GROẞE NEUERÖFFNUNG · 29. AUGUST
       </span>
     </a>
   );
