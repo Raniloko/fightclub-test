@@ -95,7 +95,7 @@ export default defineTool({
   name: "list_disciplines",
   title: "Disziplinen auflisten",
   description:
-    "Listet alle Kampfsport-Disziplinen der Fight Club MMA Akademie Hanau (Kindertraining, MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight) mit Beschreibung, Lerninhalten und Zielgruppe.",
+    "Listet alle Kampfsport-Disziplinen der Fight Club Kampfsport Akademie Hanau (Kindertraining, MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight) mit Beschreibung, Lerninhalten und Zielgruppe.",
   inputSchema: {},
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => ({

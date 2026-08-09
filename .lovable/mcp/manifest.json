@@ -19,7 +19,7 @@
       {
         "name": "list_disciplines",
         "title": "Disziplinen auflisten",
-        "description": "Listet alle Kampfsport-Disziplinen der Fight Club MMA Akademie Hanau (Kindertraining, MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight) mit Beschreibung, Lerninhalten und Zielgruppe.",
+        "description": "Listet alle Kampfsport-Disziplinen der Fight Club Kampfsport Akademie Hanau (Kindertraining, MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing-Fight) mit Beschreibung, Lerninhalten und Zielgruppe.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -35,7 +35,7 @@
       {
         "name": "get_schedule",
         "title": "Trainingsplan abrufen",
-        "description": "Liefert den Trainingsplan der Fight Club MMA Akademie Hanau. Ohne Argument wird die ganze Woche zurückgegeben, mit `day` nur der ausgewählte Wochentag (MON–SUN).",
+        "description": "Liefert den Trainingsplan der Fight Club Kampfsport Akademie Hanau. Ohne Argument wird die ganze Woche zurückgegeben, mit `day` nur der ausgewählte Wochentag (MON–SUN).",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -65,7 +65,7 @@
       {
         "name": "get_contact",
         "title": "Kontakt & Öffnungszeiten",
-        "description": "Liefert Adresse, Öffnungszeiten und Google-Maps-Link der Fight Club MMA Akademie Hanau.",
+        "description": "Liefert Adresse, Öffnungszeiten und Google-Maps-Link der Fight Club Kampfsport Akademie Hanau.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
