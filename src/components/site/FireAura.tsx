@@ -18,10 +18,18 @@ const MAX_PARTICLES = 100;
  * Cinematic fire aura rendered on a canvas that sits BEHIND the slogan.
  * Flame tongues lick upward around the edges, embers drift with turbulence.
  */
-export function FireAura({ intense = false }: { intense?: boolean }) {
+export function FireAura({
+  intense = false,
+  mode = "banner",
+}: {
+  intense?: boolean;
+  mode?: "banner" | "orbit";
+}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const intenseRef = useRef(intense);
   intenseRef.current = intense;
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -51,7 +59,34 @@ export function FireAura({ intense = false }: { intense?: boolean }) {
     const particles: Particle[] = [];
     const start = performance.now();
 
-    const spawn = (burstFactor: number) => {
+    const spawn = (burstFactor: number, now: number) => {
+      if (modeRef.current === "orbit") {
+        // Emit along a rotating ellipse that wraps around the logo
+        const rot = now * 0.0006;
+        const angle = Math.random() * Math.PI * 2 + rot;
+        const rx = w * 0.36 * (0.9 + Math.random() * 0.2);
+        const ry = h * 0.38 * (0.9 + Math.random() * 0.2);
+        const cx = w / 2;
+        const cy = h / 2;
+        const x = cx + Math.cos(angle) * rx;
+        const y = cy + Math.sin(angle) * ry;
+        const isEmber = Math.random() < 0.4;
+        const outward = 0.25 + Math.random() * 0.45;
+        particles.push({
+          x,
+          y,
+          vx: Math.cos(angle) * outward * (isEmber ? 1.2 : 0.6) - Math.sin(angle) * 0.25,
+          vy:
+            Math.sin(angle) * outward * 0.35 -
+            (isEmber ? 0.35 + Math.random() * 0.5 : 0.5 + Math.random() * 0.6) * burstFactor,
+          life: 0,
+          maxLife: isEmber ? 900 + Math.random() * 900 : 450 + Math.random() * 450,
+          size: isEmber ? 1 + Math.random() * 1.6 : h * 0.028 * (0.6 + Math.random() * 0.9),
+          kind: isEmber ? "ember" : "flame",
+          seed: Math.random() * 1000,
+        });
+        return;
+      }
       // Ring of emission around the slogan box (inset area), stronger at bottom/edges
       const edge = Math.random();
       let x: number;
@@ -98,7 +133,7 @@ export function FireAura({ intense = false }: { intense?: boolean }) {
 
       const target = Math.min(MAX_PARTICLES, Math.round(52 * intensity));
       let toSpawn = Math.max(0, target - particles.length);
-      while (toSpawn-- > 0) spawn(intensity);
+      while (toSpawn-- > 0) spawn(intensity, now);
 
       ctx.clearRect(0, 0, w, h);
       ctx.globalCompositeOperation = "lighter";
@@ -159,5 +194,11 @@ export function FireAura({ intense = false }: { intense?: boolean }) {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fc-fire-canvas" aria-hidden="true" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className={`fc-fire-canvas${mode === "orbit" ? " fc-fire-canvas--orbit" : ""}`}
+      aria-hidden="true"
+    />
+  );
 }
