@@ -105,7 +105,7 @@ export function IntroSequence() {
           <div className="fc-shutter-embers" />
           <div className="fc-shutter-inner">
           <div className="fc-shutter-banner">
-            <FireAura intense={burning} />
+            <FireAura mode="orbit" intense={burning} />
             <img src={sloganAsset.url} alt="" />
           </div>
           </div>
