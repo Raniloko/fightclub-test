@@ -132,7 +132,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Fight Club MMA Akademie Hanau",
+          name: "Fight Club Kampfsport Akademie Hanau",
           url: "https://www.fightclub-hanau.de",
           logo: "https://www.fightclub-hanau.de/favicon.ico",
         }),

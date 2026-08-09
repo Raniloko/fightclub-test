@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Fight Club Hanau — MMA & Kampfsport-Akademie" },
       { name: "description", content: "MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in Hanau. Geleitstraße 66. Erstes Probetraining kostenlos." },
-      { property: "og:title", content: "Fight Club MMA Akademie Hanau" },
+      { property: "og:title", content: "Fight Club Kampfsport Akademie Hanau" },
       { property: "og:description", content: "MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in Hanau. Geleitstraße 66. Erstes Probetraining kostenlos." },
       { property: "og:url", content: "https://www.fightclub-hanau.de/" },
       { property: "og:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          name: "Fight Club MMA Akademie Hanau",
+          name: "Fight Club Kampfsport Akademie Hanau",
           url: "https://www.fightclub-hanau.de",
           image: "https://www.fightclub-hanau.de/kids-hero.jpg",
           address: {
