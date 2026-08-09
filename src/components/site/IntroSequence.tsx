@@ -105,7 +105,7 @@ export function IntroSequence() {
           <div className="fc-shutter-embers" />
           <div className="fc-shutter-inner">
           <div className="fc-shutter-banner">
-            <FireAura intense={burning} />
+            <FireAura mode="orbit" intense={burning} />
             <img src={sloganAsset.url} alt="" />
           </div>
           </div>
@@ -121,7 +121,6 @@ export function IntroSequence() {
           style={{ opacity: logoVisible ? 1 : 0 }}
         >
           <div className="fc-intro-logo-wrap">
-            {logoVisible && <FireAura mode="orbit" intense />}
             <Logo className="fc-intro-logo-img" />
           </div>
           <div className="fc-intro-text">

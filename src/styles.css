@@ -563,6 +563,11 @@ html.fc-intro-active body { visibility: visible; }
   height: 200%;
   z-index: 0;
 }
+/* Im ersten Intro laeuft der Ring komplett um den Slogan */
+.fc-shutter-banner > .fc-fire-canvas--orbit {
+  width: 128%;
+  height: 320%;
+}
 .fc-intro-logo-wrap > .fc-intro-logo-img,
 .fc-intro-logo-center > .fc-intro-text {
   position: relative;
