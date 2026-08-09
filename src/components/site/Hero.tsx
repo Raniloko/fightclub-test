@@ -102,23 +102,25 @@ export function Hero() {
         }}
       />
 
-      <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-6 pt-[120px] pb-[60px] md:px-12 md:text-center">
-          <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
-            <span className="fc-dot-cyan" aria-hidden="true" />
-            <span
-              className="text-[12px] uppercase tracking-[0.25em]"
-              style={{ color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700 }}
-            >
-              Neu in Hanau · Kampfsport Akademie
-            </span>
-          </div>
+      <div className="absolute left-0 right-0 top-[32%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
+        <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
+          <span className="fc-dot-cyan" aria-hidden="true" />
+          <span
+            className="text-[12px] uppercase tracking-[0.25em]"
+            style={{ color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700 }}
+          >
+            Neu in Hanau · Kampfsport Akademie
+          </span>
+        </div>
+      </div>
 
+      <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
+        <div className="mx-auto w-full max-w-[1200px] px-6 pb-[60px] md:px-12 md:text-center">
           <h1 className="sr-only">
             Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besseren Version von dir selbst.
           </h1>
 
-          <div className="fc-late fc-late-3 mt-6 flex flex-wrap gap-2 md:justify-center">
+          <div className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center">
             {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
               <span key={d} className="fc-tag" style={{ fontSize: "12px", padding: "6px 14px" }}>
                 {d}
