@@ -332,6 +332,7 @@ html.fc-intro-active body { visibility: visible; }
   position: fixed;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   width: 50vw;
   z-index: 100;
   will-change: transform;
