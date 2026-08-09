@@ -97,26 +97,57 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.10) 35%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.42) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.85) 70%, rgba(10,10,10,0.98) 100%)",
           willChange: "transform",
         }}
       />
 
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-6 pb-10 md:px-12 md:pb-16 md:text-center">
-          <div className="flex items-center gap-3 fc-late fc-late-1 md:justify-center">
-            <span className="fc-badge-new">Neu in Hanau!!!</span>
+        <div className="mx-auto w-full max-w-[1200px] px-6 pt-[120px] pb-[60px] md:px-12 md:text-center">
+          <div className="fc-late fc-late-1 flex items-center gap-2 md:justify-center">
+            <span className="fc-dot-cyan" aria-hidden="true" />
+            <span
+              className="text-[12px] uppercase tracking-[0.25em]"
+              style={{ color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700 }}
+            >
+              Neu in Hanau · Kampfsport Akademie
+            </span>
           </div>
 
           <h1 className="sr-only">
-            Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besten Version von dir selbst.
+            Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besseren Version von dir selbst.
           </h1>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row fc-late fc-late-3 md:justify-center">
+          <MatrixHeadline
+            text="WERDE ZUR BESSEREN VERSION VON DIR SELBST"
+            startDelay={0.4}
+            className="mt-4 block text-white"
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: "clamp(32px, 6vw, 64px)",
+              lineHeight: 1,
+              textTransform: "uppercase",
+            }}
+          />
+
+          <p className="fc-late fc-late-2 mt-4 text-[16px]" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Werde ein Teil der Fight Club Familie.
+          </p>
+
+          <div className="fc-late fc-late-3 mt-6 flex flex-wrap gap-2 md:justify-center">
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
+              <span key={d} className="fc-tag" style={{ fontSize: "12px", padding: "6px 14px" }}>
+                {d}
+              </span>
+            ))}
+          </div>
+
+          <div className="fc-late fc-late-4 mt-6 flex flex-col gap-3 sm:flex-row md:justify-center">
             <Link
               to="/"
               hash="kontakt"
-              className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
+              className="fc-btn-cyan inline-flex w-full items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black sm:w-auto"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
               Jetzt einsteigen
@@ -124,24 +155,15 @@ export function Hero() {
             <Link
               to="/"
               hash="stundenplan"
-              className="fc-btn-ghost inline-flex items-center justify-center border-2 px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white"
-              style={{
-                borderColor: "rgba(255,255,255,0.5)",
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontWeight: 800,
-              }}
+              className="inline-flex w-full items-center justify-center border border-white/70 bg-transparent px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/10 sm:w-auto"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
               Stundenplan
             </Link>
           </div>
-
-          <div className="fc-hero-tagstrip fc-late fc-late-4 mt-8 md:justify-center">
-            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
-              <span key={d}>{d}</span>
-            ))}
-          </div>
         </div>
       </div>
+
 
     </section>
   );
