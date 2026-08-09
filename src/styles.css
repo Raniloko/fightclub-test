@@ -305,28 +305,19 @@ html.fc-has-openday-bar .fc-nav {
 
 
 /* === Intro sequence === */
-html.fc-intro-pending { background: #2e2e2e; }
+html.fc-intro-pending { background: #060606; }
 html.fc-intro-pending body { visibility: hidden; }
-html.fc-intro-pending::before,
-html.fc-intro-pending::after {
+html.fc-intro-pending::before {
   content: "";
   position: fixed;
-  top: 0;
-  height: 100%;
-  width: 50vw;
+  inset: 0;
   z-index: 2147483646;
   pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(80,20,0,0.55) 0%, rgba(10,10,10,0.98) 60%, #050505 100%),
+    #060606;
 }
-html.fc-intro-pending::before {
-  left: 0;
-  background: #2e2e2e;
-}
-html.fc-intro-pending::after {
-  left: 50vw;
-  background: #3d3d3d;
-}
-html.fc-intro-active::before,
-html.fc-intro-active::after { display: none; }
+html.fc-intro-active::before { display: none; }
 html.fc-intro-active body { visibility: visible; }
 
 .fc-intro-root {
