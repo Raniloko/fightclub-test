@@ -133,7 +133,7 @@ export function FireAura({
 
       const target = Math.min(MAX_PARTICLES, Math.round(52 * intensity));
       let toSpawn = Math.max(0, target - particles.length);
-      while (toSpawn-- > 0) spawn(intensity);
+      while (toSpawn-- > 0) spawn(intensity, now);
 
       ctx.clearRect(0, 0, w, h);
       ctx.globalCompositeOperation = "lighter";
