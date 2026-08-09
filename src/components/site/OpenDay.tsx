@@ -114,15 +114,12 @@ export function OpenDayBar() {
   return (
     <a
       href="#tag-der-offenen-tuer"
-      className="fc-openday-bar fc-gold-glow fixed inset-x-0 top-0 z-[55] block w-full bg-[#c8102e] text-white transition-colors hover:bg-[#a80d26]"
+      className="fc-openday-bar fixed inset-x-0 top-0 z-[55] flex h-[36px] w-full items-center justify-center overflow-hidden text-black"
+      style={{ background: "linear-gradient(90deg, #8B6914, #C9A84C, #8B6914)" }}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold tracking-[0.16em] sm:gap-4 sm:text-[12px]">
-        <span className="hidden sm:inline">🥊</span>
-        <span className="normal-case whitespace-nowrap">Große Neueröffnung · 29. August 2026</span>
-        <span className="hidden text-[10px] tracking-[0.2em] underline underline-offset-4 md:inline">
-          Mehr erfahren →
-        </span>
-      </div>
+      <span className="whitespace-nowrap px-4 text-center text-[12px] font-semibold uppercase tracking-[0.2em]">
+        Grosse Neueröffnung · 29. August 2026 · 10–18 Uhr
+      </span>
     </a>
   );
 }
