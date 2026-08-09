@@ -470,6 +470,8 @@ html.fc-intro-active body { visibility: visible; }
   .fc-shutter-banner { width: min(80vw, 1200px); }
 }
 .fc-shutter-banner img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: auto;
@@ -487,6 +489,7 @@ html.fc-intro-active body { visibility: visible; }
   content: "";
   position: absolute;
   inset: -14% -6%;
+  z-index: 0;
   background: radial-gradient(ellipse at 50% 55%, rgba(255,140,0,0.45) 0%, rgba(255,60,0,0.22) 40%, transparent 70%);
   filter: blur(18px);
   opacity: 0;
@@ -508,23 +511,22 @@ html.fc-intro-active body { visibility: visible; }
 .fc-shutter.is-burning .fc-shutter-banner::after {
   content: "";
   position: absolute;
-  left: -8%;
-  right: -8%;
-  bottom: -6%;
-  height: 150%;
+  inset: -10% -8% -20%;
+  z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(closest-side at 25% 100%, rgba(255,190,60,0.55), rgba(255,80,0,0.25) 55%, transparent 78%),
-    radial-gradient(closest-side at 50% 100%, rgba(255,220,120,0.6), rgba(255,90,0,0.3) 55%, transparent 80%),
-    radial-gradient(closest-side at 75% 100%, rgba(255,170,40,0.5), rgba(255,60,0,0.25) 55%, transparent 78%);
+    radial-gradient(closest-side at 20% 100%, rgba(255,190,60,0.45), rgba(255,80,0,0.2) 55%, transparent 78%),
+    radial-gradient(closest-side at 40% 100%, rgba(255,220,120,0.5), rgba(255,90,0,0.25) 55%, transparent 80%),
+    radial-gradient(closest-side at 60% 100%, rgba(255,170,40,0.45), rgba(255,60,0,0.2) 55%, transparent 78%),
+    radial-gradient(closest-side at 80% 100%, rgba(255,190,60,0.4), rgba(255,80,0,0.18) 55%, transparent 78%);
   filter: blur(10px);
   mix-blend-mode: screen;
   animation: fc-flames-up 1.2s ease-out forwards, fc-fire-pulse 0.6s ease-in-out infinite;
 }
 @keyframes fc-flames-up {
-  0%   { opacity: 0; transform: translateY(18%) scaleY(0.5); }
+  0%   { opacity: 0; transform: translateY(10%) scaleY(0.6); }
   35%  { opacity: 1; transform: translateY(0) scaleY(1.05); }
-  100% { opacity: 0.85; transform: translateY(-6%) scaleY(1); }
+  100% { opacity: 0.85; transform: translateY(0) scaleY(1); }
 }
 
 @keyframes fc-fire-flicker {
@@ -557,25 +559,22 @@ html.fc-intro-active body { visibility: visible; }
 /* === Echte Flammen-Zungen + Funken (brutzelndes Feuer) === */
 .fc-flames {
   position: absolute;
-  left: -4%;
-  right: -4%;
-  bottom: -8%;
-  height: 60%;
+  inset: -8% -6% -18%;
+  z-index: 0;
   pointer-events: none;
   mix-blend-mode: screen;
-  filter: blur(6px) contrast(1.3);
-  opacity: 0;
+  filter: blur(5px) contrast(1.3);
+  opacity: 0.9;
   transition: opacity 0.5s ease;
 }
-.fc-shutter .fc-flames { opacity: 0.9; }
-.fc-shutter.is-burning .fc-flames { opacity: 1; filter: blur(5px) contrast(1.5); }
+.fc-shutter.is-burning .fc-flames { opacity: 1; filter: blur(4px) contrast(1.5); }
 
 .fc-flames span {
   position: absolute;
   bottom: 0;
   left: calc(var(--i) * 7.15% + 1%);
   width: 9%;
-  height: 55%;
+  height: 85%;
   border-radius: 50% 50% 46% 46% / 68% 68% 32% 32%;
   background: radial-gradient(ellipse at 50% 100%,
     rgba(255,255,220,0.95) 0%,
@@ -588,7 +587,7 @@ html.fc-intro-active body { visibility: visible; }
   animation-delay: calc(var(--i) * -0.17s);
 }
 .fc-shutter.is-burning .fc-flames span {
-  height: 105%;
+  height: 120%;
   animation-duration: 0.62s;
 }
 @keyframes fc-flame-lick {
@@ -602,6 +601,7 @@ html.fc-intro-active body { visibility: visible; }
 .fc-sparks {
   position: absolute;
   inset: -20% -6% -10%;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
   mix-blend-mode: screen;
