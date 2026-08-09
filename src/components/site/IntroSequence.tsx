@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
+import { FireAura } from "./FireAura";
 import sloganAsset from "@/assets/slogan-banner.png.asset.json";
 
 let introStarted = false;
@@ -102,16 +103,7 @@ export function IntroSequence() {
           <div className="fc-shutter-embers" />
           <div className="fc-shutter-inner">
           <div className="fc-shutter-banner">
-            <div className="fc-flames">
-              {Array.from({ length: 14 }).map((_, i) => (
-                <span key={i} style={{ ["--i" as string]: i } as React.CSSProperties} />
-              ))}
-            </div>
-            <div className="fc-sparks">
-              {Array.from({ length: 18 }).map((_, i) => (
-                <i key={i} style={{ ["--i" as string]: i } as React.CSSProperties} />
-              ))}
-            </div>
+            <FireAura intense={burning} />
             <img src={sloganAsset.url} alt="" />
           </div>
           </div>
