@@ -98,14 +98,14 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.85) 70%, rgba(10,10,10,0.98) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.65) 75%, rgba(10,10,10,0.9) 100%)",
           willChange: "transform",
         }}
       />
 
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 pt-[120px] pb-[60px] md:px-12 md:text-center">
-          <div className="fc-late fc-late-1 flex items-center gap-2 md:justify-center">
+          <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
             <span className="fc-dot-cyan" aria-hidden="true" />
             <span
               className="text-[12px] uppercase tracking-[0.25em]"
@@ -118,23 +118,6 @@ export function Hero() {
           <h1 className="sr-only">
             Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besseren Version von dir selbst.
           </h1>
-
-          <MatrixHeadline
-            text="WERDE ZUR BESSEREN VERSION VON DIR SELBST"
-            startDelay={0.4}
-            className="mt-4 block text-white"
-            style={{
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 900,
-              fontSize: "clamp(32px, 6vw, 64px)",
-              lineHeight: 1,
-              textTransform: "uppercase",
-            }}
-          />
-
-          <p className="fc-late fc-late-2 mt-4 text-[16px]" style={{ color: "rgba(255,255,255,0.6)" }}>
-            Werde ein Teil der Fight Club Familie.
-          </p>
 
           <div className="fc-late fc-late-3 mt-6 flex flex-wrap gap-2 md:justify-center">
             {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (

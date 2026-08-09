@@ -118,7 +118,7 @@ export function OpenDayBar() {
       style={{ background: "linear-gradient(90deg, #8B6914, #C9A84C, #8B6914)" }}
     >
       <span className="whitespace-nowrap px-4 text-center text-[12px] font-semibold uppercase tracking-[0.2em]">
-        Grosse Neueröffnung · 29. August 2026 · 10–18 Uhr
+        Tag der offenen Tür · 29. August 2026 · 10–18 Uhr
       </span>
     </a>
   );
