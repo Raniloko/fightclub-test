@@ -541,6 +541,18 @@ html.fc-intro-active body { visibility: visible; }
   .fc-fire-canvas { display: none; }
 }
 
+/* Orbit-Variante: Feuer laeuft rund um das Logo */
+.fc-fire-canvas--orbit {
+  position: absolute;
+  inset: -35% -30%;
+  z-index: 0;
+}
+.fc-intro-logo-center > .fc-intro-logo-img,
+.fc-intro-logo-center > .fc-intro-text {
+  position: relative;
+  z-index: 1;
+}
+
 /* Slogan bleibt sichtbar und faehrt mit dem Rolladen nach oben */
 .fc-shutter.is-up .fc-shutter-inner,
 .fc-shutter.is-up .fc-shutter-banner img { opacity: 1 !important; }
