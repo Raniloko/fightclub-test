@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import heroMainAsset from "@/assets/hero-v3-mobile.jpg.asset.json";
 import heroWideAsset from "@/assets/hero-v3-desktop.jpg.asset.json";
-import { MatrixHeadline } from "@/components/site/MatrixHeadline";
 
 
 
