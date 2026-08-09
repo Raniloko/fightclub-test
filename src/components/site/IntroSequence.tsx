@@ -103,8 +103,19 @@ export function IntroSequence() {
           <div className="fc-shutter-inner">
             <div className="fc-shutter-banner">
               <img src={sloganAsset.url} alt="" />
+              <div className="fc-flames">
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <span key={i} style={{ ["--i" as string]: i } as React.CSSProperties} />
+                ))}
+              </div>
+              <div className="fc-sparks">
+                {Array.from({ length: 18 }).map((_, i) => (
+                  <i key={i} style={{ ["--i" as string]: i } as React.CSSProperties} />
+                ))}
+              </div>
             </div>
           </div>
+
         </div>
       )}
 
