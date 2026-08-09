@@ -18,10 +18,18 @@ const MAX_PARTICLES = 100;
  * Cinematic fire aura rendered on a canvas that sits BEHIND the slogan.
  * Flame tongues lick upward around the edges, embers drift with turbulence.
  */
-export function FireAura({ intense = false }: { intense?: boolean }) {
+export function FireAura({
+  intense = false,
+  mode = "banner",
+}: {
+  intense?: boolean;
+  mode?: "banner" | "orbit";
+}) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const intenseRef = useRef(intense);
   intenseRef.current = intense;
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
   useEffect(() => {
     const canvas = canvasRef.current;
