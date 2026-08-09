@@ -132,6 +132,7 @@ export function IntroSequence() {
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }
