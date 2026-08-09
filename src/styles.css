@@ -560,25 +560,22 @@ html.fc-intro-active body { visibility: visible; }
 /* === Echte Flammen-Zungen + Funken (brutzelndes Feuer) === */
 .fc-flames {
   position: absolute;
-  left: -4%;
-  right: -4%;
-  bottom: -8%;
-  height: 60%;
+  inset: -8% -6% -18%;
+  z-index: 0;
   pointer-events: none;
   mix-blend-mode: screen;
-  filter: blur(6px) contrast(1.3);
-  opacity: 0;
+  filter: blur(5px) contrast(1.3);
+  opacity: 0.9;
   transition: opacity 0.5s ease;
 }
-.fc-shutter .fc-flames { opacity: 0.9; }
-.fc-shutter.is-burning .fc-flames { opacity: 1; filter: blur(5px) contrast(1.5); }
+.fc-shutter.is-burning .fc-flames { opacity: 1; filter: blur(4px) contrast(1.5); }
 
 .fc-flames span {
   position: absolute;
   bottom: 0;
   left: calc(var(--i) * 7.15% + 1%);
   width: 9%;
-  height: 55%;
+  height: 85%;
   border-radius: 50% 50% 46% 46% / 68% 68% 32% 32%;
   background: radial-gradient(ellipse at 50% 100%,
     rgba(255,255,220,0.95) 0%,
@@ -591,7 +588,7 @@ html.fc-intro-active body { visibility: visible; }
   animation-delay: calc(var(--i) * -0.17s);
 }
 .fc-shutter.is-burning .fc-flames span {
-  height: 105%;
+  height: 120%;
   animation-duration: 0.62s;
 }
 @keyframes fc-flame-lick {
@@ -605,6 +602,7 @@ html.fc-intro-active body { visibility: visible; }
 .fc-sparks {
   position: absolute;
   inset: -20% -6% -10%;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
   mix-blend-mode: screen;
