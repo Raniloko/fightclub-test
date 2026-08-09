@@ -104,40 +104,16 @@ export function Hero() {
       />
 
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-6 pb-12 md:px-12 md:pb-20 md:text-center">
+        <div className="mx-auto w-full max-w-[1200px] px-6 pb-10 md:px-12 md:pb-16 md:text-center">
           <div className="flex items-center gap-3 fc-late fc-late-1 md:justify-center">
             <span className="fc-badge-new">Neu in Hanau!!!</span>
           </div>
 
-          <h1
-            className="mt-6 max-w-full uppercase text-white [overflow-wrap:anywhere]"
-            style={{
-              fontFamily: '"Permanent Marker", "Barlow Condensed", system-ui, sans-serif',
-              fontSize: "clamp(24px, 5.2vw, 74px)",
-              lineHeight: 1.05,
-              fontWeight: 400,
-              letterSpacing: "0.005em",
-              textShadow: "0 2px 40px rgba(0,0,0,0.5)",
-            }}
-          >
-            <span className="sr-only">Fight Club Hanau — MMA & Kampfsport-Akademie. Werde zur besseren Version von dir selbst.</span>
-            <MatrixHeadline
-              className="block"
-              text="WERDE ZUR BESSEREN VERSION VON DIR SELBST"
-              startDelay={2.7}
-            />
-            <span className="fc-slogan-underline fc-late fc-late-1 mt-3 block md:mx-auto" />
+          <h1 className="sr-only">
+            Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besten Version von dir selbst.
           </h1>
 
-          <div className="mt-6 flex max-w-2xl flex-wrap gap-2 fc-late fc-late-3 md:mx-auto md:justify-center">
-            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
-              <span key={d} className="fc-tag fc-tag-solid">{d}</span>
-            ))}
-          </div>
-
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row fc-late fc-late-4 md:justify-center">
-
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row fc-late fc-late-3 md:justify-center">
             <Link
               to="/"
               hash="kontakt"
@@ -160,8 +136,14 @@ export function Hero() {
             </Link>
           </div>
 
+          <div className="fc-hero-tagstrip fc-late fc-late-4 mt-8 md:justify-center">
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
+              <span key={d}>{d}</span>
+            ))}
+          </div>
         </div>
       </div>
+
     </section>
   );
 }
