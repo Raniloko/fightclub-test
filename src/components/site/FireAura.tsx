@@ -81,7 +81,7 @@ export function FireAura({
             (isEmber ? 0.35 + Math.random() * 0.5 : 0.5 + Math.random() * 0.6) * burstFactor,
           life: 0,
           maxLife: isEmber ? 900 + Math.random() * 900 : 450 + Math.random() * 450,
-          size: isEmber ? 1.2 + Math.random() * 1.8 : h * 0.045 * (0.6 + Math.random() * 0.9),
+          size: isEmber ? 1 + Math.random() * 1.6 : h * 0.028 * (0.6 + Math.random() * 0.9),
           kind: isEmber ? "ember" : "flame",
           seed: Math.random() * 1000,
         });
