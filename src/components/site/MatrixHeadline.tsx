@@ -62,7 +62,7 @@ export function MatrixHeadline({
                 display: "inline-block",
                 transform: started ? "translateY(0)" : "translateY(-110px)",
                 opacity: started ? 1 : 0,
-                color: landed[globalIndex] ? "#D62828" : "#fff",
+                color: landed[globalIndex] ? "#fff" : "#fff",
                 textShadow: landed[globalIndex]
                   ? "0 2px 30px rgba(0,0,0,0.6), 0 0 18px rgba(214,40,40,0.4)"
                   : "0 0 12px rgba(0,180,220,0.9), 0 0 26px rgba(0,180,220,0.6)",
