@@ -74,7 +74,7 @@ export function Hero() {
         fetchPriority="high"
         width={1027}
         height={1531}
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[76px] z-0 block h-[calc(100%-76px)] w-full object-cover object-[center_top] md:top-[96px] md:h-[calc(100%-96px)] md:object-[center_30%] lg:hidden"
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[120px] z-0 block h-[calc(100%-120px)] w-full object-cover object-[center_top] md:top-[140px] md:h-[calc(100%-140px)] md:object-[center_30%] lg:hidden"
         style={{ filter: "contrast(102%) brightness(1.1) saturate(1.05)" }}
       />
 
