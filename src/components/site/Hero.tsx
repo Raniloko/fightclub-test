@@ -98,7 +98,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 30%, rgba(10,10,10,0.65) 75%, rgba(10,10,10,0.9) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.25) 75%, rgba(10,10,10,0.45) 100%)",
           willChange: "transform",
         }}
       />
