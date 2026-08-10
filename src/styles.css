@@ -651,6 +651,15 @@ html.fc-intro-active body { visibility: visible; }
   border-color: #E8C96A;
   color: #000000;
 }
+.fc-tag-red {
+  background: transparent;
+  color: #E84A4A;
+  border-color: #E84A4A;
+}
+.fc-tag-red:hover {
+  background: #E84A4A;
+  color: #000000;
+}
 
 /* Hero elements — appear only after the matrix headline has rained down */
 .fc-late {
