@@ -41,7 +41,7 @@ export function About() {
               <span className="absolute left-6 top-5 text-[48px] leading-[0] text-[#00B4DC]">
                 &ldquo;
               </span>
-              <p className="pl-12 text-[17px] italic leading-relaxed text-white/85">
+              <p className="pl-12 text-lg italic leading-relaxed text-white/85">
                 Jeder ist willkommen — unabhängig von Herkunft, Sprache oder Hintergrund. Kampfsport verbindet.
               </p>
             </div>
