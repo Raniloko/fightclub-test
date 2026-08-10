@@ -103,7 +103,7 @@ export function Hero() {
         }}
       />
 
-      <div className="absolute left-0 right-0 top-[32%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
+      <div className="absolute left-0 right-0 top-[18%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
         <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
           <span className="fc-dot-cyan" aria-hidden="true" />
           <span
