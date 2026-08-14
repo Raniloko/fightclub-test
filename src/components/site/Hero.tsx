@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import heroMainAsset from "@/assets/hero-v6-mobile.png.asset.json";
-import heroWideAsset from "@/assets/hero-v6-desktop.jpg.asset.json";
+import heroMainAsset from "@/assets/hero-v7-mobile.png.asset.json";
+import heroWideAsset from "@/assets/hero-v7-desktop.jpg.asset.json";
 
 
 
