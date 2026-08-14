@@ -16,6 +16,13 @@ import {
   inviteTeamMember,
   removeTeamMember,
 } from "@/lib/admin.functions";
+import {
+  listAllPosts,
+  createPost,
+  updatePost,
+  deletePost,
+  type Post,
+} from "@/lib/posts.functions";
 
 export const Route = createFileRoute("/admin/")({
   ssr: false,
@@ -38,7 +45,7 @@ function AdminDashboard() {
   const navigate = useNavigate();
   const qc = useQueryClient();
   const [authChecked, setAuthChecked] = useState(false);
-  const [tab, setTab] = useState<"schedule" | "team">("schedule");
+  const [tab, setTab] = useState<"schedule" | "posts" | "team">("schedule");
   const [day, setDay] = useState<WeekDay>("MON");
 
   useEffect(() => {
@@ -96,6 +103,7 @@ function AdminDashboard() {
         </div>
         <div className="max-w-6xl mx-auto px-5 flex gap-6 border-t border-white/5">
           <TabBtn active={tab === "schedule"} onClick={() => setTab("schedule")}>Stundenplan</TabBtn>
+          <TabBtn active={tab === "posts"} onClick={() => setTab("posts")}>Beiträge</TabBtn>
           {isAdmin && (
             <TabBtn active={tab === "team"} onClick={() => setTab("team")}>Team</TabBtn>
           )}
@@ -111,6 +119,7 @@ function AdminDashboard() {
             onChanged={() => qc.invalidateQueries({ queryKey: ["admin-schedule"] })}
           />
         )}
+        {tab === "posts" && <PostsAdmin />}
         {tab === "team" && isAdmin && <TeamAdmin />}
       </main>
     </div>
@@ -439,6 +448,211 @@ function TeamAdmin() {
             </button>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function PostsAdmin() {
+  const qc = useQueryClient();
+  const postsQ = useQuery({ queryKey: ["admin-posts"], queryFn: () => listAllPosts() });
+  const [editing, setEditing] = useState<Post | null>(null);
+  const [showNew, setShowNew] = useState(false);
+
+  const refresh = () => qc.invalidateQueries({ queryKey: ["admin-posts"] });
+  const del = useMutation({
+    mutationFn: (id: string) => deletePost({ data: { id } }),
+    onSuccess: refresh,
+  });
+  const togglePublish = useMutation({
+    mutationFn: (p: Post) => updatePost({ data: { id: p.id, published: !p.published } }),
+    onSuccess: refresh,
+  });
+
+  const posts = postsQ.data ?? [];
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h2 className="font-display text-2xl">Beiträge</h2>
+          <p className="text-xs text-[#777] mt-1">
+            Beiträge erscheinen auf der Startseite im Bereich „Neuigkeiten“.
+          </p>
+        </div>
+        <button
+          onClick={() => setShowNew(true)}
+          className="bg-[#00B4DC] text-black px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-[#00A0C4]"
+        >
+          + Neuer Beitrag
+        </button>
+      </div>
+
+      {posts.length === 0 ? (
+        <p className="text-[#777] py-12 text-center">Noch keine Beiträge.</p>
+      ) : (
+        <div className="space-y-2">
+          {posts.map((p) => (
+            <div key={p.id} className="border border-white/10 p-4 flex flex-wrap items-center gap-4">
+              {p.image_url && (
+                <img src={p.image_url} alt="" className="h-16 w-24 object-cover" />
+              )}
+              <div className="flex-1 min-w-[200px]">
+                <div className="font-semibold">{p.title}</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-[#999]">
+                  {new Date(p.published_at).toLocaleDateString("de-DE")} ·{" "}
+                  {p.published ? "Veröffentlicht" : "Entwurf"}
+                </div>
+                <div className="text-xs text-[#999] mt-1 line-clamp-2">{p.body}</div>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => togglePublish.mutate(p)}
+                  className="border border-white/20 px-3 py-2 text-[11px] uppercase tracking-[0.15em] hover:bg-white/5"
+                >
+                  {p.published ? "Verbergen" : "Veröffentlichen"}
+                </button>
+                <button
+                  onClick={() => setEditing(p)}
+                  className="border border-white/20 px-3 py-2 text-[11px] uppercase tracking-[0.15em] hover:bg-white/5"
+                >
+                  Bearbeiten
+                </button>
+                <button
+                  onClick={() => confirm("Beitrag löschen?") && del.mutate(p.id)}
+                  className="border border-red-500/50 text-red-400 px-3 py-2 text-[11px] uppercase tracking-[0.15em] hover:bg-red-500/10"
+                >
+                  Löschen
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {(editing || showNew) && (
+        <PostModal
+          initial={editing ?? undefined}
+          onClose={() => { setEditing(null); setShowNew(false); }}
+          onSaved={() => { refresh(); setEditing(null); setShowNew(false); }}
+        />
+      )}
+    </div>
+  );
+}
+
+function PostModal({
+  initial, onClose, onSaved,
+}: {
+  initial?: Post;
+  onClose: () => void;
+  onSaved: () => void;
+}) {
+  const [title, setTitle] = useState(initial?.title ?? "");
+  const [body, setBody] = useState(initial?.body ?? "");
+  const [published, setPublished] = useState(initial?.published ?? true);
+  const [imagePath, setImagePath] = useState<string | null>(initial?.image_path ?? null);
+  const [preview, setPreview] = useState<string | null>(initial?.image_url ?? null);
+  const [uploading, setUploading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+
+  async function onFile(file: File) {
+    setErr(null);
+    if (!file.type.startsWith("image/")) { setErr("Bitte eine Bilddatei wählen."); return; }
+    if (file.size > 8 * 1024 * 1024) { setErr("Bild ist größer als 8 MB."); return; }
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+      const path = `${crypto.randomUUID()}.${ext}`;
+      const { error } = await supabase.storage
+        .from("post-images")
+        .upload(path, file, { contentType: file.type, upsert: false });
+      if (error) throw new Error(error.message);
+      setImagePath(path);
+      setPreview(URL.createObjectURL(file));
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Upload fehlgeschlagen");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function save() {
+    setSaving(true);
+    setErr(null);
+    try {
+      if (initial) {
+        await updatePost({ data: { id: initial.id, title, body, published, image_path: imagePath } });
+      } else {
+        await createPost({ data: { title, body, published, image_path: imagePath } });
+      }
+      onSaved();
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Fehler");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={onClose}>
+      <div className="bg-[#0a0a0a] border border-white/20 max-w-2xl w-full p-6 my-8" onClick={(e) => e.stopPropagation()}>
+        <h3 className="font-display text-2xl mb-4">{initial ? "Beitrag bearbeiten" : "Neuer Beitrag"}</h3>
+        <div className="space-y-4">
+          <Field label="Titel">
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full bg-black border border-white/20 px-3 py-2"
+            />
+          </Field>
+          <Field label="Text">
+            <textarea
+              rows={7}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              className="w-full bg-black border border-white/20 px-3 py-2"
+            />
+          </Field>
+          <Field label="Bild (optional)">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f); }}
+              className="w-full text-sm text-[#bbb] file:mr-3 file:border file:border-white/20 file:bg-transparent file:px-3 file:py-2 file:text-[11px] file:uppercase file:tracking-[0.2em] file:text-white"
+            />
+          </Field>
+          {uploading && <div className="text-xs text-[#999]">Bild wird hochgeladen…</div>}
+          {preview && (
+            <div className="flex items-center gap-3">
+              <img src={preview} alt="" className="h-24 w-36 object-cover border border-white/10" />
+              <button
+                onClick={() => { setImagePath(null); setPreview(null); }}
+                className="border border-white/20 px-3 py-2 text-[11px] uppercase tracking-[0.15em] hover:bg-white/5"
+              >
+                Bild entfernen
+              </button>
+            </div>
+          )}
+          <label className="flex items-center gap-2 text-sm text-[#ccc]">
+            <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} />
+            Sofort veröffentlichen
+          </label>
+          {err && <div className="text-red-400 text-sm">{err}</div>}
+        </div>
+        <div className="mt-6 flex gap-3 justify-end">
+          <button onClick={onClose} className="border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-white/5">
+            Abbrechen
+          </button>
+          <button
+            onClick={save}
+            disabled={saving || uploading || !title.trim() || !body.trim()}
+            className="bg-[#00B4DC] text-black px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-[#00A0C4] disabled:opacity-50"
+          >
+            {saving ? "Speichern…" : "Speichern"}
+          </button>
+        </div>
       </div>
     </div>
   );
