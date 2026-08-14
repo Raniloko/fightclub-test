@@ -51,6 +51,7 @@ function AdminDashboard() {
   const [authChecked, setAuthChecked] = useState(false);
   const [tab, setTab] = useState<"schedule" | "posts" | "team">("schedule");
   const [day, setDay] = useState<WeekDay>("MON");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
