@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  ChevronLeft, MoreVertical, Plus, Pencil, Trash2, Eye, EyeOff,
+  ChevronLeft, MoreVertical, Plus, Pencil, Trash2, Eye, EyeOff, Camera, Upload,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -699,6 +699,7 @@ function PostModal({
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   async function onFile(file: File) {
     setErr(null);
@@ -738,65 +739,179 @@ function PostModal({
     }
   }
 
+  async function onDelete() {
+    if (!initial) return;
+    if (!confirm("Beitrag wirklich löschen?")) return;
+    setSaving(true);
+    setErr(null);
+    try {
+      await deletePost({ data: { id: initial.id } });
+      onSaved();
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Löschen fehlgeschlagen");
+      setSaving(false);
+    }
+  }
+
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={onClose}>
-      <div className="bg-[#0a0a0a] border border-white/20 max-w-2xl w-full p-6 my-8" onClick={(e) => e.stopPropagation()}>
-        <h3 className="font-display text-2xl mb-4">{initial ? "Beitrag bearbeiten" : "Neuer Beitrag"}</h3>
-        <div className="space-y-4">
-          <Field label="Titel">
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full bg-black border border-white/20 px-3 py-2"
-            />
-          </Field>
-          <Field label="Text">
-            <textarea
-              rows={7}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              className="w-full bg-black border border-white/20 px-3 py-2"
-            />
-          </Field>
-          <Field label="Bild (optional)">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f); }}
-              className="w-full text-sm text-[#bbb] file:mr-3 file:border file:border-white/20 file:bg-transparent file:px-3 file:py-2 file:text-[11px] file:uppercase file:tracking-[0.2em] file:text-white"
-            />
-          </Field>
-          {uploading && <div className="text-xs text-[#999]">Bild wird hochgeladen…</div>}
-          {preview && (
-            <div className="flex items-center gap-3">
-              <img src={preview} alt="" className="h-24 w-36 object-cover border border-white/10" />
-              <button
-                onClick={() => { setImagePath(null); setPreview(null); }}
-                className="border border-white/20 px-3 py-2 text-[11px] uppercase tracking-[0.15em] hover:bg-white/5"
-              >
-                Bild entfernen
-              </button>
-            </div>
-          )}
-          <label className="flex items-center gap-2 text-sm text-[#ccc]">
-            <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} />
-            Sofort veröffentlichen
-          </label>
-          {err && <div className="text-red-400 text-sm">{err}</div>}
-        </div>
-        <div className="mt-6 flex gap-3 justify-end">
-          <button onClick={onClose} className="border border-white/20 px-4 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-white/5">
-            Abbrechen
+    <div className="fixed inset-0 bg-[#0A0A0A] z-50 flex flex-col">
+      <header className="sticky top-0 z-40 bg-[#0A0A0A] border-b border-[#2A2A2A]">
+        <div className="relative flex items-center justify-between h-14 px-4">
+          <button
+            onClick={onClose}
+            className="flex items-center gap-1 h-11 text-[#888] hover:text-white"
+          >
+            <ChevronLeft className="h-5 w-5" />
+            <span className="text-[14px] font-normal">Zurück</span>
           </button>
+          <h1 className="absolute left-1/2 -translate-x-1/2 text-[16px] font-normal text-white normal-case">
+            {initial ? "Bearbeiten" : "Neuer Beitrag"}
+          </h1>
           <button
             onClick={save}
             disabled={saving || uploading || !title.trim() || !body.trim()}
-            className="bg-[#00B4DC] text-black px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-[#00A0C4] disabled:opacity-50"
+            className="h-11 text-[14px] font-bold text-[#00D4FF] disabled:opacity-40"
           >
             {saving ? "Speichern…" : "Speichern"}
           </button>
         </div>
-      </div>
+      </header>
+
+      <main className="flex-1 overflow-y-auto px-4 py-4">
+        <div className="space-y-4">
+          <MobileField label="Titel">
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Titel des Beitrags"
+              className="w-full h-11 px-3 bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg text-[15px] text-white placeholder-[#888] focus:outline-none focus:border-[#00D4FF]"
+            />
+          </MobileField>
+
+          <MobileField label="Inhalt">
+            <textarea
+              rows={8}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              placeholder="Text eingeben…"
+              className="w-full px-3 py-3 bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg text-[15px] text-white placeholder-[#888] focus:outline-none focus:border-[#00D4FF] resize-none"
+            />
+          </MobileField>
+
+          <div>
+            <label className="block text-[12px] text-[#888] mb-2 normal-case">Bild</label>
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f); }}
+              className="hidden"
+            />
+            {preview ? (
+              <div className="space-y-1">
+                <button
+                  onClick={() => fileRef.current?.click()}
+                  className="relative block w-fit rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#00D4FF]"
+                >
+                  <img
+                    src={preview}
+                    alt="Vorschau"
+                    className="w-[120px] h-[120px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 grid place-items-center">
+                    <div className="flex items-center gap-1.5 text-white text-[12px] font-medium">
+                      <Camera className="h-4 w-4" />
+                      Ändern
+                    </div>
+                  </div>
+                </button>
+                <button
+                  onClick={() => { setImagePath(null); setPreview(null); }}
+                  className="flex items-center min-h-[44px] text-[12px] text-[#EF4444] hover:text-[#ff6b6b]"
+                >
+                  Bild entfernen
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => fileRef.current?.click()}
+                className="w-full h-28 flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-[#2A2A2A] bg-[#1A1A1A] text-[#888] active:border-[#00D4FF] active:text-white"
+              >
+                <Upload className="h-6 w-6" />
+                <span className="text-[13px]">Bild hinzufügen</span>
+              </button>
+            )}
+            {uploading && <div className="mt-2 text-[12px] text-[#888]">Bild wird hochgeladen…</div>}
+          </div>
+
+          <div>
+            <label className="block text-[12px] text-[#888] mb-2 normal-case">Status</label>
+            <div className="flex items-center gap-3 min-h-[44px]">
+              <button
+                onClick={() => setPublished(false)}
+                className={`text-[14px] h-11 ${!published ? "text-white font-semibold" : "text-[#888]"}`}
+              >
+                Entwurf
+              </button>
+              <button
+                onClick={() => setPublished((v) => !v)}
+                aria-checked={published}
+                role="switch"
+                aria-label="Status wechseln"
+                className="relative inline-flex h-11 w-16 shrink-0 items-center justify-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#00D4FF]"
+              >
+                <span className="relative inline-flex h-7 w-12 items-center rounded-full" style={{ backgroundColor: published ? "#22C55E" : "#2A2A2A" }}>
+                  <span
+                    className="inline-block h-5 w-5 rounded-full bg-white transition-transform"
+                    style={{ transform: published ? "translateX(24px)" : "translateX(4px)" }}
+                  />
+                </span>
+              </button>
+              <button
+                onClick={() => setPublished(true)}
+                className={`text-[14px] h-11 ${published ? "text-[#22C55E] font-semibold" : "text-[#888]"}`}
+              >
+                Veröffentlicht
+              </button>
+            </div>
+          </div>
+
+          {err && <div className="text-[13px] text-[#EF4444]">{err}</div>}
+        </div>
+
+        <div className="mt-6 space-y-3 pb-8">
+          <button
+            onClick={save}
+            disabled={saving || uploading || !title.trim() || !body.trim()}
+            className="w-full h-12 rounded-lg bg-[#00D4FF] text-white text-[15px] font-bold hover:bg-[#00c2ea] active:scale-[0.98] transition-transform disabled:opacity-50"
+          >
+            {saving ? "Speichern…" : "Speichern"}
+          </button>
+          <button
+            onClick={onClose}
+            className="block w-full h-11 text-[14px] text-[#888] hover:text-white"
+          >
+            Abbrechen
+          </button>
+          {initial && (
+            <button
+              onClick={onDelete}
+              className="block w-full h-11 text-[14px] text-[#EF4444] hover:text-[#ff6b6b]"
+            >
+              Beitrag löschen
+            </button>
+          )}
+        </div>
+      </main>
     </div>
+  );
+}
+
+function MobileField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className="block text-[12px] text-[#888] mb-2 normal-case">{label}</span>
+      {children}
+    </label>
   );
 }
