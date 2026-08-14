@@ -82,26 +82,50 @@ function AdminDashboard() {
   const classesForDay = (scheduleQ.data ?? []).filter((c) => c.day === day);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <header className="border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          <div>
-            <div className="text-[10px] uppercase tracking-[0.3em] text-[#00B4DC]">Fight Club Hanau</div>
-            <h1 className="font-display text-2xl">Admin-Bereich</h1>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/" className="text-[11px] uppercase tracking-[0.2em] text-[#999] hover:text-white">
-              Website
-            </Link>
-            <button
-              onClick={signOut}
-              className="border border-white/20 px-3 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-white/5"
+    <div className="min-h-screen bg-[#0A0A0A] text-white font-sans">
+      <header className="sticky top-0 z-40 bg-[#0A0A0A] border-b border-[#2A2A2A]">
+        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <Link
+              to="/"
+              aria-label="Zurück zur Website"
+              className="h-11 w-11 -ml-2 grid place-items-center text-[#888] hover:text-white"
             >
-              Abmelden
+              <ChevronLeft className="h-5 w-5" />
+            </Link>
+            <span className="text-[17px] font-semibold truncate">Admin</span>
+          </div>
+          <div className="relative">
+            <button
+              aria-label="Menü"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="h-11 w-11 -mr-2 grid place-items-center text-[#888] hover:text-white"
+            >
+              <MoreVertical className="h-5 w-5" />
             </button>
+            {menuOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
+                <div className="absolute right-0 top-12 z-50 w-48 bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg py-1 shadow-xl">
+                  <button
+                    onClick={() => { setMenuOpen(false); signOut(); }}
+                    className="w-full text-left px-4 py-3 text-sm text-white hover:bg-white/5"
+                  >
+                    Abmelden
+                  </button>
+                  <Link
+                    to="/"
+                    onClick={() => setMenuOpen(false)}
+                    className="block px-4 py-2.5 text-xs text-[#888] hover:text-white"
+                  >
+                    Website öffnen
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
-        <div className="max-w-6xl mx-auto px-5 flex gap-6 border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-4 flex gap-5 overflow-x-auto">
           <TabBtn active={tab === "schedule"} onClick={() => setTab("schedule")}>Stundenplan</TabBtn>
           <TabBtn active={tab === "posts"} onClick={() => setTab("posts")}>Beiträge</TabBtn>
           {isAdmin && (
@@ -110,7 +134,7 @@ function AdminDashboard() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-5 py-8">
+      <main className="max-w-6xl mx-auto px-4 py-5">
         {tab === "schedule" && (
           <ScheduleAdmin
             day={day}
@@ -130,15 +154,16 @@ function TabBtn({ active, children, onClick }: { active: boolean; children: Reac
   return (
     <button
       onClick={onClick}
-      className={`relative px-1 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] ${
-        active ? "text-white" : "text-[#777] hover:text-white"
+      className={`relative shrink-0 px-0.5 py-2.5 text-[14px] ${
+        active ? "text-white font-bold" : "text-[#888] font-normal hover:text-white"
       }`}
     >
       {children}
-      {active && <span className="absolute inset-x-0 -bottom-px h-[2px] bg-[#00B4DC]" />}
+      {active && <span className="absolute inset-x-0 -bottom-px h-[2px] bg-[#00D4FF]" />}
     </button>
   );
 }
+
 
 function ScheduleAdmin({
   day, setDay, classes, onChanged,
