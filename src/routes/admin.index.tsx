@@ -1,7 +1,11 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  ChevronLeft, MoreVertical, Plus, Pencil, Trash2, Eye, EyeOff,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+
 import {
   listSchedule,
   createScheduleClass,
