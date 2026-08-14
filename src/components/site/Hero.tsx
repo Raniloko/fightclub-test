@@ -123,7 +123,7 @@ export function Hero() {
 
           <div className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center">
             {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
-              <span key={d} className="fc-tag fc-tag-red" style={{ fontSize: "12px", padding: "6px 14px" }}>
+              <span key={d} className="fc-tag" style={{ fontSize: "12px", padding: "6px 14px" }}>
                 {d}
               </span>
             ))}
