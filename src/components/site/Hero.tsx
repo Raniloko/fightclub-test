@@ -72,8 +72,8 @@ export function Hero() {
         aria-hidden="true"
         loading="eager"
         fetchPriority="high"
-        width={1027}
-        height={1531}
+        width={840}
+        height={1240}
         className="pointer-events-none absolute inset-x-0 bottom-0 top-[120px] z-0 block h-[calc(100%-120px)] w-full object-cover object-[center_top] md:top-[140px] md:h-[calc(100%-140px)] md:object-[center_30%] lg:hidden"
         style={{ filter: "contrast(102%) brightness(1.1) saturate(1.05)" }}
       />
