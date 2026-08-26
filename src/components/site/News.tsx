@@ -117,21 +117,21 @@ export function News() {
           {/* Carousel */}
           <div
             ref={scrollRef}
-            className="scrollbar-hide -mx-5 flex touch-pan-y snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 md:-mx-2 md:px-0"
-            style={{ WebkitOverflowScrolling: "touch" }}
+            className="scrollbar-hide -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-5 pb-6 md:-mx-2 md:px-0"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x pan-y" }}
           >
             {posts.map((p) => (
-              <Reveal key={p.id} className="flex-shrink-0 snap-start">
-                <PostCard
-                  post={p}
-                  onClick={() => {
-                    setSelected(p);
-                    setOpen(true);
-                  }}
-                />
-              </Reveal>
+              <PostCard
+                key={p.id}
+                post={p}
+                onClick={() => {
+                  setSelected(p);
+                  setOpen(true);
+                }}
+              />
             ))}
           </div>
+
 
           {/* Desktop arrows */}
           {!isMobile && canScrollLeft && (
