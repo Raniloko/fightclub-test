@@ -13,6 +13,7 @@ import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineOb
 import { IntroSequence } from "@/components/site/IntroSequence";
 import { OpenDayBar, OpenDaySection } from "@/components/site/OpenDay";
 import { News } from "@/components/site/News";
+import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 
 export const Route = createFileRoute("/")({
   head: () => ({
