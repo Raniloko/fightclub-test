@@ -197,6 +197,17 @@ export function News() {
                   </p>
                 </SheetDescription>
               </SheetHeader>
+
+              <div className="sticky bottom-0 border-t border-black/10 bg-white p-4">
+                <SheetClose asChild>
+                  <button
+                    type="button"
+                    className="flex h-12 w-full items-center justify-center rounded-md bg-[#0a0a0a] px-6 text-[14px] font-semibold text-white transition hover:bg-[#00B4DC]"
+                  >
+                    Schließen
+                  </button>
+                </SheetClose>
+              </div>
             </>
           )}
         </SheetContent>
