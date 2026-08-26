@@ -13,7 +13,6 @@ import { Route as UnlockRouteImport } from './routes/unlock'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchulordnungRouteImport } from './routes/schulordnung'
 import { Route as McpRouteImport } from './routes/mcp'
-import { Route as MatoolTestRouteImport } from './routes/matool-test'
 import { Route as KindertrainingRouteImport } from './routes/kindertraining'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -45,11 +44,6 @@ const SchulordnungRoute = SchulordnungRouteImport.update({
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MatoolTestRoute = MatoolTestRouteImport.update({
-  id: '/matool-test',
-  path: '/matool-test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KindertrainingRoute = KindertrainingRouteImport.update({
@@ -122,7 +116,6 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
-  '/matool-test': typeof MatoolTestRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -141,7 +134,6 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
-  '/matool-test': typeof MatoolTestRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -161,7 +153,6 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
-  '/matool-test': typeof MatoolTestRoute
   '/mcp': typeof McpRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -182,7 +173,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/impressum'
     | '/kindertraining'
-    | '/matool-test'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -201,7 +191,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/impressum'
     | '/kindertraining'
-    | '/matool-test'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -220,7 +209,6 @@ export interface FileRouteTypes {
     | '/faq'
     | '/impressum'
     | '/kindertraining'
-    | '/matool-test'
     | '/mcp'
     | '/schulordnung'
     | '/sitemap.xml'
@@ -240,7 +228,6 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ImpressumRoute: typeof ImpressumRoute
   KindertrainingRoute: typeof KindertrainingRoute
-  MatoolTestRoute: typeof MatoolTestRoute
   McpRoute: typeof McpRoute
   SchulordnungRoute: typeof SchulordnungRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -282,13 +269,6 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/matool-test': {
-      id: '/matool-test'
-      path: '/matool-test'
-      fullPath: '/matool-test'
-      preLoaderRoute: typeof MatoolTestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kindertraining': {
@@ -384,7 +364,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ImpressumRoute: ImpressumRoute,
   KindertrainingRoute: KindertrainingRoute,
-  MatoolTestRoute: MatoolTestRoute,
   McpRoute: McpRoute,
   SchulordnungRoute: SchulordnungRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
