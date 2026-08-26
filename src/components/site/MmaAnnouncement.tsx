@@ -1,5 +1,4 @@
-import mmaPosterAsset from "@/assets/mma-poster-sunay.jpg.asset.json";
-import { Link } from "@tanstack/react-router";
+import mmaPosterAsset from "@/assets/mma-poster-sunay-v2.jpg.asset.json";
 
 export function MmaAnnouncement() {
   return (
@@ -35,22 +34,6 @@ export function MmaAnnouncement() {
               Hartes Training. Echte Kämpfer. Echte Ergebnisse. Erlebe professionelles MMA-Training
               auf höchstem Niveau — ab September neu im Fight Club Hanau.
             </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <Link
-                to="/"
-                hash="kontakt"
-                className="inline-flex items-center justify-center rounded-md bg-[#c8102e] px-8 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#a80d26]"
-              >
-                Jetzt anmelden
-              </Link>
-              <a
-                href="tel:+4917684538990"
-                className="inline-flex items-center justify-center rounded-md border border-white/25 px-8 py-4 text-[12px] font-bold uppercase tracking-[0.22em] text-white transition-colors hover:bg-white/10"
-              >
-                Anrufen
-              </a>
-            </div>
           </div>
 
           {/* Poster */}
