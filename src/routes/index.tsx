@@ -65,6 +65,7 @@ function Index() {
       <Nav />
       <Hero />
       <OpenDaySection />
+      <MmaAnnouncement />
       <Disciplines />
       <Schedule />
       <Stats />
