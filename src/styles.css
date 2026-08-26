@@ -753,3 +753,11 @@ html.fc-intro-active body { visibility: visible; }
   background: #00B4DC;
   animation: fc-dot-pulse 2s ease-out infinite;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
