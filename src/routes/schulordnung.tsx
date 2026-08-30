@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { OpenDayBar } from "@/components/site/OpenDay";
 import { Schulordnung } from "@/components/site/Schulordnung";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
 
@@ -21,7 +20,6 @@ export const Route = createFileRoute("/schulordnung")({
 function SchulordnungPage() {
   return (
     <main className="bg-white text-[#0a0a0a]">
-      <OpenDayBar />
       <Nav />
       <div className="h-24 bg-[#0a0a0a]" />
       <Schulordnung />
