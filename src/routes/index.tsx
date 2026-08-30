@@ -11,7 +11,6 @@ import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
 import { IntroSequence } from "@/components/site/IntroSequence";
-import { OpenDayBar, OpenDaySection } from "@/components/site/OpenDay";
 import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 
@@ -61,10 +60,8 @@ function Index() {
   return (
     <main className="bg-white text-[#0a0a0a]">
       <IntroSequence />
-      <OpenDayBar />
       <Nav />
       <Hero />
-      <OpenDaySection />
       <MmaAnnouncement />
       <Disciplines />
       <Schedule />

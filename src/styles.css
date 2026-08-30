@@ -204,10 +204,6 @@
   backdrop-filter: blur(12px);
   transition: top 0.2s ease;
 }
-html.fc-has-openday-bar .fc-nav {
-  top: var(--fc-openday-h, 34px);
-}
-
 .fc-nav-link {
   color: rgba(255, 255, 255, 0.85);
 }
