@@ -1,4 +1,4 @@
-import mmaPosterAsset from "@/assets/mma-poster-sunay-v2.jpg.asset.json";
+import mmaPosterAsset from "@/assets/mma-poster-sunay-v3.png.asset.json";
 
 export function MmaAnnouncement() {
   return (
