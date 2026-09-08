@@ -148,7 +148,31 @@ function DatenschutzPage() {
           bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
 
-        <H2>11. Empfänger / Auftragsverarbeiter</H2>
+        <H2>11. Probetraining-Formular (MATOOL)</H2>
+        <p>
+          Für die Anmeldung zum Probetraining setzen wir das Formular des Anbieters MATOOL
+          (Ma-Tool GmbH, Deutschland, <a href="https://www.matool.de" target="_blank" rel="noopener noreferrer" className="underline">matool.de</a>) ein.
+          Das Formular wird als iFrame direkt beim Aufruf der Kontaktsektion geladen. Dabei werden
+          technisch notwendige Verbindungsdaten (IP-Adresse, Zeitpunkt, Browserinformationen) an
+          MATOOL übertragen. Die von Ihnen eingegebenen Daten (u. a. Name, E-Mail, Telefonnummer,
+          gewünschte Sportart und Wunschtermin) werden bei MATOOL verarbeitet und uns zur Bearbeitung
+          Ihrer Anfrage bereitgestellt.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung / Durchführung
+          vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+          einer einfachen Anmeldemöglichkeit). Das Formular setzt keine Marketing- oder
+          Tracking-Cookies; es werden ausschließlich für den Betrieb des Formulars erforderliche
+          Speichereinträge verwendet (§ 25 Abs. 2 Nr. 2 TDDDG). Wir löschen Ihre Angaben, sobald die
+          Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten
+          entgegenstehen. Datenschutzhinweise von MATOOL:{" "}
+          <a href="https://www.matool.de/datenschutz" target="_blank" rel="noopener noreferrer" className="underline">
+            matool.de/datenschutz
+          </a>
+          .
+        </p>
+
+        <H2>12. Empfänger / Auftragsverarbeiter</H2>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Cloudflare, Inc. (USA) — Hosting/CDN</li>
           <li>Google Ireland Limited (Irland) / Google LLC (USA) — Analytics, Maps, Fonts (nur wo einwilligungspflichtig, mit Consent)</li>
