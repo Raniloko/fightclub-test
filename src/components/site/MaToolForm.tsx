@@ -99,6 +99,15 @@ export function MaToolForm() {
           made by MATOOL
         </a>
       </div>
+      <p className="text-[12px] leading-relaxed text-[#555]">
+        Hinweis: Das Probetraining-Formular wird von MATOOL (matool.de) bereitgestellt und
+        automatisch geladen. Dabei werden technisch notwendige Daten (u. a. IP-Adresse) an MATOOL
+        übertragen. Details siehe{" "}
+        <a href="/datenschutz" className="underline">
+          Datenschutzerklärung
+        </a>
+        .
+      </p>
     </div>
   );
 }
