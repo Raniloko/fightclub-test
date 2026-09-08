@@ -62,29 +62,7 @@ export function MaToolForm() {
       window.removeEventListener("message", onMessage);
       window.clearInterval(interval);
     };
-  }, [consented]);
-
-  if (!consented) {
-    return (
-      <div className="overflow-hidden border border-[#e0e0e0] bg-[#f5f5f5] p-6 text-center">
-        <p className="text-[13px] leading-relaxed text-[#333]">
-          Das Probetraining-Formular wird von MATOOL bereitgestellt. Beim Laden werden Daten an
-          matool.de übertragen. Details siehe{" "}
-          <a href="/datenschutz" className="underline">
-            Datenschutzerklärung
-          </a>
-          .
-        </p>
-        <button
-          type="button"
-          onClick={() => setConsented(true)}
-          className="mt-4 bg-[#0a0a0a] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#222]"
-        >
-          Formular laden
-        </button>
-      </div>
-    );
-  }
+  }, []);
 
   return (
     <div>
