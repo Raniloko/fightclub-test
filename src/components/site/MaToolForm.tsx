@@ -29,7 +29,25 @@ export function MaToolForm() {
 
       if (value > 200 && value < 20000) {
         // Kleiner Puffer, damit der letzte Button nie abgeschnitten wird.
-        setHeight(value + 24);
+        const next = value + 24;
+        setHeight((prev) => {
+          // Wächst das Formular (neue Felder, Fehlermeldungen), rutscht die
+          // Seite sanft mit, damit der neue Bereich sichtbar bleibt.
+          const grew = next - prev;
+          if (grew > 8) {
+            window.requestAnimationFrame(() => {
+              const rect = iframe.getBoundingClientRect();
+              const overflow = rect.bottom - window.innerHeight;
+              if (overflow > 0) {
+                window.scrollBy({
+                  top: Math.min(grew, overflow) + 16,
+                  behavior: "smooth",
+                });
+              }
+            });
+          }
+          return next;
+        });
       }
     };
 
