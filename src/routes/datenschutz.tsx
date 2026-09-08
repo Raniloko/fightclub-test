@@ -177,10 +177,11 @@ function DatenschutzPage() {
           <li>Cloudflare, Inc. (USA) — Hosting/CDN</li>
           <li>Google Ireland Limited (Irland) / Google LLC (USA) — Analytics, Maps, Fonts (nur wo einwilligungspflichtig, mit Consent)</li>
           <li>Resend, Inc. (USA) — Versand transaktionaler E-Mails aus dem Kontaktformular</li>
+          <li>MATOOL (Deutschland) — Probetraining-Anmeldeformular</li>
           <li>Supabase, Inc. (USA) / EU-Region — Auth & Datenbank für den Admin-Bereich</li>
         </ul>
 
-        <H2>12. Ihre Rechte</H2>
+        <H2>13. Ihre Rechte</H2>
         <p>Sie haben nach der DSGVO folgende Rechte:</p>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20)</li>
@@ -190,13 +191,13 @@ function DatenschutzPage() {
         </ul>
         <p className="mt-3">Zur Ausübung genügt eine formlose Nachricht an <a className="underline" href="mailto:info@fightclub-hanau.de">info@fightclub-hanau.de</a>.</p>
 
-        <H2>13. Datensicherheit</H2>
+        <H2>14. Datensicherheit</H2>
         <p>
           Die Übertragung erfolgt SSL/TLS-verschlüsselt (HTTPS). Wir setzen zusätzlich Sicherheits-Header (u. a. HSTS, X-Content-Type-Options,
           Referrer-Policy, Permissions-Policy, X-Frame-Options) ein, um Ihre Daten während der Übertragung zu schützen.
         </p>
 
-        <H2>14. Änderungen dieser Datenschutzerklärung</H2>
+        <H2>15. Änderungen dieser Datenschutzerklärung</H2>
         <p>
           Wir passen diese Datenschutzerklärung an, wenn sich die Rechtslage oder unsere Dienste ändern. Die jeweils aktuelle Fassung ist
           unter <Link to="/datenschutz" className="underline">/datenschutz</Link> abrufbar.
