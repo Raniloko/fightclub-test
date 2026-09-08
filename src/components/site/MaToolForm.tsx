@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * MaTool Probetraining-Formular (iframe-Einbettung).
@@ -7,10 +7,8 @@ import { useEffect, useRef, useState } from "react";
  */
 export function MaToolForm() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [consented, setConsented] = useState(false);
 
   useEffect(() => {
-    if (!consented) return;
     const iframe = iframeRef.current;
     if (!iframe) return;
 
