@@ -140,8 +140,9 @@ export function CookieBanner() {
                 <span className="block font-semibold text-white">
                   Notwendig
                 </span>
-                Erforderlich für den Betrieb der Website. Kann nicht deaktiviert
-                werden.
+                Erforderlich für den Betrieb der Website, inkl. des automatisch
+                geladenen Probetraining-Formulars von MATOOL (matool.de). Kann
+                nicht deaktiviert werden.
               </span>
             </label>
             <label className="flex items-start gap-3 text-[13px] text-white/80">

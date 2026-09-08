@@ -73,6 +73,7 @@ function DatenschutzPage() {
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li><strong>fc-consent-v1</strong> (Local Storage, notwendig) — speichert Ihre Cookie-Entscheidung. Speicherdauer: bis zum Widerruf.</li>
           <li><strong>_ga, _ga_*</strong> (Google Analytics, nur nach Einwilligung) — pseudonyme Reichweitenmessung. Speicherdauer bis 2 Jahre.</li>
+          <li><strong>MATOOL-Formular</strong> (matool.de, technisch notwendig) — Speichereinträge zum Betrieb des Probetraining-Formulars, das automatisch geladen wird. Speicherdauer: Sitzung.</li>
         </ul>
 
         <H2>6. Google Analytics 4 (nur mit Einwilligung)</H2>
@@ -148,15 +149,40 @@ function DatenschutzPage() {
           bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
 
-        <H2>11. Empfänger / Auftragsverarbeiter</H2>
+        <H2>11. Probetraining-Formular (MATOOL)</H2>
+        <p>
+          Für die Anmeldung zum Probetraining setzen wir das Formular des Anbieters MATOOL
+          (Ma-Tool GmbH, Deutschland, <a href="https://www.matool.de" target="_blank" rel="noopener noreferrer" className="underline">matool.de</a>) ein.
+          Das Formular wird als iFrame direkt beim Aufruf der Kontaktsektion geladen. Dabei werden
+          technisch notwendige Verbindungsdaten (IP-Adresse, Zeitpunkt, Browserinformationen) an
+          MATOOL übertragen. Die von Ihnen eingegebenen Daten (u. a. Name, E-Mail, Telefonnummer,
+          gewünschte Sportart und Wunschtermin) werden bei MATOOL verarbeitet und uns zur Bearbeitung
+          Ihrer Anfrage bereitgestellt.
+        </p>
+        <p>
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung / Durchführung
+          vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+          einer einfachen Anmeldemöglichkeit). Das Formular setzt keine Marketing- oder
+          Tracking-Cookies; es werden ausschließlich für den Betrieb des Formulars erforderliche
+          Speichereinträge verwendet (§ 25 Abs. 2 Nr. 2 TDDDG). Wir löschen Ihre Angaben, sobald die
+          Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten
+          entgegenstehen. Datenschutzhinweise von MATOOL:{" "}
+          <a href="https://www.matool.de/datenschutz" target="_blank" rel="noopener noreferrer" className="underline">
+            matool.de/datenschutz
+          </a>
+          .
+        </p>
+
+        <H2>12. Empfänger / Auftragsverarbeiter</H2>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Cloudflare, Inc. (USA) — Hosting/CDN</li>
           <li>Google Ireland Limited (Irland) / Google LLC (USA) — Analytics, Maps, Fonts (nur wo einwilligungspflichtig, mit Consent)</li>
           <li>Resend, Inc. (USA) — Versand transaktionaler E-Mails aus dem Kontaktformular</li>
+          <li>MATOOL (Deutschland) — Probetraining-Anmeldeformular</li>
           <li>Supabase, Inc. (USA) / EU-Region — Auth & Datenbank für den Admin-Bereich</li>
         </ul>
 
-        <H2>12. Ihre Rechte</H2>
+        <H2>13. Ihre Rechte</H2>
         <p>Sie haben nach der DSGVO folgende Rechte:</p>
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li>Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20)</li>
@@ -166,13 +192,13 @@ function DatenschutzPage() {
         </ul>
         <p className="mt-3">Zur Ausübung genügt eine formlose Nachricht an <a className="underline" href="mailto:info@fightclub-hanau.de">info@fightclub-hanau.de</a>.</p>
 
-        <H2>13. Datensicherheit</H2>
+        <H2>14. Datensicherheit</H2>
         <p>
           Die Übertragung erfolgt SSL/TLS-verschlüsselt (HTTPS). Wir setzen zusätzlich Sicherheits-Header (u. a. HSTS, X-Content-Type-Options,
           Referrer-Policy, Permissions-Policy, X-Frame-Options) ein, um Ihre Daten während der Übertragung zu schützen.
         </p>
 
-        <H2>14. Änderungen dieser Datenschutzerklärung</H2>
+        <H2>15. Änderungen dieser Datenschutzerklärung</H2>
         <p>
           Wir passen diese Datenschutzerklärung an, wenn sich die Rechtslage oder unsere Dienste ändern. Die jeweils aktuelle Fassung ist
           unter <Link to="/datenschutz" className="underline">/datenschutz</Link> abrufbar.
