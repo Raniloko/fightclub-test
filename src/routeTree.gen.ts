@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnlockRouteImport } from './routes/unlock'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SchulordnungRouteImport } from './routes/schulordnung'
+import { Route as ProbetrainingRouteImport } from './routes/probetraining'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as KindertrainingRouteImport } from './routes/kindertraining'
 import { Route as ImpressumRouteImport } from './routes/impressum'
@@ -39,6 +40,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SchulordnungRoute = SchulordnungRouteImport.update({
   id: '/schulordnung',
   path: '/schulordnung',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProbetrainingRoute = ProbetrainingRouteImport.update({
+  id: '/probetraining',
+  path: '/probetraining',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
+  '/probetraining': typeof ProbetrainingRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unlock': typeof UnlockRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
+  '/probetraining': typeof ProbetrainingRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unlock': typeof UnlockRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/impressum': typeof ImpressumRoute
   '/kindertraining': typeof KindertrainingRoute
   '/mcp': typeof McpRoute
+  '/probetraining': typeof ProbetrainingRoute
   '/schulordnung': typeof SchulordnungRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unlock': typeof UnlockRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kindertraining'
     | '/mcp'
+    | '/probetraining'
     | '/schulordnung'
     | '/sitemap.xml'
     | '/unlock'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kindertraining'
     | '/mcp'
+    | '/probetraining'
     | '/schulordnung'
     | '/sitemap.xml'
     | '/unlock'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kindertraining'
     | '/mcp'
+    | '/probetraining'
     | '/schulordnung'
     | '/sitemap.xml'
     | '/unlock'
@@ -229,6 +241,7 @@ export interface RootRouteChildren {
   ImpressumRoute: typeof ImpressumRoute
   KindertrainingRoute: typeof KindertrainingRoute
   McpRoute: typeof McpRoute
+  ProbetrainingRoute: typeof ProbetrainingRoute
   SchulordnungRoute: typeof SchulordnungRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnlockRoute: typeof UnlockRoute
@@ -262,6 +275,13 @@ declare module '@tanstack/react-router' {
       path: '/schulordnung'
       fullPath: '/schulordnung'
       preLoaderRoute: typeof SchulordnungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/probetraining': {
+      id: '/probetraining'
+      path: '/probetraining'
+      fullPath: '/probetraining'
+      preLoaderRoute: typeof ProbetrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -365,6 +385,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpressumRoute: ImpressumRoute,
   KindertrainingRoute: KindertrainingRoute,
   McpRoute: McpRoute,
+  ProbetrainingRoute: ProbetrainingRoute,
   SchulordnungRoute: SchulordnungRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnlockRoute: UnlockRoute,

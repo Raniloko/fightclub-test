@@ -131,8 +131,7 @@ export function Hero() {
 
           <div className="fc-late fc-late-4 mt-6 flex flex-col gap-3 sm:flex-row md:justify-center">
             <Link
-              to="/"
-              hash="kontakt"
+              to="/probetraining"
               className="fc-btn-cyan inline-flex w-full items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black sm:w-auto"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >

@@ -82,8 +82,7 @@ export function Kindertraining() {
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
-                to="/"
-                hash="kontakt"
+                to="/probetraining"
                 className="fc-btn-cyan inline-flex items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
               >
@@ -261,13 +260,12 @@ export function Kindertraining() {
             Lass dein Kind unverbindlich reinschnuppern. Das erste Training ist kostenlos — inklusive
             Einweisung, Kennenlernen und einem persönlichen Gespräch mit unseren Trainern.
           </p>
-          <Link
-            to="/"
-            hash="kontakt"
-            className="mt-10 inline-block bg-black px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#0a0a0a]"
-          >
-            Termin vereinbaren
-          </Link>
+            <Link
+              to="/probetraining"
+              className="mt-10 inline-block bg-black px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#0a0a0a]"
+            >
+              Termin vereinbaren
+            </Link>
         </div>
       </section>
     </>

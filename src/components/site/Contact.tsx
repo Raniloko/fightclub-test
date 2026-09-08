@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
-import { MaToolForm } from "./MaToolForm";
 
 function MapEmbed() {
   const [loaded, setLoaded] = useState(false);
@@ -164,11 +164,14 @@ export function Contact() {
             Jetzt kostenlos <span className="fc-headline-underline">Probetraining</span> sichern
           </h3>
           <p className="mt-4 text-[15px] leading-relaxed text-[#333]">
-            Fülle einfach das Formular aus – wir melden uns bei dir mit deinem Wunschtermin.
+            Dein erstes Training ist kostenlos und unverbindlich. Sichere dir deinen Wunschtermin.
           </p>
-          <div className="mt-6">
-            <MaToolForm />
-          </div>
+          <Link
+            to="/probetraining"
+            className="mt-6 inline-block bg-[#0a0a0a] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222]"
+          >
+            Termin anfragen →
+          </Link>
         </Reveal>
       </div>
 
