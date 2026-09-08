@@ -1,8 +1,6 @@
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
-import { useServerFn } from "@tanstack/react-start";
+import { useState } from "react";
 import { Reveal } from "./Reveal";
-import { sendContactMessage } from "@/lib/contact.functions";
+import { MaToolForm } from "./MaToolForm";
 
 function MapEmbed() {
   const [loaded, setLoaded] = useState(false);
