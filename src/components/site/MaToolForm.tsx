@@ -15,8 +15,18 @@ export function MaToolForm() {
     if (!iframe) return;
 
     const onMessage = (e: MessageEvent) => {
-      if (!Number.isInteger(e.data)) return;
-      const value = e.data as number;
+      if (e.origin !== "https://ext.matool.de") return;
+
+      // MATOOL übermittelt die Höhe je nach Formularschritt entweder als
+      // Zahl oder als numerischen String. Beides muss akzeptiert werden,
+      // sonst bleiben die letzten Felder und der Reservieren-Button verdeckt.
+      const value =
+        typeof e.data === "number"
+          ? e.data
+          : typeof e.data === "string" && /^\d+$/.test(e.data.trim())
+            ? Number.parseInt(e.data, 10)
+            : Number.NaN;
+      if (!Number.isInteger(value)) return;
 
       if (value === 99999999) {
         // MaTool bittet um Scroll (z. B. bei Validierungsfehlern):
