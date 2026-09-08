@@ -21,8 +21,7 @@ export function CtaProbetraining() {
           Dein erstes Training ist kostenlos und unverbindlich. Keine Anmeldung nötig.
         </p>
         <Link
-          to="/"
-          hash="kontakt"
+          to="/probetraining"
           className="fc-btn-cyan mt-10 inline-block px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-black"
         >
           Probetraining anfragen

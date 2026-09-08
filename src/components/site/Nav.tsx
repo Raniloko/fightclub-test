@@ -49,8 +49,7 @@ export function Nav() {
               </Link>
             ))}
             <Link
-              to="/"
-              hash="kontakt"
+              to="/probetraining"
               className="fc-nav-cta px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300"
             >
               Probetraining
@@ -108,7 +107,7 @@ export function Nav() {
           </nav>
 
           <div className="fcm-bottom">
-            <Link to="/" hash="kontakt" onClick={() => setOpen(false)} className="fcm-cta">
+            <Link to="/probetraining" onClick={() => setOpen(false)} className="fcm-cta">
               Probetraining anfragen
             </Link>
             <div className="flex items-center justify-between px-8 pb-8 pt-6">

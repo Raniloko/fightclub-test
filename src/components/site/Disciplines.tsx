@@ -294,12 +294,12 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
-              <a
-                href="#kontakt"
+              <Link
+                to="/probetraining"
                 className="inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
               >
                 Probetraining anfragen
-              </a>
+              </Link>
               {c.name === "Kindertraining" && (
                 <Link
                   to="/kindertraining"
