@@ -1,113 +1,87 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * MaTool Probetraining-Formular (iframe-Einbettung).
- * Übernimmt die Original-Logik von MaTool zur automatischen Höhenanpassung
- * (postMessage vom iframe) und zum sanften Scrollen bei 99999999.
+ * Die Höhe wird über postMessage vom iframe gemeldet und direkt gesetzt,
+ * damit beim Ausfüllen (Fehlermeldungen, aufklappende Felder) nichts
+ * abgeschnitten wird oder "verschwindet".
  */
 export function MaToolForm() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [height, setHeight] = useState(720);
 
   useEffect(() => {
     const iframe = iframeRef.current;
     if (!iframe) return;
 
-    let reported = 0;
-
     const onMessage = (e: MessageEvent) => {
       if (!Number.isInteger(e.data)) return;
-      if (e.data === 99999999) {
-        // Sanft zur Formularmitte scrollen
-        const target =
-          iframe.getBoundingClientRect().top +
-          (document.scrollingElement || document.documentElement).scrollTop -
-          Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 2;
-        const scroller = document.scrollingElement || document.documentElement;
-        const start = scroller.scrollTop;
-        const dist = target - start;
-        const duration = 500;
-        const t0 = performance.now();
-        const ease = (v: number, u: number, x: number, w: number) => {
-          v /= w / 2;
-          if (v < 1) return (x / 2) * v * v + u;
-          v--;
-          return (-x / 2) * (v * (v - 2) - 1) + u;
-        };
-        const step = (now: number) => {
-          const t = now - t0;
-          scroller.scrollTop = Math.round(ease(t, start, dist, duration));
-          if (t < duration) requestAnimationFrame(step);
-          else scroller.scrollTop = target;
-        };
-        requestAnimationFrame(step);
-      } else {
-        reported = e.data as number;
+      const value = e.data as number;
+
+      if (value === 99999999) {
+        // MaTool bittet um Scroll (z. B. bei Validierungsfehlern):
+        // sanft an den Formularanfang, nicht in die Mitte.
+        const top =
+          iframe.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top, behavior: "smooth" });
+        return;
+      }
+
+      if (value > 200 && value < 20000) {
+        // Kleiner Puffer, damit der letzte Button nie abgeschnitten wird.
+        setHeight(value + 24);
       }
     };
+
     window.addEventListener("message", onMessage);
-
-    // Höhe sanft an den gemeldeten Wert angleichen
-    const interval = window.setInterval(() => {
-      const current = iframe.offsetHeight;
-      let delta = Math.round((reported - current) / 10);
-      delta = Math.abs(delta);
-      if (delta < 1) delta = 0;
-      if (reported > 0 && reported !== current && delta > 0) {
-        iframe.style.height =
-          reported > current ? `${current + delta}px` : `${current - delta}px`;
-      }
-    }, 25);
-
-    return () => {
-      window.removeEventListener("message", onMessage);
-      window.clearInterval(interval);
-    };
+    return () => window.removeEventListener("message", onMessage);
   }, []);
 
   return (
-    <div>
-      <iframe
-        ref={iframeRef}
-        src="https://ext.matool.de/ptformdyn/?hash=1e769cc33873fa3e"
-        id="probeForm"
-        title="Probetraining anmelden"
-        scrolling="no"
-        frameBorder={0}
-        style={{ width: "100%", border: 0, minHeight: 400 }}
-      />
-      <div
-        style={{
-          borderTop: "1px solid #e0e0e0",
-          paddingTop: 5,
-          paddingBottom: 20,
-          paddingRight: 5,
-          width: "100%",
-          textAlign: "right",
-        }}
-      >
+    <div className="border border-[#e2e2e2] bg-white">
+      <div className="border-b border-[#e2e2e2] bg-[#fafafa] px-4 py-3 md:px-6">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
+          Anmeldung Probetraining
+        </p>
+      </div>
+
+      <div className="px-2 py-2 md:px-6 md:py-6">
+        <iframe
+          ref={iframeRef}
+          src="https://ext.matool.de/ptformdyn/?hash=1e769cc33873fa3e"
+          id="probeForm"
+          title="Probetraining anmelden"
+          scrolling="no"
+          frameBorder={0}
+          style={{
+            width: "100%",
+            border: 0,
+            height: `${height}px`,
+            transition: "height 0.25s ease",
+            display: "block",
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2 border-t border-[#e2e2e2] px-4 py-4 md:px-6">
+        <p className="text-[12px] leading-relaxed text-[#555]">
+          Hinweis: Das Probetraining-Formular wird von MATOOL (matool.de) bereitgestellt und
+          automatisch geladen. Dabei werden technisch notwendige Daten (u. a. IP-Adresse) an MATOOL
+          übertragen. Details siehe{" "}
+          <a href="/datenschutz" className="underline">
+            Datenschutzerklärung
+          </a>
+          .
+        </p>
         <a
           href="https://www.matool.de"
-          style={{
-            textDecoration: "none",
-            color: "grey",
-            fontFamily: "Helvetica, Arial, sans-serif",
-            fontSize: "x-small",
-          }}
           target="_blank"
           rel="noopener noreferrer"
+          className="text-right text-[11px] text-[#999] no-underline"
         >
           made by MATOOL
         </a>
       </div>
-      <p className="text-[12px] leading-relaxed text-[#555]">
-        Hinweis: Das Probetraining-Formular wird von MATOOL (matool.de) bereitgestellt und
-        automatisch geladen. Dabei werden technisch notwendige Daten (u. a. IP-Adresse) an MATOOL
-        übertragen. Details siehe{" "}
-        <a href="/datenschutz" className="underline">
-          Datenschutzerklärung
-        </a>
-        .
-      </p>
     </div>
   );
 }
