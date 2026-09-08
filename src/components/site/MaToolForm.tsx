@@ -83,6 +83,8 @@ export function MaToolForm() {
           frameBorder={0}
           style={{
             width: "100%",
+            maxWidth: "700px",
+            margin: "0 auto",
             border: 0,
             height: `${height}px`,
             transition: "height 0.25s ease",
