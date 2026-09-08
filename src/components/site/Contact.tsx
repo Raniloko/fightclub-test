@@ -1,8 +1,6 @@
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
-import { useServerFn } from "@tanstack/react-start";
+import { useState } from "react";
 import { Reveal } from "./Reveal";
-import { sendContactMessage } from "@/lib/contact.functions";
+import { MaToolForm } from "./MaToolForm";
 
 function MapEmbed() {
   const [loaded, setLoaded] = useState(false);
@@ -41,45 +39,6 @@ function MapEmbed() {
 }
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [privacyOk, setPrivacyOk] = useState(false);
-  const send = useServerFn(sendContactMessage);
-
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (loading) return;
-    if (!privacyOk) {
-      toast.error("Bitte bestätige die Datenschutzhinweise.");
-      return;
-    }
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-    const payload = {
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      discipline: String(fd.get("discipline") ?? ""),
-      message: String(fd.get("message") ?? ""),
-      website: String(fd.get("website") ?? ""),
-    };
-    setLoading(true);
-    try {
-      await send({ data: payload });
-      setSent(true);
-      toast.success("Nachricht gesendet. Wir melden uns in Kürze.");
-      form.reset();
-      setPrivacyOk(false);
-      setTimeout(() => setSent(false), 2500);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Senden fehlgeschlagen.";
-      toast.error(msg);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-
   return (
     <section id="kontakt" className="bg-white py-12 md:py-20">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-5 md:grid-cols-2 md:gap-20 md:px-10">
@@ -195,93 +154,24 @@ export function Contact() {
         </Reveal>
 
         <Reveal>
-          <form onSubmit={onSubmit} className="space-y-5" noValidate>
-            {/* Honeypot — hidden from users, bots fill it and get filtered out */}
-            <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
-              <label>
-                Website
-                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-              </label>
-            </div>
-            <Field label="Name *">
-              <input required name="name" maxLength={100} autoComplete="name" className="fc-input" />
-            </Field>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              <Field label="E-Mail *">
-                <input required type="email" name="email" maxLength={200} autoComplete="email" className="fc-input" />
-              </Field>
-              <Field label="Telefon">
-                <input name="phone" maxLength={40} inputMode="tel" autoComplete="tel" pattern="[+0-9 ()\/.\-]*" className="fc-input" />
-              </Field>
-            </div>
-            <Field label="Welche Disziplin interessiert dich?">
-              <select name="discipline" className="fc-input" defaultValue="">
-                <option value="" disabled>
-                  Bitte wählen
-                </option>
-                <option>MMA</option>
-                <option>K1</option>
-                <option>Boxen</option>
-                <option>Thaiboxen</option>
-                <option>Self-Defense</option>
-                <option>Wing-Fight</option>
-                <option>Kindertraining</option>
-                <option>Ich bin noch unentschlossen</option>
-              </select>
-            </Field>
-            <Field label="Nachricht">
-              <textarea name="message" rows={5} maxLength={2000} className="fc-input resize-none" />
-            </Field>
-            <label className="flex items-start gap-3 text-[13px] leading-relaxed text-[#333]">
-              <input
-                type="checkbox"
-                required
-                checked={privacyOk}
-                onChange={(e) => setPrivacyOk(e.target.checked)}
-                className="mt-1 h-4 w-4 accent-[#0a0a0a]"
-              />
-              <span>
-                Ich habe die <a href="/datenschutz" target="_blank" rel="noopener" className="underline">Datenschutzerklärung</a>{" "}
-                gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Die Einwilligung
-                kann ich jederzeit für die Zukunft per E-Mail an info@fightclub-hanau.de widerrufen. *
-              </span>
-            </label>
-            <button
-              type="submit"
-              disabled={loading || sent || !privacyOk}
-              className="w-full bg-[#0a0a0a] px-8 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222] disabled:opacity-60"
-            >
-              {loading ? "Wird gesendet…" : sent ? "Gesendet" : "Nachricht senden"}
-            </button>
-          </form>
+          <div className="flex items-center gap-3">
+            <span className="block h-px w-8 bg-[#0a0a0a]" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#555]">
+              Probetraining
+            </span>
+          </div>
+          <h3 className="mt-4 font-display text-3xl md:text-4xl">
+            Jetzt kostenlos <span className="fc-headline-underline">Probetraining</span> sichern
+          </h3>
+          <p className="mt-4 text-[15px] leading-relaxed text-[#333]">
+            Fülle einfach das Formular aus – wir melden uns bei dir mit deinem Wunschtermin.
+          </p>
+          <div className="mt-6">
+            <MaToolForm />
+          </div>
         </Reveal>
       </div>
 
-      <style>{`
-        .fc-input {
-          width: 100%;
-          background: #ffffff;
-          border: 1px solid #e0e0e0;
-          padding: 14px 16px;
-          font-size: 15px;
-          font-family: inherit;
-          color: #0a0a0a;
-          outline: none;
-          transition: border-color 0.2s ease;
-        }
-        .fc-input:focus { border-color: #0a0a0a; }
-      `}</style>
     </section>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-        {label}
-      </span>
-      {children}
-    </label>
   );
 }
