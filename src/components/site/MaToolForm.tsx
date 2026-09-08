@@ -1,12 +1,68 @@
+import { useEffect, useRef, useState } from "react";
+
+const MATOOL_ORIGIN = "https://ext.matool.de";
+const INITIAL_FORM_HEIGHT = 1400;
+
 export function MaToolForm() {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [formHeight, setFormHeight] = useState(INITIAL_FORM_HEIGHT);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      const iframe = iframeRef.current;
+
+      if (
+        !iframe ||
+        event.origin !== MATOOL_ORIGIN ||
+        event.source !== iframe.contentWindow
+      ) {
+        return;
+      }
+
+      const nextHeight =
+        typeof event.data === "number"
+          ? event.data
+          : typeof event.data === "string"
+            ? Number(event.data)
+            : Number.NaN;
+
+      if (!Number.isFinite(nextHeight)) return;
+
+      if (nextHeight === 99999999) {
+        const top = iframe.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.max(0, top - window.innerHeight / 2),
+          behavior: "smooth",
+        });
+        return;
+      }
+
+      if (nextHeight > 0) {
+        setFormHeight(Math.ceil(nextHeight) + 48);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
   return (
     <>
       <iframe
+        ref={iframeRef}
         src="https://ext.matool.de/ptformdyn/?hash=1e769cc33873fa3e"
         id="probeForm"
-        scrolling="no"
+        title="Probetraining reservieren"
+        scrolling="yes"
         frameBorder={0}
-        style={{ width: "100%", maxWidth: "700px" }}
+        style={{
+          width: "100%",
+          maxWidth: "700px",
+          height: `${formHeight}px`,
+          minHeight: `${INITIAL_FORM_HEIGHT}px`,
+          display: "block",
+          border: 0,
+        }}
       />
       <div
         style={{
@@ -37,12 +93,6 @@ export function MaToolForm() {
           made by MATOOL
         </a>
       </div>
-      <script
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `/*<![CDATA[*/function mm(){var n=25;var h=10;var k=0;var d=document.getElementById('probeForm');var f;var b=window.addEventListener?'addEventListener':'attachEvent';var c=window[b];var o=b=='attachEvent'?'onmessage':'message';c(o,function(e){if(e.data===parseInt(e.data)){if(e.data==99999999){var g=function(m,l){var s=document.scrollingElement||document.documentElement,q=s.scrollTop,p=m-q,r=+new Date(),a=function(v,u,x,w){v/=w/2;if(v<1){return x/2*v*v+u}v--;return -x/2*(v*(v-2)-1)+u},i=function(){var v=+new Date();var t=v-r;s.scrollTop=parseInt(a(t,q,p,l));if(t<l){requestAnimationFrame(i)}else{s.scrollTop=m}};i()};g(d.getBoundingClientRect().top+document.documentElement.scrollTop-(Math.max(document.documentElement.clientHeight,window.innerHeight||0)/2),500)}else{f=e.data}}},false);var j=window.setInterval(function(){var a=d.offsetHeight;k=Math.round((f-a)/h);k=Math.abs(k);if(k<1){k=0}if(f>0&&f!=a){if((f-a)>0){d.height=(a+k)+'px'}else{d.height=(a-k)+'px'}}},n)}mm();/*]]>*/`,
-        }}
-      />
     </>
   );
 }
