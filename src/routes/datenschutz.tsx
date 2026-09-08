@@ -73,6 +73,7 @@ function DatenschutzPage() {
         <ul className="mt-3 list-disc space-y-2 pl-6">
           <li><strong>fc-consent-v1</strong> (Local Storage, notwendig) — speichert Ihre Cookie-Entscheidung. Speicherdauer: bis zum Widerruf.</li>
           <li><strong>_ga, _ga_*</strong> (Google Analytics, nur nach Einwilligung) — pseudonyme Reichweitenmessung. Speicherdauer bis 2 Jahre.</li>
+          <li><strong>MATOOL-Formular</strong> (matool.de, technisch notwendig) — Speichereinträge zum Betrieb des Probetraining-Formulars, das automatisch geladen wird. Speicherdauer: Sitzung.</li>
         </ul>
 
         <H2>6. Google Analytics 4 (nur mit Einwilligung)</H2>
