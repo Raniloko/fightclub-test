@@ -172,31 +172,6 @@ export function Contact() {
         </Reveal>
       </div>
 
-      <style>{`
-        .fc-input {
-          width: 100%;
-          background: #ffffff;
-          border: 1px solid #e0e0e0;
-          padding: 14px 16px;
-          font-size: 15px;
-          font-family: inherit;
-          color: #0a0a0a;
-          outline: none;
-          transition: border-color 0.2s ease;
-        }
-        .fc-input:focus { border-color: #0a0a0a; }
-      `}</style>
     </section>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-        {label}
-      </span>
-      {children}
-    </label>
   );
 }
