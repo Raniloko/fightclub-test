@@ -89,7 +89,7 @@ export function Contact() {
 
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-                Öffnungszeiten
+                Öffnungs- & Trainingszeiten
               </div>
               <div className="mt-2 space-y-1">
                 <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
@@ -97,10 +97,31 @@ export function Contact() {
                   <span>15:45 – 21:30 Uhr</span>
                 </div>
                 <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
-                  <span>Samstag – Sonntag</span>
-                  <span className="text-right">nach Vereinbarung (Termin auf Anfrage)</span>
+                  <span>Samstag — Reguläres Training</span>
+                  <span>11:00 – 13:00 Uhr</span>
+                </div>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
+                  <span className="flex items-center gap-2">
+                    Samstag — Freies Training
+                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
+                      Auf Anfrage
+                    </span>
+                  </span>
+                  <span className="text-right">13:00 – 22:00 Uhr</span>
+                </div>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
+                  <span className="flex items-center gap-2">
+                    Sonntag — Freies Training
+                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
+                      Auf Anfrage
+                    </span>
+                  </span>
+                  <span className="text-right">10:00 – 22:00 Uhr</span>
                 </div>
               </div>
+              <p className="mt-2 text-[12px] text-[#777]">
+                Freies Training am Wochenende nur nach Vereinbarung / Termin auf Anfrage.
+              </p>
             </div>
             <div className="flex gap-4">
               <a

@@ -10,7 +10,9 @@ const CONTACT = {
   },
   hours: {
     "Mo-Fr": "15:45–21:30",
-    "Sa-So": "nach Vereinbarung (Termin auf Anfrage)",
+    "Samstag (Reguläres Training)": "11:00–13:00",
+    "Samstag (Freies Training, nach Vereinbarung)": "13:00–22:00",
+    "Sonntag (Freies Training, nach Vereinbarung)": "10:00–22:00",
   },
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Geleitstra%C3%9Fe+66%2C+63456+Hanau",
