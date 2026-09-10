@@ -26,8 +26,7 @@ const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Boxen-Teens", match: ["boxen-teens"], color: "#6EA8FF" },
   { label: "Kickboxen", match: ["mini-kickbox", "kids-kickbox", "teens-kickbox"], color: "#FACC15" },
   { label: "Wing Fight / Selfdefense", match: ["wing", "self"], color: "#8B5CF6" },
-  { label: "MMA / Ground and Pound", match: ["mma", "ground"], color: "#FF4444" },
-  { label: "Submission Grappling", match: ["grappling", "submission"], color: "#00CFC1" },
+  { label: "MMA / Submission Grappling", match: ["mma", "submission", "grappling", "ground"], color: "#C62828" },
   { label: "Thaiboxen", match: ["thai", "muay"], color: "#DC143C" },
   { label: "K1 / Kickboxen", match: ["k1", "kickbox"], color: "#22C55E" },
   { label: "Boxen", match: ["box"], color: "#FF6B00" },
@@ -35,11 +34,10 @@ const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
 
 /* Legend display order (user-specified) */
 const LEGEND_LABELS = [
-  "MMA / Ground and Pound",
+  "MMA / Submission Grappling",
   "Thaiboxen",
   "Kickboxen",
   "K1 / Kickboxen",
-  "Submission Grappling",
   "Wing Fight / Selfdefense",
   "Boxen",
   "Boxen (Wettkampf)",

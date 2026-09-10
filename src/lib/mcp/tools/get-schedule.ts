@@ -21,7 +21,7 @@ const SCHEDULE: Record<string, Cls[]> = {
     { time: "19:30", disc: "Thaiboxen", level: "Fortgeschritten", trainer: "[Trainer]" },
   ],
   THU: [
-    { time: "18:00", disc: "MMA", level: "Einsteiger", trainer: "[Trainer]" },
+    { time: "18:00", disc: "MMA / Submission Grappling", level: "Einsteiger", trainer: "[Trainer]" },
     { time: "19:30", disc: "Wing-Fight", level: "Alle Level", trainer: "[Trainer]" },
   ],
   FRI: [
