@@ -26,7 +26,7 @@ const DISCIPLINE_COLORS: { label: string; match: string[]; color: string }[] = [
   { label: "Boxen-Teens", match: ["boxen-teens"], color: "#6EA8FF" },
   { label: "Kickboxen", match: ["mini-kickbox", "kids-kickbox", "teens-kickbox"], color: "#FACC15" },
   { label: "Wing Fight / Selfdefense", match: ["wing", "self"], color: "#8B5CF6" },
-  { label: "MMA / Submission Grappling", match: ["mma", "submission", "grappling", "ground"], color: "#C62828" },
+  { label: "MMA / Submission Grappling", match: ["mma", "submission", "grappling", "ground"], color: "#006064" },
   { label: "Thaiboxen", match: ["thai", "muay"], color: "#DC143C" },
   { label: "K1 / Kickboxen", match: ["k1", "kickbox"], color: "#22C55E" },
   { label: "Boxen", match: ["box"], color: "#FF6B00" },
