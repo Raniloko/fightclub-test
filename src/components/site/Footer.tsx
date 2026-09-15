@@ -1,10 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { Ticker } from "./Ticker";
 
 export function Footer() {
   return (
     <footer className="bg-[#0a0a0a] text-white">
+      <Ticker />
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-5 py-16 md:grid-cols-3 md:px-10">
+
         <div>
           <Logo size={52} />
           <p className="mt-6 text-[12px] uppercase tracking-[0.2em] text-white/80">
