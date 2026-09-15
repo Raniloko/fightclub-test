@@ -757,3 +757,47 @@ html.fc-intro-active body { visibility: visible; }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Laufband / Ticker */
+@keyframes fc-ticker-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.fc-ticker {
+  overflow: hidden;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(201, 168, 76, 0.35);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+  padding: 14px 0;
+}
+.fc-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: fc-ticker-scroll 45s linear infinite;
+}
+.fc-ticker-row {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+.fc-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding-right: 22px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.fc-ticker-sep { color: #C9A84C; }
+@media (min-width: 768px) {
+  .fc-ticker-item { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc-ticker-track { animation: none; }
+}
+
