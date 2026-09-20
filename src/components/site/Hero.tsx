@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import heroMainAsset from "@/assets/hero-v7-mobile.png.asset.json";
-import heroWideAsset from "@/assets/hero-v7-desktop.jpg.asset.json";
+import heroMainAsset from "@/assets/hero-v7-mobile.png";
+import heroWideAsset from "@/assets/hero-v7-desktop.jpg";
 
 
 
@@ -54,7 +54,7 @@ export function Hero() {
     >
       <img
         ref={imgRef}
-        src={heroWideAsset.url}
+        src={heroWideAsset}
         alt=""
         aria-hidden="true"
         loading="eager"
@@ -67,7 +67,7 @@ export function Hero() {
 
 
       <img
-        src={heroMainAsset.url}
+        src={heroMainAsset}
         alt=""
         aria-hidden="true"
         loading="eager"

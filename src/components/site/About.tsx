@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
-import aboutImage from "@/assets/about-community-v1.jpg.asset.json";
+import aboutImage from "@/assets/about-community-v1.jpg";
 
 export function About() {
   return (
@@ -8,7 +8,7 @@ export function About() {
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-2">
         <div className="relative min-h-[320px] md:min-h-[640px]">
           <img
-            src={aboutImage.url}
+            src={aboutImage}
             alt="Training bei Fight Club Hanau"
             loading="lazy"
             width={1024}
