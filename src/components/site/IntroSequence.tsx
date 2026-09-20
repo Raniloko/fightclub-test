@@ -4,8 +4,6 @@ import { Logo } from "./Logo";
 import { FireAura } from "./FireAura";
 import sloganAsset from "@/assets/slogan-banner.png";
 
-let introStarted = false;
-
 // Pre-Intro (Rolladen) dauert so lange, danach startet das bekannte Intro
 const BURN_AT = 3000;
 const SHUTTER_UP_AT = 5400;
@@ -30,9 +28,8 @@ export function IntroSequence() {
       root.classList.remove("fc-intro-pending");
       return;
     }
-    if (introStarted || didRunRef.current) return;
+    if (didRunRef.current) return;
     didRunRef.current = true;
-    introStarted = true;
     setMounted(true);
   }, []);
 
