@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Logo } from "./Logo";
 import { FireAura } from "./FireAura";
-import sloganAsset from "@/assets/slogan-banner.png.asset.json";
+import sloganAsset from "@/assets/slogan-banner.png";
 
 let introStarted = false;
 
@@ -106,7 +106,7 @@ export function IntroSequence() {
           <div className="fc-shutter-inner">
           <div className="fc-shutter-banner">
             <FireAura mode="orbit" intense={burning} />
-            <img src={sloganAsset.url} alt="" />
+            <img src={sloganAsset} alt="" />
           </div>
           </div>
 
