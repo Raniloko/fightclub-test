@@ -53,7 +53,7 @@ export function Kindertraining() {
       <section className="relative overflow-hidden bg-[#0a0a0a] py-28 text-white md:py-40">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="/kids-training.jpg"
             alt="Kinder beim Kampfsporttraining"
             loading="eager"
             className="h-full w-full object-cover object-center opacity-40"
@@ -148,7 +148,7 @@ export function Kindertraining() {
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src="https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  src="/kids-training.jpg"
                   alt="Kinder beim Techniktraining"
                   loading="lazy"
                   className="h-full w-full object-cover"

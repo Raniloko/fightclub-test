@@ -1,5 +1,3 @@
-import mmaPosterAsset from "@/assets/mma-poster-sunay-v3.png.asset.json";
-
 export function MmaAnnouncement() {
   return (
     <section id="mma" className="relative overflow-hidden bg-[#0a0a0a] py-14 md:py-24">
@@ -40,7 +38,7 @@ export function MmaAnnouncement() {
           <div className="w-full max-w-[420px] flex-shrink-0 lg:max-w-[480px]">
             <div className="relative overflow-hidden rounded-lg border border-[#C9A84C]/30 bg-black shadow-2xl shadow-[#C9A84C]/10">
               <img
-                src={mmaPosterAsset.url}
+                src="/kids-training.jpg"
                 alt="MMA Fight Club Poster: Sunay Abdullah Hamidov — Jetzt neu ab September"
                 loading="lazy"
                 width={874}

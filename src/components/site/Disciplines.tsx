@@ -17,7 +17,7 @@ type Discipline = {
 const CARDS: Discipline[] = [
   {
     name: "Kindertraining",
-    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Kampfsport für Kinder — spielerisch, respektvoll, mit klaren Werten. Disziplin, Selbstvertrauen und Spaß.",
     what: "Kampfsport für Kinder — spielerisch, respektvoll, mit echten Werten.",
     learn: ["Grundlegende Kampfsporttechniken", "Respekt und Disziplin", "Selbstvertrauen aufbauen", "Konzentration und Koordination"],
@@ -31,7 +31,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "MMA",
-    img: "https://images.pexels.com/photos/6296060/pexels-photo-6296060.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Mixed Martial Arts auf Wettkampfniveau. Standup, Clinch und Boden — vollständig integriert.",
     what: "Mixed Martial Arts kombiniert alle Kampfkünste — Standup, Clinch und Boden. Die vollständigste Kampfsportart der Welt.",
     learn: ["Schlagen und Treten", "Ringen und Werfen", "Bodenkampf und Submissions", "Wettkampfvorbereitung"],
@@ -45,7 +45,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "K1",
-    img: "https://images.pexels.com/photos/6998858/pexels-photo-6998858.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Explosivität und Präzision. K1 verbindet Boxen, Kicks und Knietechniken zu einem kompletten Standup-System.",
     what: "K1 ist explosiver Standup-Kampfsport — Fäuste, Kicks und Knie. Schnell, kraftvoll, präzise.",
     learn: ["Schlagtechnik", "Beintechniken", "Clinch-Arbeit", "Kondition und Timing"],
@@ -59,7 +59,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Boxen",
-    img: "https://images.pexels.com/photos/4761671/pexels-photo-4761671.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Klassisches Boxen für Einsteiger und Fortgeschrittene. Fußarbeit, Timing, Schlagkraft.",
     what: "Das Fundament aller Kampfsportarten. Fußarbeit, Timing und Schlagkraft auf höchstem Niveau.",
     learn: ["Grundtechniken und Kombis", "Defensive", "Fußarbeit und Bewegung", "Sparring und Wettkampf"],
@@ -73,7 +73,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Thaiboxen",
-    img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
     what: "Die Kunst der acht Gliedmaßen. Fäuste, Ellbogen, Knie und Kicks — vollständig integriert.",
     learn: ["Muay Thai Techniken", "Clinch und Sweeps", "Ellbogen- und Knietechniken", "Kondition und Charakter"],
@@ -87,7 +87,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Self-Defense",
-    img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Realistische Selbstverteidigung für Alltag und Ernstfall. Klare Prinzipien, kein Showtraining.",
     what: "Realistische Selbstverteidigung für den Alltag. Keine Show — nur was wirklich funktioniert.",
     learn: ["Situationsbewusstsein", "Distanzmanagement", "Effektive Abwehrtechniken", "Ruhig bleiben unter Druck"],
@@ -101,7 +101,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Wing-Fight",
-    img: "https://images.pexels.com/photos/7045400/pexels-photo-7045400.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte und entspannte Kraft.",
     what: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte, entspannte Kraft.",
     learn: ["Zentrumlinie-Prinzip", "Chi Sao (Fühlübungen)", "Schnelle Reaktionen", "Effizienz über Kraft"],
@@ -115,7 +115,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Submission Grappling",
-    img: "https://images.pexels.com/photos/8611964/pexels-photo-8611964.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Bodenkampf ohne Schläge. Kontrolle, Hebel und Würgetechniken — Technik schlägt Kraft.",
     what: "Bodenkampf ohne Schläge — Positionen, Kontrolle und Submissions. Technik schlägt Kraft.",
     learn: ["Positionskontrolle", "Hebel- und Würgetechniken", "Takedowns und Sweeps", "Rollen und Sparring"],
@@ -129,7 +129,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Wettkampf-Boxen",
-    img: "https://images.pexels.com/photos/4761798/pexels-photo-4761798.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Gezielte Wettkampfvorbereitung im Boxen — Sparring, Taktik und Kampfhärte.",
     what: "Leistungstraining für Athletinnen und Athleten, die in den Ring wollen.",
     learn: ["Sparring auf Wettkampfniveau", "Kampftaktik und Ringgefühl", "Athletik und Gewichtsmanagement", "Mentale Vorbereitung"],
@@ -142,7 +142,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Kickboxen & Boxen für Frauen",
-    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Training in geschütztem Rahmen — Fitness, Technik und Selbstvertrauen.",
     what: "Kickboxen und Boxen speziell für Frauen — technisch sauber, fordernd und ohne Druck.",
     learn: ["Schlag- und Tritttechniken", "Pratzentraining", "Kondition und Kraft", "Selbstbewusstsein im Alltag"],
@@ -155,7 +155,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Personal Training",
-    img: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "/kids-training.jpg",
     text: "Einzeltraining nach Termin — individuell auf dein Ziel abgestimmt.",
     what: "1-zu-1 Training mit deinem Coach — maximaler Fortschritt in kurzer Zeit.",
     learn: ["Individueller Trainingsplan", "Technikkorrektur im Detail", "Athletik und Kondition", "Zielgerichtete Wettkampfvorbereitung"],
