@@ -197,11 +197,13 @@ export const saveMyTrainerProfile = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
-async function assertTeam(supabase: { rpc?: unknown }, ctxSupabase: any, userId: string) {
-  const { data } = await ctxSupabase
+type Ctx = { supabase: any; userId: string };
+
+async function assertTeam(context: Ctx) {
+  const { data } = await context.supabase
     .from("user_roles")
     .select("role")
-    .eq("user_id", userId);
+    .eq("user_id", context.userId);
   const roles = (data ?? []).map((r: { role: string }) => r.role);
   if (!roles.includes("admin") && !roles.includes("staff")) {
     throw new Error("Keine Berechtigung.");
@@ -212,7 +214,7 @@ async function assertTeam(supabase: { rpc?: unknown }, ctxSupabase: any, userId:
 export const listAllTrainers = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await assertTeam(context.supabase, context.supabase, context.userId);
+    await assertTeam(context);
     const { data, error } = await context.supabase
       .from("trainer_profiles")
       .select(SELECT_COLS)
@@ -235,7 +237,7 @@ export const updateTrainerStatus = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    await assertTeam(context.supabase, context.supabase, context.userId);
+    await assertTeam(context);
     const { id, ...rest } = data;
     const { error } = await context.supabase.from("trainer_profiles").update(rest).eq("id", id);
     if (error) throw new Error(error.message);
@@ -247,7 +249,7 @@ export const deleteTrainer = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    await assertTeam(context.supabase, context.supabase, context.userId);
+    await assertTeam(context);
     const { data: row } = await context.supabase
       .from("trainer_profiles")
       .select("user_id, avatar_path")
