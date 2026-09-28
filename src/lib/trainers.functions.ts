@@ -124,6 +124,7 @@ export const registerTrainer = createServerFn({ method: "POST" })
           error: "Für diese E-Mail existiert bereits ein Konto. Bitte melde dich an.",
         };
       }
+      console.error("[registerTrainer] createUser failed:", msg);
       return { ok: false as const, error: "Registrierung fehlgeschlagen. Bitte versuche es erneut." };
     }
 
@@ -134,6 +135,7 @@ export const registerTrainer = createServerFn({ method: "POST" })
     });
 
     if (profileError) {
+      console.error("[registerTrainer] profile insert failed:", profileError.message);
       await supabaseAdmin.auth.admin.deleteUser(created.user.id);
       return {
         ok: false as const,
