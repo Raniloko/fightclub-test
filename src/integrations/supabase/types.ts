@@ -122,6 +122,63 @@ export type Database = {
         }
         Relationships: []
       }
+      trainer_profiles: {
+        Row: {
+          achievements: string[]
+          avatar_path: string | null
+          bio: string
+          created_at: string
+          disciplines: string[]
+          display_name: string
+          email: string
+          id: string
+          instagram_url: string | null
+          is_published: boolean
+          role_title: string
+          short_bio: string
+          sort_index: number
+          submitted_for_review: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          achievements?: string[]
+          avatar_path?: string | null
+          bio?: string
+          created_at?: string
+          disciplines?: string[]
+          display_name?: string
+          email: string
+          id?: string
+          instagram_url?: string | null
+          is_published?: boolean
+          role_title?: string
+          short_bio?: string
+          sort_index?: number
+          submitted_for_review?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          achievements?: string[]
+          avatar_path?: string | null
+          bio?: string
+          created_at?: string
+          disciplines?: string[]
+          display_name?: string
+          email?: string
+          id?: string
+          instagram_url?: string | null
+          is_published?: boolean
+          role_title?: string
+          short_bio?: string
+          sort_index?: number
+          submitted_for_review?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
