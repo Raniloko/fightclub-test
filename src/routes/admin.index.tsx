@@ -923,3 +923,141 @@ function MobileField({ label, children }: { label: string; children: React.React
     </label>
   );
 }
+
+function TrainersAdmin() {
+  const qc = useQueryClient();
+  const { data, isLoading } = useQuery({
+    queryKey: ["admin-trainers"],
+    queryFn: () => listAllTrainers(),
+  });
+  const trainers = (data ?? []) as TrainerProfile[];
+  const [busy, setBusy] = useState<string | null>(null);
+
+  async function toggle(t: TrainerProfile) {
+    setBusy(t.id);
+    try {
+      await updateTrainerStatus({ data: { id: t.id, is_published: !t.is_published } });
+      await qc.invalidateQueries({ queryKey: ["admin-trainers"] });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function move(t: TrainerProfile, delta: number) {
+    setBusy(t.id);
+    try {
+      const next = Math.max(0, Math.min(999, t.sort_index + delta));
+      await updateTrainerStatus({ data: { id: t.id, sort_index: next } });
+      await qc.invalidateQueries({ queryKey: ["admin-trainers"] });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function remove(t: TrainerProfile) {
+    if (!confirm(`Trainerprofil von ${t.display_name || t.email} endgültig löschen?`)) return;
+    setBusy(t.id);
+    try {
+      await deleteTrainer({ data: { id: t.id } });
+      await qc.invalidateQueries({ queryKey: ["admin-trainers"] });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  if (isLoading) return <p className="text-[#888] text-sm">Wird geladen …</p>;
+
+  if (trainers.length === 0) {
+    return (
+      <div className="border border-[#2A2A2A] rounded-lg p-6 text-center">
+        <p className="text-[#888] text-sm">Noch keine Trainerprofile.</p>
+        <p className="text-[#666] text-xs mt-2">
+          Trainer registrieren sich selbst unter /trainer/registrieren.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      <p className="text-[#888] text-xs">
+        Profile erscheinen erst auf der Startseite, wenn du sie hier freigibst.
+      </p>
+      {trainers.map((t) => (
+        <div
+          key={t.id}
+          className="flex gap-4 border border-[#2A2A2A] rounded-lg p-4 bg-[#141414]"
+        >
+          <div className="h-20 w-16 flex-shrink-0 overflow-hidden rounded bg-[#1F1F1F]">
+            {t.avatar_url ? (
+              <img src={t.avatar_url} alt="" className="h-full w-full object-cover" />
+            ) : (
+              <div className="grid h-full w-full place-items-center text-[#555] text-xs">—</div>
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-semibold text-[15px]">{t.display_name || "Ohne Namen"}</span>
+              <span
+                className={`px-2 py-0.5 rounded text-[10px] uppercase tracking-wider ${
+                  t.is_published
+                    ? "bg-[#00D4FF]/15 text-[#00D4FF]"
+                    : t.submitted_for_review
+                      ? "bg-[#C9A84C]/15 text-[#C9A84C]"
+                      : "bg-white/5 text-[#888]"
+                }`}
+              >
+                {t.is_published
+                  ? "Öffentlich"
+                  : t.submitted_for_review
+                    ? "Wartet auf Freigabe"
+                    : "Entwurf"}
+              </span>
+            </div>
+            <p className="text-[#888] text-xs mt-1 truncate">{t.email}</p>
+            {t.role_title && <p className="text-[#aaa] text-xs mt-1">{t.role_title}</p>}
+            {t.disciplines.length > 0 && (
+              <p className="text-[#666] text-xs mt-1">{t.disciplines.join(" · ")}</p>
+            )}
+
+            <div className="flex flex-wrap items-center gap-2 mt-3">
+              <button
+                onClick={() => toggle(t)}
+                disabled={busy === t.id}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs disabled:opacity-50 ${
+                  t.is_published
+                    ? "border border-[#2A2A2A] text-[#888] hover:text-white"
+                    : "bg-[#00D4FF] text-black font-semibold"
+                }`}
+              >
+                {t.is_published ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+                {t.is_published ? "Verbergen" : "Freigeben"}
+              </button>
+              <button
+                onClick={() => move(t, -1)}
+                disabled={busy === t.id}
+                className="px-2.5 py-1.5 rounded border border-[#2A2A2A] text-xs text-[#888] hover:text-white disabled:opacity-50"
+              >
+                ↑
+              </button>
+              <button
+                onClick={() => move(t, 1)}
+                disabled={busy === t.id}
+                className="px-2.5 py-1.5 rounded border border-[#2A2A2A] text-xs text-[#888] hover:text-white disabled:opacity-50"
+              >
+                ↓
+              </button>
+              <button
+                onClick={() => remove(t)}
+                disabled={busy === t.id}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#2A2A2A] text-xs text-[#888] hover:text-red-400 hover:border-red-400/40 disabled:opacity-50"
+              >
+                <Trash2 className="h-3.5 w-3.5" /> Löschen
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
