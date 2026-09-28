@@ -58,6 +58,7 @@ export function Footer() {
             >
               Cookie-Einstellungen
             </button>
+            <Link to="/trainer/login" className="text-white/50 hover:text-white">Trainerbereich</Link>
           </div>
         </div>
       </div>

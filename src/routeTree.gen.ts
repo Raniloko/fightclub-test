@@ -20,6 +20,9 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as TrainerRegistrierenRouteImport } from './routes/trainer.registrieren'
+import { Route as TrainerProfilRouteImport } from './routes/trainer.profil'
+import { Route as TrainerLoginRouteImport } from './routes/trainer.login'
 import { Route as AdminPasswortFestlegenRouteImport } from './routes/admin.passwort-festlegen'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -82,6 +85,21 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainerRegistrierenRoute = TrainerRegistrierenRouteImport.update({
+  id: '/trainer/registrieren',
+  path: '/trainer/registrieren',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainerProfilRoute = TrainerProfilRouteImport.update({
+  id: '/trainer/profil',
+  path: '/trainer/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainerLoginRoute = TrainerLoginRouteImport.update({
+  id: '/trainer/login',
+  path: '/trainer/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPasswortFestlegenRoute = AdminPasswortFestlegenRouteImport.update({
   id: '/admin/passwort-festlegen',
   path: '/admin/passwort-festlegen',
@@ -131,6 +149,9 @@ export interface FileRoutesByFullPath {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
+  '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
+  '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin/': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -150,6 +171,9 @@ export interface FileRoutesByTo {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
+  '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
+  '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -170,6 +194,9 @@ export interface FileRoutesById {
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
+  '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
+  '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin/': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -191,6 +218,9 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/login'
     | '/admin/passwort-festlegen'
+    | '/trainer/login'
+    | '/trainer/profil'
+    | '/trainer/registrieren'
     | '/admin/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -210,6 +240,9 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/login'
     | '/admin/passwort-festlegen'
+    | '/trainer/login'
+    | '/trainer/profil'
+    | '/trainer/registrieren'
     | '/admin'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -229,6 +262,9 @@ export interface FileRouteTypes {
     | '/.well-known/oauth-protected-resource'
     | '/admin/login'
     | '/admin/passwort-festlegen'
+    | '/trainer/login'
+    | '/trainer/profil'
+    | '/trainer/registrieren'
     | '/admin/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
@@ -249,6 +285,9 @@ export interface RootRouteChildren {
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPasswortFestlegenRoute: typeof AdminPasswortFestlegenRoute
+  TrainerLoginRoute: typeof TrainerLoginRoute
+  TrainerProfilRoute: typeof TrainerProfilRoute
+  TrainerRegistrierenRoute: typeof TrainerRegistrierenRoute
   AdminIndexRoute: typeof AdminIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
@@ -333,6 +372,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trainer/registrieren': {
+      id: '/trainer/registrieren'
+      path: '/trainer/registrieren'
+      fullPath: '/trainer/registrieren'
+      preLoaderRoute: typeof TrainerRegistrierenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainer/profil': {
+      id: '/trainer/profil'
+      path: '/trainer/profil'
+      fullPath: '/trainer/profil'
+      preLoaderRoute: typeof TrainerProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainer/login': {
+      id: '/trainer/login'
+      path: '/trainer/login'
+      fullPath: '/trainer/login'
+      preLoaderRoute: typeof TrainerLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/passwort-festlegen': {
       id: '/admin/passwort-festlegen'
       path: '/admin/passwort-festlegen'
@@ -394,6 +454,9 @@ const rootRouteChildren: RootRouteChildren = {
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminPasswortFestlegenRoute: AdminPasswortFestlegenRoute,
+  TrainerLoginRoute: TrainerLoginRoute,
+  TrainerProfilRoute: TrainerProfilRoute,
+  TrainerRegistrierenRoute: TrainerRegistrierenRoute,
   AdminIndexRoute: AdminIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
