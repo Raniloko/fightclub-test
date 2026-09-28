@@ -1,0 +1,1 @@
+REVOKE ALL ON FUNCTION public.guard_trainer_publish() FROM PUBLIC, anon, authenticated;
