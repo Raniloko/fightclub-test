@@ -110,7 +110,7 @@ function RegisterPage() {
               className={inputCls}
             />
           </Field>
-          <Field label="Passwort (mind. 8 Zeichen)">
+          <Field label="Passwort (mind. 8 Zeichen, nicht zu einfach)">
             <input
               type="password"
               value={password}
