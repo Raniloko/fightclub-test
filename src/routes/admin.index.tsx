@@ -27,6 +27,12 @@ import {
   deletePost,
   type Post,
 } from "@/lib/posts.functions";
+import {
+  listAllTrainers,
+  updateTrainerStatus,
+  deleteTrainer,
+  type TrainerProfile,
+} from "@/lib/trainers.functions";
 
 export const Route = createFileRoute("/admin/")({
   ssr: false,
@@ -49,7 +55,7 @@ function AdminDashboard() {
   const navigate = useNavigate();
   const qc = useQueryClient();
   const [authChecked, setAuthChecked] = useState(false);
-  const [tab, setTab] = useState<"schedule" | "posts" | "team">("schedule");
+  const [tab, setTab] = useState<"schedule" | "posts" | "trainers" | "team">("schedule");
   const [day, setDay] = useState<WeekDay>("MON");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -133,6 +139,7 @@ function AdminDashboard() {
         <div className="max-w-6xl mx-auto px-4 flex gap-5 overflow-x-auto">
           <TabBtn active={tab === "schedule"} onClick={() => setTab("schedule")}>Stundenplan</TabBtn>
           <TabBtn active={tab === "posts"} onClick={() => setTab("posts")}>Beiträge</TabBtn>
+          <TabBtn active={tab === "trainers"} onClick={() => setTab("trainers")}>Trainer</TabBtn>
           {isAdmin && (
             <TabBtn active={tab === "team"} onClick={() => setTab("team")}>Team</TabBtn>
           )}
@@ -149,6 +156,7 @@ function AdminDashboard() {
           />
         )}
         {tab === "posts" && <PostsAdmin />}
+        {tab === "trainers" && <TrainersAdmin />}
         {tab === "team" && isAdmin && <TeamAdmin />}
       </main>
     </div>

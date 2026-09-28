@@ -21,6 +21,7 @@ import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as TrainerRegistrierenRouteImport } from './routes/trainer.registrieren'
+import { Route as TrainerProfilRouteImport } from './routes/trainer.profil'
 import { Route as TrainerLoginRouteImport } from './routes/trainer.login'
 import { Route as AdminPasswortFestlegenRouteImport } from './routes/admin.passwort-festlegen'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -89,6 +90,11 @@ const TrainerRegistrierenRoute = TrainerRegistrierenRouteImport.update({
   path: '/trainer/registrieren',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainerProfilRoute = TrainerProfilRouteImport.update({
+  id: '/trainer/profil',
+  path: '/trainer/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrainerLoginRoute = TrainerLoginRouteImport.update({
   id: '/trainer/login',
   path: '/trainer/login',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
   '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin/': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
   '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -187,6 +195,7 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/admin/passwort-festlegen': typeof AdminPasswortFestlegenRoute
   '/trainer/login': typeof TrainerLoginRoute
+  '/trainer/profil': typeof TrainerProfilRoute
   '/trainer/registrieren': typeof TrainerRegistrierenRoute
   '/admin/': typeof AdminIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/trainer/login'
+    | '/trainer/profil'
     | '/trainer/registrieren'
     | '/admin/'
     | '/.lovable/oauth/consent'
@@ -231,6 +241,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/trainer/login'
+    | '/trainer/profil'
     | '/trainer/registrieren'
     | '/admin'
     | '/.lovable/oauth/consent'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/passwort-festlegen'
     | '/trainer/login'
+    | '/trainer/profil'
     | '/trainer/registrieren'
     | '/admin/'
     | '/.lovable/oauth/consent'
@@ -274,6 +286,7 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminPasswortFestlegenRoute: typeof AdminPasswortFestlegenRoute
   TrainerLoginRoute: typeof TrainerLoginRoute
+  TrainerProfilRoute: typeof TrainerProfilRoute
   TrainerRegistrierenRoute: typeof TrainerRegistrierenRoute
   AdminIndexRoute: typeof AdminIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
@@ -366,6 +379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainerRegistrierenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trainer/profil': {
+      id: '/trainer/profil'
+      path: '/trainer/profil'
+      fullPath: '/trainer/profil'
+      preLoaderRoute: typeof TrainerProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/trainer/login': {
       id: '/trainer/login'
       path: '/trainer/login'
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminPasswortFestlegenRoute: AdminPasswortFestlegenRoute,
   TrainerLoginRoute: TrainerLoginRoute,
+  TrainerProfilRoute: TrainerProfilRoute,
   TrainerRegistrierenRoute: TrainerRegistrierenRoute,
   AdminIndexRoute: AdminIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,

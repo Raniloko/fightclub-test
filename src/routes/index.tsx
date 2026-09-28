@@ -13,6 +13,7 @@ import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineOb
 import { IntroSequence } from "@/components/site/IntroSequence";
 import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
+import { Trainers } from "@/components/site/Trainers";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,6 +68,7 @@ function Index() {
       <Hero />
       <MmaAnnouncement />
       <Disciplines />
+      <Trainers />
       <Schedule />
       <Stats />
       <About />
