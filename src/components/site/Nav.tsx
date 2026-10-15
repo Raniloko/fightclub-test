@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 
 const LINKS = [
   { to: "/", hash: "disziplinen", label: "Disziplinen" },
+  { to: "/kindertraining", hash: undefined, label: "Kindertraining" },
   { to: "/", hash: "stundenplan", label: "Stundenplan" },
   { to: "/", hash: "about", label: "Über uns" },
   { to: "/schulordnung", hash: undefined, label: "Schulordnung" },
@@ -19,11 +20,17 @@ export function Nav() {
     if (open) {
       setMounted(true);
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-      const t = setTimeout(() => setMounted(false), 350);
-      return () => clearTimeout(t);
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setOpen(false);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", onKey);
+      };
     }
+    const t = setTimeout(() => setMounted(false), 350);
+    return () => clearTimeout(t);
   }, [open]);
 
   return (
@@ -57,15 +64,18 @@ export function Nav() {
           </nav>
 
           <button
+            type="button"
             onClick={() => setOpen((s) => !s)}
-            className="relative h-7 w-7 xl:hidden"
+            className="flex h-11 w-11 items-center justify-center xl:hidden"
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
-            aria-controls="mobile-menu"
+            aria-controls={open ? "mobile-menu" : undefined}
           >
-            <span className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"}`} />
-            <span className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 bg-white transition-opacity duration-200 ${open ? "opacity-0" : "opacity-100"}`} />
-            <span className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"}`} />
+            <span className="relative block h-7 w-7">
+              <span className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1.5"}`} />
+              <span className={`absolute left-0 top-1/2 block h-[2px] w-7 -translate-y-1/2 bg-white transition-opacity duration-200 ${open ? "opacity-0" : "opacity-100"}`} />
+              <span className={`absolute left-0 block h-[2px] w-7 bg-white transition-all duration-300 ease-out ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1.5"}`} />
+            </span>
           </button>
         </div>
       </header>
@@ -81,9 +91,10 @@ export function Nav() {
         >
           <div className="relative flex items-center justify-end px-5 py-4">
             <button
+              type="button"
               onClick={() => setOpen(false)}
-              aria-label="Schließen"
-              className="text-white transition-transform duration-300 hover:rotate-90"
+              aria-label="Menü schließen"
+              className="flex h-11 w-11 items-center justify-center text-white transition-transform duration-300 hover:rotate-90"
             >
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path d="M6 6l20 20M26 6L6 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
