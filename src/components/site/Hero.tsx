@@ -115,7 +115,7 @@ export function Hero() {
               fontWeight: 700,
             }}
           >
-            Neu in Hanau · Kampfsport Akademie
+            Seit 2021 · Jetzt als Fight Club Hanau
           </span>
         </div>
       </div>

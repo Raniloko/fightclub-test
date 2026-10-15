@@ -468,7 +468,7 @@ html.fc-intro-active body { visibility: visible; }
   width: 50vw;
   z-index: 100;
   will-change: transform;
-  transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
+  transition: transform 0.7s cubic-bezier(0.7, 0, 0.3, 1);
 }
 .fc-intro-half-left {
   left: 0;
@@ -530,12 +530,31 @@ html.fc-intro-active body { visibility: visible; }
   display: inline-block;
   opacity: 0;
   transform: translateY(14px);
-  animation: fc-intro-word 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fc-intro-word 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.fc-intro-text span:nth-child(1) { animation-delay: 0.35s; }
-.fc-intro-text span:nth-child(2) { animation-delay: 0.5s; color: #C9A84C; }
-.fc-intro-text span:nth-child(3) { animation-delay: 0.65s; }
-.fc-intro-text span:nth-child(4) { animation-delay: 0.8s; }
+.fc-intro-text span:nth-child(1) { animation-delay: 0.1s; }
+.fc-intro-text span:nth-child(2) { animation-delay: 0.18s; color: #C9A84C; }
+.fc-intro-text span:nth-child(3) { animation-delay: 0.26s; }
+.fc-intro-text span:nth-child(4) { animation-delay: 0.34s; }
+
+.fc-intro-skip {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  pointer-events: auto;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.fc-intro-skip:hover { border-color: #00B4DC; color: #00B4DC; }
 @keyframes fc-intro-word {
   to { opacity: 1; transform: translateY(0); }
 }
@@ -555,7 +574,7 @@ html.fc-intro-active body { visibility: visible; }
   align-items: center;
   justify-content: center;
   will-change: transform;
-  transition: transform 1.1s cubic-bezier(0.75, 0, 0.25, 1);
+  transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
   transform: translateY(0);
   overflow: hidden;
 }
@@ -583,7 +602,7 @@ html.fc-intro-active body { visibility: visible; }
   padding: 0 16px;
   opacity: 0;
   transform: scale(0.94);
-  animation: fc-shutter-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  animation: fc-shutter-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 @keyframes fc-shutter-in {
   to { opacity: 1; transform: scale(1); }
@@ -793,13 +812,13 @@ html.fc-intro-active body { visibility: visible; }
 /* The wait only applies while the intro runs (first visit in this session).
    Repeat visits and other pages animate in right away. */
 html.fc-intro-pending .fc-late-1,
-html.fc-intro-active .fc-late-1 { animation-delay: 5.2s; }
+html.fc-intro-active .fc-late-1 { animation-delay: 3.1s; }
 html.fc-intro-pending .fc-late-2,
-html.fc-intro-active .fc-late-2 { animation-delay: 5.4s; }
+html.fc-intro-active .fc-late-2 { animation-delay: 3.2s; }
 html.fc-intro-pending .fc-late-3,
-html.fc-intro-active .fc-late-3 { animation-delay: 5.6s; }
+html.fc-intro-active .fc-late-3 { animation-delay: 3.3s; }
 html.fc-intro-pending .fc-late-4,
-html.fc-intro-active .fc-late-4 { animation-delay: 5.8s; }
+html.fc-intro-active .fc-late-4 { animation-delay: 3.4s; }
 @keyframes fc-late-in {
   to { opacity: 1; transform: translateY(0); }
 }
