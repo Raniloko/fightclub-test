@@ -654,10 +654,16 @@ html.fc-intro-active body { visibility: visible; }
   transform: translateY(16px);
   animation: fc-late-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.fc-late-1 { animation-delay: 5.2s; }
-.fc-late-2 { animation-delay: 5.4s; }
-.fc-late-3 { animation-delay: 5.6s; }
-.fc-late-4 { animation-delay: 5.8s; }
+/* The wait only applies while the intro runs (first visit in this session).
+   Repeat visits and other pages animate in right away. */
+html.fc-intro-pending .fc-late-1,
+html.fc-intro-active .fc-late-1 { animation-delay: 5.2s; }
+html.fc-intro-pending .fc-late-2,
+html.fc-intro-active .fc-late-2 { animation-delay: 5.4s; }
+html.fc-intro-pending .fc-late-3,
+html.fc-intro-active .fc-late-3 { animation-delay: 5.6s; }
+html.fc-intro-pending .fc-late-4,
+html.fc-intro-active .fc-late-4 { animation-delay: 5.8s; }
 @keyframes fc-late-in {
   to { opacity: 1; transform: translateY(0); }
 }

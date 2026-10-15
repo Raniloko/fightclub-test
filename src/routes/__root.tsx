@@ -19,16 +19,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Seite nicht gefunden</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Die gesuchte Seite existiert nicht oder wurde verschoben.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Zur Startseite
           </Link>
         </div>
       </div>
@@ -47,10 +47,10 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Diese Seite konnte nicht geladen werden
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Es ist ein Fehler aufgetreten. Lade die Seite neu oder kehre zur Startseite zurück.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -60,13 +60,13 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Erneut versuchen
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Zur Startseite
           </a>
         </div>
       </div>
@@ -87,6 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Fight Club Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining. Kampfsport-Akademie in der Geleitstraße 66 in 63456 Hanau.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "de_DE" },
+      { property: "og:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
       { property: "og:site_name", content: "Fight Club Hanau" },
       { property: "og:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
       { name: "twitter:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
@@ -133,8 +135,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Fight Club Kampfsport Akademie Hanau",
+          alternateName: "Fight Club Hanau",
           url: "https://www.fightclub-hanau.de",
-          logo: "https://www.fightclub-hanau.de/favicon.ico",
+          logo: "https://www.fightclub-hanau.de/logo.png",
+          sameAs: [
+            "https://www.instagram.com/fightclubhanau",
+            "https://www.tiktok.com/@fightclub_hanau",
+            "https://www.facebook.com/share/1D1mQLdM8w/",
+            "https://youtube.com/@fightclubhanau",
+          ],
         }),
       },
       {

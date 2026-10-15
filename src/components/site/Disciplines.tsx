@@ -20,7 +20,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Kampfsport für Kinder — spielerisch, respektvoll, mit klaren Werten. Disziplin, Selbstvertrauen und Spaß.",
     what: "Kampfsport für Kinder — spielerisch, respektvoll, mit echten Werten.",
-    learn: ["Grundlegende Kampfsporttechniken", "Respekt und Disziplin", "Selbstvertrauen aufbauen", "Konzentration und Koordination"],
+    learn: [
+      "Grundlegende Kampfsporttechniken",
+      "Respekt und Disziplin",
+      "Selbstvertrauen aufbauen",
+      "Konzentration und Koordination",
+    ],
     values: [
       { icon: Heart, label: "Respekt" },
       { icon: Smile, label: "Spaß" },
@@ -34,7 +39,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/6296060/pexels-photo-6296060.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Mixed Martial Arts auf Wettkampfniveau. Standup, Clinch und Boden — vollständig integriert.",
     what: "Mixed Martial Arts kombiniert alle Kampfkünste — Standup, Clinch und Boden. Die vollständigste Kampfsportart der Welt.",
-    learn: ["Schlagen und Treten", "Ringen und Werfen", "Bodenkampf und Submissions", "Wettkampfvorbereitung"],
+    learn: [
+      "Schlagen und Treten",
+      "Ringen und Werfen",
+      "Bodenkampf und Submissions",
+      "Wettkampfvorbereitung",
+    ],
     values: [
       { icon: Shield, label: "Disziplin" },
       { icon: Flame, label: "Mut" },
@@ -62,7 +72,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4761671/pexels-photo-4761671.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Klassisches Boxen für Einsteiger und Fortgeschrittene. Fußarbeit, Timing, Schlagkraft.",
     what: "Das Fundament aller Kampfsportarten. Fußarbeit, Timing und Schlagkraft auf höchstem Niveau.",
-    learn: ["Grundtechniken und Kombis", "Defensive", "Fußarbeit und Bewegung", "Sparring und Wettkampf"],
+    learn: [
+      "Grundtechniken und Kombis",
+      "Defensive",
+      "Fußarbeit und Bewegung",
+      "Sparring und Wettkampf",
+    ],
     values: [
       { icon: Brain, label: "Geduld" },
       { icon: Target, label: "Präzision" },
@@ -76,7 +91,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
     what: "Die Kunst der acht Gliedmaßen. Fäuste, Ellbogen, Knie und Kicks — vollständig integriert.",
-    learn: ["Muay Thai Techniken", "Clinch und Sweeps", "Ellbogen- und Knietechniken", "Kondition und Charakter"],
+    learn: [
+      "Muay Thai Techniken",
+      "Clinch und Sweeps",
+      "Ellbogen- und Knietechniken",
+      "Kondition und Charakter",
+    ],
     values: [
       { icon: Shield, label: "Disziplin" },
       { icon: Flame, label: "Härte" },
@@ -90,7 +110,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Realistische Selbstverteidigung für Alltag und Ernstfall. Klare Prinzipien, kein Showtraining.",
     what: "Realistische Selbstverteidigung für den Alltag. Keine Show — nur was wirklich funktioniert.",
-    learn: ["Situationsbewusstsein", "Distanzmanagement", "Effektive Abwehrtechniken", "Ruhig bleiben unter Druck"],
+    learn: [
+      "Situationsbewusstsein",
+      "Distanzmanagement",
+      "Effektive Abwehrtechniken",
+      "Ruhig bleiben unter Druck",
+    ],
     values: [
       { icon: Award, label: "Selbstvertrauen" },
       { icon: Shield, label: "Sicherheit" },
@@ -104,7 +129,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/7045400/pexels-photo-7045400.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte und entspannte Kraft.",
     what: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte, entspannte Kraft.",
-    learn: ["Zentrumlinie-Prinzip", "Chi Sao (Fühlübungen)", "Schnelle Reaktionen", "Effizienz über Kraft"],
+    learn: [
+      "Zentrumlinie-Prinzip",
+      "Chi Sao (Fühlübungen)",
+      "Schnelle Reaktionen",
+      "Effizienz über Kraft",
+    ],
     values: [
       { icon: Zap, label: "Sensibilität" },
       { icon: Target, label: "Effizienz" },
@@ -118,7 +148,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/8611964/pexels-photo-8611964.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Bodenkampf ohne Schläge. Kontrolle, Hebel und Würgetechniken — Technik schlägt Kraft.",
     what: "Bodenkampf ohne Schläge — Positionen, Kontrolle und Submissions. Technik schlägt Kraft.",
-    learn: ["Positionskontrolle", "Hebel- und Würgetechniken", "Takedowns und Sweeps", "Rollen und Sparring"],
+    learn: [
+      "Positionskontrolle",
+      "Hebel- und Würgetechniken",
+      "Takedowns und Sweeps",
+      "Rollen und Sparring",
+    ],
     values: [
       { icon: Brain, label: "Taktik" },
       { icon: Target, label: "Technik" },
@@ -132,7 +167,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4761798/pexels-photo-4761798.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Gezielte Wettkampfvorbereitung im Boxen — Sparring, Taktik und Kampfhärte.",
     what: "Leistungstraining für Athletinnen und Athleten, die in den Ring wollen.",
-    learn: ["Sparring auf Wettkampfniveau", "Kampftaktik und Ringgefühl", "Athletik und Gewichtsmanagement", "Mentale Vorbereitung"],
+    learn: [
+      "Sparring auf Wettkampfniveau",
+      "Kampftaktik und Ringgefühl",
+      "Athletik und Gewichtsmanagement",
+      "Mentale Vorbereitung",
+    ],
     values: [
       { icon: Flame, label: "Kampfgeist" },
       { icon: Shield, label: "Disziplin" },
@@ -145,7 +185,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Training in geschütztem Rahmen — Fitness, Technik und Selbstvertrauen.",
     what: "Kickboxen und Boxen speziell für Frauen — technisch sauber, fordernd und ohne Druck.",
-    learn: ["Schlag- und Tritttechniken", "Pratzentraining", "Kondition und Kraft", "Selbstbewusstsein im Alltag"],
+    learn: [
+      "Schlag- und Tritttechniken",
+      "Pratzentraining",
+      "Kondition und Kraft",
+      "Selbstbewusstsein im Alltag",
+    ],
     values: [
       { icon: Heart, label: "Gemeinschaft" },
       { icon: Award, label: "Selbstvertrauen" },
@@ -158,7 +203,12 @@ const CARDS: Discipline[] = [
     img: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Einzeltraining nach Termin — individuell auf dein Ziel abgestimmt.",
     what: "1-zu-1 Training mit deinem Coach — maximaler Fortschritt in kurzer Zeit.",
-    learn: ["Individueller Trainingsplan", "Technikkorrektur im Detail", "Athletik und Kondition", "Zielgerichtete Wettkampfvorbereitung"],
+    learn: [
+      "Individueller Trainingsplan",
+      "Technikkorrektur im Detail",
+      "Athletik und Kondition",
+      "Zielgerichtete Wettkampfvorbereitung",
+    ],
     values: [
       { icon: Target, label: "Fokus" },
       { icon: Brain, label: "Analyse" },
@@ -168,18 +218,22 @@ const CARDS: Discipline[] = [
   },
 ];
 
-function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; onToggle: () => void }) {
+function DisciplineCard({
+  c,
+  open,
+  onToggle,
+}: {
+  c: Discipline;
+  open: boolean;
+  onToggle: () => void;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
 
   useEffect(() => {
     if (open) {
       videoRef.current?.play().catch(() => {});
-      if (panelRef.current) setHeight(panelRef.current.scrollHeight);
     } else {
       videoRef.current?.pause();
-      setHeight(0);
     }
   }, [open]);
 
@@ -187,7 +241,12 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
     <article
       className={`group bg-white border-l-2 transition-colors ${open ? "border-[#C9A84C]" : "border-transparent hover:border-[#C9A84C]"}`}
     >
-      <button type="button" onClick={onToggle} className="block w-full text-left" aria-expanded={open}>
+      <button
+        type="button"
+        onClick={onToggle}
+        className="block w-full text-left"
+        aria-expanded={open}
+      >
         <div className="overflow-hidden">
           <img
             src={c.img}
@@ -207,109 +266,118 @@ function DisciplineCard({ c, open, onToggle }: { c: Discipline; open: boolean; o
         </div>
       </button>
 
+      {/* grid-rows 0fr -> 1fr animates to the real content height, so it also works after resizing.
+          inert keeps collapsed content out of the tab order and the accessibility tree. */}
       <div
-        style={{ height, transition: "height 0.45s cubic-bezier(0.4,0,0.2,1)", overflow: "hidden" }}
-        aria-hidden={!open}
+        className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+        inert={!open}
       >
-        <div ref={panelRef} className="bg-[#0a0a0a] text-white border-t border-white/10">
-          <div className="relative p-6 md:p-8">
-            <button
-              type="button"
-              onClick={onToggle}
-              aria-label="Schließen"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-white/5 hover:bg-[#C9A84C] hover:text-black transition-colors"
-            >
-              <X size={18} />
-            </button>
-
-            {/* Video / Bild */}
-            <div className="relative w-full overflow-hidden bg-[#111111]" style={{ aspectRatio: "16/9" }}>
-              {c.videoSrc ? (
-                <video
-                  ref={videoRef}
-                  src={c.videoSrc}
-                  poster=""
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              ) : (
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              )}
-            </div>
-
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div>
-                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
-                  Was ist {c.name}?
-                </h3>
-                <p className="mt-3 text-sm text-white/80 md:text-[15px]">{c.what}</p>
-              </div>
-              <div>
-                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
-                  Was lernst du?
-                </h3>
-                <ul className="mt-3 space-y-2 text-sm text-white/85 md:text-[15px]">
-                  {c.learn.map((l) => (
-                    <li key={l} className="flex gap-2">
-                      <span className="text-[#C9A84C]">›</span>
-                      <span>{l}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
-                Was vermitteln wir?
-              </h3>
-              <div className="mt-4 grid grid-cols-3 gap-3">
-                {c.values.map((v) => {
-                  const Icon = v.icon;
-                  return (
-                    <div
-                      key={v.label}
-                      className="flex flex-col items-center gap-2 bg-white/5 p-4 text-center"
-                    >
-                      <Icon size={22} />
-                      <span className="text-xs uppercase tracking-[0.15em] text-white/85 md:text-sm">
-                        {v.label}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-white/10 pt-6">
-              <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">Für wen?</h3>
-              <p className="mt-2 text-sm text-white/80 md:text-[15px]">{c.who}</p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
-              <Link
-                to="/probetraining"
-                className="inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
+        <div className="min-h-0 overflow-hidden">
+          <div className="bg-[#0a0a0a] text-white border-t border-white/10">
+            <div className="relative p-6 md:p-8">
+              <button
+                type="button"
+                onClick={onToggle}
+                aria-label="Schließen"
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center bg-white/5 hover:bg-[#C9A84C] hover:text-black transition-colors"
               >
-                Probetraining anfragen
-              </Link>
-              {c.name === "Kindertraining" && (
-                <Link
-                  to="/kindertraining"
-                  className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#00B4DC] hover:text-white transition-colors"
-                >
-                  › Mehr zum Kindertraining
-                </Link>
-              )}
-            </div>
+                <X size={18} />
+              </button>
 
+              {/* Video / Bild */}
+              <div
+                className="relative w-full overflow-hidden bg-[#111111]"
+                style={{ aspectRatio: "16/9" }}
+              >
+                {c.videoSrc ? (
+                  <video
+                    ref={videoRef}
+                    src={c.videoSrc}
+                    poster=""
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+              </div>
+
+              <div className="mt-8 grid gap-8 md:grid-cols-2">
+                <div>
+                  <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
+                    Was ist {c.name}?
+                  </h3>
+                  <p className="mt-3 text-sm text-white/80 md:text-[15px]">{c.what}</p>
+                </div>
+                <div>
+                  <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
+                    Was lernst du?
+                  </h3>
+                  <ul className="mt-3 space-y-2 text-sm text-white/85 md:text-[15px]">
+                    {c.learn.map((l) => (
+                      <li key={l} className="flex gap-2">
+                        <span className="text-[#C9A84C]">›</span>
+                        <span>{l}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
+                  Was vermitteln wir?
+                </h3>
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {c.values.map((v) => {
+                    const Icon = v.icon;
+                    return (
+                      <div
+                        key={v.label}
+                        className="flex flex-col items-center gap-2 bg-white/5 p-4 text-center"
+                      >
+                        <Icon size={22} />
+                        <span className="text-xs uppercase tracking-[0.15em] text-white/85 md:text-sm">
+                          {v.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <h3 className="font-display text-xl uppercase tracking-wide text-[#C9A84C]">
+                  Für wen?
+                </h3>
+                <p className="mt-2 text-sm text-white/80 md:text-[15px]">{c.who}</p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
+                <Link
+                  to="/probetraining"
+                  className="inline-block bg-[#C9A84C] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white hover:bg-[#E8C96A] transition-colors"
+                >
+                  Probetraining anfragen
+                </Link>
+                {c.name === "Kindertraining" && (
+                  <Link
+                    to="/kindertraining"
+                    className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#00B4DC] hover:text-white transition-colors"
+                  >
+                    › Mehr zum Kindertraining
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -335,7 +403,10 @@ export function Disciplines() {
           </h2>
         </Reveal>
 
-        <div id="training" className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+        <div
+          id="training"
+          className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8"
+        >
           {CARDS.map((c) => (
             <Reveal key={c.name}>
               <DisciplineCard
