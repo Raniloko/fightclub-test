@@ -61,7 +61,7 @@ export function Hero() {
   return (
     <section id="top" className="relative h-svh min-h-svh w-full overflow-hidden bg-black">
       {/* Only the image for the current breakpoint is downloaded */}
-      <picture className="pointer-events-none absolute inset-x-0 bottom-0 top-[120px] z-0 md:top-[140px] lg:top-[160px]">
+      <picture className="pointer-events-none absolute inset-0 z-0">
         <source media="(min-width: 1024px)" srcSet={heroDesktop} width={1376} height={768} />
         <img
           ref={imgRef}
@@ -73,7 +73,7 @@ export function Hero() {
           decoding="async"
           width={840}
           height={1184}
-          className="h-full w-full object-cover object-[center_top] md:object-[center_30%] lg:object-[center_55%]"
+          className="h-full w-full object-cover object-[center_20%] lg:object-[center_45%]"
           style={{
             filter: "contrast(102%) brightness(1.1) saturate(1.05)",
             willChange: "transform",
@@ -104,7 +104,7 @@ export function Hero() {
         }}
       />
 
-      <div className="absolute left-0 right-0 top-[18%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
+      <div className="absolute left-0 right-0 top-[112px] z-[3] flex justify-center px-6 md:top-[136px] md:px-12">
         <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
           <span className="fc-dot-cyan" aria-hidden="true" />
           <span
@@ -126,18 +126,13 @@ export function Hero() {
         style={{ willChange: "transform" }}
       >
         <div className="mx-auto w-full max-w-[1200px] px-6 pb-[60px] md:px-12 md:text-center">
-          <h1 className="fc-late fc-late-2 font-display text-[clamp(2.6rem,5vw,4.75rem)] uppercase leading-[0.92] text-white">
-            Kampfsport in Hanau.
-            <span className="block text-[#00B4DC]">Werde zur besseren Version von dir selbst.</span>
+          <h1 className="sr-only">
+            Fight Club Hanau – Kampfsport in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und
+            Kindertraining ab 5 Jahren
           </h1>
 
-          <p className="fc-late fc-late-2 mt-5 max-w-xl text-[15px] leading-relaxed text-white/85 md:mx-auto md:text-[17px]">
-            MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining ab 5 Jahren. Erstes
-            Probetraining kostenlos.
-          </p>
-
           <div
-            className="fc-late fc-late-3 mt-6 flex flex-wrap gap-2 md:justify-center"
+            className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center"
             aria-label="Disziplinen"
           >
             {DISCIPLINES.map((d) => (

@@ -17,7 +17,7 @@ type Discipline = {
 const CARDS: Discipline[] = [
   {
     name: "Kindertraining",
-    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/7045594/pexels-photo-7045594.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Kampfsport für Kinder — spielerisch, respektvoll, mit klaren Werten. Disziplin, Selbstvertrauen und Spaß.",
     what: "Kampfsport für Kinder — spielerisch, respektvoll, mit echten Werten.",
     learn: [
@@ -36,7 +36,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "MMA",
-    img: "https://images.pexels.com/photos/6296060/pexels-photo-6296060.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/5485439/pexels-photo-5485439.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Mixed Martial Arts auf Wettkampfniveau. Standup, Clinch und Boden — vollständig integriert.",
     what: "Mixed Martial Arts kombiniert alle Kampfkünste — Standup, Clinch und Boden. Die vollständigste Kampfsportart der Welt.",
     learn: [
@@ -55,7 +55,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "K1",
-    img: "https://images.pexels.com/photos/6998858/pexels-photo-6998858.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/6295992/pexels-photo-6295992.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Explosivität und Präzision. K1 verbindet Boxen, Kicks und Knietechniken zu einem kompletten Standup-System.",
     what: "K1 ist explosiver Standup-Kampfsport — Fäuste, Kicks und Knie. Schnell, kraftvoll, präzise.",
     learn: ["Schlagtechnik", "Beintechniken", "Clinch-Arbeit", "Kondition und Timing"],
@@ -69,7 +69,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Boxen",
-    img: "https://images.pexels.com/photos/4761671/pexels-photo-4761671.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/9944908/pexels-photo-9944908.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Klassisches Boxen für Einsteiger und Fortgeschrittene. Fußarbeit, Timing, Schlagkraft.",
     what: "Das Fundament aller Kampfsportarten. Fußarbeit, Timing und Schlagkraft auf höchstem Niveau.",
     learn: [
@@ -88,7 +88,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Thaiboxen",
-    img: "https://images.pexels.com/photos/4761779/pexels-photo-4761779.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/5750947/pexels-photo-5750947.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Die Kunst der acht Gliedmaßen. Technik, Kondition und mentale Stärke — Muay Thai ist der Kern unserer Akademie.",
     what: "Die Kunst der acht Gliedmaßen. Fäuste, Ellbogen, Knie und Kicks — vollständig integriert.",
     learn: [
@@ -107,7 +107,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Self-Defense",
-    img: "https://images.pexels.com/photos/598631/pexels-photo-598631.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/6455245/pexels-photo-6455245.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Realistische Selbstverteidigung für Alltag und Ernstfall. Klare Prinzipien, kein Showtraining.",
     what: "Realistische Selbstverteidigung für den Alltag. Keine Show — nur was wirklich funktioniert.",
     learn: [
@@ -126,7 +126,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Wing-Fight",
-    img: "https://images.pexels.com/photos/7045400/pexels-photo-7045400.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/29817841/pexels-photo-29817841.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte und entspannte Kraft.",
     what: "Effektive Nahkampftechnik aus dem Wing Tsun. Reflexe, Mitte, entspannte Kraft.",
     learn: [
@@ -145,7 +145,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Submission Grappling",
-    img: "https://images.pexels.com/photos/8611964/pexels-photo-8611964.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/8612462/pexels-photo-8612462.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Bodenkampf ohne Schläge. Kontrolle, Hebel und Würgetechniken — Technik schlägt Kraft.",
     what: "Bodenkampf ohne Schläge — Positionen, Kontrolle und Submissions. Technik schlägt Kraft.",
     learn: [
@@ -164,7 +164,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Wettkampf-Boxen",
-    img: "https://images.pexels.com/photos/4761798/pexels-photo-4761798.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/12860553/pexels-photo-12860553.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Gezielte Wettkampfvorbereitung im Boxen — Sparring, Taktik und Kampfhärte.",
     what: "Leistungstraining für Athletinnen und Athleten, die in den Ring wollen.",
     learn: [
@@ -182,7 +182,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Kickboxen & Boxen für Frauen",
-    img: "https://images.pexels.com/photos/4754146/pexels-photo-4754146.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/6296049/pexels-photo-6296049.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Training in geschütztem Rahmen — Fitness, Technik und Selbstvertrauen.",
     what: "Kickboxen und Boxen speziell für Frauen — technisch sauber, fordernd und ohne Druck.",
     learn: [
@@ -200,7 +200,7 @@ const CARDS: Discipline[] = [
   },
   {
     name: "Personal Training",
-    img: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    img: "https://images.pexels.com/photos/6551189/pexels-photo-6551189.jpeg?auto=compress&cs=tinysrgb&w=1200",
     text: "Einzeltraining nach Termin — individuell auf dein Ziel abgestimmt.",
     what: "1-zu-1 Training mit deinem Coach — maximaler Fortschritt in kurzer Zeit.",
     learn: [
@@ -250,7 +250,7 @@ function DisciplineCard({
         <div className="overflow-hidden">
           <img
             src={c.img}
-            alt={c.name}
+            alt={`${c.name} – Training bei Fight Club Hanau`}
             loading="lazy"
             className="fc-gray h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-[280px]"
           />
@@ -303,7 +303,7 @@ function DisciplineCard({
                 ) : (
                   <img
                     src={c.img}
-                    alt={c.name}
+                    alt={`${c.name} – Training bei Fight Club Hanau`}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                   />

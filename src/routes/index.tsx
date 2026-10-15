@@ -81,7 +81,7 @@ function Index() {
   return (
     <main className="bg-white text-[#0a0a0a]">
       <IntroSequence />
-      <Nav />
+      <Nav transparentOnTop />
       <Hero />
       <MmaAnnouncement />
       <Disciplines />
