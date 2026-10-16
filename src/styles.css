@@ -320,12 +320,12 @@
   z-index: 45;
   display: flex;
   flex-direction: column;
-  padding-top: 104px;
+  padding-top: 118px;
   background:
     radial-gradient(ellipse at 100% 0%, rgba(0, 180, 220, 0.16), transparent 55%),
     radial-gradient(ellipse at 0% 100%, rgba(201, 168, 76, 0.12), transparent 50%),
     #070707;
-  clip-path: circle(0% at calc(100% - 44px) 42px);
+  clip-path: circle(0% at calc(100% - 44px) 48px);
   transition: clip-path 0.55s cubic-bezier(0.65, 0, 0.35, 1);
   overflow-y: auto;
 }
