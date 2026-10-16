@@ -221,19 +221,19 @@
 }
 .fc-nav[data-solid="true"]::before { opacity: 0; }
 .fc-nav-inner {
-  height: 84px;
+  height: 96px;
   transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .fc-nav-logo {
-  height: 60px !important;
+  height: 76px !important;
   transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @media (min-width: 768px) {
-  .fc-nav-inner { height: 104px; }
-  .fc-nav-logo { height: 84px !important; }
+  .fc-nav-inner { height: 120px; }
+  .fc-nav-logo { height: 104px !important; }
 }
-.fc-nav[data-compact="true"] .fc-nav-inner { height: 68px; }
-.fc-nav[data-compact="true"] .fc-nav-logo { height: 50px !important; }
+.fc-nav[data-compact="true"] .fc-nav-inner { height: 80px; }
+.fc-nav[data-compact="true"] .fc-nav-logo { height: 64px !important; }
 
 .fc-nav-link {
   position: relative;
