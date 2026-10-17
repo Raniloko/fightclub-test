@@ -166,7 +166,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   const introBootstrap =
-    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
+    // Decides once, before first paint, whether the intro plays. IntroSequence only reads the resulting class.
+    // Skipped for: other pages, deep links (#…), reduced motion, crawlers, and visitors who saw it in the last 30 days.
+    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(location.hash)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var t=+localStorage.getItem('fcIntroSeenAt')||0;if(Date.now()-t<2592e6)return;document.documentElement.classList.add('fc-intro-pending');var i=new Image();i.fetchPriority='high';i.src='/slogan.webp';}catch(e){}})();";
 
   return (
     <html lang="de" translate="no" className="notranslate">
