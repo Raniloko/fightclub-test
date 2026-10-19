@@ -83,11 +83,11 @@ function Index() {
       <IntroSequence />
       <Nav transparentOnTop />
       <Hero />
+      <Stats />
       <MmaAnnouncement />
       <Disciplines />
       <Trainers />
       <Schedule />
-      <Stats />
       <About />
       <News />
       <Contact />
