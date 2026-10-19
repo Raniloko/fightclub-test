@@ -14,6 +14,7 @@ import { IntroSequence } from "@/components/site/IntroSequence";
 import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 import { Trainers } from "@/components/site/Trainers";
+import { Reviews } from "@/components/site/Reviews";
 
 const SITE_URL = "https://www.fightclub-hanau.de";
 const TITLE = "Kampfsport in Hanau: MMA, Boxen, K1 & Kinder | Fight Club";
@@ -89,6 +90,7 @@ function Index() {
       <Trainers />
       <Schedule />
       <About />
+      <Reviews />
       <News />
       <Contact />
       <CtaProbetraining />

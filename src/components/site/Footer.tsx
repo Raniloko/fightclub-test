@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { GOOGLE_REVIEWS_URL } from "./Reviews";
 import { Logo } from "./Logo";
 import { Ticker } from "./Ticker";
 
@@ -144,6 +145,16 @@ export function Footer() {
                 className="transition-colors hover:text-[#00B4DC]"
               >
                 YouTube
+              </a>
+            </li>
+            <li>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-[#00B4DC]"
+              >
+                Google-Bewertungen
               </a>
             </li>
           </ul>
