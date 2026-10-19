@@ -18,7 +18,7 @@ export function CtaProbetraining() {
           </span>
         </h2>
         <p className="mx-auto mt-8 max-w-xl text-[15px] text-white/70 md:text-[17px]">
-          Dein erstes Training ist kostenlos und unverbindlich. Keine Anmeldung nötig.
+          Dein erstes Training ist kostenlos und unverbindlich. Frage deinen Termin online an.
         </p>
         <Link
           to="/probetraining"
