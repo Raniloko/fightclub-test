@@ -66,10 +66,10 @@ export function CookieBanner() {
     if (existing) {
       updateGtagConsent(existing.analytics);
     } else {
-      const introRunning =
-        typeof document !== "undefined" &&
-        document.documentElement.classList.contains("fc-intro-pending");
-      const delay = introRunning ? 2600 : 800;
+      const introSeen =
+        typeof window !== "undefined" &&
+        window.sessionStorage.getItem("introSeen");
+      const delay = introSeen ? 800 : 4200;
       const t = setTimeout(() => setOpen(true), delay);
       return () => clearTimeout(t);
     }

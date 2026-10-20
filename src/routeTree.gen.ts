@@ -9,65 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as DatenschutzRouteImport } from './routes/datenschutz'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as ImpressumRouteImport } from './routes/impressum'
-import { Route as KindertrainingRouteImport } from './routes/kindertraining'
-import { Route as McpRouteImport } from './routes/mcp'
-import { Route as ProbetrainingRouteImport } from './routes/probetraining'
-import { Route as SchulordnungRouteImport } from './routes/schulordnung'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UnlockRouteImport } from './routes/unlock'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SchulordnungRouteImport } from './routes/schulordnung'
+import { Route as ProbetrainingRouteImport } from './routes/probetraining'
+import { Route as McpRouteImport } from './routes/mcp'
+import { Route as KindertrainingRouteImport } from './routes/kindertraining'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DatenschutzRouteImport } from './routes/datenschutz'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as AdminLoginRouteImport } from './routes/admin.login'
-import { Route as AdminPasswortFestlegenRouteImport } from './routes/admin.passwort-festlegen'
-import { Route as TrainerLoginRouteImport } from './routes/trainer.login'
-import { Route as TrainerProfilRouteImport } from './routes/trainer.profil'
 import { Route as TrainerRegistrierenRouteImport } from './routes/trainer.registrieren'
-import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
+import { Route as TrainerProfilRouteImport } from './routes/trainer.profil'
+import { Route as TrainerLoginRouteImport } from './routes/trainer.login'
+import { Route as AdminPasswortFestlegenRouteImport } from './routes/admin.passwort-festlegen'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DatenschutzRoute = DatenschutzRouteImport.update({
-  id: '/datenschutz',
-  path: '/datenschutz',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpressumRoute = ImpressumRouteImport.update({
-  id: '/impressum',
-  path: '/impressum',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KindertrainingRoute = KindertrainingRouteImport.update({
-  id: '/kindertraining',
-  path: '/kindertraining',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProbetrainingRoute = ProbetrainingRouteImport.update({
-  id: '/probetraining',
-  path: '/probetraining',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SchulordnungRoute = SchulordnungRouteImport.update({
-  id: '/schulordnung',
-  path: '/schulordnung',
+const UnlockRoute = UnlockRouteImport.update({
+  id: '/unlock',
+  path: '/unlock',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -75,46 +40,49 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UnlockRoute = UnlockRouteImport.update({
-  id: '/unlock',
-  path: '/unlock',
+const SchulordnungRoute = SchulordnungRouteImport.update({
+  id: '/schulordnung',
+  path: '/schulordnung',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const ProbetrainingRoute = ProbetrainingRouteImport.update({
+  id: '/probetraining',
+  path: '/probetraining',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KindertrainingRoute = KindertrainingRouteImport.update({
+  id: '/kindertraining',
+  path: '/kindertraining',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatenschutzRoute = DatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin/login',
-  path: '/admin/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminPasswortFestlegenRoute = AdminPasswortFestlegenRouteImport.update({
-  id: '/admin/passwort-festlegen',
-  path: '/admin/passwort-festlegen',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TrainerLoginRoute = TrainerLoginRouteImport.update({
-  id: '/trainer/login',
-  path: '/trainer/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TrainerProfilRoute = TrainerProfilRouteImport.update({
-  id: '/trainer/profil',
-  path: '/trainer/profil',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainerRegistrierenRoute = TrainerRegistrierenRouteImport.update({
@@ -122,17 +90,49 @@ const TrainerRegistrierenRoute = TrainerRegistrierenRouteImport.update({
   path: '/trainer/registrieren',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
+const TrainerProfilRoute = TrainerProfilRouteImport.update({
+  id: '/trainer/profil',
+  path: '/trainer/profil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainerLoginRoute = TrainerLoginRouteImport.update({
+  id: '/trainer/login',
+  path: '/trainer/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPasswortFestlegenRoute = AdminPasswortFestlegenRouteImport.update({
+  id: '/admin/passwort-festlegen',
+  path: '/admin/passwort-festlegen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -295,60 +295,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/datenschutz': {
-      id: '/datenschutz'
-      path: '/datenschutz'
-      fullPath: '/datenschutz'
-      preLoaderRoute: typeof DatenschutzRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impressum': {
-      id: '/impressum'
-      path: '/impressum'
-      fullPath: '/impressum'
-      preLoaderRoute: typeof ImpressumRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kindertraining': {
-      id: '/kindertraining'
-      path: '/kindertraining'
-      fullPath: '/kindertraining'
-      preLoaderRoute: typeof KindertrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/probetraining': {
-      id: '/probetraining'
-      path: '/probetraining'
-      fullPath: '/probetraining'
-      preLoaderRoute: typeof ProbetrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/schulordnung': {
-      id: '/schulordnung'
-      path: '/schulordnung'
-      fullPath: '/schulordnung'
-      preLoaderRoute: typeof SchulordnungRouteImport
+    '/unlock': {
+      id: '/unlock'
+      path: '/unlock'
+      fullPath: '/unlock'
+      preLoaderRoute: typeof UnlockRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -358,25 +309,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/unlock': {
-      id: '/unlock'
-      path: '/unlock'
-      fullPath: '/unlock'
-      preLoaderRoute: typeof UnlockRouteImport
+    '/schulordnung': {
+      id: '/schulordnung'
+      path: '/schulordnung'
+      fullPath: '/schulordnung'
+      preLoaderRoute: typeof SchulordnungRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+    '/probetraining': {
+      id: '/probetraining'
+      path: '/probetraining'
+      fullPath: '/probetraining'
+      preLoaderRoute: typeof ProbetrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kindertraining': {
+      id: '/kindertraining'
+      path: '/kindertraining'
+      fullPath: '/kindertraining'
+      preLoaderRoute: typeof KindertrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datenschutz': {
+      id: '/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/datenschutz'
+      preLoaderRoute: typeof DatenschutzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -386,25 +372,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/admin/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/passwort-festlegen': {
-      id: '/admin/passwort-festlegen'
-      path: '/admin/passwort-festlegen'
-      fullPath: '/admin/passwort-festlegen'
-      preLoaderRoute: typeof AdminPasswortFestlegenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/trainer/login': {
-      id: '/trainer/login'
-      path: '/trainer/login'
-      fullPath: '/trainer/login'
-      preLoaderRoute: typeof TrainerLoginRouteImport
+    '/trainer/registrieren': {
+      id: '/trainer/registrieren'
+      path: '/trainer/registrieren'
+      fullPath: '/trainer/registrieren'
+      preLoaderRoute: typeof TrainerRegistrierenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trainer/profil': {
@@ -414,18 +386,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainerProfilRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/trainer/registrieren': {
-      id: '/trainer/registrieren'
-      path: '/trainer/registrieren'
-      fullPath: '/trainer/registrieren'
-      preLoaderRoute: typeof TrainerRegistrierenRouteImport
+    '/trainer/login': {
+      id: '/trainer/login'
+      path: '/trainer/login'
+      fullPath: '/trainer/login'
+      preLoaderRoute: typeof TrainerLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.lovable/oauth/consent': {
-      id: '/.lovable/oauth/consent'
-      path: '/.lovable/oauth/consent'
-      fullPath: '/.lovable/oauth/consent'
-      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
+    '/admin/passwort-festlegen': {
+      id: '/admin/passwort-festlegen'
+      path: '/admin/passwort-festlegen'
+      fullPath: '/admin/passwort-festlegen'
+      preLoaderRoute: typeof AdminPasswortFestlegenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
@@ -433,6 +426,13 @@ declare module '@tanstack/react-router' {
       path: '/.mcp/invoke-tool/$tool'
       fullPath: '/.mcp/invoke-tool/$tool'
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

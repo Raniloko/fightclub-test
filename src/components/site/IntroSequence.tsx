@@ -1,80 +1,96 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { Logo } from "./Logo";
 import { FireAura } from "./FireAura";
+import sloganAsset from "@/assets/slogan-banner.png";
 
-// Same file the pre-hydration curtain shows (see __root.tsx / styles.css), so the hand-off is seamless.
-const SLOGAN_SRC = "/slogan.webp";
-const SEEN_KEY = "fcIntroSeenAt";
+let introStarted = false;
 
-// Timeline in ms, counted from the moment the slogan image is ready.
-// The hero elements (.fc-late in styles.css) are tuned to this.
-const BURN_AT = 650; // letters flare up
-const SHUTTER_UP_AT = 1100; // shutter rolls up, flames die down
-const DONE_AT = 1900;
-const MAX_IMAGE_WAIT = 1000;
-
-export type FirePhase = "ignite" | "burn" | "fade";
+// Pre-Intro (Rolladen) dauert so lange, danach startet das bekannte Intro
+const BURN_AT = 3000;
+const SHUTTER_UP_AT = 5400;
+const OFFSET = 6300;
 
 export function IntroSequence() {
   const [mounted, setMounted] = useState(false);
-  const [phase, setPhase] = useState<FirePhase>("ignite");
   const [shutterUp, setShutterUp] = useState(false);
+  const [burning, setBurning] = useState(false);
+  const [shutterGone, setShutterGone] = useState(false);
+  const [logoVisible, setLogoVisible] = useState(false);
+  const [split, setSplit] = useState(false);
   const [gone, setGone] = useState(false);
-  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const didRunRef = useRef(false);
 
-  const finish = () => {
-    timersRef.current.forEach((t) => clearTimeout(t));
-    timersRef.current = [];
-    try {
-      localStorage.setItem(SEEN_KEY, String(Date.now()));
-    } catch {
-      /* private mode: intro may show again next time, that's fine */
-    }
-    const root = document.documentElement;
-    root.classList.remove("fc-intro-pending", "fc-intro-active");
-    setGone(true);
-  };
-
-  // The inline bootstrap script already decided whether the intro plays.
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
     const root = document.documentElement;
-    if (!root.classList.contains("fc-intro-pending")) return;
-    root.classList.add("fc-intro-active");
+
+    if (sessionStorage.getItem("introSeen")) {
+      root.classList.remove("fc-intro-pending");
+      return;
+    }
+    if (introStarted || didRunRef.current) return;
+    didRunRef.current = true;
+    introStarted = true;
     setMounted(true);
   }, []);
 
+  useLayoutEffect(() => {
+    if (!mounted) return;
+    document.documentElement.classList.add("fc-intro-active");
+  }, [mounted]);
+
   useEffect(() => {
     if (!mounted) return;
-    const timers = timersRef.current;
-    let started = false;
 
-    const start = () => {
-      if (started) return;
-      started = true;
-      timers.push(setTimeout(() => setPhase("burn"), BURN_AT));
-      timers.push(
-        setTimeout(() => {
-          setPhase("fade");
-          setShutterUp(true);
-        }, SHUTTER_UP_AT),
-      );
-      timers.push(setTimeout(finish, DONE_AT));
-    };
+    const audio = new Audio("/intro-music.mp3");
+    audio.volume = 0;
+    audioRef.current = audio;
+    audio.play().then(() => {
+      let v = 0;
+      const fadeIn = setInterval(() => {
+        v = Math.min(0.7, v + 0.05);
+        audio.volume = v;
+        if (v >= 0.7) clearInterval(fadeIn);
+      }, 50);
+    }).catch(() => {});
 
-    // Don't burn through the intro while the slogan is still loading
-    const img = new Image();
-    img.src = SLOGAN_SRC;
-    img.decode().then(start, start);
-    timers.push(setTimeout(start, MAX_IMAGE_WAIT));
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") finish();
-    };
-    window.addEventListener("keydown", onKey);
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    // Rolladen mit Slogan faehrt nach oben
+    timers.push(setTimeout(() => setBurning(true), BURN_AT));
+    timers.push(setTimeout(() => setShutterUp(true), SHUTTER_UP_AT));
+    timers.push(setTimeout(() => setShutterGone(true), SHUTTER_UP_AT + 1200));
+    // Show logo shortly after the shutter is up
+    timers.push(setTimeout(() => setLogoVisible(true), OFFSET + 100));
+    // Fade logo out just before panels split
+    timers.push(setTimeout(() => setLogoVisible(false), OFFSET + 1500));
+    // Fade out audio
+    timers.push(setTimeout(() => {
+      const a = audioRef.current;
+      if (a && !a.paused) {
+        const fadeOut = setInterval(() => {
+          a.volume = Math.max(0, a.volume - 0.1);
+          if (a.volume <= 0.01) {
+            a.pause();
+            clearInterval(fadeOut);
+          }
+        }, 50);
+      }
+    }, OFFSET + 1700));
+    // Split panels
+    timers.push(setTimeout(() => setSplit(true), OFFSET + 1800));
+    // Cleanup after animation
+    timers.push(setTimeout(() => {
+      sessionStorage.setItem("introSeen", "true");
+      const root = document.documentElement;
+      root.classList.remove("fc-intro-pending");
+      root.classList.remove("fc-intro-active");
+      setGone(true);
+    }, OFFSET + 2500));
 
     return () => {
       timers.forEach((t) => clearTimeout(t));
-      window.removeEventListener("keydown", onKey);
     };
   }, [mounted]);
 
@@ -82,21 +98,40 @@ export function IntroSequence() {
 
   return createPortal(
     <>
-      <div
-        className={`fc-shutter${phase === "burn" ? " is-burning" : ""}${shutterUp ? " is-up" : ""}`}
-        aria-hidden="true"
-      >
-        <div className="fc-shutter-slats" />
-        <div className="fc-shutter-banner">
-          <FireAura phase={phase} />
-          <img src={SLOGAN_SRC} alt="" width={1536} height={250} decoding="sync" />
+
+      {!shutterGone && (
+        <div className={`fc-shutter${burning ? " is-burning" : ""}${shutterUp ? " is-up" : ""}`} aria-hidden="true">
+          <div className="fc-shutter-slats" />
+          <div className="fc-shutter-embers" />
+          <div className="fc-shutter-inner">
+          <div className="fc-shutter-banner">
+            <FireAura mode="orbit" intense={burning} />
+            <img src={sloganAsset} alt="" />
+          </div>
+          </div>
+
+        </div>
+      )}
+
+      <div className="fc-intro-root" aria-hidden="true">
+        <div className={`fc-intro-half fc-intro-half-left${split ? " is-open" : ""}`} />
+        <div className={`fc-intro-half fc-intro-half-right${split ? " is-open" : ""}`} />
+        <div
+          className="fc-intro-logo-center"
+          style={{ opacity: logoVisible ? 1 : 0 }}
+        >
+          <div className="fc-intro-logo-wrap">
+            <Logo className="fc-intro-logo-img" />
+          </div>
+          <div className="fc-intro-text">
+            <span>Fight</span>
+            <span>Club</span>
+            <span>Kampfsport</span>
+            <span>Akademie</span>
+          </div>
         </div>
       </div>
-
-      <button type="button" className="fc-intro-skip" onClick={finish}>
-        Intro überspringen
-      </button>
     </>,
-    document.body,
+    document.body
   );
 }

@@ -1,20 +1,14 @@
 # Fight Club Hanau
 
-> Kampfsport-Akademie in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense, Wing Fight und Kindertraining ab 5 Jahren in der Geleitstraße 66, 63456 Hanau.
+> Kampfsport-Akademie in Hanau. MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining in der Geleitstraße 66, 63456 Hanau.
 
-Fight Club Kampfsport Akademie Hanau (seit 2021, früher unter dem Namen Combat Style) bietet Kindern, Jugendlichen und Erwachsenen Training in verschiedenen Kampfsportdisziplinen. Die aktuellen Trainingszeiten stehen im Stundenplan auf der Startseite. Ein erstes Probetraining ist kostenlos und unverbindlich.
+Fight Club MMA Akademie Hanau bietet Erwachsenen und Kindern professionelles Training in verschiedenen Kampfsportdisziplinen. Neben regulären Trainingszeiten von Montag bis Samstag gibt es Einsteigerkurse, Probetrainings und Kindertraining.
 
-## Seiten
+## Pages
 
-- [Startseite](https://www.fightclub-hanau.de/): Überblick über Disziplinen, Trainer, Stundenplan, Über uns und Kontakt.
-- [Kindertraining](https://www.fightclub-hanau.de/kindertraining): Kampfsport für Kinder ab 5 Jahren, Altersgruppen und Werte.
-- [Probetraining](https://www.fightclub-hanau.de/probetraining): Anmeldung zum kostenlosen Probetraining.
-- [FAQ](https://www.fightclub-hanau.de/faq): Antworten zu Einstieg, Probetraining, Sicherheit und Standort.
-- [Schulordnung](https://www.fightclub-hanau.de/schulordnung): Regeln für das Training.
+- [Startseite](/): Übersicht, Disziplinen, Trainer, Stundenplan und Kontakt.
 
 ## Optional
 
-- [Stundenplan](https://www.fightclub-hanau.de/#stundenplan): Aktuelle Trainingszeiten der Woche.
-- [Kontakt](https://www.fightclub-hanau.de/#kontakt): Adresse, Telefon, Öffnungszeiten und Kontaktwege.
-- [Impressum](https://www.fightclub-hanau.de/impressum)
-- [Datenschutz](https://www.fightclub-hanau.de/datenschutz)
+- [Stundenplan](/#stundenplan): Aktuelle Trainingszeiten der Woche.
+- [Kontakt](/#kontakt): Adresse, Öffnungszeiten und Kontaktformular.

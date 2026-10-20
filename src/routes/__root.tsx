@@ -12,7 +12,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieBanner } from "../components/site/CookieBanner";
-import { StickyCta } from "../components/site/StickyCta";
 
 
 function NotFoundComponent() {
@@ -20,16 +19,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Seite nicht gefunden</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Die gesuchte Seite existiert nicht oder wurde verschoben.
+          The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Zur Startseite
+            Go home
           </Link>
         </div>
       </div>
@@ -37,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -48,10 +47,10 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Diese Seite konnte nicht geladen werden
+          This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Es ist ein Fehler aufgetreten. Lade die Seite neu oder kehre zur Startseite zurück.
+          Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -61,13 +60,13 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Erneut versuchen
+            Try again
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Zur Startseite
+            Go home
           </a>
         </div>
       </div>
@@ -88,8 +87,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Fight Club Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und Kindertraining. Kampfsport-Akademie in der Geleitstraße 66 in 63456 Hanau.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:locale", content: "de_DE" },
-      { property: "og:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
       { property: "og:site_name", content: "Fight Club Hanau" },
       { property: "og:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
       { name: "twitter:title", content: "Fight Club Hanau — Kampfsport-Akademie" },
@@ -136,15 +133,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Fight Club Kampfsport Akademie Hanau",
-          alternateName: "Fight Club Hanau",
           url: "https://www.fightclub-hanau.de",
-          logo: "https://www.fightclub-hanau.de/logo.png",
-          sameAs: [
-            "https://www.instagram.com/fightclubhanau",
-            "https://www.tiktok.com/@fightclub_hanau",
-            "https://www.facebook.com/share/1D1mQLdM8w/",
-            "https://youtube.com/@fightclubhanau",
-          ],
+          logo: "https://www.fightclub-hanau.de/favicon.ico",
         }),
       },
       {
@@ -166,9 +156,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   const introBootstrap =
-    // Decides once, before first paint, whether the intro plays. IntroSequence only reads the resulting class.
-    // Skipped for: other pages, deep links (#…), reduced motion, crawlers, and visitors who saw it in the last 30 days.
-    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(location.hash)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var t=+localStorage.getItem('fcIntroSeenAt')||0;if(Date.now()-t<2592e6)return;document.documentElement.classList.add('fc-intro-pending');var i=new Image();i.fetchPriority='high';i.src='/slogan.webp';}catch(e){}})();";
+    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
 
   return (
     <html lang="de" translate="no" className="notranslate">
@@ -193,7 +181,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <StickyCta />
       <CookieBanner />
     </QueryClientProvider>
   );

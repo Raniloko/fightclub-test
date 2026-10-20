@@ -3,8 +3,6 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /unlock
-Disallow: /trainer/profil
-Disallow: /trainer/registrieren
 Disallow: /mcp
 Disallow: /.mcp/
 Disallow: /.well-known/

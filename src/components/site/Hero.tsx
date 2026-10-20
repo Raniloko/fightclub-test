@@ -1,20 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import heroMobile from "@/assets/hero-mobile-v8.jpg";
-import heroDesktop from "@/assets/hero-desktop-v8.jpg";
+import heroMainAsset from "@/assets/hero-v7-mobile.png";
+import heroWideAsset from "@/assets/hero-v7-desktop.jpg";
 
-const DISCIPLINES = [
-  "MMA",
-  "K1 / Kickboxen",
-  "Boxen",
-  "Thaiboxen",
-  "Wing Fight",
-  "Self-Defense",
-  "Kindertraining",
-  "Frauenkurse",
-];
 
-const DISPLAY_FONT = { fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 } as const;
 
 export function Hero() {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -59,27 +48,37 @@ export function Hero() {
   }, [enabled]);
 
   return (
-    <section id="top" className="relative h-svh min-h-svh w-full overflow-hidden bg-black">
-      {/* Only the image for the current breakpoint is downloaded */}
-      <picture className="pointer-events-none absolute inset-0 z-0">
-        <source media="(min-width: 1024px)" srcSet={heroDesktop} width={1376} height={768} />
-        <img
-          ref={imgRef}
-          src={heroMobile}
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          width={840}
-          height={1184}
-          className="h-full w-full object-cover object-[center_20%] lg:object-[center_45%]"
-          style={{
-            filter: "contrast(102%) brightness(1.1) saturate(1.05)",
-            willChange: "transform",
-          }}
-        />
-      </picture>
+    <section
+      id="top"
+      className="relative h-svh min-h-svh w-full overflow-hidden bg-black"
+    >
+      <img
+        ref={imgRef}
+        src={heroWideAsset}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        fetchPriority="high"
+        width={1920}
+        height={1080}
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[160px] z-0 hidden h-[calc(100%-160px)] w-full object-cover object-[center_55%] lg:block"
+        style={{ filter: "grayscale(10%) contrast(104%) brightness(1.12) saturate(1.05)", willChange: "transform" }}
+      />
+
+
+      <img
+        src={heroMainAsset}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        fetchPriority="high"
+        width={840}
+        height={1240}
+        className="pointer-events-none absolute inset-x-0 bottom-0 top-[120px] z-0 block h-[calc(100%-120px)] w-full object-cover object-[center_top] md:top-[140px] md:h-[calc(100%-140px)] md:object-[center_30%] lg:hidden"
+        style={{ filter: "contrast(102%) brightness(1.1) saturate(1.05)" }}
+      />
+
+
 
       {/* Smoke/fog layer */}
       <div
@@ -99,68 +98,58 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.35) 60%, rgba(10,10,10,0.8) 100%)",
+            "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.25) 75%, rgba(10,10,10,0.45) 100%)",
           willChange: "transform",
         }}
       />
 
-      <div className="absolute left-0 right-0 top-[112px] z-[3] flex justify-center px-6 md:top-[136px] md:px-12">
+      <div className="absolute left-0 right-0 top-[18%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
         <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
           <span className="fc-dot-cyan" aria-hidden="true" />
           <span
             className="text-[12px] uppercase tracking-[0.25em]"
-            style={{
-              color: "#C9A84C",
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700,
-            }}
+            style={{ color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700 }}
           >
-            Seit 2021 · Jetzt als Fight Club Hanau
+            Neu in Hanau · Kampfsport Akademie
           </span>
         </div>
       </div>
 
-      <div
-        ref={textRef}
-        className="relative z-[3] flex h-full w-full items-end"
-        style={{ willChange: "transform" }}
-      >
+      <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 pb-[60px] md:px-12 md:text-center">
           <h1 className="sr-only">
-            Fight Club Hanau – Kampfsport in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense und
-            Kindertraining ab 5 Jahren
+            Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besseren Version von dir selbst.
           </h1>
 
-          <div
-            className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center"
-            aria-label="Disziplinen"
-          >
-            {DISCIPLINES.map((d) => (
+          <div className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center">
+            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
               <span key={d} className="fc-tag" style={{ fontSize: "12px", padding: "6px 14px" }}>
                 {d}
               </span>
             ))}
           </div>
 
-          <div className="fc-late fc-late-4 mt-7 flex flex-col gap-3 sm:flex-row md:justify-center">
+          <div className="fc-late fc-late-4 mt-6 flex flex-col gap-3 sm:flex-row md:justify-center">
             <Link
               to="/probetraining"
               className="fc-btn-cyan inline-flex w-full items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black sm:w-auto"
-              style={DISPLAY_FONT}
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
-              Kostenlos probetrainieren
+              Jetzt einsteigen
             </Link>
             <Link
               to="/"
               hash="stundenplan"
               className="inline-flex w-full items-center justify-center border border-white/70 bg-transparent px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/10 sm:w-auto"
-              style={DISPLAY_FONT}
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
-              Stundenplan ansehen
+              Stundenplan
             </Link>
           </div>
         </div>
       </div>
+
+
     </section>
   );
 }

@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const MATOOL_ORIGIN = "https://ext.matool.de";
-// Compact fallback for preview origins; MATOOL sends live heights to the public domain.
-const INITIAL_FORM_HEIGHT = 420;
+const INITIAL_FORM_HEIGHT = 1400;
 
 export function MaToolForm() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -54,23 +53,42 @@ export function MaToolForm() {
         src="https://ext.matool.de/ptformdyn/?hash=1e769cc33873fa3e"
         id="probeForm"
         title="Probetraining reservieren"
-        aria-describedby="trial-location-help"
         scrolling="yes"
         frameBorder={0}
         style={{
           width: "100%",
           maxWidth: "700px",
-          height: `${Math.max(240, formHeight)}px`,
+          height: `${formHeight}px`,
+          minHeight: `${INITIAL_FORM_HEIGHT}px`,
           display: "block",
           border: 0,
         }}
       />
-      <div className="mx-auto max-w-[700px] border-t border-rule py-2 text-right text-xs text-quiet">
+      <div
+        style={{
+          borderTop: "1px solid grey",
+          borderColor: "currentColor",
+          color: "grey",
+          mixBlendMode: "difference",
+          paddingTop: "5px",
+          paddingBottom: "20px",
+          paddingRight: "5px",
+          width: "100%",
+          maxWidth: "700px",
+          textAlign: "right",
+        }}
+      >
         <a
           href="https://www.matool.de"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2"
+          style={{
+            textDecoration: "none",
+            color: "grey",
+            mixBlendMode: "difference",
+            fontFamily: "Helvetica, Arial, sans-serif",
+            fontSize: "x-small",
+          }}
         >
           made by MATOOL
         </a>
