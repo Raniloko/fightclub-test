@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { GOOGLE_REVIEWS_URL } from "./Reviews";
 import { Logo } from "./Logo";
 import { Ticker } from "./Ticker";
 
@@ -39,6 +40,7 @@ export function Footer() {
             <li><a href="https://www.instagram.com/fightclubhanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Instagram</a></li>
             <li><a href="https://www.facebook.com/share/1D1mQLdM8w/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Facebook</a></li>
             <li><a href="https://youtube.com/@fightclubhanau" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">YouTube</a></li>
+            <li><a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[#00B4DC]">Google-Bewertungen</a></li>
           </ul>
         </div>
       </div>
