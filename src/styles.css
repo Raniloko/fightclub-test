@@ -68,6 +68,9 @@
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+  /* Sharp corners are part of the site's look; the admin dashboard has its own, softer UI */
+  :not(.fc-admin, .fc-admin *) {
     border-radius: 0 !important;
   }
   html {
@@ -801,3 +804,12 @@ html.fc-intro-active body { visibility: visible; }
   .fc-ticker-track { animation: none; }
 }
 
+
+/* Admin dashboard: plain UI headings instead of the site's condensed display style */
+.fc-admin :is(h1, h2, h3, h4) {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
