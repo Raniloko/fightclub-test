@@ -14,6 +14,7 @@ import { IntroSequence } from "@/components/site/IntroSequence";
 import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 import { Trainers } from "@/components/site/Trainers";
+import { Reviews } from "@/components/site/Reviews";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -72,6 +73,7 @@ function Index() {
       <Schedule />
       <Stats />
       <About />
+      <Reviews />
       <News />
       <Contact />
       <CtaProbetraining />
