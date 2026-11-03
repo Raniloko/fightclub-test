@@ -10,7 +10,6 @@ import { Contact } from "@/components/site/Contact";
 import { CtaProbetraining } from "@/components/site/CtaProbetraining";
 import { Footer } from "@/components/site/Footer";
 import { HeadlineUnderlineObserver } from "@/components/site/HeadlineUnderlineObserver";
-import { IntroSequence } from "@/components/site/IntroSequence";
 import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 import { Trainers } from "@/components/site/Trainers";
@@ -20,10 +19,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Fight Club Hanau — Kampfsport für Groß und Klein" },
-      { name: "description", content: "Kampfsport für Groß und Klein in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense & Kindertraining ab 4 Jahren. Geleitstraße 66. Erstes Probetraining kostenlos." },
+      { name: "description", content: "Kampfsport für Groß und Klein in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense & Kindertraining ab 5 Jahren. Geleitstraße 66. Erstes Probetraining kostenlos." },
       { property: "og:title", content: "Fight Club Kampfsport Akademie Hanau — für Groß und Klein" },
       { name: "keywords", content: "Kampfsport Hanau, Kampfsport für Kinder, Kampfsport für Erwachsene, MMA Hanau, Kindertraining, Boxen, K1, Thaiboxen, Self-Defense" },
-      { property: "og:description", content: "Kampfsport für Groß und Klein in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense & Kindertraining ab 4 Jahren. Geleitstraße 66. Erstes Probetraining kostenlos." },
+      { property: "og:description", content: "Kampfsport für Groß und Klein in Hanau: MMA, K1, Boxen, Thaiboxen, Self-Defense & Kindertraining ab 5 Jahren. Geleitstraße 66. Erstes Probetraining kostenlos." },
       { property: "og:url", content: "https://www.fightclub-hanau.de/" },
       { property: "og:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
       { name: "twitter:image", content: "https://www.fightclub-hanau.de/kids-hero.jpg" },
@@ -45,8 +44,8 @@ export const Route = createFileRoute("/")({
             addressLocality: "Hanau",
             addressCountry: "DE",
           },
-          description: "Kampfsport für Groß und Klein in Hanau — Training für Kinder ab 4 Jahren, Jugendliche und Erwachsene.",
-          audience: { "@type": "PeopleAudience", suggestedMinAge: 4, audienceType: "Kinder, Jugendliche und Erwachsene" },
+          description: "Kampfsport für Groß und Klein in Hanau — Training für Kinder ab 5 Jahren, Jugendliche und Erwachsene.",
+          audience: { "@type": "PeopleAudience", suggestedMinAge: 5, audienceType: "Kinder, Jugendliche und Erwachsene" },
           areaServed: "Hanau",
           openingHoursSpecification: [
             { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "15:45", closes: "21:30" },
@@ -64,7 +63,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="bg-white text-[#0a0a0a]">
-      <IntroSequence />
       <Nav />
       <Hero />
       <MmaAnnouncement />

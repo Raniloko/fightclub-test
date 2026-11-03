@@ -66,11 +66,7 @@ export function CookieBanner() {
     if (existing) {
       updateGtagConsent(existing.analytics);
     } else {
-      const introSeen =
-        typeof window !== "undefined" &&
-        window.sessionStorage.getItem("introSeen");
-      const delay = introSeen ? 800 : 4200;
-      const t = setTimeout(() => setOpen(true), delay);
+      const t = setTimeout(() => setOpen(true), 800);
       return () => clearTimeout(t);
     }
   }, []);

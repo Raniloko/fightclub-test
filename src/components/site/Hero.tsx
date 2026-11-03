@@ -113,7 +113,7 @@ export function Hero() {
           </h1>
 
           <p className="fc-late fc-late-2 mt-5 max-w-[34ch] text-[16px] leading-relaxed text-white/85 md:mx-auto md:text-[18px]">
-            Kampfsport in Hanau für Kinder ab 4, Jugendliche und Erwachsene. Komm vorbei und
+            Kampfsport in Hanau für Kinder ab 5, Jugendliche und Erwachsene. Komm vorbei und
             probier es unverbindlich aus.
           </p>
 

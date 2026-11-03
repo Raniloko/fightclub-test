@@ -155,14 +155,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  const introBootstrap =
-    "(function(){try{var p=location.pathname;if(p!=='/'&&p!=='')return;if(!sessionStorage.getItem('introSeen')){document.documentElement.classList.add('fc-intro-pending');}}catch(e){}})();";
-
   return (
     <html lang="de" translate="no" className="notranslate">
       <head>
-        {/* Runs before body paint so the curtain covers the page instantly on reload */}
-        <script dangerouslySetInnerHTML={{ __html: introBootstrap }} />
         <HeadContent />
       </head>
       <body>
