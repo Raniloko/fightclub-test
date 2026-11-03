@@ -98,52 +98,39 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.25) 75%, rgba(10,10,10,0.45) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.55) 68%, rgba(0,0,0,0.85) 100%)",
           willChange: "transform",
         }}
       />
 
-      <div className="absolute left-0 right-0 top-[18%] z-[3] flex justify-center px-6 md:top-[160px] md:px-12">
-        <div className="fc-late fc-late-1 inline-flex items-center gap-2 rounded-full border border-[#C9A84C]/60 bg-[#0a0a0a]/70 px-4 py-2 backdrop-blur-sm md:justify-center">
-          <span className="fc-dot-cyan" aria-hidden="true" />
-          <span
-            className="text-[12px] uppercase tracking-[0.25em]"
-            style={{ color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700 }}
-          >
-            Neu in Hanau · Kampfsport Akademie
-          </span>
-        </div>
-      </div>
-
       <div ref={textRef} className="relative z-[3] flex h-full w-full items-end" style={{ willChange: "transform" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-6 pb-[60px] md:px-12 md:text-center">
-          <h1 className="sr-only">
-            Fight Club Hanau — MMA &amp; Kampfsport-Akademie. Werde zur besseren Version von dir selbst.
+        <div className="mx-auto w-full max-w-[1200px] px-6 pb-[56px] md:px-12 md:pb-[72px] md:text-center">
+          <h1
+            className="fc-late fc-late-1 text-white md:mx-auto"
+            style={{ fontSize: "clamp(44px, 7.5vw, 96px)", lineHeight: 0.9, textWrap: "balance" }}
+          >
+            Dein erstes Training ist kostenlos
           </h1>
 
-          <div className="fc-late fc-late-3 flex flex-wrap gap-2 md:justify-center">
-            {["MMA", "K1 / Kickboxen", "Boxen", "Thaiboxen", "Wing Fight", "Self Defense", "Kindertraining", "Frauenkurse"].map((d) => (
-              <span key={d} className="fc-tag" style={{ fontSize: "12px", padding: "6px 14px" }}>
-                {d}
-              </span>
-            ))}
-          </div>
+          <p className="fc-late fc-late-2 mt-5 max-w-[34ch] text-[16px] leading-relaxed text-white/85 md:mx-auto md:text-[18px]">
+            Kampfsport in Hanau für Kinder ab 4, Jugendliche und Erwachsene. Komm vorbei und
+            probier es unverbindlich aus.
+          </p>
 
-          <div className="fc-late fc-late-4 mt-6 flex flex-col gap-3 sm:flex-row md:justify-center">
+          <div className="fc-late fc-late-3 mt-8 flex flex-col items-stretch gap-5 sm:flex-row sm:items-center md:justify-center">
             <Link
               to="/probetraining"
-              className="fc-btn-cyan inline-flex w-full items-center justify-center px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-black sm:w-auto"
+              className="fc-btn-cyan fc-hero-cta inline-flex items-center justify-center px-10 py-5 text-[17px] uppercase tracking-[0.12em] text-black md:text-[19px]"
               style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
             >
-              Jetzt einsteigen
+              Probetraining sichern
             </Link>
             <Link
               to="/"
               hash="stundenplan"
-              className="inline-flex w-full items-center justify-center border border-white/70 bg-transparent px-8 py-4 text-[14px] uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/10 sm:w-auto"
-              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800 }}
+              className="text-center text-[15px] text-white/85 underline decoration-white/40 underline-offset-[6px] transition-colors hover:text-white hover:decoration-white"
             >
-              Stundenplan
+              Stundenplan ansehen
             </Link>
           </div>
         </div>

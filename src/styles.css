@@ -651,18 +651,38 @@ html.fc-intro-active body { visibility: visible; }
   color: #000000;
 }
 
-/* Hero elements — appear only after the matrix headline has rained down */
+/* Hero elements — staggered entrance; while the intro runs they wait until its panels split */
 .fc-late {
   opacity: 0;
   transform: translateY(16px);
   animation: fc-late-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.fc-late-1 { animation-delay: 5.2s; }
-.fc-late-2 { animation-delay: 5.4s; }
-.fc-late-3 { animation-delay: 5.6s; }
-.fc-late-4 { animation-delay: 5.8s; }
+.fc-late-1 { animation-delay: 0.15s; }
+.fc-late-2 { animation-delay: 0.3s; }
+.fc-late-3 { animation-delay: 0.45s; }
+html.fc-intro-pending .fc-late-1, html.fc-intro-active .fc-late-1 { animation-delay: 8.2s; }
+html.fc-intro-pending .fc-late-2, html.fc-intro-active .fc-late-2 { animation-delay: 8.35s; }
+html.fc-intro-pending .fc-late-3, html.fc-intro-active .fc-late-3 { animation-delay: 8.5s; }
 @keyframes fc-late-in {
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Probetraining-CTA: one glow pulse once the hero has settled, then rest */
+.fc-hero-cta {
+  animation: fc-cta-pulse 1.6s ease-out 1.4s 2;
+}
+html.fc-intro-pending .fc-hero-cta, html.fc-intro-active .fc-hero-cta { animation-delay: 9.5s; }
+.fc-hero-cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+@keyframes fc-cta-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0,180,220,0.55); }
+  100% { box-shadow: 0 0 0 18px rgba(0,180,220,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc-late { opacity: 1; transform: none; animation: none; }
+  .fc-hero-cta { animation: none; }
 }
 
 /* === Neueröffnung: Glow, Shimmer-Border, Sparkles, Countdown === */
