@@ -18,13 +18,14 @@ export function CtaProbetraining() {
           </span>
         </h2>
         <p className="mx-auto mt-8 max-w-xl text-[15px] text-white/70 md:text-[17px]">
-          Dein erstes Training ist kostenlos und unverbindlich. Keine Anmeldung nötig.
+          Dein erstes Training ist kostenlos und unverbindlich. Schick uns deinen Wunschtermin,
+          wir melden uns bei dir.
         </p>
         <Link
           to="/probetraining"
           className="fc-btn-cyan mt-10 inline-block px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-black"
         >
-          Probetraining anfragen
+          Probetraining sichern
         </Link>
       </div>
     </section>

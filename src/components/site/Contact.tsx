@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
 
 function MapEmbed() {
@@ -84,45 +83,6 @@ export function Contact() {
               </p>
             </div>
 
-            <MapEmbed />
-
-
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
-                Öffnungs- & Trainingszeiten
-              </div>
-              <div className="mt-2 space-y-1">
-                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
-                  <span>Montag – Freitag</span>
-                  <span>15:45 – 21:30 Uhr</span>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
-                  <span>Samstag — Reguläres Training</span>
-                  <span>11:00 – 13:00 Uhr</span>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
-                  <span className="flex items-center gap-2">
-                    Samstag — Freies Training
-                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
-                      Auf Anfrage
-                    </span>
-                  </span>
-                  <span className="text-right">13:00 – 22:00 Uhr</span>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
-                  <span className="flex items-center gap-2">
-                    Sonntag — Freies Training
-                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
-                      Auf Anfrage
-                    </span>
-                  </span>
-                  <span className="text-right">10:00 – 22:00 Uhr</span>
-                </div>
-              </div>
-              <p className="mt-2 text-[12px] text-[#777]">
-                Freies Training am Wochenende nur nach Vereinbarung / Termin auf Anfrage.
-              </p>
-            </div>
             <div className="flex gap-4">
               <a
                 href="https://www.tiktok.com/@fightclub_hanau"
@@ -175,24 +135,46 @@ export function Contact() {
         </Reveal>
 
         <Reveal>
-          <div className="flex items-center gap-3">
-            <span className="block h-px w-8 bg-[#0a0a0a]" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#555]">
-              Probetraining
-            </span>
+          <div className="space-y-8 text-[15px] md:pt-[124px]">
+            <MapEmbed />
+
+            <div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#555]">
+                Öffnungs- & Trainingszeiten
+              </div>
+              <div className="mt-2 space-y-1">
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
+                  <span>Montag – Freitag</span>
+                  <span>15:45 – 21:30 Uhr</span>
+                </div>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] py-1">
+                  <span>Samstag — Reguläres Training</span>
+                  <span>11:00 – 13:00 Uhr</span>
+                </div>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
+                  <span className="flex items-center gap-2">
+                    Samstag — Freies Training
+                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
+                      Auf Anfrage
+                    </span>
+                  </span>
+                  <span className="text-right">13:00 – 22:00 Uhr</span>
+                </div>
+                <div className="flex justify-between gap-4 border-b border-[#e0e0e0] bg-[#fafafa] py-1 pr-2">
+                  <span className="flex items-center gap-2">
+                    Sonntag — Freies Training
+                    <span className="rounded-full bg-[#0a0a0a] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-white">
+                      Auf Anfrage
+                    </span>
+                  </span>
+                  <span className="text-right">10:00 – 22:00 Uhr</span>
+                </div>
+              </div>
+              <p className="mt-2 text-[12px] text-[#777]">
+                Freies Training am Wochenende nur nach Vereinbarung / Termin auf Anfrage.
+              </p>
+            </div>
           </div>
-          <h3 className="mt-4 font-display text-3xl md:text-4xl">
-            Jetzt kostenlos <span className="fc-headline-underline">Probetraining</span> sichern
-          </h3>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#333]">
-            Dein erstes Training ist kostenlos und unverbindlich. Sichere dir deinen Wunschtermin.
-          </p>
-          <Link
-            to="/probetraining"
-            className="mt-6 inline-block bg-[#0a0a0a] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-white transition-colors hover:bg-[#222]"
-          >
-            Termin anfragen →
-          </Link>
         </Reveal>
       </div>
 
