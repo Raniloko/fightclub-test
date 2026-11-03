@@ -32,7 +32,7 @@ export function MmaAnnouncement() {
 
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/70 lg:mx-0 md:text-[17px]">
               Hartes Training. Echte Kämpfer. Echte Ergebnisse. Erlebe professionelles MMA-Training
-              auf höchstem Niveau — ab September neu im Fight Club Hanau.
+              auf höchstem Niveau — jetzt im Fight Club Hanau.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export function MmaAnnouncement() {
             <div className="relative overflow-hidden rounded-lg border border-[#C9A84C]/30 bg-black shadow-2xl shadow-[#C9A84C]/10">
               <img
                 src={mmaPosterAsset}
-                alt="MMA Fight Club Poster: Sunay Abdullah Hamidov — Jetzt neu ab September"
+                alt="MMA-Poster Fight Club Hanau: jeden Dienstag und Donnerstag von 19:30 bis 21:00 Uhr"
                 loading="lazy"
                 width={874}
                 height={1550}
