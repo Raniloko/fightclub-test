@@ -3,7 +3,7 @@ import { TriangleBg } from "./TriangleBg";
 
 export function CtaProbetraining() {
   return (
-    <section className="relative overflow-hidden bg-[#0a0a0a] py-20 text-white md:py-32">
+    <section id="probetraining-cta" className="relative overflow-hidden bg-[#0a0a0a] py-20 text-white md:py-32">
       <TriangleBg
         className="pointer-events-none absolute left-1/2 top-1/2 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2"
         stroke="#ffffff"

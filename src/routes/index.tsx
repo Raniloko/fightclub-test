@@ -14,6 +14,7 @@ import { News } from "@/components/site/News";
 import { MmaAnnouncement } from "@/components/site/MmaAnnouncement";
 import { Trainers } from "@/components/site/Trainers";
 import { Reviews } from "@/components/site/Reviews";
+import { StickyCta } from "@/components/site/StickyCta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,6 +77,7 @@ function Index() {
       <Contact />
       <CtaProbetraining />
       <Footer />
+      <StickyCta />
       <Toaster position="bottom-right" />
       <HeadlineUnderlineObserver />
     </main>
